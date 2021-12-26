@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+:host {
+  --color-1: #61892f;
+  --color-2: #86c232;
+  --color-3: #222629;
+  --color-4: #474b4f;
+  --color-5: #6b6e70;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
