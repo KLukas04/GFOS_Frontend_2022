@@ -25,6 +25,7 @@
     "@fortawesome/free-regular-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@ngrx/store": "^13.0.2",
+    "@ngrx/store-devtools": "^13.0.2",
     "@taiga-ui/cdk": "^2.28.0",
     "@taiga-ui/core": "^2.28.0",
     "@taiga-ui/icons": "^2.28.0",
