@@ -5,10 +5,11 @@ import { TuiRootModule } from '@taiga-ui/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StoreModule } from '@ngrx/store';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, AppRoutingModule, TuiRootModule, FontAwesomeModule],
+  imports: [BrowserModule, AppRoutingModule, TuiRootModule, FontAwesomeModule, StoreModule.forRoot({}, {})],
   providers: [],
   bootstrap: [AppComponent],
 })
