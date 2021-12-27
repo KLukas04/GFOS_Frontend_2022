@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&display=swap");
+@import "../../scss/colors.scss";
 
 body,
 input {
@@ -18,7 +19,7 @@ input {
     width: 2000px;
     height: 2000px;
     border-radius: 50%;
-    background: linear-gradient(-45deg, var(--color-1), var(--color-2));
+    background: linear-gradient(-45deg, $color-1, $color-2);
     top: 10%;
     right: 48%;
     transform: translateY(-50%);
@@ -45,7 +46,7 @@ input {
     outline: none;
     border-radius: 49px;
     cursor: pointer;
-    background-color: var(--color-2);
+    background-color: $color-2;
     color: #ffffff;
     text-transform: uppercase;
     font-weight: 600;
@@ -59,7 +60,7 @@ input {
     }
 
     &:hover {
-      background-color: var(--color-1);
+      background-color: $color-1;
     }
   }
 
