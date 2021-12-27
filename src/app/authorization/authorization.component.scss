@@ -79,6 +79,7 @@ input {
       overflow: hidden;
       grid-column: 1 / 2;
       grid-row: 1 / 2;
+      transition: 0.2s 0.7s ease-in-out;
 
       &.sign-in-form {
         z-index: 2;
@@ -101,10 +102,12 @@ input {
         height: 55px;
         background-color: #f0f0f0;
         margin: 10px 0;
+        height: 55px;
         border-radius: 55px;
         display: grid;
         grid-template-columns: 15% 85%;
         padding: 0 0.4rem;
+        position: relative;
 
         fa-icon {
           text-align: center;
@@ -200,17 +203,27 @@ img {
 
 .container.sign-up-mode .right-panel img,
 .container.sign-up-mode .right-panel .content {
-  transform: translateX(0px);
+  transform: translateX(0%);
 }
 
 .container.sign-up-mode .left-panel {
-  pointer-events: none;
+  pointer-events: none !important;
 }
 
 .container.sign-up-mode .right-panel {
-  pointer-events: all;
+  pointer-events: all !important;
 }
 
 .container.sign-up-mode .signin-signup {
   left: 25%;
+}
+
+.container.sign-up-mode form.sign-in-form {
+  z-index: 1 !important;
+  opacity: 0 !important;
+}
+
+.container.sign-up-mode form.sign-up-form {
+  z-index: 2 !important;
+  opacity: 1 !important;
 }
