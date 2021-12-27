@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-authorization',
@@ -9,6 +9,7 @@ import { faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 export class AuthorizationComponent implements OnInit {
   public faUser = faUser;
   public faLock = faLock;
+  public faEnvelope = faEnvelope;
 
   constructor() {}
 
