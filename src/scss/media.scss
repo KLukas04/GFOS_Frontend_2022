@@ -1,0 +1,61 @@
+// Smartphone portrait
+$smartphonePortrait-max: 480px;
+
+// Smartphone landscape
+$smartphoneLandscape-min: 481px;
+$smartphoneLandscape-max: 767px;
+
+// Tablet + orientation
+$tablet-min: 768px;
+$tablet-max: 1200px;
+
+// Small desktops and laptops
+$smallDesktop-min: 1201px;
+$smallDesktop-max: 2000px;
+
+// large desktops and higher resolutions
+$largeDesktops-min: 2001px;
+
+/* ------------------------------------- Media Query mixins für die Breakpoints ------------------------------------- */
+
+// Smartphone portrait
+@mixin sp {
+  @media only screen and (max-width: $smartphonePortrait-max) {
+    @content;
+  }
+}
+
+// Smartphone landscape
+@mixin sl {
+  @media only screen and (min-width: $smartphoneLandscape-min) and (max-width: $smartphoneLandscape-max) {
+    @content;
+  }
+}
+
+// Tablet portrait
+@mixin tp {
+  @media only screen and (min-width: $tablet-min) and (max-width: $tablet-max) and (orientation: portrait) {
+    @content;
+  }
+}
+
+// Tablet landscape
+@mixin tl {
+  @media only screen and (min-width: $tablet-min) and (max-width: $tablet-max) and (orientation: landscape) {
+    @content;
+  }
+}
+
+// Small desktops and laptops
+@mixin sd {
+  @media only screen and (min-width: $smallDesktop-min) and (max-width: $smallDesktop-max) {
+    @content;
+  }
+}
+
+// Large desktops
+@mixin ld {
+  @media only screen and (min-width: $largeDesktops-min) {
+    @content;
+  }
+}
