@@ -14,4 +14,14 @@ export class AuthorizationComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  changeToSignUp(): void {
+    const container: Element | null = document.querySelector('.container');
+    container?.classList.add('sign-up-mode');
+  }
+
+  changeToSignIn(): void {
+    const container: Element | null = document.querySelector('.container');
+    container?.classList.remove('sign-up-mode');
+  }
 }
