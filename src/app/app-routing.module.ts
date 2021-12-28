@@ -14,6 +14,7 @@ const routes: Routes = [
         (m) => m.AuthorizationModule
       ),
   },
+  { path: 'jobs', loadChildren: () => import('./jobs/jobs.module').then(m => m.JobsModule) },
 ];
 
 @NgModule({
