@@ -1,1 +1,26 @@
-<p>toolbar works!</p>
+<div class="toolbar">
+  <div class="logo">LOGO</div>
+  <div class="spacer"></div>
+  <tui-avatar [avatarUrl]="avatar" [rounded]="true" size="m"></tui-avatar>
+  <tui-hosted-dropdown
+    tuiDropdownAlign="left"
+    [content]="dropdown"
+    [(open)]="open"
+  >
+    <button tuiButton appearance="flat" [iconRight]="arrow">Hi, Florian</button>
+  </tui-hosted-dropdown>
+</div>
+
+<ng-template #dropdown>
+  <tui-data-list>
+    <button tuiOption (click)="logout()">Abmelden</button>
+  </tui-data-list>
+</ng-template>
+
+<ng-template #arrow>
+  <tui-svg
+    src="tuiIconChevronDown"
+    class="arrow"
+    [class.arrow_rotated]="open"
+  ></tui-svg>
+</ng-template>

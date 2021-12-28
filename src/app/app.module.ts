@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { TuiRootModule } from '@taiga-ui/core';
+import {
+  TuiButtonModule,
+  TuiDataListModule,
+  TuiHostedDropdownModule,
+  TuiRootModule,
+  TuiSvgModule,
+  TuiThemeNightModule,
+} from '@taiga-ui/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -9,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
+import { TuiAvatarModule } from '@taiga-ui/kit';
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent],
@@ -22,6 +30,12 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    TuiAvatarModule,
+    TuiHostedDropdownModule,
+    TuiDataListModule,
+    TuiButtonModule,
+    TuiSvgModule,
+    TuiThemeNightModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

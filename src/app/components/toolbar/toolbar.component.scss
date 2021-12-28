@@ -1,0 +1,50 @@
+@import "../../../scss/colors.scss";
+
+.toolbar {
+  height: 64px;
+  width: 100%;
+  background: linear-gradient(-45deg, $color-4, $color-5);
+  z-index: 100;
+  position: sticky;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  display: flex;
+
+  .logo {
+    width: 200px;
+    height: 56px;
+    border-radius: 10px;
+    background-color: red;
+    margin-left: 15px;
+    margin-top: 3px;
+    display: inline-block;
+  }
+
+  tui-avatar {
+    margin-top: 8px;
+    margin-right: 5px;
+    box-shadow: 0 0 0 2px $color-4, 0 0 0 4px #a8a8a8;
+  }
+
+  button {
+    height: 48px;
+    margin-top: 8px;
+    margin-left: 5px;
+    margin-right: 5px;
+
+    ::ng-deep .wrapper {
+      padding: 0 1rem;
+    }
+
+    ::ng-deep tui-wrapper[data-appearance="flat"] {
+      color: $color-2;
+    }
+  }
+
+  .arrow {
+    &_rotated {
+      transform: rotate(180deg);
+      transition: 0.5s;
+    }
+  }
+}

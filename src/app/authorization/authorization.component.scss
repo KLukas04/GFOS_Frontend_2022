@@ -10,14 +10,14 @@ input {
 .container {
   position: relative;
   width: 100%;
-  min-height: 100vh;
-  max-height: 100vh;
+  min-height: calc(100vh - 64px);
+  max-height: calc(100vh - 64px);
   background-color: #ffffff;
   overflow: hidden;
   background-color: $color-3;
 
   @include sp {
-    height: 100vh;
+    height: calc(100vh - 64px);
   }
 
   &::before {
