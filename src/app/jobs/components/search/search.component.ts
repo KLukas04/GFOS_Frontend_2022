@@ -17,8 +17,23 @@ export class SearchComponent implements OnInit {
     '50 km',
   ];
 
+  mockExpertiseAreas: Object[] = [
+    {
+      text: 'Informatik',
+    },
+
+    {
+      text: 'Mathematik',
+    },
+
+    {
+      text: 'Buchhaltung',
+    },
+  ];
+
   searchFormControl: FormControl = new FormControl(null);
   distanceFormControl: FormControl = new FormControl(null);
+  expertiseFormControl: FormControl = new FormControl(null);
 
   constructor() {}
 

@@ -1,7 +1,7 @@
 <div tuiGroup class="group">
   <tui-input
     tuiTextfieldSize="l"
-    class="tui-group__inherit-item tui-group__auto-width-item"
+    class="tui-group__inherit-item"
     icon="tuiIconSearch"
     iconAlign="right"
     [formControl]="searchFormControl"
@@ -9,7 +9,7 @@
   >
   <tui-select
     tuiTextfieldSize="l"
-    class="tui-group__inherit-item tui-group__auto-width-item"
+    class="tui-group__inherit-item"
     [tuiTextfieldLabelOutside]="true"
     [formControl]="distanceFormControl"
     >Im Umkreis von...
@@ -18,4 +18,23 @@
       [items]="mockDistances"
     ></tui-data-list-wrapper
   ></tui-select>
+  <tui-select
+    tuiTextfieldSize="l"
+    class="tui-group__inherit-item b-form"
+    [formControl]="expertiseFormControl"
+    >Fachgebiet
+    <tui-data-list-wrapper
+      *tuiDataList
+      size="l"
+      [items]="mockExpertiseAreas"
+      [itemContent]="content"
+    ></tui-data-list-wrapper
+  ></tui-select>
 </div>
+
+<ng-template #content let-data>
+  <div class="template">
+    <tui-avatar size="xs" class="avatar" [text]="data.text"></tui-avatar>
+    <div class="name">{{ data.text }}</div>
+  </div>
+</ng-template>

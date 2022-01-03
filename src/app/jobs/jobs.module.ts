@@ -6,6 +6,7 @@ import { JobsComponent } from './jobs.component';
 import { SearchComponent } from './components/search/search.component';
 import { TuiGroupModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import {
+  TuiAvatarModule,
   TuiDataListWrapperModule,
   TuiInputModule,
   TuiSelectModule,
@@ -23,6 +24,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TuiTextfieldControllerModule,
     TuiDataListWrapperModule,
     ReactiveFormsModule,
+    TuiAvatarModule,
   ],
 })
 export class JobsModule {}
