@@ -4,7 +4,11 @@ import { CommonModule } from '@angular/common';
 import { JobsRoutingModule } from './jobs-routing.module';
 import { JobsComponent } from './jobs.component';
 import { SearchComponent } from './components/search/search.component';
-import { TuiGroupModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {
+  TuiButtonModule,
+  TuiGroupModule,
+  TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import {
   TuiAvatarModule,
   TuiDataListWrapperModule,
@@ -23,6 +27,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TuiDataListWrapperModule,
     ReactiveFormsModule,
     TuiAvatarModule,
+    TuiButtonModule,
   ],
 })
 export class JobsModule {}

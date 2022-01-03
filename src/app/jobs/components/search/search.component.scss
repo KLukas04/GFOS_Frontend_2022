@@ -1,7 +1,17 @@
+@import "../../../../scss/colors.scss";
+
 .group {
   width: 70%;
   margin-left: 15%;
   margin-right: auto;
+
+  button {
+    max-width: 150px;
+
+    ::ng-deep tui-wrapper[data-appearance="whiteblock"] {
+      color: $color-2;
+    }
+  }
 }
 
 .template {
