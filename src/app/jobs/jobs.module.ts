@@ -15,9 +15,10 @@ import {
   TuiSelectModule,
 } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
 
 @NgModule({
-  declarations: [JobsComponent, SearchComponent],
+  declarations: [JobsComponent, SearchComponent, HowItWorksComponent],
   imports: [
     CommonModule,
     JobsRoutingModule,
