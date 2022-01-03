@@ -35,4 +35,23 @@
       margin-top: 30px;
     }
   }
+
+  .divider {
+    width: 0;
+    height: 0;
+    border-top: 80px solid $color-1;
+    border-right: 1920px solid transparent;
+  }
+
+  .how-it-works-panel {
+    width: 100%;
+    position: relative;
+
+    .heading {
+      font-size: 2rem;
+      position: absolute;
+      top: -50px;
+      left: 20px;
+    }
+  }
 }
