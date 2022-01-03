@@ -35,3 +35,9 @@
     flex-shrink: 1;
   }
 }
+
+// To fix first border left radius in group
+.tui-group_rounded.tui-group_orientation_horizontal > *:first-child {
+  border-top-left-radius: var(--tui-radius-m);
+  border-bottom-left-radius: var(--tui-radius-m);
+}
