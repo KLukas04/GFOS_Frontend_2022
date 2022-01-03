@@ -1,1 +1,21 @@
-<p>search works!</p>
+<div tuiGroup class="group">
+  <tui-input
+    tuiTextfieldSize="l"
+    class="tui-group__inherit-item tui-group__auto-width-item"
+    icon="tuiIconSearch"
+    iconAlign="right"
+    [formControl]="searchFormControl"
+    >Suchbegriff</tui-input
+  >
+  <tui-select
+    tuiTextfieldSize="l"
+    class="tui-group__inherit-item tui-group__auto-width-item"
+    [tuiTextfieldLabelOutside]="true"
+    [formControl]="distanceFormControl"
+    >Im Umkreis von...
+    <tui-data-list-wrapper
+      *tuiDataList
+      [items]="mockDistances"
+    ></tui-data-list-wrapper
+  ></tui-select>
+</div>
