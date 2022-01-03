@@ -7,6 +7,15 @@ import { FormControl } from '@angular/forms';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
+  mockTypesOfEmployment: string[] = [
+    'Teilzeit',
+    'Vollzeit',
+    'Praktikum',
+    'Ausbildung',
+    'Duales Studium',
+    'Minijob',
+  ];
+
   mockDistances: string[] = [
     '5 km',
     '10 km',
@@ -31,7 +40,7 @@ export class SearchComponent implements OnInit {
     },
   ];
 
-  searchFormControl: FormControl = new FormControl(null);
+  typeFormControl: FormControl = new FormControl(null);
   distanceFormControl: FormControl = new FormControl(null);
   expertiseFormControl: FormControl = new FormControl(null);
 

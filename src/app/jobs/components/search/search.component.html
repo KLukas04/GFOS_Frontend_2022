@@ -1,12 +1,15 @@
 <div tuiGroup class="group">
-  <tui-input
+  <tui-select
     tuiTextfieldSize="l"
     class="tui-group__inherit-item"
-    icon="tuiIconSearch"
-    iconAlign="right"
-    [formControl]="searchFormControl"
-    >Suchbegriff</tui-input
-  >
+    [tuiTextfieldLabelOutside]="true"
+    [formControl]="typeFormControl"
+    >Art der Beschäftigung
+    <tui-data-list-wrapper
+      *tuiDataList
+      [items]="mockTypesOfEmployment"
+    ></tui-data-list-wrapper
+  ></tui-select>
   <tui-select
     tuiTextfieldSize="l"
     class="tui-group__inherit-item"

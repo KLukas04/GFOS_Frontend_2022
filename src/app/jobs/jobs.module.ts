@@ -8,7 +8,6 @@ import { TuiGroupModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import {
   TuiAvatarModule,
   TuiDataListWrapperModule,
-  TuiInputModule,
   TuiSelectModule,
 } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +18,6 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     JobsRoutingModule,
     TuiGroupModule,
-    TuiInputModule,
     TuiSelectModule,
     TuiTextfieldControllerModule,
     TuiDataListWrapperModule,
