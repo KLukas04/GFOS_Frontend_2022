@@ -12,9 +12,4 @@ export class TrendsComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
-
-  navigate(change: number): void {
-    this.carouselIndex = (this.carouselIndex + change) % this.numberOfItems;
-    console.log(this.carouselIndex);
-  }
 }

@@ -14,6 +14,7 @@ import {
   TuiCarouselModule,
   TuiDataListWrapperModule,
   TuiIslandModule,
+  TuiPaginationModule,
   TuiSelectModule,
 } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -41,6 +42,7 @@ import { TrendJobCardComponent } from './components/trend-job-card/trend-job-car
     TuiButtonModule,
     TuiCarouselModule,
     TuiIslandModule,
+    TuiPaginationModule,
   ],
 })
 export class JobsModule {}

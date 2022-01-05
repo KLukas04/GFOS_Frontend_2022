@@ -1,24 +1,39 @@
 <div class="panel">
-  <button
-    tuiIconButton
-    icon="tuiIconChevronLeftLarge"
-    appearance="secondary"
-    shape="rounded"
+  <div class="carousel-wrapper">
+    <button
+      tuiIconButton
+      icon="tuiIconChevronLeftLarge"
+      appearance="secondary"
+      shape="rounded"
+      size="m"
+      (click)="carousel.prev()"
+    ></button>
+    <tui-carousel
+      #carousel
+      [(index)]="carouselIndex"
+      [itemsCount]="numberOfItems"
+    >
+      <app-trend-job-card *tuiItem title="Job 1"></app-trend-job-card>
+      <app-trend-job-card *tuiItem title="Job 2"></app-trend-job-card>
+      <app-trend-job-card *tuiItem title="Job 3"></app-trend-job-card>
+      <app-trend-job-card *tuiItem title="Job 4"></app-trend-job-card>
+      <app-trend-job-card *tuiItem title="Job 5"></app-trend-job-card>
+      <app-trend-job-card *tuiItem title="Job 6"></app-trend-job-card>
+      <app-trend-job-card *tuiItem title="Job 7"></app-trend-job-card>
+      <app-trend-job-card *tuiItem title="Job 8"></app-trend-job-card>
+    </tui-carousel>
+    <button
+      tuiIconButton
+      icon="tuiIconChevronRightLarge"
+      appearance="secondary"
+      shape="rounded"
+      size="m"
+      (click)="carousel.next()"
+    ></button>
+  </div>
+  <tui-pagination
     size="m"
-    (click)="navigate(-1)"
-  ></button>
-  <tui-carousel [(index)]="carouselIndex" [itemsCount]="numberOfItems">
-    <app-trend-job-card *tuiItem title="Job 1"></app-trend-job-card>
-    <app-trend-job-card *tuiItem title="Job 2"></app-trend-job-card>
-    <app-trend-job-card *tuiItem title="Job 3"></app-trend-job-card>
-    <app-trend-job-card *tuiItem title="Job 4"></app-trend-job-card>
-  </tui-carousel>
-  <button
-    tuiIconButton
-    icon="tuiIconChevronRightLarge"
-    appearance="secondary"
-    shape="rounded"
-    size="m"
-    (click)="navigate(1)"
-  ></button>
+    [length]="8"
+    [(index)]="carouselIndex"
+  ></tui-pagination>
 </div>
