@@ -7,6 +7,7 @@ import {
   TuiHostedDropdownModule,
   TuiLinkModule,
   TuiRootModule,
+  TuiScrollbarModule,
   TuiSvgModule,
   TuiThemeNightModule,
 } from '@taiga-ui/core';
@@ -40,6 +41,7 @@ import { TuiAvatarModule } from '@taiga-ui/kit';
     TuiSvgModule,
     TuiThemeNightModule,
     TuiLinkModule,
+    TuiScrollbarModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
