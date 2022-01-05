@@ -16,9 +16,10 @@ import {
 } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
+import { TrendsComponent } from './components/trends/trends.component';
 
 @NgModule({
-  declarations: [JobsComponent, SearchComponent, HowItWorksComponent],
+  declarations: [JobsComponent, SearchComponent, HowItWorksComponent, TrendsComponent],
   imports: [
     CommonModule,
     JobsRoutingModule,
