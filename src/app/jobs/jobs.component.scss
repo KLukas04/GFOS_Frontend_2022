@@ -43,9 +43,12 @@
     border-right: 1920px solid transparent;
   }
 
-  .how-it-works-panel {
+  .how-it-works-panel,
+  .trends-panel {
     width: 100%;
     position: relative;
+    padding: 10px;
+    box-sizing: border-box;
 
     .heading {
       font-size: 2rem;

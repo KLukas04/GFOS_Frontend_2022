@@ -11,15 +11,24 @@ import {
 } from '@taiga-ui/core';
 import {
   TuiAvatarModule,
+  TuiCarouselModule,
   TuiDataListWrapperModule,
+  TuiIslandModule,
   TuiSelectModule,
 } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
 import { TrendsComponent } from './components/trends/trends.component';
+import { TrendJobCardComponent } from './components/trend-job-card/trend-job-card.component';
 
 @NgModule({
-  declarations: [JobsComponent, SearchComponent, HowItWorksComponent, TrendsComponent],
+  declarations: [
+    JobsComponent,
+    SearchComponent,
+    HowItWorksComponent,
+    TrendsComponent,
+    TrendJobCardComponent,
+  ],
   imports: [
     CommonModule,
     JobsRoutingModule,
@@ -30,6 +39,8 @@ import { TrendsComponent } from './components/trends/trends.component';
     ReactiveFormsModule,
     TuiAvatarModule,
     TuiButtonModule,
+    TuiCarouselModule,
+    TuiIslandModule,
   ],
 })
 export class JobsModule {}
