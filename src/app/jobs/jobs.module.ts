@@ -21,6 +21,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
 import { TrendsComponent } from './components/trends/trends.component';
 import { TrendJobCardComponent } from './components/trend-job-card/trend-job-card.component';
+import { CategoriesComponent } from './components/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { TrendJobCardComponent } from './components/trend-job-card/trend-job-car
     HowItWorksComponent,
     TrendsComponent,
     TrendJobCardComponent,
+    CategoriesComponent,
   ],
   imports: [
     CommonModule,
