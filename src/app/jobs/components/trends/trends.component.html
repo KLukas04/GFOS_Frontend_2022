@@ -5,13 +5,13 @@
     appearance="secondary"
     shape="rounded"
     size="m"
-    (click)="carousel.prev()"
+    (click)="navigate(-1)"
   ></button>
-  <tui-carousel #carousel [itemsCount]="4">
-    <app-trend-job-card *tuiItem></app-trend-job-card>
-    <app-trend-job-card *tuiItem></app-trend-job-card>
-    <app-trend-job-card *tuiItem></app-trend-job-card>
-    <app-trend-job-card *tuiItem></app-trend-job-card>
+  <tui-carousel [(index)]="carouselIndex" [itemsCount]="numberOfItems">
+    <app-trend-job-card *tuiItem title="Job 1"></app-trend-job-card>
+    <app-trend-job-card *tuiItem title="Job 2"></app-trend-job-card>
+    <app-trend-job-card *tuiItem title="Job 3"></app-trend-job-card>
+    <app-trend-job-card *tuiItem title="Job 4"></app-trend-job-card>
   </tui-carousel>
   <button
     tuiIconButton
@@ -19,6 +19,6 @@
     appearance="secondary"
     shape="rounded"
     size="m"
-    (click)="carousel.next()"
+    (click)="navigate(1)"
   ></button>
 </div>
