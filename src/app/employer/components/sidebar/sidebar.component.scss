@@ -1,0 +1,64 @@
+@import "../../../../scss/colors.scss";
+
+.container {
+  min-height: calc(100vh - 64px);
+  max-height: calc(100vh - 64px);
+  width: 400px;
+  background: linear-gradient(66deg, $color-1 0%, $color-2 50%, $color-2 100%);
+  padding: 50px;
+  box-sizing: border-box;
+
+  ul {
+    list-style: none;
+
+    .empty {
+      height: 50px;
+    }
+
+    li {
+      margin-bottom: 30px;
+      transition: all 0.35s ease;
+
+      a {
+        color: $color-4;
+        font-size: 1.5em;
+        font-weight: 600;
+        position: relative;
+        padding: 0.2em 0.5em;
+        margin: 0.2em 0;
+
+        &::before,
+        &::after {
+          height: 14px;
+          width: 14px;
+          position: absolute;
+          content: "";
+          transition: all 0.35s ease;
+          opacity: 0;
+        }
+
+        &::before {
+          left: 0;
+          top: 0;
+          border-left: 3px solid $color-1;
+          border-top: 3px solid $color-1;
+          transform: translate(100%, 50%);
+        }
+
+        &::after {
+          right: 0;
+          bottom: 0;
+          border-right: 3px solid $color-1;
+          border-bottom: 3px solid $color-1;
+          transform: translate(-100%, -50%);
+        }
+
+        &:hover::before,
+        &:hover::after {
+          transform: translate(0%, 0%);
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
