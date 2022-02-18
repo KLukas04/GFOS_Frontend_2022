@@ -1,0 +1,19 @@
+.card{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: green;
+    width: 20em;
+    height: 30em;
+    border-radius: 16px;
+}
+
+h2{
+    padding: 10px;
+}
+
+.badge{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 10px;
+}

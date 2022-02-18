@@ -1,7 +1,34 @@
-
 <div class="parent">
-    <app-category-card category="Lebenslauf bearbeiten"></app-category-card>
-    <app-category-card category="Angefangen Bewerbungen"></app-category-card>
-    <app-category-card category="Offene Bewerbungen"></app-category-card>
-    <app-category-card category="Zur Job-Suche"></app-category-card>
+    <h1>Dashboard</h1>
+    <div class="settings">
+        <app-category-card category="Lebenslauf bearbeiten"></app-category-card>
+        <app-category-card category="Angefangen Bewerbungen"></app-category-card>
+        <app-category-card category="Offene Bewerbungen"></app-category-card>
+        <app-category-card category="Zur Job-Suche"></app-category-card>
+    </div>
+    <hr>
+    <h1>Bewerbungen</h1>
+    <div class="applications">
+        <app-application-card title="Titel" status="Gesendet"></app-application-card>
+        <app-application-card title="Titel" status="Gelesen"></app-application-card>
+        <div class="vl"></div>
+        <div class="wrapper">
+            <tui-notification>
+                A short simple informative message. It can
+                be&nbsp;multiline&nbsp;if&nbsp;you&nbsp;need it
+            </tui-notification>
+            <tui-notification status="success" class="tui-space_top-4">
+                A short simple informative message. It can
+                be&nbsp;multiline&nbsp;if&nbsp;you&nbsp;need it
+            </tui-notification>
+            <tui-notification status="error" class="tui-space_top-4">
+                A short simple informative message. It can
+                be&nbsp;multiline&nbsp;if&nbsp;you&nbsp;need it
+            </tui-notification>
+            <tui-notification status="warning" class="tui-space_top-4">
+                A short simple informative message. It can
+                be&nbsp;multiline&nbsp;if&nbsp;you&nbsp;need it
+            </tui-notification>
+        </div>
+    </div>
 </div>
