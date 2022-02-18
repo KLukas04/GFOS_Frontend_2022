@@ -1,17 +1,11 @@
 @import "../../../../scss/colors.scss";
 
 .card {
-  height: 100px;
-  width: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  height: 15rem;
   background-color: red;
-  a {
-    background-color: $color-4;
-
-    .some-figure {
-      border-radius: 100%;
-      width: 5rem;
-      height: 5rem;
-      background-color: var(--tui-secondary-active);
-    }
-  }
+  border-radius: 16pt;
 }
