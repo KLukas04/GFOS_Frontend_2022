@@ -23,6 +23,7 @@ import { TrendsComponent } from './components/main/trends/trends.component';
 import { TrendJobCardComponent } from './components/main/trend-job-card/trend-job-card.component';
 import { CategoriesComponent } from './components/main/categories/categories.component';
 import { CategoryCardComponent } from './components/main/category-card/category-card.component';
+import { OverviewComponent } from './components/details/overview/overview.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CategoryCardComponent } from './components/main/category-card/category-
     TrendJobCardComponent,
     CategoriesComponent,
     CategoryCardComponent,
+    OverviewComponent,
   ],
   imports: [
     CommonModule,
