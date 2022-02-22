@@ -24,6 +24,7 @@ import { TrendJobCardComponent } from './components/main/trend-job-card/trend-jo
 import { CategoriesComponent } from './components/main/categories/categories.component';
 import { CategoryCardComponent } from './components/main/category-card/category-card.component';
 import { OverviewComponent } from './components/details/overview/overview.component';
+import { HeaderComponent } from './components/details/header/header.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { OverviewComponent } from './components/details/overview/overview.compon
     CategoriesComponent,
     CategoryCardComponent,
     OverviewComponent,
+    HeaderComponent,
   ],
   imports: [
     CommonModule,
