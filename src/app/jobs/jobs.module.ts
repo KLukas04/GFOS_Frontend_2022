@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { JobsRoutingModule } from './jobs-routing.module';
 import { JobsComponent } from './jobs.component';
-import { SearchComponent } from './components/search/search.component';
+import { SearchComponent } from './components/main/search/search.component';
 import {
   TuiButtonModule,
   TuiGroupModule,
@@ -18,11 +18,11 @@ import {
   TuiSelectModule,
 } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
-import { TrendsComponent } from './components/trends/trends.component';
-import { TrendJobCardComponent } from './components/trend-job-card/trend-job-card.component';
-import { CategoriesComponent } from './components/categories/categories.component';
-import { CategoryCardComponent } from './components/category-card/category-card.component';
+import { HowItWorksComponent } from './components/main/how-it-works/how-it-works.component';
+import { TrendsComponent } from './components/main/trends/trends.component';
+import { TrendJobCardComponent } from './components/main/trend-job-card/trend-job-card.component';
+import { CategoriesComponent } from './components/main/categories/categories.component';
+import { CategoryCardComponent } from './components/main/category-card/category-card.component';
 
 @NgModule({
   declarations: [
