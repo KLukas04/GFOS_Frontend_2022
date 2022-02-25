@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {TuiNotificationModule} from '@taiga-ui/core';
-import {TuiBadgeModule} from '@taiga-ui/kit';
+
+import {
+  TuiBadgeModule,
+  TuiIslandModule,
+} from '@taiga-ui/kit';
 
 import { ApplicantRoutingModule } from './applicant-routing.module';
 import { ApplicantComponent } from './applicant.component';
@@ -15,13 +19,15 @@ import { InformationCardComponent } from './components/information-card/informat
     ApplicantComponent,
     CategoryCardComponent,
     ApplicationCardComponent,
-    InformationCardComponent
+    InformationCardComponent,
   ],
   imports: [
     CommonModule,
     ApplicantRoutingModule,
     TuiBadgeModule,
-    TuiNotificationModule
+    TuiNotificationModule,
+    
+    TuiIslandModule,
   ]
 })
 export class ApplicantModule { }
