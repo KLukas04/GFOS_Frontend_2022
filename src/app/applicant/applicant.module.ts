@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   TuiNotificationModule,
-  TuiButtonModule
+  TuiButtonModule,
+  TuiPrimitiveTextfieldModule
 } from '@taiga-ui/core';
 
 import {
@@ -33,7 +34,8 @@ import { CvEditorComponent } from './components/cv-editor/cv-editor.component';
     TuiNotificationModule,
     TuiAvatarModule,
     TuiIslandModule,
-    TuiButtonModule
+    TuiButtonModule,
+    TuiPrimitiveTextfieldModule
   ]
 })
 export class ApplicantModule { }
