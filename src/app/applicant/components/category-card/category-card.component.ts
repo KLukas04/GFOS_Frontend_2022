@@ -7,7 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CategoryCardComponent implements OnInit {
   @Input() category: string = '';
-
+  @Input() link: string = '';
+  
   constructor() {}
 
   ngOnInit(): void {}

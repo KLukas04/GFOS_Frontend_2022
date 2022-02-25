@@ -18,7 +18,6 @@ import { ApplicationCardComponent } from './components/application-card/applicat
 import { InformationCardComponent } from './components/information-card/information-card.component';
 import { CvEditorComponent } from './components/cv-editor/cv-editor.component';
 
-
 @NgModule({
   declarations: [
     ApplicantComponent,
