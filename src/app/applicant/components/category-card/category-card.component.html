@@ -1,6 +1,13 @@
 
    <a size="l" tuiIsland target="_blank" [hoverable]="true" textAlign="center">
      <div class="card">
-      <p>{{ category }}</p>
+       <div id="title">
+        <tui-avatar text=" {{ category }}"></tui-avatar>
+        <p class="tui-island__title">{{ category }}</p>
+      </div>
+      
+      <button tuiButton appearance="outline" shape="rounded" size="s">
+        Open
+      </button>
     </div> 
   </a>
