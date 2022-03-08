@@ -2,7 +2,24 @@
   <app-sidebar></app-sidebar>
   <div class="container">
     <div class="boxes">
-      <div class="chart"></div>
+      <div class="chart">
+        <tui-axes
+          axisX="solid"
+          [axisXLabels]="axisXLabels"
+          axisY="solid"
+          axisYName="Eingegangene Berwerbungen"
+          [horizontalLines]="5"
+          ><tui-line-chart
+            [x]="0"
+            [y]="0"
+            [width]="400"
+            [height]="200"
+            [smoothingFactor]="50"
+            [value]="value"
+            [filled]="true"
+          ></tui-line-chart
+        ></tui-axes>
+      </div>
       <div class="applications"></div>
       <div class="todo"></div>
     </div>
