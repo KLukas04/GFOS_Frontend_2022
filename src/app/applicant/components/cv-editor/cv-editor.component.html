@@ -14,8 +14,24 @@
             <tui-primitive-textfield>Passwort</tui-primitive-textfield>
             </div>
         </div>
+        <div class="box">
+            <p>Addresse</p>
+            <div class="input">
+                <tui-primitive-textfield>Straße</tui-primitive-textfield>
+                <tui-primitive-textfield>Hausnummer</tui-primitive-textfield>
+            </div>
+            <div class="input">
+                <tui-primitive-textfield>PLZ</tui-primitive-textfield>
+                <tui-primitive-textfield>Stadt</tui-primitive-textfield>
+            </div>
+        </div>
+        <div class="box">
+            <p>Lbenslauf</p>
+            <app-timeline-view></app-timeline-view>
+        </div>
     </div>
     <div class="sidebar">
         <tui-avatar size="xxl" class="tui-space_top-1" [rounded]="true"></tui-avatar>
+        <div class="cv"> Lebenslauf-PDF hier </div>
     </div>
 </div>

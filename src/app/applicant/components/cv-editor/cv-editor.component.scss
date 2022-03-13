@@ -1,11 +1,11 @@
 .parent{
     display: flex;
     flex-direction: row;
+    padding: 50px;
 
     .main{
         display: flex;
         flex-direction: column;
-        background-color: red;
         width: 75%;
         .box{
             padding-left: 50px;
@@ -24,8 +24,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        background-color: green;
         width: 25%;
         padding-top: 50px;;
+    }
+    .cv{
+        height: 30em;
+        width: 65%;
+        background-color: black;
+        margin: 16pt;
     }
 }
