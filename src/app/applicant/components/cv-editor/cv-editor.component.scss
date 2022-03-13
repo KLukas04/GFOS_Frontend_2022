@@ -1,3 +1,5 @@
+@import "../../../../scss/colors.scss";
+
 .parent{
     display: flex;
     flex-direction: row;
@@ -8,8 +10,11 @@
         flex-direction: column;
         width: 75%;
         .box{
-            padding-left: 50px;
-            padding-right: 50px;
+            padding: 10pt 30pt 10pt 30pt;
+            background-color: $color-2;
+            margin: 16pt;
+            border-radius: 16pt;
+            
         }
         .input{
             display: flex;

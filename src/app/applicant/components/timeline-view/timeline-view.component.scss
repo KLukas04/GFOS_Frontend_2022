@@ -1,12 +1,15 @@
 @import "../../../../scss/colors.scss";
 
+.button{
+    float: right;
+    padding: 16pt;
+}
 * {
     box-sizing: border-box;
   }
   
   /* Set a background color */
   body {
-    background-color: red;
     font-family: Helvetica, sans-serif;
   }
   
