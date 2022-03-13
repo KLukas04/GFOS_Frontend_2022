@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { TuiStatusT } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-application-card',
@@ -7,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ApplicationCardComponent implements OnInit {
    @Input() title: string = '';
+   @Input() info: TuiStatusT = 'info';
    @Input() status: string = '';
   constructor() { }
 
