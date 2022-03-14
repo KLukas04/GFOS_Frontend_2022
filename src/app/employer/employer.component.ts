@@ -7,28 +7,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EmployerComponent implements OnInit {
   public axisXLabels: string[] = [
-    'Januar',
-    'Februar',
-    'März',
-    'April',
-    'Mai',
-    'Juni',
-    'Juli',
-    'August',
-    'September',
-    'Oktober',
-    'November',
-    'Dezember',
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec',
+  ];
+
+  public axisYLabels: string[] = [
+    '50',
+    '100',
+    '150',
+    '200'
   ];
 
   public readonly value: readonly (readonly [number, number])[] = [
-        [50, 50],
-        [100, 75],
-        [150, 50],
-        [200, 150],
-        [250, 155],
-        [300, 190],
-        [350, 90],
+        [0, 50],
+        [1, 75],
+        [2, 50],
+        [3, 150],
+        [4, 155],
+        [5, 190],
+        [6, 90],
+        [7, 50],
+        [8, 150],
+        [9, 155],
+        [10, 190],
+        [11, 90],
     ];
 
   constructor() {}

@@ -3,27 +3,30 @@
   <div class="container">
     <div class="boxes">
       <div class="chart">
-        <!--<tui-axes
+        <tui-axes
+        class="axes"
           axisX="solid"
           [axisXLabels]="axisXLabels"
+          [verticalLines]="12"
           axisY="solid"
-          axisYName="Eingegangene Berwerbungen"
+          [axisYLabels]="axisYLabels"
+          axisYName="Eingegangene Bewerbungen"
           [horizontalLines]="5"
           ><tui-line-chart
             [x]="0"
             [y]="0"
-            [width]="400"
+            [width]="11"
             [height]="200"
             [smoothingFactor]="50"
             [value]="value"
             [filled]="true"
           ></tui-line-chart
-        ></tui-axes>-->
+        ></tui-axes>
         
-        <tui-axes class="axes" [verticalLines]="4" [horizontalLines]="2">
+        <!--tui-axes class="axes" [verticalLines]="4" [horizontalLines]="2">
           <tui-line-chart [x]="0" [y]="0" [width]="400" [height]="200" [smoothingFactor]="50" [value]="value" [filled]="true">
           </tui-line-chart>
-        </tui-axes>
+        </tui-axes>-->
 
       </div>
       <div class="applications"></div>

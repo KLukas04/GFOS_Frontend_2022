@@ -1,8 +1,10 @@
+@import "../../scss/colors.scss";
+
 .wrapper {
   display: flex;
 
   .container {
-    background-color: aqua;
+    background-color: $color-4;
     height: calc(100vh - 64px);
     width: calc(100% - 400px);
     box-sizing: border-box;
@@ -15,13 +17,13 @@
       height: 50%;
 
       .chart {
-        background-color: purple;
         width: 50%;
         height: 100%;
 
         .axes {
           height: 100%;
           width: 100%;
+          color: $color-2;
         }
       }
 
