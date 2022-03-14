@@ -21,6 +21,16 @@ export class EmployerComponent implements OnInit {
     'Dezember',
   ];
 
+  public readonly value: readonly (readonly [number, number])[] = [
+        [50, 50],
+        [100, 75],
+        [150, 50],
+        [200, 150],
+        [250, 155],
+        [300, 190],
+        [350, 90],
+    ];
+
   constructor() {}
 
   ngOnInit(): void {}
