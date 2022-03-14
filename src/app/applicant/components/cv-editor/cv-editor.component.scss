@@ -1,0 +1,41 @@
+@import "../../../../scss/colors.scss";
+
+.parent{
+    display: flex;
+    flex-direction: row;
+    padding: 50px;
+
+    .main{
+        display: flex;
+        flex-direction: column;
+        width: 75%;
+        .box{
+            padding: 10pt 30pt 10pt 30pt;
+            background-color: $color-2;
+            margin: 16pt;
+            border-radius: 16pt;
+            
+        }
+        .input{
+            display: flex;
+            flex-direction: row;
+            tui-primitive-textfield{
+                width: 50%;
+                padding: 10px;
+            }
+        }
+    }
+    .sidebar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 25%;
+        padding-top: 50px;;
+    }
+    .cv{
+        height: 30em;
+        width: 65%;
+        background-color: black;
+        margin: 16pt;
+    }
+}
