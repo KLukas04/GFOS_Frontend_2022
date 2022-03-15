@@ -6,7 +6,7 @@
   .container {
     background-color: $color-4;
     height: calc(100vh - 64px);
-    width: calc(100% - 400px);
+    width: calc(100% - 350px);
     box-sizing: border-box;
     padding: 1em;
 
@@ -17,25 +17,32 @@
       height: 50%;
 
       .chart {
+        border: 3px outset $color-2;
+        border-radius: 10px;
         width: 50%;
         height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         .axes {
-          height: 100%;
-          width: 100%;
+          height: 95%;
+          width: 95%;
           color: $color-2;
         }
       }
 
       .applications {
-        background-color: purple;
-        width: 20%;
+        border: 3px outset $color-2;
+        border-radius: 10px;
+        width: 22%;
         height: 100%;
       }
 
       .todo {
-        background-color: purple;
-        width: 20%;
+        border: 3px outset $color-2;
+        border-radius: 10px;
+        width: 22%;
         height: 100%;
       }
     }
@@ -43,7 +50,7 @@
     .team {
       background-color: purple;
       width: 100%;
-      height: 40%;
+      height: 48%;
       margin-top: 1em;
     }
   }
