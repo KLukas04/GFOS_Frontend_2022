@@ -3,8 +3,8 @@
 .container {
   min-height: calc(100vh - 64px);
   max-height: calc(100vh - 64px);
-  width: 400px;
-  background: linear-gradient(66deg, $color-1 0%, $color-2 50%, $color-2 100%);
+  width: 350px;
+  background: linear-gradient(66deg, $color-4 0%, $color-5 50%, $color-5 100%);
   padding: 50px;
   box-sizing: border-box;
 
@@ -20,7 +20,7 @@
       transition: all 0.35s ease;
 
       a {
-        color: $color-4;
+        color: $color-2;
         font-size: 1.5em;
         font-weight: 600;
         position: relative;
