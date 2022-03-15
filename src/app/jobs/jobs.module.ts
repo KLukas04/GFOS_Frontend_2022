@@ -25,6 +25,7 @@ import { CategoriesComponent } from './components/main/categories/categories.com
 import { CategoryCardComponent } from './components/main/category-card/category-card.component';
 import { OverviewComponent } from './components/details/overview/overview.component';
 import { HeaderComponent } from './components/details/header/header.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { HeaderComponent } from './components/details/header/header.component';
     TuiCarouselModule,
     TuiIslandModule,
     TuiPaginationModule,
+    NgxExtendedPdfViewerModule
   ],
 })
 export class JobsModule {}
