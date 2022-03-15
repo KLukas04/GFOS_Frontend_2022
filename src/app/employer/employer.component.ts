@@ -43,6 +43,15 @@ export class EmployerComponent implements OnInit {
         [11, 90],
     ];
 
+  public todos: string[] = [
+    'Jan Thomas feuern',
+    'Lukas Krinke Bewerbung lesen',
+    'Simon Engel antworten',
+    'Friedrich Böttger anrufen',
+    'Henrik Bokies zum System hinzufügen',
+    'Felix Carls Termin finden'
+  ];
+
   constructor() {}
 
   ngOnInit(): void {}
