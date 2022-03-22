@@ -14,6 +14,7 @@ import {
   TuiCarouselModule,
   TuiDataListWrapperModule,
   TuiIslandModule,
+  TuiMarkerIconModule,
   TuiPaginationModule,
   TuiSelectModule,
   TuiTagModule,
@@ -55,6 +56,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TuiIslandModule,
     TuiPaginationModule,
     TuiTagModule,
+    TuiMarkerIconModule,
     FontAwesomeModule
   ],
 })
