@@ -1,0 +1,20 @@
+.container {
+  width: 100%;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .column {
+    background-color: aqua;
+    height: 400px;
+  }
+
+  .column-left {
+    width: 65%;
+  }
+
+  .column-right {
+    width: 30%;
+  }
+}
