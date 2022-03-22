@@ -55,8 +55,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TuiIslandModule,
     TuiPaginationModule,
     TuiTagModule,
-    FontAwesomeModule,
-    NgxExtendedPdfViewerModule
+    FontAwesomeModule
   ],
 })
 export class JobsModule {}
