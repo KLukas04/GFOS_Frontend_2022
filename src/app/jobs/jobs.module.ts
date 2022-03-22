@@ -16,6 +16,7 @@ import {
   TuiIslandModule,
   TuiPaginationModule,
   TuiSelectModule,
+  TuiTagModule,
 } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HowItWorksComponent } from './components/main/how-it-works/how-it-works.component';
@@ -26,6 +27,7 @@ import { CategoryCardComponent } from './components/main/category-card/category-
 import { OverviewComponent } from './components/details/overview/overview.component';
 import { HeaderComponent } from './components/details/header/header.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
     TuiCarouselModule,
     TuiIslandModule,
     TuiPaginationModule,
+    TuiTagModule,
+    FontAwesomeModule,
     NgxExtendedPdfViewerModule
   ],
 })

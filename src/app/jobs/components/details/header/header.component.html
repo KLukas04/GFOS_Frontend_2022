@@ -1,15 +1,28 @@
 <div class="container">
     <div class="info">
-        <div class="icon">Icon</div>
+        <div class="icon"><img src="assets/Round_Icon_Example.svg"></div>
         <div class="text">
             <div class="rows">
                 <div class="row">
                     <span class="country">Deutschland</span>
                     <span class="fi fi-de"></span>
                 </div>
-                <div class="row"></div>
-                <div class="row"></div>
+                <div class="row">
+                    <span class="job">Programmierer</span>
+                </div>
+                <div class="row">
+                    <tui-tag size="l" value="Minijob" [leftContent]="typeIcon"></tui-tag>
+                    <tui-tag size="l" value="4000€" class="tui-space_left-2" [leftContent]="moneyIcon"></tui-tag>
+                </div>
             </div>
         </div>
     </div>
 </div>
+
+<ng-template #typeIcon>
+    <fa-icon class="fa-icon" [icon]="flag"></fa-icon>
+</ng-template>
+
+<ng-template #moneyIcon>
+    <fa-icon class="fa-icon" [icon]="moneyBill"></fa-icon>
+</ng-template>
