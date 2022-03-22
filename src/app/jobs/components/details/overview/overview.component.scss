@@ -11,7 +11,7 @@
     // background-color: aqua;
     height: 400px;
     width: 95%;
-    margin-left: 2.5%;
+    margin-left: 2%;
     margin-right: auto;
   }
 
@@ -42,5 +42,11 @@
 
   .column-right {
     width: 30%;
+
+    .box {
+      width: 95%;
+      height: 200px;
+      background-color: red;
+    }
   }
 }
