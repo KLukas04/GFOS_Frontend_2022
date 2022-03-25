@@ -1,3 +1,10 @@
 .parent{
     padding: 16pt;
+    
+}
+
+.list{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
