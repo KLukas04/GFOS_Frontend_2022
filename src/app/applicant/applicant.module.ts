@@ -20,6 +20,7 @@ import { InformationCardComponent } from './components/information-card/informat
 import { CvEditorComponent } from './components/cv-editor/cv-editor.component';
 import { TimelineViewComponent } from './components/timeline-view/timeline-view.component';
 import { InterestsViewComponent } from './components/interests-view/interests-view.component';
+import { StartedApplicationsComponent } from './components/started-applications/started-applications.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { InterestsViewComponent } from './components/interests-view/interests-vi
     CvEditorComponent,
     TimelineViewComponent,
     InterestsViewComponent,
+    StartedApplicationsComponent,
   ],
   imports: [
     CommonModule,
