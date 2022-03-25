@@ -1,0 +1,25 @@
+<div class="parent">
+    <div class="info">
+        <div class="heading">
+            <h2> {{ title }} </h2>
+            <tui-badge [value]="typ" [hoverable]=true status="neutral"></tui-badge>
+        </div>
+
+    </div>
+    <div class="content">
+        <div class="date">
+            <p> Angefangen am: {{ startDate }}</p>
+        </div>
+        <div class="discription">
+            <h5>Beschreibung:</h5>
+            <p> {{ description }}</p>
+        </div>
+
+        <div class="progress">
+            <h5> Fortschritt:</h5>
+            <progress tuiProgressBar [value]="progress" [max]="100"></progress>
+        </div>
+    </div>
+
+
+</div>

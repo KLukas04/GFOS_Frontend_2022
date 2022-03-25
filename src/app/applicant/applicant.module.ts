@@ -9,7 +9,8 @@ import {
 import {
   TuiBadgeModule,
   TuiIslandModule,
-  TuiAvatarModule
+  TuiAvatarModule,
+  TuiProgressModule
 } from '@taiga-ui/kit';
 
 import { ApplicantRoutingModule } from './applicant-routing.module';
@@ -21,6 +22,7 @@ import { CvEditorComponent } from './components/cv-editor/cv-editor.component';
 import { TimelineViewComponent } from './components/timeline-view/timeline-view.component';
 import { InterestsViewComponent } from './components/interests-view/interests-view.component';
 import { StartedApplicationsComponent } from './components/started-applications/started-applications.component';
+import { ApplicationListItemComponent } from './components/application-list-item/application-list-item.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { StartedApplicationsComponent } from './components/started-applications/
     TimelineViewComponent,
     InterestsViewComponent,
     StartedApplicationsComponent,
+    ApplicationListItemComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +44,8 @@ import { StartedApplicationsComponent } from './components/started-applications/
     TuiAvatarModule,
     TuiIslandModule,
     TuiButtonModule,
-    TuiPrimitiveTextfieldModule
+    TuiPrimitiveTextfieldModule,
+    TuiProgressModule
   ]
 })
 export class ApplicantModule { }
