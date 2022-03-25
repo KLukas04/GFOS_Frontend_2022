@@ -1,0 +1,52 @@
+@import '../../../../scss/colors.scss';
+
+.main{
+    border: 5px solid gray;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.image{
+
+    height: 300px;
+    width: 100%;
+    background-image: url(../../../../assets/heading.jpg);
+    background-size: 100%;
+    background-position: 0px -200px;
+
+    filter: blur(3px);
+
+    
+}
+
+.content{
+    
+    position: absolute;
+    top:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.text{
+    padding-left: 100px;
+    p{
+       width: 70%;
+        color: black;
+        font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        .i{
+            color: $color-1;
+        }
+    }
+
+    #heading{
+        font-size: 80px;
+    }
+
+    #content{
+        font-size: xx-large;
+        margin-left: auto;
+        margin-right: 0;
+       
+    }
+}

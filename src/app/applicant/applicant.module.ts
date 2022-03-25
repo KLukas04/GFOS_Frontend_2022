@@ -23,6 +23,7 @@ import { TimelineViewComponent } from './components/timeline-view/timeline-view.
 import { InterestsViewComponent } from './components/interests-view/interests-view.component';
 import { StartedApplicationsComponent } from './components/started-applications/started-applications.component';
 import { ApplicationListItemComponent } from './components/application-list-item/application-list-item.component';
+import { GreetingsHeaderComponent } from './components/greetings-header/greetings-header.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ApplicationListItemComponent } from './components/application-list-item
     InterestsViewComponent,
     StartedApplicationsComponent,
     ApplicationListItemComponent,
+    GreetingsHeaderComponent,
   ],
   imports: [
     CommonModule,
