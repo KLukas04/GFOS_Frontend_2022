@@ -7,6 +7,7 @@ import { SearchComponent } from './components/main/search/search.component';
 import {
   TuiButtonModule,
   TuiGroupModule,
+  TuiLabelModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -61,6 +62,7 @@ import { InformationItemComponent } from './components/details/information-item/
     TuiPaginationModule,
     TuiTagModule,
     TuiMarkerIconModule,
+    TuiLabelModule,
     FontAwesomeModule
   ],
 })

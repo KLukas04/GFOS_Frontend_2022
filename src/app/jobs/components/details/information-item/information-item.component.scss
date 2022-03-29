@@ -1,0 +1,14 @@
+@import "../../../../../scss/colors.scss";
+
+.item {
+  display: flex;
+  flex-direction: row;
+
+  tui-marker-icon {
+    background-color: $color-1;
+  }
+
+  label {
+    font-size: 1.2rem;
+  }
+}
