@@ -29,7 +29,8 @@ import { OverviewComponent } from './components/details/overview/overview.compon
 import { HeaderComponent } from './components/details/header/header.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { OverviewSectionComponent } from './components/overview-section/overview-section.component';
+import { OverviewSectionComponent } from './components/details/overview-section/overview-section.component';
+import { InformationItemComponent } from './components/details/information-item/information-item.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { OverviewSectionComponent } from './components/overview-section/overview
     OverviewComponent,
     HeaderComponent,
     OverviewSectionComponent,
+    InformationItemComponent,
   ],
   imports: [
     CommonModule,
