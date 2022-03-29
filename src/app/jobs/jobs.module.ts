@@ -14,11 +14,13 @@ import {
   TuiAvatarModule,
   TuiCarouselModule,
   TuiDataListWrapperModule,
+  TuiInputModule,
   TuiIslandModule,
   TuiMarkerIconModule,
   TuiPaginationModule,
   TuiSelectModule,
   TuiTagModule,
+  TuiTextAreaModule,
 } from '@taiga-ui/kit';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HowItWorksComponent } from './components/main/how-it-works/how-it-works.component';
@@ -63,6 +65,8 @@ import { InformationItemComponent } from './components/details/information-item/
     TuiTagModule,
     TuiMarkerIconModule,
     TuiLabelModule,
+    TuiInputModule,
+    TuiTextAreaModule,
     FontAwesomeModule
   ],
 })

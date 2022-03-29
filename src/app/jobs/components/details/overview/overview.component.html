@@ -37,5 +37,19 @@
             <hr>
             <app-information-item></app-information-item>
         </div>
+        <div class="box">
+            <span class="heading">Kontakt</span>
+            <div class="line">
+                <hr class="hr-grey">
+                <hr class="hr-green">
+            </div>
+            <tui-input tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
+                Betreff
+                <input tuiTextfield type="text" />
+            </tui-input>
+            <tui-text-area [expandable]="false">
+                Nachricht
+            </tui-text-area>
+        </div>
     </div>
 </div>
