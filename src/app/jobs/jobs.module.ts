@@ -29,6 +29,7 @@ import { OverviewComponent } from './components/details/overview/overview.compon
 import { HeaderComponent } from './components/details/header/header.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { OverviewSectionComponent } from './components/overview-section/overview-section.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     CategoryCardComponent,
     OverviewComponent,
     HeaderComponent,
+    OverviewSectionComponent,
   ],
   imports: [
     CommonModule,
