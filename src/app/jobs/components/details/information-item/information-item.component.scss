@@ -3,6 +3,8 @@
 .item {
   display: flex;
   flex-direction: row;
+  margin-top: 10px;
+  margin-bottom: 10px;
 
   tui-marker-icon {
     background-color: $color-1;
