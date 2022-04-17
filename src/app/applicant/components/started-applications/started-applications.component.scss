@@ -5,6 +5,8 @@
 
 .list {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   flex-wrap: wrap;
+  gap: 30px;
+  padding: 16pt;
 }

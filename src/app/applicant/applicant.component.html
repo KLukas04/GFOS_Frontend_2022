@@ -1,18 +1,33 @@
 <div class="parent">
-    <h1>Dashboard</h1>
-    <div class="settings">
-        <app-category-card category="Lebenslauf bearbeiten" link="cv"></app-category-card>
-        <app-category-card category="Angefangen Bewerbungen" link="startedApplications"></app-category-card>
-        <app-category-card category="Offene Bewerbungen" link="../applicant"></app-category-card>
-        <app-category-card category="Zur Job-Suche" link="../jobs"></app-category-card>
+    <app-greetings-header></app-greetings-header>
+
+    <div class="content">
+        <div class="settings">
+            <app-category-card category="Lebenslauf bearbeiten" link="cv"></app-category-card>
+            <app-category-card category="Angefangen Bewerbungen" link="startedApplications"></app-category-card>
+            <app-category-card category="Zur Job-Suche" link="../jobs"></app-category-card>
+        </div>
+        <app-application-list-item 
+            title="Designer"
+            typ="Praktikum"
+            startDate="30.06.2022"
+            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit facere consequuntur sit, laboriosam
+            pariatur odio accusamus debitis culpa fuga architecto cupiditate excepturi quaerat quasi exercitationem
+            numquam, commodi nam consectetur. Necessitatibus."
+            [progress]="40"
+
+        ></app-application-list-item>
+        <app-application-list-item 
+            title="Designer"
+            typ="Praktikum"
+            startDate="30.06.2022"
+            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit facere consequuntur sit, laboriosam
+            pariatur odio accusamus debitis culpa fuga architecto cupiditate excepturi quaerat quasi exercitationem
+            numquam, commodi nam consectetur. Necessitatibus."
+            [progress]="40"
+
+        ></app-application-list-item>
     </div>
-    <hr>
-    <h1>Bewerbungen</h1>
-    <div class="applications">
-        <app-application-card title="Titel" status="Gesendet"></app-application-card>
-        <app-application-card title="Titel" status="Gelesen"></app-application-card>
-        <div class="vl"></div>
-        <div class="spacer"></div>
-        <app-information-card message="Das hier als ngIF, aber wie? Und Status auch übergeben"></app-information-card>
-    </div>
+    
+
 </div>
