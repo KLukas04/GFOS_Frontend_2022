@@ -8,19 +8,24 @@ a{
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    width: 15rem;
-    height: 15rem;
+    width: 25rem;
+    height: 13rem;
     border-radius: 16pt;
-    
-  }
-}
-#title{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
 
-  p{
-    padding-top: 25px;
+    #title{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+    
+      p{
+        padding-top: 25px;
+      }
+
+      img{
+        height: 100px;
+      }
+    }
+    
   }
 }
