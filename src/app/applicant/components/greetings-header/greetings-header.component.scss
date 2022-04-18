@@ -7,34 +7,47 @@
 }
 .image{
 
-    height: 300px;
+    /*height: 300px;
     width: 100%;
     background-image: url(../../../../assets/heading.jpg);
     background-size: 100%;
     background-position: 0px -200px;
 
-    filter: blur(3px);
+    filter: blur(3px);*/
+    
+    background-color: $color-4;
+    height: 300px;
+    width: 90%;
+    border-radius: 0px 500px 500px 0px;
 
     
 }
 
 .content{
-    
     position: absolute;
     top:0;
     left: 0;
     right: 0;
     bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    img{
+        height: 90%;
+        padding: 16px;
+    }
 }
 
 .text{
     padding-left: 100px;
+    width: 100%;
     p{
-       width: 70%;
+       width: 90%;
         color: white;
         font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         .markup{
-            color: rgb(255, 255, 255);
+            color: #7DFF63;
         }
     }
 
@@ -44,8 +57,5 @@
 
     #content{
         font-size: xx-large;
-        margin-left: auto;
-        margin-right: 0;
-       
     }
 }

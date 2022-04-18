@@ -10,7 +10,7 @@
 
 
   .info {
-    background-color: green;
+    background-color: #7DFF63;
     border-radius: 16pt 16pt 16pt 0pt;
     .heading {
       display: flex;
@@ -25,6 +25,9 @@
 
       h2 {
         font-weight: bolder;
+      }
+      tui-badge{
+        color: black
       }
     }
     p {
