@@ -16,7 +16,6 @@ import {
 import { ApplicantRoutingModule } from './applicant-routing.module';
 import { ApplicantComponent } from './applicant.component';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
-import { ApplicationCardComponent } from './components/application-card/application-card.component';
 import { InformationCardComponent } from './components/information-card/information-card.component';
 import { CvEditorComponent } from './components/cv-editor/cv-editor.component';
 import { TimelineViewComponent } from './components/timeline-view/timeline-view.component';
@@ -29,7 +28,6 @@ import { GreetingsHeaderComponent } from './components/greetings-header/greeting
   declarations: [
     ApplicantComponent,
     CategoryCardComponent,
-    ApplicationCardComponent,
     InformationCardComponent,
     CvEditorComponent,
     TimelineViewComponent,
