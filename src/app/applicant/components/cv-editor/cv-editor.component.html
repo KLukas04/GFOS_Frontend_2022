@@ -67,30 +67,28 @@
     
 </div>
 
-<tui-root>
-    <ng-template
-        let-observer
-        [tuiDialogOptions]="$any({ label: 'Interessen', size: 's' })"
-        [(tuiDialog)]="open"
-    >
-        <form>
-            <p>Füge ein Hobby hinzu:</p>
-            <tui-input
-                tuiAutoFocus
-                [ngModelOptions]="{ standalone: true }"
-                [(ngModel)]="newInterest"
+<ng-template
+    let-observer
+    [tuiDialogOptions]="$any({ label: 'Interessen', size: 's' })"
+    [(tuiDialog)]="open"
+>
+    <form>
+        <p>Füge ein Hobby hinzu:</p>
+        <tui-input
+            tuiAutoFocus
+            [ngModelOptions]="{ standalone: true }"
+            [(ngModel)]="newInterest"
+        >
+            Hobby
+        </tui-input>
+        <p>
+            <button
+                tuiButton
+                type="submit"
+                (click)="observer.complete()"
             >
-                Hobby
-            </tui-input>
-            <p>
-                <button
-                    tuiButton
-                    type="submit"
-                    (click)="observer.complete()"
-                >
-                    Ok
-                </button>
-            </p>
-        </form>
-    </ng-template>
-</tui-root>
+                Ok
+            </button>
+        </p>
+    </form>
+</ng-template>
