@@ -21,8 +21,43 @@
     </div>
 
     <div class="button">
-        <button tuiButton type="button" size="m" icon="tuiIconPlusLarge">
+        <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showDialog()">
             Add
         </button>
+
     </div>
 </div>
+
+<tui-root>
+    <ng-template
+        let-observer
+        [tuiDialogOptions]="$any({ label: 'Lebenslaufstation', size: 's' })"
+        [(tuiDialog)]="open"
+    >
+        <form>
+            <p>Füge einen Meilenstein hinzu:</p>
+            <tui-input
+                tuiAutoFocus
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="value"
+            >
+                Meilenstein
+            </tui-input>
+            <tui-input
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="value"
+            >
+                Jahr
+            </tui-input>
+            <p>
+                <button
+                    tuiButton
+                    type="submit"
+                    (click)="observer.complete()"
+                >
+                    Ok
+                </button>
+            </p>
+        </form>
+    </ng-template>
+</tui-root>

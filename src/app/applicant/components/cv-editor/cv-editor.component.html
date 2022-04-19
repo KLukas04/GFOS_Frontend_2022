@@ -1,41 +1,76 @@
-<div class="parent">
-    <div class="main">
-        <div class="box">
-            <p>Name</p>
-            <div class="input">
-                <tui-primitive-textfield>Vorname</tui-primitive-textfield>
-                <tui-primitive-textfield>Name</tui-primitive-textfield>
-            </div>
+<div class="main">
+    <div class="image"></div>
+    <div class="content">
+        <div class="text">
+            <p id="heading"> Dein Lebenslauf, <span class="markup">Lukas!</span></p>
         </div>
-        <div class="box">
-            <p>Email</p>
-            <div class="input">
-            <tui-primitive-textfield>Email</tui-primitive-textfield>
-            <tui-primitive-textfield>Passwort</tui-primitive-textfield>
-            </div>
-        </div>
-        <div class="box">
-            <p>Addresse</p>
-            <div class="input">
-                <tui-primitive-textfield>Straße</tui-primitive-textfield>
-                <tui-primitive-textfield>Hausnummer</tui-primitive-textfield>
-            </div>
-            <div class="input">
-                <tui-primitive-textfield>PLZ</tui-primitive-textfield>
-                <tui-primitive-textfield>Stadt</tui-primitive-textfield>
-            </div>
-        </div>
-        <div class="box">
-            <p>Lebenslauf</p>
-            <app-timeline-view></app-timeline-view>
-        </div>
-        <div class="box">
-            <p>Interessen</p>
-            <app-interests-view></app-interests-view>
-        </div>
+        <img src="assets/writing_resume.svg" alt="">
     </div>
+</div>
+
+<div class="parent">
     <div class="sidebar">
         <tui-avatar size="xxl" class="tui-space_top-1" [rounded]="true"></tui-avatar>
         <div class="cv"> Lebenslauf-PDF hier </div>
     </div>
+    <div class="main">
+        <div class="basic-info">
+            <div class="box">
+                <a size="l" tuiIsland [hoverable]="true">
+                    <p>Name</p>
+                    <div class="input">
+                        <tui-primitive-textfield>Vorname</tui-primitive-textfield>
+                        <tui-primitive-textfield>Name</tui-primitive-textfield>
+                    </div>
+                    <p>Email</p>
+                    <div class="input">
+                        <tui-primitive-textfield>Email</tui-primitive-textfield>
+                        <tui-primitive-textfield>Passwort</tui-primitive-textfield>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="box">
+                <a size="l" tuiIsland [hoverable]="true">
+                <p>Addresse</p>
+                <div class="input">
+                    <tui-primitive-textfield>Straße</tui-primitive-textfield>
+                    <tui-primitive-textfield>Hausnummer</tui-primitive-textfield>
+                </div>
+                <div class="input">
+                    <tui-primitive-textfield>PLZ</tui-primitive-textfield>
+                    <tui-primitive-textfield>Stadt</tui-primitive-textfield>
+                </div>
+                </a>
+            </div>
+        </div>
+        <div class="interessen">
+            <a size="l" tuiIsland [hoverable]="true">
+            <p>Interessen</p>
+            <div class="i-content">
+                <div class="interests">
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                </div>
+                <div class="button">
+                    <button tuiButton type="button" size="m" icon="tuiIconPlusLarge">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </a>
+        </div>
+    </div>
+    <div class="lebenslauf">
+        <p>Lebenslauf</p>
+        <app-timeline-view></app-timeline-view>
+    </div>
+    
 </div>

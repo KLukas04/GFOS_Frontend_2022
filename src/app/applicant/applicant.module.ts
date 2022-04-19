@@ -3,15 +3,20 @@ import { CommonModule } from '@angular/common';
 import {
   TuiNotificationModule,
   TuiButtonModule,
-  TuiPrimitiveTextfieldModule
+  TuiPrimitiveTextfieldModule,
+  TuiDialogModule, 
+  TuiRootModule,
 } from '@taiga-ui/core';
 
 import {
   TuiBadgeModule,
   TuiIslandModule,
   TuiAvatarModule,
-  TuiProgressModule
+  TuiProgressModule,
+  TuiInputModule
 } from '@taiga-ui/kit';
+
+import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 
 import { ApplicantRoutingModule } from './applicant-routing.module';
 import { ApplicantComponent } from './applicant.component';
@@ -23,6 +28,7 @@ import { InterestsViewComponent } from './components/interests-view/interests-vi
 import { StartedApplicationsComponent } from './components/started-applications/started-applications.component';
 import { ApplicationListItemComponent } from './components/application-list-item/application-list-item.component';
 import { GreetingsHeaderComponent } from './components/greetings-header/greetings-header.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,7 +51,13 @@ import { GreetingsHeaderComponent } from './components/greetings-header/greeting
     TuiIslandModule,
     TuiButtonModule,
     TuiPrimitiveTextfieldModule,
-    TuiProgressModule
+    TuiProgressModule,
+    TuiRootModule,
+    TuiDialogModule,
+    ReactiveFormsModule,
+    TuiInputModule,
+    FormsModule,
+    PolymorpheusModule,
   ]
 })
 export class ApplicantModule { }

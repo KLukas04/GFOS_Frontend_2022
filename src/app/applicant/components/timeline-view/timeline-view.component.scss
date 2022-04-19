@@ -12,14 +12,24 @@
   body {
     font-family: Helvetica, sans-serif;
   }
+
+  .parent{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
   
+  tui-input{
+    padding: 5px;
+  }
   /* The actual timeline (the vertical ruler) */
   .timeline {
     position: relative;
     max-width: 1200px;
     margin: 0 auto;
     overflow-y: scroll;
-    max-height: 300px;
+    width: 100%;
+    height: 100%;
   }
   
   /* The actual timeline (the vertical ruler) */
@@ -50,7 +60,7 @@
     height: 25px;
     right: -17px;
     background-color: white;
-    border: 4px solid $color-1;
+    border: 4px solid #7DFF63;;
     top: 15px;
     border-radius: 50%;
     z-index: 1;
@@ -102,7 +112,7 @@
   /* The actual content */
   .content {
     padding: 20px 30px;
-    background-color: $color-4;
+    background-color: $color-3;
     position: relative;
     border-radius: 6px;
   }

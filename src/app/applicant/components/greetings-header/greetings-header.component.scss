@@ -40,7 +40,7 @@
 }
 
 .text{
-    padding-left: 100px;
+    padding: 80px 0px 0px 100px;
     width: 100%;
     p{
         width: 90%;
@@ -54,7 +54,8 @@
 
     #heading{
         font-size: 80px;
-        line-height: 80px;;
+        line-height: 80px;
+        margin: 0px;
     }
 
     #content{
