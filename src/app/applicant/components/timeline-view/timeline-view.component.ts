@@ -14,6 +14,12 @@ export class TimelineViewComponent {
   year = '';
   open = false;
 
+  stations: Meilenstein[] = [
+   {year: 2015, content: "Hallo"},
+   {year: 2015, content: "Hallo"},
+   {year: 2015, content: "Hallo"},
+  ]
+
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
 ) {}
@@ -21,4 +27,9 @@ export class TimelineViewComponent {
   showDialog() {
     this.open = true;
   }
+}
+
+interface Meilenstein {
+  year: number;
+  content: string;
 }
