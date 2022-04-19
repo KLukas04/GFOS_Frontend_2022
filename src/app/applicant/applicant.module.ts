@@ -24,7 +24,6 @@ import { CategoryCardComponent } from './components/category-card/category-card.
 import { InformationCardComponent } from './components/information-card/information-card.component';
 import { CvEditorComponent } from './components/cv-editor/cv-editor.component';
 import { TimelineViewComponent } from './components/timeline-view/timeline-view.component';
-import { InterestsViewComponent } from './components/interests-view/interests-view.component';
 import { StartedApplicationsComponent } from './components/started-applications/started-applications.component';
 import { ApplicationListItemComponent } from './components/application-list-item/application-list-item.component';
 import { GreetingsHeaderComponent } from './components/greetings-header/greetings-header.component';
@@ -37,7 +36,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InformationCardComponent,
     CvEditorComponent,
     TimelineViewComponent,
-    InterestsViewComponent,
     StartedApplicationsComponent,
     ApplicationListItemComponent,
     GreetingsHeaderComponent,

@@ -49,18 +49,10 @@
             <p>Interessen</p>
             <div class="i-content">
                 <div class="interests">
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
-                    <tui-badge size="l" status="primary" value="Tennis"></tui-badge>
+                    <tui-badge *ngFor='let interest of interests' size="l" status="primary" [value]="interest"></tui-badge>
                 </div>
                 <div class="button">
-                    <button tuiButton type="button" size="m" icon="tuiIconPlusLarge">
+                    <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showDialog()">
                         Add
                     </button>
                 </div>
@@ -74,3 +66,31 @@
     </div>
     
 </div>
+
+<tui-root>
+    <ng-template
+        let-observer
+        [tuiDialogOptions]="$any({ label: 'Interessen', size: 's' })"
+        [(tuiDialog)]="open"
+    >
+        <form>
+            <p>Füge ein Hobby hinzu:</p>
+            <tui-input
+                tuiAutoFocus
+                [ngModelOptions]="{ standalone: true }"
+                [(ngModel)]="newInterest"
+            >
+                Hobby
+            </tui-input>
+            <p>
+                <button
+                    tuiButton
+                    type="submit"
+                    (click)="observer.complete()"
+                >
+                    Ok
+                </button>
+            </p>
+        </form>
+    </ng-template>
+</tui-root>

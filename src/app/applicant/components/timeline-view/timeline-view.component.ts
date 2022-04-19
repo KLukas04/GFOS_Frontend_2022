@@ -11,6 +11,7 @@ import {TuiDialogService} from '@taiga-ui/core';
 export class TimelineViewComponent {
 
   value = '';
+  year = '';
   open = false;
 
   constructor(
@@ -18,10 +19,6 @@ export class TimelineViewComponent {
 ) {}
 
   showDialog() {
-    console.log("Hello");
-      /*this.dialogService
-          .open('This is a plain string dialog', {label: 'Heading', size: 's'})
-          .subscribe();*/
-          this.open = true;
+    this.open = true;
   }
 }
