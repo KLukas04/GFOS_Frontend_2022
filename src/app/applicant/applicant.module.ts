@@ -13,7 +13,8 @@ import {
   TuiIslandModule,
   TuiAvatarModule,
   TuiProgressModule,
-  TuiInputModule
+  TuiInputModule,
+  TuiToggleModule
 } from '@taiga-ui/kit';
 
 import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
@@ -28,6 +29,7 @@ import { StartedApplicationsComponent } from './components/started-applications/
 import { ApplicationListItemComponent } from './components/application-list-item/application-list-item.component';
 import { GreetingsHeaderComponent } from './components/greetings-header/greetings-header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SettingsCardComponent } from './components/settings-card/settings-card.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     StartedApplicationsComponent,
     ApplicationListItemComponent,
     GreetingsHeaderComponent,
+    SettingsCardComponent,
   ],
   imports: [
     CommonModule,
@@ -56,6 +59,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     TuiInputModule,
     FormsModule,
     PolymorpheusModule,
+    TuiToggleModule
   ]
 })
 export class ApplicantModule { }

@@ -1,0 +1,40 @@
+@import "../../../../scss/colors.scss";
+
+a{
+  
+  background-color: $color-4;
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 15rem;
+    height: 25rem;
+    border-radius: 16pt;
+
+    .content{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 15rem;
+
+      .point{
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          tui-toggle{
+            --tui-primary: #7DFF63;
+            --tui-primary-hover: #7DFF63;
+          }
+          
+      }
+    }
+
+    img{
+        height: 150px;
+      }
+    
+  }
+}

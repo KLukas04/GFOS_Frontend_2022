@@ -1,0 +1,32 @@
+<a size="l" tuiIsland target="_blank" [hoverable]="true" textAlign="center">
+    <div class="card">
+        <p class="tui-text_h6">Settings</p>
+        <img src="assets/settings.svg" alt="" />
+        <form [formGroup]="testForm">
+            <div class="content">
+                <div class="point">
+                    <p> Öffentliches Profil</p>
+                    <tui-toggle
+                        formControlName="publicProfil"
+                        size="l"
+                    ></tui-toggle>
+                </div>
+                <div class="point">
+                    <p> Mails bekommen</p>
+                    <tui-toggle
+                    formControlName="jobOffers"
+                    size="l"
+                ></tui-toggle>
+                </div>
+                <div class="point">
+                    <p> 2FA</p>
+                    <tui-toggle
+                    formControlName="twoFA"
+                    size="l"
+                    ></tui-toggle>
+                </div>
+            </div>
+        </form>
+        
+  </div> 
+</a>
