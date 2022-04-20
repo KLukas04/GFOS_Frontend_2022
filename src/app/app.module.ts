@@ -21,6 +21,8 @@ import { environment } from '../environments/environment';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TuiAvatarModule } from '@taiga-ui/kit';
 
+import * as fromRootStore from './store/root.reducer';
+
 @NgModule({
   declarations: [AppComponent, ToolbarComponent],
   imports: [
@@ -29,7 +31,7 @@ import { TuiAvatarModule } from '@taiga-ui/kit';
     AppRoutingModule,
     TuiRootModule,
     FontAwesomeModule,
-    StoreModule.forRoot({}, {}),
+    StoreModule.forRoot(fromRootStore.reducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
