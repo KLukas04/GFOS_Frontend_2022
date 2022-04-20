@@ -1,37 +1,50 @@
 @import "../../../../../scss/colors.scss";
 
-.container{
-    display: flex;
-    flex-direction: row;
-    padding-top: 50px;
-    justify-content: space-around;
+.container {
+  display: flex;
+  flex-direction: row;
+  padding-top: 50px;
+  justify-content: space-around;
 }
-a{
-  
+a {
   background-color: $color-4;
   .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 10px;
     align-items: center;
     width: 15rem;
     height: 25rem;
     border-radius: 16pt;
 
-    #title{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-    
-      p{
-        padding-top: 25px;
-      }
+    tui-input {
+      width: 100%;
+    }
 
-      img{
-        height: 200px;
+    tui-text-area {
+      width: 100%;
+      height: 100%;
+    }
+
+    
+
+    form {
+      width: 100%;
+      .toggle {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        justify-content: space-between;
       }
     }
-    
+
+    img{
+      height: 200px;
+    }
+  }
+  .spacing{
+    justify-content: space-between;
   }
 }

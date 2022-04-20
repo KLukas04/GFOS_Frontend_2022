@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 @Component({
   selector: 'app-content',
   templateUrl: './content.component.html',
-  styleUrls: ['./content.component.scss']
+  styleUrls: ['./content.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ContentComponent implements OnInit {
 
@@ -11,5 +13,10 @@ export class ContentComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  testForm = new FormGroup({
+    isRemote: new FormControl(true),
+    befristet: new FormControl(false),
+});
 
 }
