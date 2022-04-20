@@ -19,6 +19,10 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  //TODO: Je nach dem ob es ein Berwerber oder Personaler ist. 
+  // Nötig das Home Link zur richtigen Route führt
+  typ = "false";
+
   logout(): void {
     this.open = false;
     if (this.dropComponent && this.dropComponent.nativeFocusableElement) {
