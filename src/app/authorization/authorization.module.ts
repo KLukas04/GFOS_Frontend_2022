@@ -11,7 +11,9 @@ import {
 } from '@taiga-ui/core';
 import { TuiInputModule } from '@taiga-ui/kit';
 import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
 
+import * as fromReducer from './store/authorization.reducer';
 @NgModule({
   declarations: [AuthorizationComponent],
   imports: [
@@ -23,6 +25,10 @@ import { FormsModule } from '@angular/forms';
     TuiButtonModule,
     TuiRootModule,
     FormsModule,
+    StoreModule.forFeature(
+      fromReducer.authorizationFeatureKey,
+      fromReducer.reducer
+    ),
   ],
 })
 export class AuthorizationModule {}
