@@ -16,12 +16,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TuiAvatarModule } from '@taiga-ui/kit';
 
 import * as fromRootStore from './store/root.reducer';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent],
@@ -29,6 +31,7 @@ import * as fromRootStore from './store/root.reducer';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
+    HttpClientModule,
     TuiRootModule,
     FontAwesomeModule,
     StoreModule.forRoot(fromRootStore.reducers),
@@ -36,6 +39,7 @@ import * as fromRootStore from './store/root.reducer';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([]),
     TuiAvatarModule,
     TuiHostedDropdownModule,
     TuiDataListModule,

@@ -53,4 +53,8 @@ export class AuthorizationComponent implements OnInit {
       fromActions.newLoginPassword({ password: this.loginPasswordForm.value })
     );
   }
+
+  login(): void {
+    this.store.dispatch(fromActions.tryLogin());
+  }
 }
