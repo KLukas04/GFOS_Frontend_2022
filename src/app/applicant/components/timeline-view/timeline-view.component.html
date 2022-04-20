@@ -1,6 +1,6 @@
 <div class="parent">
     <div class="timeline">
-        <div *ngFor="let station in stations; index as i" class="container" [ngClass]=" i%2 == 0 ? 'left' : 'right'">
+        <div *ngFor="let station of stations; index as i" class="container" [ngClass]=" i%2 == 0 ? 'left' : 'right'">
             <div class="content">
                 <h2>{{ station.year }}</h2>
                 <p>{{ station.content }} </p>
@@ -13,12 +13,6 @@
             Add
         </button>
 
-    </div>
-    <div *ngFor="let station in stations; index as i" class="container" [ngClass]=" i%2 == 0 ? 'left' : 'right'">
-        <div class="content">
-            <h2>{{ station.year }}</h2>
-            <p>{{ station.content }} </p>
-        </div>
     </div>
 </div>
 
