@@ -3,6 +3,42 @@
 <div class="container">
     <div class="column column-left">
         <app-overview-section></app-overview-section>
+        <div class="userinput">
+            <div class="box left">
+                <span class="heading">Kontakt</span>
+                <div class="line">
+                    <hr class="hr-grey">
+                    <hr class="hr-green">
+                </div>
+                <tui-input tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
+                    Betreff
+                    <input tuiTextfield type="text" />
+                </tui-input>
+                <tui-text-area [expandable]="false">
+                    Nachricht
+                </tui-text-area>
+                <tui-input-file
+                link="Choose an image"
+                accept="application/pdf"
+                class="container"
+                [formControl]="control"
+            ></tui-input-file>
+            </div>
+            <div class="box">
+                <span class="heading">Kontakt</span>
+                <div class="line">
+                    <hr class="hr-grey">
+                    <hr class="hr-green">
+                </div>
+                <tui-input tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
+                    Betreff
+                    <input tuiTextfield type="text" />
+                </tui-input>
+                <tui-text-area [expandable]="false">
+                    Nachricht
+                </tui-text-area>
+            </div>
+        </div>
     </div>
     <div class="column column-right">
         <div class="box">
@@ -34,21 +70,6 @@
             <app-information-item title="Start" value="[Datum]"></app-information-item>
             <hr>
             <app-information-item title="Ende" value="[nur falls Befristet]"></app-information-item>
-            <hr>
-        </div>
-        <div class="box">
-            <span class="heading">Kontakt</span>
-            <div class="line">
-                <hr class="hr-grey">
-                <hr class="hr-green">
-            </div>
-            <tui-input tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
-                Betreff
-                <input tuiTextfield type="text" />
-            </tui-input>
-            <tui-text-area [expandable]="false">
-                Nachricht
-            </tui-text-area>
         </div>
     </div>
 </div>

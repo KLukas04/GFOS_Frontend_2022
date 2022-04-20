@@ -17,11 +17,64 @@
 
   .column-left {
     width: 65%;
+   
+    .userinput{
+      margin-top: 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      .box {
+        padding: 30px;
+        width: 50%;
+        border-radius: 16pt;
+        background-color: $color-4;
+
+        .heading {
+          font-size: 1.5rem;
+        }
+
+        .line {
+          height: fit-content;
+          margin-top: 10px;
+          margin-bottom: 25px;
+          position: relative;
+
+          hr {
+            border-radius: 3px;
+          }
+
+          .hr-grey {
+            border: 2px solid $color-4;
+          }
+
+          .hr-green {
+            width: 75px;
+            border: 2px solid $color-2;
+            position: absolute;
+            top: 0;
+          }
+        }
+
+        .money {
+          margin-top: 10px;
+          font-size: 2.5rem;
+          font-weight: 800;
+          color: #b3b3b3;
+        }
+
+        tui-input {
+          margin-bottom: 20px;
+        }
+      }
+    }
+    .left{
+      margin-right: 20px;
+    }
   }
 
   .column-right {
     width: 30%;
-
+    margin-bottom: 50px;
     .box {
       width: 95%;
       padding: 16px;
