@@ -18,6 +18,11 @@ export class TimelineViewComponent {
    {year: 2015, content: "Hallo"},
    {year: 2015, content: "Hallo"},
    {year: 2015, content: "Hallo"},
+   {year: 2015, content: "Hallo"},
+   {year: 2015, content: "Hallo"},
+   {year: 2015, content: "Hallo"},
+   {year: 2015, content: "Hallo"},
+   {year: 2015, content: "Hallo"},
   ]
 
   constructor(

@@ -6,6 +6,7 @@ import {
   TuiPrimitiveTextfieldModule,
   TuiDialogModule, 
   TuiRootModule,
+  TuiScrollbarModule,
 } from '@taiga-ui/core';
 
 import {
@@ -59,7 +60,8 @@ import { SettingsCardComponent } from './components/settings-card/settings-card.
     TuiInputModule,
     FormsModule,
     PolymorpheusModule,
-    TuiToggleModule
+    TuiToggleModule,
+    TuiScrollbarModule
   ]
 })
 export class ApplicantModule { }

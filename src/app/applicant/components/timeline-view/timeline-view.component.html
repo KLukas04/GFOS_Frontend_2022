@@ -1,48 +1,38 @@
+
 <div class="parent">
-    <div class="timeline">
-        <div *ngFor="let station of stations; index as i" class="container" [ngClass]=" i%2 == 0 ? 'left' : 'right'">
-            <div class="content">
-                <h2>{{ station.year }}</h2>
-                <p>{{ station.content }} </p>
+    <tui-scrollbar class="box">
+        <div class="timeline">
+            <div *ngFor="let station of stations; index as i" class="container"
+                [ngClass]=" i%2 == 0 ? 'left' : 'right'">
+                <div class="content">
+                    <h2>{{ station.year }}</h2>
+                    <p>{{ station.content }} </p>
+                </div>
             </div>
         </div>
-    </div>
+    </tui-scrollbar>
+        <div class="button">
+            <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showDialog()">
+                Add
+            </button>
 
-    <div class="button">
-        <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showDialog()">
-            Add
-        </button>
-
-    </div>
+        </div>
+    
 </div>
 
+
 <tui-root>
-    <ng-template
-        let-observer
-        [tuiDialogOptions]="$any({ label: 'Lebenslaufstation', size: 's' })"
-        [(tuiDialog)]="open"
-    >
+    <ng-template let-observer [tuiDialogOptions]="$any({ label: 'Lebenslaufstation', size: 's' })" [(tuiDialog)]="open">
         <form>
             <p>Füge einen Meilenstein hinzu:</p>
-            <tui-input
-                tuiAutoFocus
-                [ngModelOptions]="{ standalone: true }"
-                [(ngModel)]="value"
-            >
+            <tui-input tuiAutoFocus [ngModelOptions]="{ standalone: true }" [(ngModel)]="value">
                 Meilenstein
             </tui-input>
-            <tui-input
-                [ngModelOptions]="{ standalone: true }"
-                [(ngModel)]="year"
-            >
+            <tui-input [ngModelOptions]="{ standalone: true }" [(ngModel)]="year">
                 Jahr
             </tui-input>
             <p>
-                <button
-                    tuiButton
-                    type="submit"
-                    (click)="observer.complete()"
-                >
+                <button tuiButton type="submit" (click)="observer.complete()">
                     Ok
                 </button>
             </p>
