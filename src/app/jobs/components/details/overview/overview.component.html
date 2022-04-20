@@ -3,8 +3,6 @@
 <div class="container">
     <div class="column column-left">
         <app-overview-section></app-overview-section>
-        <app-overview-section></app-overview-section>
-        <app-overview-section></app-overview-section>
     </div>
     <div class="column column-right">
         <div class="box">
@@ -13,7 +11,7 @@
                 <hr class="hr-grey">
                 <hr class="hr-green">
             </div>
-            <span class="money">70.000€ - 80.000€</span>
+            <span class="money">[montasgehalt]</span>
         </div>
         <div class="box">
             <span class="heading">Kurzüberblick</span>
@@ -21,21 +19,22 @@
                 <hr class="hr-grey">
                 <hr class="hr-green">
             </div>
-            <app-information-item></app-information-item>
+            <app-information-item title="Fachgebiet" value="[fachgebiet]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Typ" value="[Bewerbungstyp]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Jahresgehalt" value="[gehalt]€"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Urlaubstage" value="[Urlaubstage]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Remote" value="[Ja NEin]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Befristet" value="[Ja NEin]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Start" value="[Datum]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Ende" value="[nur falls Befristet]"></app-information-item>
+            <hr>
         </div>
         <div class="box">
             <span class="heading">Kontakt</span>

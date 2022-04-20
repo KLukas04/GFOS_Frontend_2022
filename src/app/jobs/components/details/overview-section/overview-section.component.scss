@@ -1,5 +1,9 @@
 @import "../../../../../scss/colors.scss";
 
+.container{
+  background-color: $color-4;
+  border-radius: 16pt;
+}
 .heading {
   box-sizing: border-box;
   padding: 10px;
@@ -7,7 +11,7 @@
   display: flex;
   align-items: center;
   background-color: $color-2;
-  border-radius: 5px;
+  border-radius: 16pt 16pt 16pt 0pt;
   color: $color-4;
 
   span {
@@ -19,4 +23,5 @@
   font-size: 1.2rem;
   padding: 10px 0;
   text-align: justify;
+  padding: 16pt;
 }
