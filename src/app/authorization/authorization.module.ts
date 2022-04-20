@@ -10,8 +10,12 @@ import {
   TuiRootModule,
 } from '@taiga-ui/core';
 import { TuiInputModule } from '@taiga-ui/kit';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
+import * as fromReducer from './store/authorization.reducer';
+import { AuthorizationEffects } from './store/authorization.effects';
 @NgModule({
   declarations: [AuthorizationComponent],
   imports: [
@@ -23,6 +27,12 @@ import { FormsModule } from '@angular/forms';
     TuiButtonModule,
     TuiRootModule,
     FormsModule,
+    StoreModule.forFeature(
+      fromReducer.authorizationFeatureKey,
+      fromReducer.reducer
+    ),
+    EffectsModule.forFeature([AuthorizationEffects]),
+    ReactiveFormsModule,
   ],
 })
 export class AuthorizationModule {}
