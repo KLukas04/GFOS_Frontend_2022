@@ -10,7 +10,7 @@ import {
   TuiRootModule,
 } from '@taiga-ui/core';
 import { TuiInputModule } from '@taiga-ui/kit';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 
 import * as fromReducer from './store/authorization.reducer';
@@ -29,6 +29,7 @@ import * as fromReducer from './store/authorization.reducer';
       fromReducer.authorizationFeatureKey,
       fromReducer.reducer
     ),
+    ReactiveFormsModule,
   ],
 })
 export class AuthorizationModule {}

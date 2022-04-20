@@ -5,11 +5,21 @@
         <h2 class="title">Anmelden</h2>
         <div class="input-field">
           <fa-icon [icon]="faUser"></fa-icon>
-          <input type="text" placeholder="Nutzername" />
+          <input
+            type="text"
+            placeholder="Nutzername"
+            [formControl]="loginEmailForm"
+            (input)="saveLoginEmail()"
+          />
         </div>
         <div class="input-field">
           <fa-icon [icon]="faLock"></fa-icon>
-          <input type="password" placeholder="Passwort" />
+          <input
+            type="password"
+            placeholder="Passwort"
+            [formControl]="loginPasswordForm"
+            (input)="saveLoginPassword()"
+          />
         </div>
         <input
           type="submit"
