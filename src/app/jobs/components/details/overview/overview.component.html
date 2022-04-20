@@ -3,8 +3,37 @@
 <div class="container">
     <div class="column column-left">
         <app-overview-section></app-overview-section>
-        <app-overview-section></app-overview-section>
-        <app-overview-section></app-overview-section>
+        <div class="userinput">
+            <div *ngIf="applicationAlreadySended" class="box contact">
+                <span class="heading">Kontakt - Falls du Fragen hast</span>
+                <div class="line">
+                    <hr class="hr-grey">
+                    <hr class="hr-green">
+                </div>
+                <tui-input tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
+                    Betreff
+                    <input tuiTextfield type="text" />
+                </tui-input>
+                <tui-text-area [expandable]="false">
+                    Nachricht
+                </tui-text-area>
+
+            </div>
+            <div class="box">
+                <span class="heading">Bewirb dich jetzt!</span>
+                <div class="line">
+                    <hr class="hr-grey">
+                    <hr class="hr-green">
+                </div>
+                <div class="cv">
+                    <tui-input-file link="Wähle dein Anschreiben aus" label="oder ziehe es hier hin" accept="application/pdf" class="container"
+                        [formControl]="control"></tui-input-file>
+                    <button tuiButton type="button" class="tui-space_right-3 tui-space_bottom-3">
+                        Bewerbung abschicken
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="column column-right">
         <div class="box">
@@ -13,7 +42,7 @@
                 <hr class="hr-grey">
                 <hr class="hr-green">
             </div>
-            <span class="money">70.000€ - 80.000€</span>
+            <span class="money">[montasgehalt]</span>
         </div>
         <div class="box">
             <span class="heading">Kurzüberblick</span>
@@ -21,35 +50,21 @@
                 <hr class="hr-grey">
                 <hr class="hr-green">
             </div>
-            <app-information-item></app-information-item>
+            <app-information-item title="Fachgebiet" value="[fachgebiet]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Typ" value="[Bewerbungstyp]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Jahresgehalt" value="[gehalt]€"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Urlaubstage" value="[Urlaubstage]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Remote" value="[Ja NEin]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Befristet" value="[Ja NEin]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
+            <app-information-item title="Start" value="[Datum]"></app-information-item>
             <hr>
-            <app-information-item></app-information-item>
-        </div>
-        <div class="box">
-            <span class="heading">Kontakt</span>
-            <div class="line">
-                <hr class="hr-grey">
-                <hr class="hr-green">
-            </div>
-            <tui-input tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
-                Betreff
-                <input tuiTextfield type="text" />
-            </tui-input>
-            <tui-text-area [expandable]="false">
-                Nachricht
-            </tui-text-area>
+            <app-information-item title="Ende" value="[nur falls Befristet]"></app-information-item>
         </div>
     </div>
 </div>

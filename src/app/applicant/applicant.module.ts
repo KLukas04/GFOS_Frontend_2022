@@ -23,7 +23,6 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import { ApplicantRoutingModule } from './applicant-routing.module';
 import { ApplicantComponent } from './applicant.component';
 import { CategoryCardComponent } from './components/category-card/category-card.component';
-import { InformationCardComponent } from './components/information-card/information-card.component';
 import { CvEditorComponent } from './components/cv-editor/cv-editor.component';
 import { TimelineViewComponent } from './components/timeline-view/timeline-view.component';
 import { StartedApplicationsComponent } from './components/started-applications/started-applications.component';
@@ -36,7 +35,6 @@ import { SettingsCardComponent } from './components/settings-card/settings-card.
   declarations: [
     ApplicantComponent,
     CategoryCardComponent,
-    InformationCardComponent,
     CvEditorComponent,
     TimelineViewComponent,
     StartedApplicationsComponent,

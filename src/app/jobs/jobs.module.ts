@@ -14,6 +14,7 @@ import {
   TuiAvatarModule,
   TuiCarouselModule,
   TuiDataListWrapperModule,
+  TuiInputFileModule,
   TuiInputModule,
   TuiIslandModule,
   TuiMarkerIconModule,
@@ -67,7 +68,8 @@ import { InformationItemComponent } from './components/details/information-item/
     TuiLabelModule,
     TuiInputModule,
     TuiTextAreaModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    TuiInputFileModule
   ],
 })
 export class JobsModule {}
