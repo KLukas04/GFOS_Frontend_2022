@@ -7,6 +7,10 @@ input {
   font-family: "Poppins", sans-serif;
 }
 
+.dialog {
+  z-index: 1000;
+}
+
 .container {
   position: relative;
   width: 100%;

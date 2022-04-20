@@ -11,6 +11,9 @@ export class AuthorizationComponent implements OnInit {
   public faLock = faLock;
   public faEnvelope = faEnvelope;
 
+  public pinValue: string = '';
+  public open2FA: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}
@@ -23,5 +26,9 @@ export class AuthorizationComponent implements OnInit {
   changeToSignIn(): void {
     const container: Element | null = document.querySelector('.container');
     container?.classList.remove('sign-up-mode');
+  }
+
+  show2FADialog(): void {
+    this.open2FA = true;
   }
 }
