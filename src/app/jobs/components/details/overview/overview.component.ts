@@ -69,4 +69,6 @@ export class OverviewComponent {
         return timer(delay).pipe(mapTo(result));
     }
 
+    applicationAlreadySended = false;
+
 }
