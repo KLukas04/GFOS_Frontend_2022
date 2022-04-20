@@ -59,26 +59,54 @@
 .parent{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    padding-inline: 50px;
+    
+    .sidebar{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 50px;
+        padding-top: 50px;
+        width: 15%;
+
+        .file{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30em;
+            background-color: black;
+            border-radius: 50px;
+            width: 90%;
+        }
+    }
+
     .main{
-        width: 50%;
+        width: 40%;
         display: flex;
         flex-direction: column;
         .basic-info{
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
            
-            
+            margin-bottom: 10px;
             p{
                 color: #7DFF63;
             }
             
             .box{
-                padding: 40px 0px 10px 50px;
-                width: 45%;
-                a{
-                    background-color: $color-4;
-                    height: 450px;
-                } 
+                padding: 40px 50px 10px 50px;
+                width: 40%;
+                background-color: $color-4;
+                margin-top: 50px;
+                border-radius: 16pt;
+                height: 450px;
+
+            }
+            .first{
+                margin-right: 10px;
             }
             .input{
                 display: flex;
@@ -93,10 +121,9 @@
             p{
                 color: #7DFF63;
             }
-            a{
-                background-color: $color-4;
-                margin-left: 50px;
-            } 
+            background-color: $color-4;
+            border-radius: 16pt;
+            padding: 10px 50px 10px 50px;
             .i-content{
                 display: flex;
                 flex-direction: row;
@@ -118,29 +145,11 @@
         }
         padding-top: 50px;
         padding-left: 50px;
-        margin: 50px;
+        margin: 50px 5px 0px 0px;
         border-radius: 16pt;
         width: 35%;
         background-color: $color-4;
     }
-    .sidebar{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 50px;
-        padding-top: 50px;
-        width: 15%;
-
-        .file{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 15em;
-            background-color: black;
-            border-radius: 50px;
-            width: 90%;
-        }
-    }
+    
     
 }
