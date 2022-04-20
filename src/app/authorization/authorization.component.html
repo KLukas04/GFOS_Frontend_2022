@@ -11,7 +11,12 @@
           <fa-icon [icon]="faLock"></fa-icon>
           <input type="password" placeholder="Passwort" />
         </div>
-        <input type="submit" value="Login" class="button" />
+        <input
+          type="submit"
+          value="Login"
+          class="button"
+          (click)="show2FADialog()"
+        />
       </form>
 
       <form class="sign-up-form">
@@ -71,3 +76,26 @@
     </div>
   </div>
 </div>
+
+<tui-root class="dialog">
+  <ng-template
+    let-observer
+    [tuiDialogOptions]="
+      $any({ label: '2-Faktor-Authentifizierung', size: 's' })
+    "
+    [(tuiDialog)]="open2FA"
+  >
+    <form>
+      <p>Bitte gib die PIN ein, den wir dir per Mail zugeschickt haben!</p>
+      <tui-input
+        tuiAutoFocus
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="pinValue"
+        >PIN</tui-input
+      >
+      <p>
+        <button tuiButton (click)="observer.complete()">Login</button>
+      </p>
+    </form>
+  </ng-template>
+</tui-root>

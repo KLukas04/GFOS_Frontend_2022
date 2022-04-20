@@ -4,9 +4,25 @@ import { CommonModule } from '@angular/common';
 import { AuthorizationRoutingModule } from './authorization-routing.module';
 import { AuthorizationComponent } from './authorization.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import {
+  TuiButtonModule,
+  TuiDialogModule,
+  TuiRootModule,
+} from '@taiga-ui/core';
+import { TuiInputModule } from '@taiga-ui/kit';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AuthorizationComponent],
-  imports: [CommonModule, AuthorizationRoutingModule, FontAwesomeModule],
+  imports: [
+    CommonModule,
+    AuthorizationRoutingModule,
+    FontAwesomeModule,
+    TuiDialogModule,
+    TuiInputModule,
+    TuiButtonModule,
+    TuiRootModule,
+    FormsModule,
+  ],
 })
 export class AuthorizationModule {}
