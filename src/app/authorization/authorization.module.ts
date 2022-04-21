@@ -16,8 +16,9 @@ import { EffectsModule } from '@ngrx/effects';
 
 import * as fromReducer from './store/authorization.reducer';
 import { AuthorizationEffects } from './store/authorization.effects';
+import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.component';
 @NgModule({
-  declarations: [AuthorizationComponent],
+  declarations: [AuthorizationComponent, VerfiyDialogComponent],
   imports: [
     CommonModule,
     AuthorizationRoutingModule,

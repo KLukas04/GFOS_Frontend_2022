@@ -11,3 +11,8 @@ export const selectLoginCreds = createSelector(
   selectAuthorizationState,
   (state: fromReducer.AuthorizationState) => state.loginCreds
 );
+
+export const selectRegistrationData = createSelector(
+  selectAuthorizationState,
+  (state: fromReducer.AuthorizationState) => state.registrationData
+);

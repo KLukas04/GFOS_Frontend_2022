@@ -1,0 +1,6 @@
+<tui-input tuiTextfieldSize="m">
+  PIN
+  <input tuiTextfield [formControl]="pinForm" (input)="savePin()" />
+</tui-input>
+<br />
+<button tuiButton (click)="close()">Verifizieren</button>

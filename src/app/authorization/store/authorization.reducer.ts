@@ -11,6 +11,7 @@ export interface AuthorizationState {
   loginCreds: LoginCreds;
   token: string | null;
   registrationData: RegistrationData;
+  verificationPin: string;
 }
 
 export const initialState: AuthorizationState = {
@@ -25,6 +26,7 @@ export const initialState: AuthorizationState = {
     email: '',
     password: '',
   },
+  verificationPin: '',
 };
 
 const authorizationReducer = createReducer(
@@ -70,6 +72,11 @@ const authorizationReducer = createReducer(
       if (draft.registrationData) {
         draft.registrationData.password = password;
       }
+    })
+  ),
+  on(fromActions.newVerificationPin, (state, { pin }) =>
+    produce(state, (draft) => {
+      draft.verificationPin = pin;
     })
   )
 );
