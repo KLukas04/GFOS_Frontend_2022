@@ -1,1 +1,30 @@
-<p>application-card works!</p>
+<a size="l" tuiIsland [hoverable]="true" routerLink="openApplications">
+    <div class="parent">
+        <div class="info">
+            <div class="heading">
+                <h2> {{ name }} </h2>
+                <tui-badge [value]="fachgebiet" [hoverable]=true status="neutral"></tui-badge>
+            </div>
+
+        </div>
+        <div class="content">
+            <div class="date">
+                <p> Beworben am: {{ beworbenAm }}</p>
+            </div>
+            <div class="files">
+                <button class="file" tuiButton>
+                    Anschreiben
+                </button>
+                <button class="file" tuiButton>
+                    Lebenslauf
+                </button>
+                <button class="file" tuiButton>
+                    Details
+                </button>
+            </div>
+        </div>
+        <button tuiButton class="accept">
+            Anehmen
+        </button>
+    </div>
+</a>
