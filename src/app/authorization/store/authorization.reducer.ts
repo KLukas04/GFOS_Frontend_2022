@@ -8,6 +8,7 @@ export const authorizationFeatureKey = 'authorization';
 
 export interface AuthorizationState {
   loginCreds: LoginCreds;
+  token: string | null;
 }
 
 export const initialState: AuthorizationState = {
@@ -15,6 +16,7 @@ export const initialState: AuthorizationState = {
     email: '',
     password: '',
   },
+  token: null,
 };
 
 const authorizationReducer = createReducer(
@@ -27,6 +29,11 @@ const authorizationReducer = createReducer(
   on(fromActions.newLoginPassword, (state, { password }) =>
     produce(state, (draft) => {
       draft.loginCreds.password = password;
+    })
+  ),
+  on(fromActions.tryLoginSuccess, (state, { token }) =>
+    produce(state, (draft) => {
+      draft.token = token;
     })
   )
 );
