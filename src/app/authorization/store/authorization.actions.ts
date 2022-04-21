@@ -42,3 +42,16 @@ export const newRegistrationPassword = createAction(
   '[Authorization] [Registration] Password Inserted',
   props<{ password: string }>()
 );
+
+export const tryRegistration = createAction(
+  '[Authorization] [Registration] Registration Try'
+);
+
+export const tryRegistrationSuccess = createAction(
+  '[Authorization] [Registration] Registration Success'
+);
+
+export const tryRegistrationError = createAction(
+  '[Authorization] [Registration] Registration Error',
+  props<{ error: HttpErrorResponse }>()
+);

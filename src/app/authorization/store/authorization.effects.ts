@@ -32,4 +32,22 @@ export class AuthorizationEffects {
       )
     )
   );
+
+  tryReagistration$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.tryRegistration),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectRegistrationData)
+      ),
+      switchMap(([_, data]) =>
+        this.loginService.tryRegistration(data).pipe(
+          take(1),
+          map(() => fromActions.tryRegistrationSuccess()),
+          catchError((err) =>
+            of(fromActions.tryRegistrationError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

@@ -99,4 +99,8 @@ export class AuthorizationComponent implements OnInit {
       })
     );
   }
+
+  register(): void {
+    this.store.dispatch(fromActions.tryRegistration());
+  }
 }
