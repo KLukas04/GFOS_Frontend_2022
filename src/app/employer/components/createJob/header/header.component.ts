@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   @Input() text = "";
+  @Input() subheading = "";
   @Input() markup = "";
   @Input() img = "";
   constructor() { }

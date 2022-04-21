@@ -3,10 +3,7 @@
 
         <div class="info">
             <div class="heading">
-                <div class="name">
-                    <tui-avatar text="Bild" size="m"  [rounded]="true"></tui-avatar>
-                    <h2> {{ name }} </h2>
-                </div>
+                <h2> {{ name }} </h2>
 
                 <tui-badge [value]="fachgebiet" [hoverable]=true status="neutral"></tui-badge>
             </div>
@@ -17,15 +14,16 @@
                 <p> Beworben am: {{ beworbenAm }}</p>
             </div>
             <div class="files">
+                <a tuiLink routerLink="applicantDetailView" class="file">
+                    <tui-avatar text="Bild" size="xl" [rounded]="true"></tui-avatar>
+                </a>
                 <button class="file" tuiButton>
                     Anschreiben
                 </button>
                 <button class="file" (click)="show(actions)" tuiButton>
                     Lebenslauf
                 </button>
-                <button class="file" tuiButton>
-                    Details
-                </button>
+                
             </div>
         </div>
         <button tuiButton class="accept">
