@@ -43,8 +43,18 @@
         </div>
     </div>
     <div class="lebenslauf">
-        <p>Lebenslauf</p>
-        <!-- <app-timeline-view></app-timeline-view> -->
+        <p class="title">Lebenslauf</p>
+        <tui-scrollbar class="box">
+            <div class="timeline">
+                <div *ngFor="let station of stations; index as i" class="container"
+                    [ngClass]=" i%2 == 0 ? 'left' : 'right'">
+                    <div class="content">
+                        <h2>{{ station.year }}</h2>
+                        <p>{{ station.content }} </p>
+                    </div>
+                </div>
+            </div>
+        </tui-scrollbar>
     </div>
 
 </div>

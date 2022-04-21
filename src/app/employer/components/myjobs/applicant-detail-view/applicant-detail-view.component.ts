@@ -9,7 +9,17 @@ export class ApplicantDetailViewComponent implements OnInit {
 
   newInterest = '';
   interests = ["Tennis", "Klaviesdfddr", "Klavier", "Klavier", "Klavier", "Klavier", "Klavier"];
-  open = false;
+  stations: Meilenstein[] = [
+    {year: 2015, content: "Hallo"},
+    {year: 2015, content: "Hallo"},
+    {year: 2015, content: "Hallo"},
+    {year: 2015, content: "Hallo"},
+    {year: 2015, content: "Hallo"},
+    {year: 2015, content: "Hallo"},
+    {year: 2015, content: "Hallo"},
+    {year: 2015, content: "Hallo"},
+   ]
+ 
 
   
   constructor() { }
@@ -17,4 +27,9 @@ export class ApplicantDetailViewComponent implements OnInit {
   ngOnInit(): void {
   }
 
+}
+
+interface Meilenstein {
+  year: number;
+  content: string;
 }
