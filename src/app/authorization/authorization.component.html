@@ -133,3 +133,24 @@
     </form>
   </ng-template>
 </tui-root>
+
+<tui-root class="dialog">
+  <ng-template
+    let-observer
+    [tuiDialogOptions]="$any({ label: 'Verifizierung der E-Mail', size: 's' })"
+    [(tuiDialog)]="openVerify"
+  >
+    <form>
+      <p>Bitte gib die PIN ein, den wir dir per Mail zugeschickt haben!</p>
+      <tui-input
+        tuiAutoFocus
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="verifyValue"
+        >PIN</tui-input
+      >
+      <p>
+        <button tuiButton (click)="observer.complete()">Verifizieren</button>
+      </p>
+    </form>
+  </ng-template>
+</tui-root>

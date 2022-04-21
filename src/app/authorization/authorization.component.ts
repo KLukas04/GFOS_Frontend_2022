@@ -18,6 +18,9 @@ export class AuthorizationComponent implements OnInit {
   public pinValue: string = '';
   public open2FA: boolean = false;
 
+  public verifyValue: string = '';
+  public openVerify: boolean = false;
+
   public loginEmailForm: FormControl;
   public loginPasswordForm: FormControl;
 
@@ -50,6 +53,10 @@ export class AuthorizationComponent implements OnInit {
 
   show2FADialog(): void {
     this.open2FA = true;
+  }
+
+  showVerifyDialog(): void {
+    this.openVerify = true;
   }
 
   saveLoginEmail(): void {
@@ -102,5 +109,6 @@ export class AuthorizationComponent implements OnInit {
 
   register(): void {
     this.store.dispatch(fromActions.tryRegistration());
+    this.showVerifyDialog();
   }
 }
