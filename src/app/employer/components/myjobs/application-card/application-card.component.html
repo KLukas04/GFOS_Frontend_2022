@@ -1,8 +1,13 @@
 <a size="l" tuiIsland [hoverable]="true" routerLink="openApplications">
     <div class="parent">
+
         <div class="info">
             <div class="heading">
-                <h2> {{ name }} </h2>
+                <div class="name">
+                    <tui-avatar text="Bild" size="m"  [rounded]="true"></tui-avatar>
+                    <h2> {{ name }} </h2>
+                </div>
+
                 <tui-badge [value]="fachgebiet" [hoverable]=true status="neutral"></tui-badge>
             </div>
 
@@ -15,7 +20,7 @@
                 <button class="file" tuiButton>
                     Anschreiben
                 </button>
-                <button class="file" tuiButton>
+                <button class="file" (click)="show(actions)" tuiButton>
                     Lebenslauf
                 </button>
                 <button class="file" tuiButton>
@@ -28,3 +33,9 @@
         </button>
     </div>
 </a>
+
+<ng-template #actions let-content="content">
+    <a tuiButton shape="rounded" size="s" download [href]="content">
+        Download
+    </a>
+</ng-template>

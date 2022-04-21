@@ -25,6 +25,17 @@ a{
       align-items: center;
       color: black;
 
+      .name{
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+          align-items: center;
+
+          tui-avatar{
+              background: $color-4;
+          }
+      }
+
       h2 {
         font-weight: bolder;
       }
@@ -66,5 +77,6 @@ a{
   .accept{
     padding-inline: 40px;
     margin: 10px;
+    margin-bottom: 20px;
 }
 }
