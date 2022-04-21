@@ -1,10 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 
 import * as fromReducer from './store/authorization.reducer';
 import * as fromActions from './store/authorization.actions';
+import { TuiDialogService } from '@taiga-ui/core';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.component';
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -18,8 +21,13 @@ export class AuthorizationComponent implements OnInit {
   public pinValue: string = '';
   public open2FA: boolean = false;
 
-  public verifyValue: string = '';
-  public openVerify: boolean = false;
+  private readonly verifyDialog = this.dialogService.open(
+    new PolymorpheusComponent(VerfiyDialogComponent, this.injector),
+    {
+      dismissible: false,
+      label: 'Verfizierung',
+    }
+  );
 
   public loginEmailForm: FormControl;
   public loginPasswordForm: FormControl;
@@ -29,7 +37,11 @@ export class AuthorizationComponent implements OnInit {
   public registrationEmailForm: FormControl;
   public registrationPasswordForm: FormControl;
 
-  constructor(private store: Store<fromReducer.AuthorizationState>) {
+  constructor(
+    private store: Store<fromReducer.AuthorizationState>,
+    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector
+  ) {
     this.loginEmailForm = new FormControl(null);
     this.loginPasswordForm = new FormControl(null);
 
@@ -53,10 +65,6 @@ export class AuthorizationComponent implements OnInit {
 
   show2FADialog(): void {
     this.open2FA = true;
-  }
-
-  showVerifyDialog(): void {
-    this.openVerify = true;
   }
 
   saveLoginEmail(): void {
@@ -109,6 +117,6 @@ export class AuthorizationComponent implements OnInit {
 
   register(): void {
     this.store.dispatch(fromActions.tryRegistration());
-    this.showVerifyDialog();
+    this.verifyDialog.subscribe();
   }
 }
