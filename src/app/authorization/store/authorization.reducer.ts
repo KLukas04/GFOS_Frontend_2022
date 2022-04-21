@@ -1,6 +1,7 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import produce from 'immer';
 import { LoginCreds } from '../models/loginCreds.model';
+import { RegistrationData } from '../models/registrationData.model';
 
 import * as fromActions from './authorization.actions';
 
@@ -9,6 +10,7 @@ export const authorizationFeatureKey = 'authorization';
 export interface AuthorizationState {
   loginCreds: LoginCreds;
   token: string | null;
+  registrationData: RegistrationData;
 }
 
 export const initialState: AuthorizationState = {
@@ -17,6 +19,12 @@ export const initialState: AuthorizationState = {
     password: '',
   },
   token: null,
+  registrationData: {
+    firstname: '',
+    lastname: '',
+    email: '',
+    password: '',
+  },
 };
 
 const authorizationReducer = createReducer(
@@ -34,6 +42,34 @@ const authorizationReducer = createReducer(
   on(fromActions.tryLoginSuccess, (state, { token }) =>
     produce(state, (draft) => {
       draft.token = token;
+    })
+  ),
+  on(fromActions.newRegistrationFirstname, (state, { firstname }) =>
+    produce(state, (draft) => {
+      if (draft.registrationData) {
+        draft.registrationData.firstname = firstname;
+      }
+    })
+  ),
+  on(fromActions.newRegistrationLastname, (state, { lastname }) =>
+    produce(state, (draft) => {
+      if (draft.registrationData) {
+        draft.registrationData.lastname = lastname;
+      }
+    })
+  ),
+  on(fromActions.newRegistrationEmail, (state, { email }) =>
+    produce(state, (draft) => {
+      if (draft.registrationData) {
+        draft.registrationData.email = email;
+      }
+    })
+  ),
+  on(fromActions.newRegistrationPassword, (state, { password }) =>
+    produce(state, (draft) => {
+      if (draft.registrationData) {
+        draft.registrationData.password = password;
+      }
     })
   )
 );

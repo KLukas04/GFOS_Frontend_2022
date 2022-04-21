@@ -7,7 +7,7 @@
           <fa-icon [icon]="faUser"></fa-icon>
           <input
             type="text"
-            placeholder="Nutzername"
+            placeholder="E-Mail"
             [formControl]="loginEmailForm"
             (input)="saveLoginEmail()"
           />
@@ -28,15 +28,39 @@
         <h2 class="title">Registrieren</h2>
         <div class="input-field">
           <fa-icon [icon]="faUser"></fa-icon>
-          <input type="text" placeholder="Nutzername" />
+          <input
+            type="text"
+            placeholder="Vorname"
+            [formControl]="registrationFirstnameForm"
+            (input)="saveRegistrationFirstname()"
+          />
+        </div>
+        <div class="input-field">
+          <fa-icon [icon]="faUser"></fa-icon>
+          <input
+            type="text"
+            placeholder="Nachname"
+            [formControl]="registrationLastnameForm"
+            (input)="saveRegistrationLastname()"
+          />
         </div>
         <div class="input-field">
           <fa-icon [icon]="faEnvelope"></fa-icon>
-          <input type="text" placeholder="Email" />
+          <input
+            type="text"
+            placeholder="Email"
+            [formControl]="registrationEmailForm"
+            (input)="saveRegistrationEmail()"
+          />
         </div>
         <div class="input-field">
           <fa-icon [icon]="faLock"></fa-icon>
-          <input type="password" placeholder="Passwort" />
+          <input
+            type="password"
+            placeholder="Passwort"
+            [formControl]="registrationPasswordForm"
+            (input)="saveRegistrationPassword()"
+          />
         </div>
         <input type="submit" value="Registrieren" class="button" />
       </form>

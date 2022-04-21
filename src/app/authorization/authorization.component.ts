@@ -21,9 +21,19 @@ export class AuthorizationComponent implements OnInit {
   public loginEmailForm: FormControl;
   public loginPasswordForm: FormControl;
 
+  public registrationFirstnameForm: FormControl;
+  public registrationLastnameForm: FormControl;
+  public registrationEmailForm: FormControl;
+  public registrationPasswordForm: FormControl;
+
   constructor(private store: Store<fromReducer.AuthorizationState>) {
     this.loginEmailForm = new FormControl(null);
     this.loginPasswordForm = new FormControl(null);
+
+    this.registrationFirstnameForm = new FormControl(null);
+    this.registrationLastnameForm = new FormControl(null);
+    this.registrationEmailForm = new FormControl(null);
+    this.registrationPasswordForm = new FormControl(null);
   }
 
   ngOnInit(): void {}
@@ -56,5 +66,37 @@ export class AuthorizationComponent implements OnInit {
 
   login(): void {
     this.store.dispatch(fromActions.tryLogin());
+  }
+
+  saveRegistrationFirstname(): void {
+    this.store.dispatch(
+      fromActions.newRegistrationFirstname({
+        firstname: this.registrationFirstnameForm.value,
+      })
+    );
+  }
+
+  saveRegistrationLastname(): void {
+    this.store.dispatch(
+      fromActions.newRegistrationLastname({
+        lastname: this.registrationLastnameForm.value,
+      })
+    );
+  }
+
+  saveRegistrationEmail(): void {
+    this.store.dispatch(
+      fromActions.newRegistrationEmail({
+        email: this.registrationEmailForm.value,
+      })
+    );
+  }
+
+  saveRegistrationPassword(): void {
+    this.store.dispatch(
+      fromActions.newRegistrationPassword({
+        password: this.registrationPasswordForm.value,
+      })
+    );
   }
 }
