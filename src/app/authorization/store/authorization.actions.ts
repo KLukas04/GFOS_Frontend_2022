@@ -55,3 +55,8 @@ export const tryRegistrationError = createAction(
   '[Authorization] [Registration] Registration Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const newVerificationPin = createAction(
+  '[Authorization] [Registration] Verificatin PIN Inserted',
+  props<{ pin: string }>()
+);
