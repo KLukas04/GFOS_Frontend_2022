@@ -1,11 +1,11 @@
-@import '../../../../../scss/colors.scss';
-.parent{
+@import "../../../../../scss/colors.scss";
+.parent {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     padding-inline: 50px;
-    
-    .sidebar{
+
+    .sidebar {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -14,7 +14,7 @@
         padding-top: 50px;
         width: 15%;
 
-        .file{
+        .file {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -25,48 +25,95 @@
         }
     }
 
-    .main{
+    .main {
         width: 40%;
         display: flex;
         flex-direction: column;
-        .basic-info{
+        .basic-info {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
-           
+
             margin-bottom: 10px;
-            
-            
-            .box{
+
+            .box {
                 padding: 40px 50px 10px 50px;
                 width: 40%;
                 background-color: $color-4;
                 margin-top: 50px;
                 border-radius: 16pt;
                 height: 450px;
+                margin-right: 10px;
 
-                .title{
-                    color: #7DFF63;
+                .title {
+                    color: #7dff63;
                 }
-                
-                .interessen{
+
+                .interessen {
                     display: flex;
                     flex-direction: row;
                     flex-wrap: wrap;
                     justify-content: flex-start;
                     gap: 10px;
                 }
-
             }
-            .first{
-                margin-right: 10px;
+
+            .chat {
+                width: 60%;
+                background-color: $color-4;
+                margin-top: 50px;
+                border-radius: 16pt;
+                height: 500px;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                .content {
+                    padding: 40px 10px 10px 30px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    .title {
+                        color: #7dff63;
+                    }
+
+                    .applicantN {
+                        background-color: $color-3;
+                        width: 90%;
+                        padding: 5px;
+                        border-radius: 5pt;
+                        align-self: flex-start;
+                    }
+
+                    .employerN {
+                        background-color: $color-3;
+                        width: 90%;
+                        padding: 5px;
+                        border-radius: 5pt;
+                        align-self: flex-end;
+                    }
+                }
+
+                .input {
+                    padding-inline: 10px;
+                    display: flex;
+                    flex-direction: row;
+                    padding-bottom: 20px;
+                    justify-content: space-between;
+                    gap: 10px;
+
+                    tui-input {
+                        width: 80%;
+                    }
+                }
             }
         }
     }
-    
-    .lebenslauf{
-        p{
-            color: #7DFF63;
+
+    .lebenslauf {
+        p {
+            color: #7dff63;
         }
         padding-top: 50px;
         padding-left: 50px;
@@ -75,6 +122,4 @@
         width: 35%;
         background-color: $color-4;
     }
-    
-    
 }
