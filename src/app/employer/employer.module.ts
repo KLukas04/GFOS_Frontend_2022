@@ -12,9 +12,13 @@ import { HeaderComponent } from './components/createJob/header/header.component'
 import { ContentComponent } from './components/createJob/content/content.component';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { ApplicantRoutingModule } from '../applicant/applicant-routing.module';
+import { MyJobsComponent } from './components/myjobs/my-jobs/my-jobs.component';
+import { JobOfferComponent } from './components/myjobs/job-offer/job-offer.component';
+import { ApplicationsForJobComponent } from './components/myjobs/applications-for-job/applications-for-job.component';
+import { ApplicationCardComponent } from './components/myjobs/application-card/application-card.component';
 
 @NgModule({
-  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent],
+  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicationCardComponent],
   imports: [
     CommonModule,
     EmployerRoutingModule,

@@ -1,0 +1,58 @@
+@import "../../../../../scss/colors.scss";
+
+a{
+    background-color: transparent;
+}
+.parent {
+  display: flex;
+  flex-direction: column;
+
+  background-color: $color-4;
+  width: 500px;
+  border-radius: 16pt;
+
+
+  .info {
+    background-color: #7DFF63;
+    border-radius: 16pt 16pt 16pt 0pt;
+    .heading {
+      display: flex;
+      flex-direction: row;
+
+      padding-left: 32pt;
+      padding-right: 32pt;
+
+      justify-content: space-between;
+      align-items: center;
+      color: black;
+
+      h2 {
+        font-weight: bolder;
+      }
+      tui-badge{
+        color: black
+      }
+    }
+    p {
+      font-size: 12px;
+      padding: 0pt 16pt 0pt 16pt;
+    }
+  }
+
+  .content {
+    padding: 0pt 32pt 32pt 32pt;
+    .date {
+      display: flex;
+      justify-content: flex-end;
+      font-size: 12px;
+    }
+
+    h5 {
+      // margin für die Überschriften wie "Beschreibung" und "Fortschritt"
+      margin: 0;
+    }
+    progress{
+      color: #7DFF63;
+    }
+  }
+}
