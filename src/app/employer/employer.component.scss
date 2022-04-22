@@ -34,7 +34,9 @@
 
     .main {
       padding: 50px;
-      background-color: rebeccapurple;
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
       .todo {
         display: flex;
         flex-direction: column;
@@ -73,6 +75,49 @@
 
           tui-input {
             width: 80%;
+          }
+        }
+      }
+
+      a{
+        padding: 0px;
+        border-radius: 16pt;
+      }
+      .applications{
+        height: 500px;
+        width: 40%;
+        background-color: red;
+        padding: 10px;
+        .application{
+          .info {
+            background-color: #7dff63;
+            border-radius: 16pt 16pt 16pt 0pt;
+            .heading {
+              display: flex;
+              flex-direction: row;
+        
+              padding-left: 32pt;
+              padding-right: 32pt;
+        
+              justify-content: space-between;
+              align-items: center;
+              color: black;
+              
+              .job{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                tui-badge {
+                  color: black;
+                }
+              }
+              
+              
+            }
+            p {
+              font-size: 12px;
+              padding: 0pt 16pt 0pt 16pt;
+            }
           }
         }
       }

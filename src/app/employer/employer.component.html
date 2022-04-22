@@ -8,27 +8,20 @@
 
     <div class="main">
 
-      <a size="l" tuiIsland [hoverable]="true" class="todo">
-
+      <a tuiIsland [hoverable]="true" class="todo">
         <div class="content">
           <tui-scrollbar class="box">
-
             <form [formGroup]="testForm">
               <div class="todo">
                 <p>
                   Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ipsa delectus nisi, harum
                   architecto ut similique deserunt, temporibus ipsum explicabo atque nam soluta labore accusantium optio
                   rerum dolor rem quos?
-
-                  
                 </p>
                 <tui-checkbox formControlName="finished" class="tui-space_bottom-3"></tui-checkbox>
               </div>
-
             </form>
-
           </tui-scrollbar>
-
         </div>
 
         <div class="input">
@@ -36,5 +29,23 @@
           <button tuiButton> S</button>
         </div>
       </a>
+
+      <div class="applications">
+        <a tuiIsland [hoverable]="true" class="application">
+          <div class="info">
+            <div class="heading">
+                <h2> Lukas Krinke </h2>
+                <div class="job">
+                  <p>hat sich beworben auf:</p>
+                  <tui-badge
+                    value="Designer"
+              ></tui-badge>
+                </div>
+            </div>
+            
+        </div>
+        </a>
+      </div>
+
     </div>
   </div>
