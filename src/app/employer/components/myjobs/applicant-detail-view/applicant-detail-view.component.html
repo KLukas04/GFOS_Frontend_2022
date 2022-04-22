@@ -1,14 +1,12 @@
 <app-header text="Hi, ich bin" markup="Lukas!" subheading="Ich freue mich auf eine Rückmeldung!" img="assets/hello.svg"></app-header>
 
 <div class="parent">
-    <div class="sidebar">
+    <div class="sidebar layout">
         <tui-avatar size="xxl" class="tui-space_top-1" [rounded]="true"></tui-avatar>
         <div class="file"> Lebenslauf-PDF hier </div>
         <div class="file"> Anschreiben-PDF hier </div>
     </div>
-    <div class="main">
-        <div class="basic-info">
-            <div class="box">
+            <div class="box layout">
                 <p class="title">Name</p>
                 <p class="tui-text_h5"> Lukas Krinke </p>
 
@@ -21,7 +19,7 @@
                 </div>
             </div>
 
-            <div class="chat">
+            <div class="chat layout">
                 <div class="content">
                     <p class="title">Chat</p>
                     <div class="applicantN">
@@ -40,9 +38,7 @@
                 </div>
                 
             </div>
-        </div>
-    </div>
-    <div class="lebenslauf">
+    <div class="lebenslauf layout">
         <p class="title">Lebenslauf</p>
         <tui-scrollbar class="box">
             <div class="timeline">

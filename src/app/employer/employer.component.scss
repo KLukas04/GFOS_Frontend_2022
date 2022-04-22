@@ -2,70 +2,125 @@
 
 .wrapper {
   display: flex;
-
+  flex-direction: row;
   .container {
-    background-color: $color-4;
-    height: calc(100vh - 64px);
-    width: calc(100% - 350px);
-    box-sizing: border-box;
-    padding: 1em;
+    flex-grow: 2;
+    .header {
+      padding: 0px;
+      height: 200px;
+      background-color: $color-4;
+      width: 90%;
+      border-radius: 0px 100px 100px 0px;
 
-    .boxes {
       display: flex;
       flex-direction: row;
+      align-items: center;
       justify-content: space-between;
-      height: 50%;
 
-      .chart {
-        border: 3px outset $color-2;
-        border-radius: 10px;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      padding-inline: 50px;
 
-        .axes {
-          height: 95%;
-          width: 95%;
-          color: $color-2;
-        }
+      img {
+        float: right;
+        height: 150px;
       }
 
-      .applications {
-        border: 3px outset $color-2;
-        border-radius: 10px;
-        width: 22%;
-        height: 100%;
-      }
-
-      .todo {
-        border: 3px outset $color-2;
-        border-radius: 10px;
-        width: 22%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        .title {
-          color: $color-2;
-          text-align: center;
-          margin-bottom: 10px;
-        }
-
-        button {
-          width: 50%;
-          margin-top: 10px;
+      p {
+        font-size: 80px;
+        .markup {
+          color: #7dff63;
         }
       }
     }
 
-    .team {
-      background-color: purple;
-      width: 100%;
-      height: 48%;
-      margin-top: 1em;
+    .main {
+      padding: 50px;
+      display: flex;
+      flex-direction: row;
+      gap: 50px;
+      .todo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        width: 40%;
+        background-color: $color-4;
+        height: 500px;
+
+        .content {
+          height: 80%;
+          padding: 10px;
+          .box {
+            height: 100%;
+          }
+          .todo {
+            display: flex;
+            flex-direction: row;
+            width: 96%;
+            height: fit-content;
+
+            background-color: $color-3;
+
+            padding: 10px;
+
+            border-radius: 5px;
+            margin-bottom: 10px;
+          }
+        }
+        .input {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          gap: 10px;
+
+          width: 100%;
+
+          tui-input {
+            width: 80%;
+          }
+        }
+      }
+
+      a{
+        padding: 0px;
+        border-radius: 16pt;
+      }
+      .applications{
+        height: 500px;
+        width: 40%;
+        background-color: red;
+        padding: 10px;
+        .application{
+          .info {
+            background-color: #7dff63;
+            border-radius: 16pt 16pt 16pt 0pt;
+            .heading {
+              display: flex;
+              flex-direction: row;
+        
+              padding-left: 32pt;
+              padding-right: 32pt;
+        
+              justify-content: space-between;
+              align-items: center;
+              color: black;
+              
+              .job{
+                display: flex;
+                align-items: center;
+                justify-content: flex-end;
+                tui-badge {
+                  color: black;
+                }
+              }
+              
+              
+            }
+            p {
+              font-size: 12px;
+              padding: 0pt 16pt 0pt 16pt;
+            }
+          }
+        }
+      }
     }
   }
 }

@@ -9,7 +9,7 @@ import { EmployerComponent } from './employer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TuiButtonModule, TuiDialogModule, TuiLinkModule, TuiNotificationModule, TuiPrimitiveTextfieldModule, TuiRootModule, TuiScrollbarModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { TuiAxesModule, TuiLineChartModule } from '@taiga-ui/addon-charts';
-import { TuiAvatarModule, TuiBadgeModule, TuiCheckboxBlockModule, TuiInputModule, TuiIslandModule, TuiPdfViewerModule, TuiProgressModule, TuiTextAreaModule, TuiToggleModule } from '@taiga-ui/kit';
+import { TuiAvatarModule, TuiBadgeModule, TuiCheckboxBlockModule, TuiCheckboxModule, TuiInputModule, TuiIslandModule, TuiPdfViewerModule, TuiProgressModule, TuiTextAreaModule, TuiToggleModule } from '@taiga-ui/kit';
 import { CreateJobComponent } from './components/createJob/create-job/create-job.component';
 import { HeaderComponent } from './components/createJob/header/header.component';
 import { ContentComponent } from './components/createJob/content/content.component';
@@ -50,7 +50,8 @@ import { ApplicantDetailViewComponent } from './components/myjobs/applicant-deta
     TuiTextAreaModule,
     TuiTextfieldControllerModule,
     TuiPdfViewerModule,
-    PolymorpheusModule
+    PolymorpheusModule,
+    TuiCheckboxModule
   ],
   providers:[
     {
