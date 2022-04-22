@@ -1,0 +1,39 @@
+<a size="l" tuiIsland [hoverable]="true" routerLink="openApplications">
+    <div class="parent">
+
+        <div class="info">
+            <div class="heading">
+                <h2> {{ name }} </h2>
+
+                <tui-badge [value]="fachgebiet" [hoverable]=true status="neutral"></tui-badge>
+            </div>
+
+        </div>
+        <div class="content">
+            <div class="date">
+                <p> Beworben am: {{ beworbenAm }}</p>
+            </div>
+            <div class="files">
+                <a tuiLink routerLink="applicantDetailView" class="file">
+                    <tui-avatar text="Bild" size="xl" [rounded]="true"></tui-avatar>
+                </a>
+                <button class="file" tuiButton>
+                    Anschreiben
+                </button>
+                <button class="file" (click)="show(actions)" tuiButton>
+                    Lebenslauf
+                </button>
+                
+            </div>
+        </div>
+        <button tuiButton class="accept">
+            Anehmen
+        </button>
+    </div>
+</a>
+
+<ng-template #actions let-content="content">
+    <a tuiButton shape="rounded" size="s" download [href]="content">
+        Download
+    </a>
+</ng-template>

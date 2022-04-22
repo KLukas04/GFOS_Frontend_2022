@@ -7,14 +7,6 @@
 }
 .image{
 
-    /*height: 300px;
-    width: 100%;
-    background-image: url(../../../../assets/heading.jpg);
-    background-size: 100%;
-    background-position: 0px -200px;
-
-    filter: blur(3px);*/
-    
     background-color: $color-4;
     height: 250px;
     width: 90%;
@@ -58,7 +50,7 @@
         margin: 0px;
     }
 
-    #content{
+    #subheading{
         font-size: xx-large;
     }
 }
