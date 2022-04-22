@@ -23,6 +23,7 @@ export class ApplicationCardComponent implements OnInit {
   }
 
   show(actions: PolymorpheusContent<TuiPdfViewerOptions>) {
+    console.log("HI");
     this.pdfService
       .open(
         this.sanitizer.bypassSecurityTrustResourceUrl('../../../assets/Lebenslauf.svg'),

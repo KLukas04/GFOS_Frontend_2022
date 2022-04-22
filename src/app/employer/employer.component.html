@@ -1,39 +1,42 @@
 <div class="wrapper">
   <app-sidebar></app-sidebar>
   <div class="container">
-    <div class="boxes">
-      <div class="chart">
-        <tui-axes
-        class="axes"
-          axisX="solid"
-          [axisXLabels]="axisXLabels"
-          [verticalLines]="12"
-          axisY="solid"
-          [axisYLabels]="axisYLabels"
-          axisYName="Eingegangene Bewerbungen"
-          [horizontalLines]="5"
-          ><tui-line-chart
-            [x]="0"
-            [y]="0"
-            [width]="11"
-            [height]="200"
-            [smoothingFactor]="50"
-            [value]="value"
-            [filled]="true"
-          ></tui-line-chart
-        ></tui-axes>
-      </div>
-
-      <div class="applications"></div>
-
-      <div class="todo">
-        <h1 class="title">Todos</h1>
-        
-        <button tuiButton appearance="outline" icon="tuiIconPlusLarge" size="s">
-          Hinzufügen
-        </button>
-      </div>
+    <div class="header">
+      <p>Guten Tag, <span class="markup"> Lukas!</span></p>
+      <img src="assets/hello.svg">
     </div>
-    <div class="team"></div>
+
+    <div class="main">
+
+      <a size="l" tuiIsland [hoverable]="true" class="todo">
+
+        <div class="content">
+          <tui-scrollbar class="box">
+            <div>
+              <p class="todo">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ipsa delectus nisi, harum architecto ut similique deserunt, temporibus ipsum explicabo atque nam soluta labore accusantium optio rerum dolor rem quos?
+              </p>
+              <div class="todo">
+                Hallo
+              </div>
+              <div class="todo">
+                Hallo
+              </div>
+              <div class="todo">
+                Hallo
+              </div>
+              <div class="todo">
+                Hallo
+              </div>
+            </div>
+          </tui-scrollbar>
+
+        </div>
+
+        <div class="input">
+          <tui-input> Todo </tui-input>
+          <button tuiButton> S</button>
+        </div>
+      </a>
+    </div>
   </div>
-</div>
