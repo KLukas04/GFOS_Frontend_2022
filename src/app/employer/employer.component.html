@@ -12,23 +12,21 @@
 
         <div class="content">
           <tui-scrollbar class="box">
-            <div>
-              <p class="todo">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ipsa delectus nisi, harum architecto ut similique deserunt, temporibus ipsum explicabo atque nam soluta labore accusantium optio rerum dolor rem quos?
-              </p>
+
+            <form [formGroup]="testForm">
               <div class="todo">
-                Hallo
+                <p>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ipsa delectus nisi, harum
+                  architecto ut similique deserunt, temporibus ipsum explicabo atque nam soluta labore accusantium optio
+                  rerum dolor rem quos?
+
+                  
+                </p>
+                <tui-checkbox formControlName="finished" class="tui-space_bottom-3"></tui-checkbox>
               </div>
-              <div class="todo">
-                Hallo
-              </div>
-              <div class="todo">
-                Hallo
-              </div>
-              <div class="todo">
-                Hallo
-              </div>
-            </div>
+
+            </form>
+
           </tui-scrollbar>
 
         </div>
