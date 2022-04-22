@@ -29,7 +29,7 @@ export class TrendJobCardComponent implements OnInit {
       case 5:
         return 'assets/fachgebiete/support.png';
       case 6:
-        return 'assets/fachgebiete/acquisation.png';
+        return 'assets/fachgebiete/acquisition.png';
       case 7:
         return 'assets/fachgebiete/technician.png';
       case 8:

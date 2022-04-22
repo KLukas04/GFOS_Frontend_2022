@@ -10,3 +10,8 @@ export const selectTrendJobs = createSelector(
   selectJobsState,
   (state: fromReducer.JobsState) => state.trends
 );
+
+export const selectAllFachgebiete = createSelector(
+  selectJobsState,
+  (state: fromReducer.JobsState) => state.fachgebiete
+);

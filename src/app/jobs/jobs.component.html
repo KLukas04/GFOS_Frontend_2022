@@ -29,6 +29,14 @@
   <div class="divider"></div>
   <div class="categories-panel">
     <div class="heading">Fachgebiete</div>
-    <app-categories></app-categories>
+    <h3 *ngIf="fachgebiete$ | async | isInProgress">
+      Fachgebiete werden geladen...
+    </h3>
+    <div *ngIf="fachgebiete$ | async | isSuccess">
+      <app-categories></app-categories>
+    </div>
+    <h3 *ngIf="fachgebiete$ | async | isFailure">
+      Fachgebiete konnten nicht geladen werden!
+    </h3>
   </div>
 </div>
