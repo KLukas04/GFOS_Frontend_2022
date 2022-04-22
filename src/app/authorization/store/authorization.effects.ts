@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, map, of, switchMap, take, tap } from 'rxjs';
+import { catchError, map, of, switchMap, tap } from 'rxjs';
 import { LoginService } from '../service/login.service';
 import { TokenStorageService } from '../service/token-storage.service';
 
@@ -24,7 +24,6 @@ export class AuthorizationEffects {
       concatLatestFrom(() => this.store.select(fromSelectors.selectLoginCreds)),
       switchMap(([_, creds]) =>
         this.loginService.tryToLogin(creds.email, creds.password).pipe(
-          take(1),
           tap((res) => this.tokenStorage.saveToken(res.token)),
           map((res) => fromActions.tryLoginSuccess({ token: res.token })),
           catchError((err) => of(fromActions.tryLoginError({ error: err })))
@@ -41,10 +40,27 @@ export class AuthorizationEffects {
       ),
       switchMap(([_, data]) =>
         this.loginService.tryRegistration(data).pipe(
-          take(1),
           map(() => fromActions.tryRegistrationSuccess()),
           catchError((err) =>
             of(fromActions.tryRegistrationError({ error: err }))
+          )
+        )
+      )
+    )
+  );
+
+  verifyRegistration$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.tryVerificationPin),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectVerificationPin)
+      ),
+      switchMap(([_, pin]) =>
+        this.loginService.tryVerificationPin(pin).pipe(
+          tap((res) => this.tokenStorage.saveToken(res)),
+          map((res) => fromActions.tryVerificationPinSuccess({ token: res })),
+          catchError((err) =>
+            of(fromActions.tryVerificationPinError({ error: err }))
           )
         )
       )

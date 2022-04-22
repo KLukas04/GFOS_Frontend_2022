@@ -31,11 +31,15 @@ import { CategoriesComponent } from './components/main/categories/categories.com
 import { CategoryCardComponent } from './components/main/category-card/category-card.component';
 import { OverviewComponent } from './components/details/overview/overview.component';
 import { HeaderComponent } from './components/details/header/header.component';
-import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { OverviewSectionComponent } from './components/details/overview-section/overview-section.component';
 import { InformationItemComponent } from './components/details/information-item/information-item.component';
+import { RemoteDataModule } from 'ngx-remotedata';
+import { StoreModule } from '@ngrx/store';
 
+import * as fromReducer from './store/jobs.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { JobsEffects } from './store/jobs.actions';
 @NgModule({
   declarations: [
     JobsComponent,
@@ -69,7 +73,10 @@ import { InformationItemComponent } from './components/details/information-item/
     TuiInputModule,
     TuiTextAreaModule,
     FontAwesomeModule,
-    TuiInputFileModule
+    TuiInputFileModule,
+    RemoteDataModule,
+    StoreModule.forFeature(fromReducer.jobsFeatureKey, fromReducer.reducer),
+    EffectsModule.forFeature([JobsEffects]),
   ],
 })
 export class JobsModule {}
