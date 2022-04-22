@@ -1,13 +1,14 @@
 <tui-island textAlign="center">
   <div class="tui-island__content">
     <figure class="tui-island__figure">
-      <div class="some-figure"></div>
+      <div class="some-figure">
+        {{ fachgebiet }}
+      </div>
     </figure>
     <div>
       <h3 class="tui-island__title">{{ title }}</h3>
       <p class="tui-island__paragraph">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
+        {{ kurzbeschreibung }}
       </p>
     </div>
   </div>
@@ -19,6 +20,6 @@
     class="tui-island__footer-button"
     routerLink="details"
   >
-    Jetzt bewerben top
+    Jetzt bewerben
   </button>
 </tui-island>

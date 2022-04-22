@@ -7,6 +7,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TrendJobCardComponent implements OnInit {
   @Input() title: string = '';
+  @Input() fachgebiet: number = 0;
+  @Input() kurzbeschreibung: string = '';
 
   constructor() {}
 

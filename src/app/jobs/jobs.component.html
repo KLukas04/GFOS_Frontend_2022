@@ -9,7 +9,15 @@
   <div class="divider"></div>
   <div class="trends-panel">
     <div class="heading">Aktuelle Trends</div>
-    <app-trends></app-trends>
+    <h3 *ngIf="trendJobs$ | async | isInProgress">
+      Job Trends werden geladen...
+    </h3>
+    <div *ngIf="trendJobs$ | async | isSuccess">
+      <app-trends></app-trends>
+    </div>
+    <h3 *ngIf="trendJobs$ | async | isFailure">
+      Job Trends konnten nicht geladen werden!
+    </h3>
   </div>
   <div class="section">
     <div class="divider"></div>
