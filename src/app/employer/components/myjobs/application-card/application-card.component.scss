@@ -1,7 +1,9 @@
 @import "../../../../../scss/colors.scss";
 
-a{
-    background-color: $color-3;
+a {
+  background-color: $color-3;
+  padding: 0px;
+  margin: 0px;
 }
 .parent {
   display: flex;
@@ -10,9 +12,11 @@ a{
   background-color: $color-4;
   border-radius: 16pt;
 
+  margin: 0px;
+  padding: 0px;
 
   .info {
-    background-color: #7DFF63;
+    background-color: #7dff63;
     border-radius: 16pt 16pt 16pt 0pt;
     .heading {
       display: flex;
@@ -28,8 +32,8 @@ a{
       h2 {
         font-weight: bolder;
       }
-      tui-badge{
-        color: black
+      tui-badge {
+        color: black;
       }
     }
     p {
@@ -38,34 +42,51 @@ a{
     }
   }
 
-  .content {
+  .test {
     display: flex;
     flex-direction: column;
-    margin-inline: 50px;
-    .date {
+    padding: 10px;
+    .content {
       display: flex;
-      justify-content: flex-end;
-      font-size: 12px;
-    }
-    .files{
+      flex-direction: column;
+      justify-content: space-between;
+      .date {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 12px;
+      }
+      .files {
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         gap: 10px;
-        
-        .file{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 150px;
-            height: 150px;
-            border-radius: 16pt;
+
+        .file {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 150px;
+          height: 150px;
+          border-radius: 16pt;
         }
+      }
+    }
+
+    .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 10px;
+
+      padding-top: 10px;
+
+      .accept {
+        width: 49%;
+      }
+
+      .decline {
+        width: 49%;
+      }
     }
   }
-
-  .accept{
-    padding-inline: 40px;
-    margin: 10px;
-    margin-bottom: 20px;
-}
 }
