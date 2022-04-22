@@ -60,3 +60,17 @@ export const newVerificationPin = createAction(
   '[Authorization] [Registration] Verificatin PIN Inserted',
   props<{ pin: string }>()
 );
+
+export const tryVerificationPin = createAction(
+  '[Authorization] [Registration] Verification PIN Try'
+);
+
+export const tryVerificationPinSuccess = createAction(
+  '[Authorization] [Registration] Verification PIN Success',
+  props<{ token: string }>()
+);
+
+export const tryVerificationPinError = createAction(
+  '[Authorization] [Registration] Verification PIN Error',
+  props<{ error: HttpErrorResponse }>()
+);

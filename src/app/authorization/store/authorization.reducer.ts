@@ -78,6 +78,11 @@ const authorizationReducer = createReducer(
     produce(state, (draft) => {
       draft.verificationPin = pin;
     })
+  ),
+  on(fromActions.tryVerificationPinSuccess, (state, { token }) =>
+    produce(state, (draft) => {
+      draft.token = token;
+    })
   )
 );
 

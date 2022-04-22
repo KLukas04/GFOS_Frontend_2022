@@ -16,3 +16,12 @@ export const selectRegistrationData = createSelector(
   selectAuthorizationState,
   (state: fromReducer.AuthorizationState) => state.registrationData
 );
+
+export const selectVerificationPin = createSelector(
+  selectAuthorizationState,
+  (state: fromReducer.AuthorizationState) => ({
+    email: state.registrationData.email,
+    password: state.registrationData.password,
+    pin: state.verificationPin,
+  })
+);

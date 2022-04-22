@@ -1,7 +1,8 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { TuiDialogContext } from '@taiga-ui/core';
+import { TuiDialogContext, TUI_HINT_OPTIONS } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 
 import * as fromActions from '../../store/authorization.actions';
@@ -18,7 +19,8 @@ export class VerfiyDialogComponent implements OnInit {
   constructor(
     private store: Store<fromReducer.AuthorizationState>,
     @Inject(POLYMORPHEUS_CONTEXT)
-    private readonly context: TuiDialogContext<any>
+    private readonly context: TuiDialogContext<any>,
+    private router: Router
   ) {
     this.pinForm = new FormControl(null);
   }
@@ -32,6 +34,8 @@ export class VerfiyDialogComponent implements OnInit {
   }
 
   close(): void {
+    this.store.dispatch(fromActions.tryVerificationPin());
     this.context.completeWith(null);
+    this.router.navigateByUrl('jobs');
   }
 }
