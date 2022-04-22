@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
+import { Fachgebiet } from '../models/fachgebiet.model';
 import { Job } from '../models/job.model';
 
 export const loadTrendJobs = createAction('[Jobs] Load Trend Jobs');
@@ -11,5 +12,17 @@ export const loadTrendJobsSuccess = createAction(
 
 export const loadTrendJobsError = createAction(
   '[Jobs] Load Trend Jobs Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const loadFachgebiete = createAction('[Jobs] Load Fachgebiete');
+
+export const loadFachgebieteSuccess = createAction(
+  '[Jobs] Load Fachgebiete Success',
+  props<{ fachgebiete: Fachgebiet[] }>()
+);
+
+export const loadFachgebieteError = createAction(
+  '[Jobs] Load Fachgebiete Error',
   props<{ error: HttpErrorResponse }>()
 );

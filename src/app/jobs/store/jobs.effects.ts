@@ -22,4 +22,20 @@ export class JobsEffects {
       )
     )
   );
+
+  loadAllFachgebiete$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadFachgebiete),
+      mergeMap(() =>
+        this.jobService.getAllFachgebiete().pipe(
+          map((fachgebiete) =>
+            fromActions.loadFachgebieteSuccess({ fachgebiete: fachgebiete })
+          ),
+          catchError((err) =>
+            of(fromActions.loadFachgebieteError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }
