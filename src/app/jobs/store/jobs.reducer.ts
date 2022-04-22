@@ -1,7 +1,17 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Action, createReducer } from '@ngrx/store';
-import { notAsked, RemoteData } from 'ngx-remotedata';
+import { Action, createReducer, on } from '@ngrx/store';
+import produce from 'immer';
+import {
+  failure,
+  getOrElse,
+  inProgress,
+  notAsked,
+  RemoteData,
+  success,
+} from 'ngx-remotedata';
 import { Job } from '../models/job.model';
+
+import * as fromActions from './jobs.actions';
 
 export const jobsFeatureKey = 'jobs';
 
@@ -13,7 +23,26 @@ export const initialState: JobsState = {
   trends: notAsked(),
 };
 
-const jobsReducer = createReducer(initialState);
+const jobsReducer = createReducer(
+  initialState,
+  on(fromActions.loadTrendJobs, (state) =>
+    produce(state, (draft) => {
+      draft.trends = inProgress<Job[], HttpErrorResponse>(
+        getOrElse(draft.trends, [])
+      );
+    })
+  ),
+  on(fromActions.loadTrendJobsSuccess, (state, { jobs }) =>
+    produce(state, (draft) => {
+      draft.trends = success<Job[], HttpErrorResponse>(jobs);
+    })
+  ),
+  on(fromActions.loadTrendJobsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.trends = failure<Job[], HttpErrorResponse>(error);
+    })
+  )
+);
 
 export function reducer(state: JobsState | undefined, action: Action) {
   return jobsReducer(state, action);

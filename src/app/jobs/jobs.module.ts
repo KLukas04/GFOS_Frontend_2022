@@ -39,7 +39,7 @@ import { StoreModule } from '@ngrx/store';
 
 import * as fromReducer from './store/jobs.reducer';
 import { EffectsModule } from '@ngrx/effects';
-import { JobsEffects } from './store/jobs.actions';
+import { JobsEffects } from './store/jobs.effects';
 @NgModule({
   declarations: [
     JobsComponent,

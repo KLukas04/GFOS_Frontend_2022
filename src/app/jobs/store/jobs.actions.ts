@@ -1,13 +1,15 @@
-import { Injectable } from '@angular/core';
-import { Actions } from '@ngrx/effects';
-import { Store } from '@ngrx/store';
+import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
+import { Job } from '../models/job.model';
 
-import * as fromReducer from './jobs.reducer';
+export const loadTrendJobs = createAction('[Jobs] Load Trend Jobs');
 
-@Injectable()
-export class JobsEffects {
-  constructor(
-    private actions$: Actions,
-    private store: Store<fromReducer.JobsState>
-  ) {}
-}
+export const loadTrendJobsSuccess = createAction(
+  '[Jobs] Load Trend Jobs Success',
+  props<{ jobs: Job[] }>()
+);
+
+export const loadTrendJobsError = createAction(
+  '[Jobs] Load Trend Jobs Error',
+  props<{ error: HttpErrorResponse }>()
+);
