@@ -9,7 +9,7 @@ import { EmployerComponent } from './employer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { TuiButtonModule, TuiDataListModule, TuiDialogModule, TuiLinkModule, TuiNotificationModule, TuiPrimitiveTextfieldModule, TuiRootModule, TuiScrollbarModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { TuiAxesModule, TuiLineChartModule } from '@taiga-ui/addon-charts';
-import { TuiAvatarModule, TuiBadgedContentModule, TuiBadgeModule, TuiCheckboxBlockModule, TuiCheckboxModule, TuiDataListWrapperModule, TuiInputModule, TuiIslandModule, TuiPdfViewerModule, TuiProgressModule, TuiSelectModule, TuiTextAreaModule, TuiToggleModule } from '@taiga-ui/kit';
+import { TuiAvatarModule, TuiBadgedContentModule, TuiBadgeModule, TuiCheckboxBlockModule, TuiCheckboxModule, TuiDataListWrapperModule, TuiInputModule, TuiIslandModule, TuiMultiSelectModule, TuiPdfViewerModule, TuiProgressModule, TuiSelectModule, TuiTextAreaModule, TuiToggleModule } from '@taiga-ui/kit';
 import { CreateJobComponent } from './components/createJob/create-job/create-job.component';
 import { HeaderComponent } from './components/createJob/header/header.component';
 import { ContentComponent } from './components/createJob/content/content.component';
@@ -24,9 +24,10 @@ import { ApplicantDetailViewComponent } from './components/myjobs/applicant-deta
 import { OpenApplicationsComponent } from './components/open-applications/open-applications.component';
 import { MyApplicationsComponent } from './components/my-applications/my-applications/my-applications.component';
 import { CreateEmployeeComponent } from './components/administration/create-employee/create-employee.component';
+import { CreateDepartmentComponent } from './components/administration/create-department/create-department.component';
 
 @NgModule({
-  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicationCardComponent, ApplicantDetailViewComponent, OpenApplicationsComponent, MyApplicationsComponent, CreateEmployeeComponent],
+  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicationCardComponent, ApplicantDetailViewComponent, OpenApplicationsComponent, MyApplicationsComponent, CreateEmployeeComponent, CreateDepartmentComponent],
   imports: [
     CommonModule,
     EmployerRoutingModule,
@@ -59,6 +60,7 @@ import { CreateEmployeeComponent } from './components/administration/create-empl
     TuiSelectModule,
     TuiDataListModule,
     TuiDataListWrapperModule,
+    TuiMultiSelectModule,
   ],
   providers:[
     {

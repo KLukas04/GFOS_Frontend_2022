@@ -1,0 +1,29 @@
+@import "../../../../../scss/colors.scss";
+
+.container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    padding: 50px;
+    a {
+        background-color: $color-4;
+        .card {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 10px;
+            width: 30rem;
+            height: 25rem;
+            border-radius: 16pt;
+            tui-select{
+                padding-bottom: 10px;
+            }
+        }
+
+        img{
+            height: 250px;
+        }
+    }
+}
