@@ -1,0 +1,46 @@
+<app-header text="Erstelle einen neuen" markup="Mitarbeiter!" img="assets/employee.svg"></app-header>
+
+<div class="container">
+    <a size="l" tuiIsland [hoverable]="true" textAlign="center">
+        <div class="card">
+            <h3> Kontaktdaten</h3>
+            <tui-input> Vorname </tui-input>
+            <tui-input> Nachname </tui-input>
+            <p>  </p>
+            <tui-input> Email </tui-input>
+            <tui-input> Passwort </tui-input>
+        </div>
+    </a>
+    <a size="l" tuiIsland [hoverable]="true" textAlign="center">
+        <div class="card">
+            <h3> Abteilung</h3>
+            <form [formGroup]="inputForm">
+                <tui-select formControlName="abteilung">
+                    Abteilung
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="abteilungen"
+                    ></tui-data-list-wrapper>
+                </tui-select>
+
+                <tui-select formControlName="ebene">
+                    Ebene (oder Team)
+                    <tui-data-list-wrapper
+                        *tuiDataList
+                        [items]="ebenen"
+                    ></tui-data-list-wrapper>
+                </tui-select>
+            </form>
+        </div>
+    </a>
+
+    <a size="l" tuiIsland [hoverable]="true" textAlign="center">
+        <div class="card spacing">
+            <img src="assets/check.svg" alt="">
+            <h2> Alles richtig ?</h2>
+            <button tuiButton type="button">
+                Erstellen
+            </button>
+        </div>
+    </a>
+</div>
