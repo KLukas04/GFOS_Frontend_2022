@@ -22,9 +22,10 @@ import { ApplicationCardComponent } from './components/myjobs/application-card/a
 import { TUI_SANITIZER } from '@taiga-ui/cdk';
 import { ApplicantDetailViewComponent } from './components/myjobs/applicant-detail-view/applicant-detail-view.component';
 import { OpenApplicationsComponent } from './components/open-applications/open-applications.component';
+import { MyApplicationsComponent } from './components/my-applications/my-applications/my-applications.component';
 
 @NgModule({
-  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicationCardComponent, ApplicantDetailViewComponent, OpenApplicationsComponent],
+  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicationCardComponent, ApplicantDetailViewComponent, OpenApplicationsComponent, MyApplicationsComponent],
   imports: [
     CommonModule,
     EmployerRoutingModule,
