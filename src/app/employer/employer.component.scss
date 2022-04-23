@@ -36,11 +36,13 @@
       padding: 50px;
       display: flex;
       flex-direction: row;
+      justify-content: space-around;
       gap: 50px;
       .todo {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        padding: 10px;
         width: 40%;
         background-color: $color-4;
         height: 500px;
@@ -79,16 +81,18 @@
         }
       }
 
-      a{
-        padding: 0px;
-        border-radius: 16pt;
-      }
+      
       .applications{
         height: 500px;
         width: 40%;
-        background-color: red;
         padding: 10px;
+
         .application{
+          padding: 0px;
+          border-radius: 16pt;
+          margin-right: 0px;
+          width: 100%;
+          background-color: $color-4;
           .info {
             background-color: #7dff63;
             border-radius: 16pt 16pt 16pt 0pt;
@@ -108,6 +112,7 @@
                 align-items: center;
                 justify-content: flex-end;
                 tui-badge {
+                  padding: 15px;
                   color: black;
                 }
               }
@@ -117,6 +122,56 @@
             p {
               font-size: 12px;
               padding: 0pt 16pt 0pt 16pt;
+            }
+          }
+
+          .main {
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+            .content {
+              display: flex;
+              flex-direction: column;
+              justify-content: space-between;
+              
+              .date {
+                display: flex;
+                justify-content: flex-end;
+                font-size: 12px;
+              }
+              .files {
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 10px;
+        
+                .file {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  width: 150px;
+                  height: 150px;
+                  border-radius: 16pt;
+                  background-color: $color-3;
+                }
+              }
+            }
+          }
+
+          .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            gap: 10px;
+      
+            padding-top: 10px;
+      
+            .accept {
+              width: 49%;
+            }
+      
+            .decline {
+              width: 49%;
             }
           }
         }

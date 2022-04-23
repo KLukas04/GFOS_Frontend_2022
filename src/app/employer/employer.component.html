@@ -34,17 +34,50 @@
         <a tuiIsland [hoverable]="true" class="application">
           <div class="info">
             <div class="heading">
-                <h2> Lukas Krinke </h2>
-                <div class="job">
-                  <p>hat sich beworben auf:</p>
-                  <tui-badge
-                    value="Designer"
-              ></tui-badge>
-                </div>
+              <h2> Lukas Krinke </h2>
+              <div class="job">
+                <p>hat sich beworben auf:</p>
+                <!-- TODO: ROUTER FUNKTIONIERT NICHT - Fehler in Console -->
+                <a tuiLink routerLink="/jobs">
+                  <tui-badge value="Designer"></tui-badge>
+                </a>
+              </div>
             </div>
-            
-        </div>
+
+
+          </div>
+          <div class="main">
+            <div class="content">
+              <div class="date">
+                <p> Beworben am: 23.04.2022</p>
+              </div>
+              <div class="files">
+                <!-- TODO: ROUTER FUNKTIONIERT NICHT -->
+
+                <a tuiLink routerLink="/applicantDetailView" class="file">
+                    <tui-avatar text="Bild" size="xl" [rounded]="true"></tui-avatar>
+                </a>
+
+                <button class="file" tuiButton>
+                  Anschreiben
+                </button>
+                <button class="file" tuiButton>
+                  Lebenslauf
+                </button>
+
+              </div>
+            </div>
+            <div class="buttons">
+              <button tuiButton class="accept">
+                Annehmen
+              </button>
+              <button tuiButton appearance="accent" class="decline">
+                Ablehnen
+              </button>
+            </div>
+          </div>
         </a>
+
       </div>
 
     </div>
