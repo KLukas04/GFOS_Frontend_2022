@@ -8,6 +8,7 @@ import {TuiDialogService} from '@taiga-ui/core';
 })
 export class CvEditorComponent {
 
+  public avatar: string = 'https://www.torsten-volkmer.de/wp-content/uploads/2017/06/20170613_011_by_TorstenVolkmer.jpg';
   newInterest = '';
   interests = ["Tennis", "Klavier"];
   open = false;

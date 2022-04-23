@@ -11,6 +11,7 @@ import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 })
 export class ApplicationCardComponent implements OnInit {
 
+  public avatar: string = 'https://www.torsten-volkmer.de/wp-content/uploads/2017/06/20170613_011_by_TorstenVolkmer.jpg';
   @Input() name = "";
   @Input() fachgebiet = "";
   @Input() beworbenAm = "";

@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class OpenApplicationsComponent implements OnInit {
 
+  public avatar: string = 'https://www.torsten-volkmer.de/wp-content/uploads/2017/06/20170613_011_by_TorstenVolkmer.jpg';
   @Input() job ="";
   @Input() name = "";
   @Input() beworbenAm = "";
