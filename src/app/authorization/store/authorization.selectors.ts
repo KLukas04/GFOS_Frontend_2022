@@ -25,3 +25,8 @@ export const selectVerificationPin = createSelector(
     pin: state.verificationPin,
   })
 );
+
+export const selectDefaultRoute = createSelector(
+  selectAuthorizationState,
+  (state: fromReducer.AuthorizationState) => state.defaultRoute
+);

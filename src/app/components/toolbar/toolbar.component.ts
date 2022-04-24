@@ -1,5 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { TuiHostedDropdownComponent } from '@taiga-ui/core';
+import { Observable } from 'rxjs';
+
+import * as fromReducer from '../../authorization/store/authorization.reducer';
+import * as fromSelectors from '../../authorization/store/authorization.selectors';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,13 +20,13 @@ export class ToolbarComponent implements OnInit {
 
   public open: boolean = false;
 
-  constructor() {}
+  public defaultRoute$: Observable<string>;
+
+  constructor(private store: Store<fromReducer.AuthorizationState>) {
+    this.defaultRoute$ = this.store.select(fromSelectors.selectDefaultRoute);
+  }
 
   ngOnInit(): void {}
-
-  //TODO: Je nach dem ob es ein Berwerber oder Personaler ist. 
-  // Nötig das Home Link zur richtigen Route führt
-  typ = "false";
 
   logout(): void {
     this.open = false;

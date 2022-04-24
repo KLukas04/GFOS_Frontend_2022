@@ -25,7 +25,12 @@ export class AuthorizationEffects {
       switchMap(([_, creds]) =>
         this.loginService.tryToLogin(creds.email, creds.password).pipe(
           tap((res) => this.tokenStorage.saveToken(res.token)),
-          map((res) => fromActions.tryLoginSuccess({ token: res.token })),
+          map((res) =>
+            fromActions.tryLoginSuccess({
+              token: res.token,
+              isPersonaler: res.ispersonaler,
+            })
+          ),
           catchError((err) => of(fromActions.tryLoginError({ error: err })))
         )
       )
