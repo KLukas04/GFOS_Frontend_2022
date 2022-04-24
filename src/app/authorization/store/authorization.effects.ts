@@ -33,7 +33,12 @@ export class AuthorizationEffects {
               : localStorage.setItem('defaultRoute', 'applicant')
           ),
           tap(() => this.router.navigateByUrl('jobs')),
-          map((res) => fromActions.tryLoginSuccess({ token: res.token })),
+          map((res) =>
+            fromActions.tryLoginSuccess({
+              token: res.token,
+              isPersonaler: res.ispersonaler,
+            })
+          ),
           catchError((err) => of(fromActions.tryLoginError({ error: err })))
         )
       )

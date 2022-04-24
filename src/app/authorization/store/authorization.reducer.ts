@@ -12,6 +12,7 @@ export interface AuthorizationState {
   token: string | null;
   registrationData: RegistrationData;
   verificationPin: string;
+  defaultRoute: string;
 }
 
 export const initialState: AuthorizationState = {
@@ -27,6 +28,7 @@ export const initialState: AuthorizationState = {
     password: '',
   },
   verificationPin: '',
+  defaultRoute: 'employer',
 };
 
 const authorizationReducer = createReducer(
@@ -41,9 +43,12 @@ const authorizationReducer = createReducer(
       draft.loginCreds.password = password;
     })
   ),
-  on(fromActions.tryLoginSuccess, (state, { token }) =>
+  on(fromActions.tryLoginSuccess, (state, { token, isPersonaler }) =>
     produce(state, (draft) => {
       draft.token = token;
+      isPersonaler
+        ? (draft.defaultRoute = 'employer')
+        : (draft.defaultRoute = 'applicant');
     })
   ),
   on(fromActions.newRegistrationFirstname, (state, { firstname }) =>

@@ -1,12 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { TuiHostedDropdownComponent } from '@taiga-ui/core';
+import { Observable } from 'rxjs';
+
+import * as fromReducer from '../../authorization/store/authorization.reducer';
+import * as fromSelectors from '../../authorization/store/authorization.selectors';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
 })
-export class ToolbarComponent implements OnInit {
+export class ToolbarComponent {
   public avatar: string =
     'https://www.torsten-volkmer.de/wp-content/uploads/2017/06/20170613_011_by_TorstenVolkmer.jpg';
 
@@ -15,9 +20,11 @@ export class ToolbarComponent implements OnInit {
 
   public open: boolean = false;
 
-  constructor() {}
+  public defaultRoute$: Observable<string>;
 
-  ngOnInit(): void {}
+  constructor(private store: Store<fromReducer.AuthorizationState>) {
+    this.defaultRoute$ = this.store.select(fromSelectors.selectDefaultRoute);
+  }
 
   getDefaultRoute(): string {
     return localStorage.getItem('defaultRoute') ?? 'jobs';

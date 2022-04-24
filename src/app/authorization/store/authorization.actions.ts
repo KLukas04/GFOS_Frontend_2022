@@ -15,7 +15,7 @@ export const tryLogin = createAction('[Authorization] [Login] Login Try');
 
 export const tryLoginSuccess = createAction(
   '[Authorization] [Login] Login Success',
-  props<{ token: string }>()
+  props<{ token: string; isPersonaler: boolean }>()
 );
 
 export const tryLoginError = createAction(
