@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ApplicantDetailViewComponent implements OnInit {
 
+  public avatar: string = 'https://www.torsten-volkmer.de/wp-content/uploads/2017/06/20170613_011_by_TorstenVolkmer.jpg';
   newInterest = '';
   interests = ["Tennis", "Klaviesdfddr", "Klavier", "Klavier", "Klavier", "Klavier", "Klavier"];
   stations: Meilenstein[] = [

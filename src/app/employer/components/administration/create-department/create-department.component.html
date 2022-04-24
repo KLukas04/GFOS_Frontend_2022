@@ -1,0 +1,27 @@
+<app-header text="Erstelle eine neue" markup="Abteilung!" img="assets/department.svg"></app-header>
+
+<div class="container">
+    <a size="l" tuiIsland [hoverable]="true" textAlign="center">
+        <div class="card">
+            <h3> Informationen</h3>
+            <tui-input> Name </tui-input>
+
+            <tui-multi-select tuiTextfieldExampleText="Ignored text" class="b-form" [formControl]="control"
+                [tuiTextfieldLabelOutside]="true" [editable]="false" [(search)]="search!">
+                Mitarbeiter
+                <tui-data-list-wrapper *tuiDataList tuiMultiSelectGroup [items]="filter(search)">
+                </tui-data-list-wrapper>
+            </tui-multi-select>
+        </div>
+    </a>
+
+    <a size="l" tuiIsland [hoverable]="true" textAlign="center">
+        <div class="card spacing">
+            <img src="assets/check.svg" alt="">
+            <h2> Alles richtig ?</h2>
+            <button tuiButton type="button">
+                Erstellen
+            </button>
+        </div>
+    </a>
+</div>

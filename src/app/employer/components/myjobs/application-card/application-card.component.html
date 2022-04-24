@@ -9,14 +9,14 @@
             </div>
 
         </div>
-        <div class="test">
+        <div class="main">
             <div class="content">
                 <div class="date">
                     <p> Beworben am: {{ beworbenAm }}</p>
                 </div>
                 <div class="files">
                     <a tuiLink routerLink="applicantDetailView" class="file">
-                        <tui-avatar text="Bild" size="xl" [rounded]="true"></tui-avatar>
+                        <tui-avatar [avatarUrl]="avatar" text="Bild" size="xl" [rounded]="true"></tui-avatar>
                     </a>
                     <button class="file" tuiButton>
                         Anschreiben
@@ -29,7 +29,7 @@
             </div>
             <div class="buttons">
                 <button tuiButton class="accept">
-                    Anehmen
+                    Annehmen
                 </button>
                 <button tuiButton appearance="accent" class="decline">
                     Ablehnen
