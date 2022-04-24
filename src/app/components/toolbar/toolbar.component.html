@@ -1,7 +1,7 @@
 <div class="toolbar">
   <div class="logo">LOGO</div>
   <div class="links">
-    <a tuiLink [routerLink]=" typ === 'applicant' ? 'applicant' : 'employer'" >Home</a>
+    <a tuiLink [routerLink]="getDefaultRoute()">Home</a>
     <a tuiLink routerLink="jobs">Jobsuche</a>
   </div>
   <div class="spacer"></div>

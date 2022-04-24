@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, of, switchMap, tap } from 'rxjs';
@@ -15,7 +16,8 @@ export class AuthorizationEffects {
     private actions$: Actions,
     private store: Store<fromReducer.AuthorizationState>,
     private loginService: LoginService,
-    private tokenStorage: TokenStorageService
+    private tokenStorage: TokenStorageService,
+    private router: Router
   ) {}
 
   tryToLogin$ = createEffect(() =>
@@ -25,6 +27,12 @@ export class AuthorizationEffects {
       switchMap(([_, creds]) =>
         this.loginService.tryToLogin(creds.email, creds.password).pipe(
           tap((res) => this.tokenStorage.saveToken(res.token)),
+          tap((res) =>
+            res.ispersonaler
+              ? localStorage.setItem('defaultRoute', 'exployer')
+              : localStorage.setItem('defaultRoute', 'applicant')
+          ),
+          tap(() => this.router.navigateByUrl('jobs')),
           map((res) => fromActions.tryLoginSuccess({ token: res.token })),
           catchError((err) => of(fromActions.tryLoginError({ error: err })))
         )
