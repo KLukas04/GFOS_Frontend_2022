@@ -23,7 +23,8 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { TuiAvatarModule } from '@taiga-ui/kit';
 
 import * as fromRootStore from './store/root.reducer';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TokenInterceptor } from './authorization/service/token.interceptor';
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent],
@@ -49,7 +50,13 @@ import { HttpClientModule } from '@angular/common/http';
     TuiLinkModule,
     TuiScrollbarModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
