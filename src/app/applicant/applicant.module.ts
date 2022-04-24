@@ -4,7 +4,7 @@ import {
   TuiNotificationModule,
   TuiButtonModule,
   TuiPrimitiveTextfieldModule,
-  TuiDialogModule, 
+  TuiDialogModule,
   TuiRootModule,
   TuiScrollbarModule,
 } from '@taiga-ui/core';
@@ -15,10 +15,10 @@ import {
   TuiAvatarModule,
   TuiProgressModule,
   TuiInputModule,
-  TuiToggleModule
+  TuiToggleModule,
 } from '@taiga-ui/kit';
 
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
 
 import { ApplicantRoutingModule } from './applicant-routing.module';
 import { ApplicantComponent } from './applicant.component';
@@ -30,6 +30,12 @@ import { ApplicationListItemComponent } from './components/application-list-item
 import { GreetingsHeaderComponent } from './components/greetings-header/greetings-header.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SettingsCardComponent } from './components/settings-card/settings-card.component';
+import { StoreModule } from '@ngrx/store';
+
+import * as fromReducer from './store/applicant.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ApplicantEffects } from './store/applicant.effects';
+import { RemoteDataModule } from 'ngx-remotedata';
 
 @NgModule({
   declarations: [
@@ -59,7 +65,13 @@ import { SettingsCardComponent } from './components/settings-card/settings-card.
     FormsModule,
     PolymorpheusModule,
     TuiToggleModule,
-    TuiScrollbarModule
-  ]
+    TuiScrollbarModule,
+    StoreModule.forFeature(
+      fromReducer.applicantFeatureKey,
+      fromReducer.reducer
+    ),
+    EffectsModule.forFeature([ApplicantEffects]),
+    RemoteDataModule,
+  ],
 })
-export class ApplicantModule { }
+export class ApplicantModule {}
