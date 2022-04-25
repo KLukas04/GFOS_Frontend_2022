@@ -40,7 +40,7 @@
 
 <ng-template #content let-data>
   <div class="template">
-    <tui-avatar size="xs" class="avatar" [text]="data.text"></tui-avatar>
+    <tui-avatar [avatarUrl]="data.icon" size="xs" class="avatar" [text]="data.text"></tui-avatar>
     <div class="name">{{ data.text }}</div>
   </div>
 </ng-template>

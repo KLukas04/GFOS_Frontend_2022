@@ -15,7 +15,7 @@ a {
     gap: 10px;
     align-items: center;
     width: 15rem;
-    height: 25rem;
+    height: 100%;
     border-radius: 16pt;
 
     tui-input {
@@ -27,10 +27,15 @@ a {
       height: 100%;
     }
 
-    
-
     form {
       width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      tui-select{
+        width: 100%;
+      }
       .toggle {
         display: flex;
         flex-direction: row;
@@ -40,11 +45,11 @@ a {
       }
     }
 
-    img{
+    img {
       height: 200px;
     }
   }
-  .spacing{
+  .spacing {
     justify-content: space-between;
   }
 }
