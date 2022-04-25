@@ -21,10 +21,10 @@
                     <tui-primitive-textfield>Vorname</tui-primitive-textfield>
                     <tui-primitive-textfield>Name</tui-primitive-textfield>
                 </div>
-                <p>Email</p>
+                <p>Kontakt</p>
                 <div class="input">
                     <tui-primitive-textfield>Email</tui-primitive-textfield>
-                    <tui-primitive-textfield>Passwort</tui-primitive-textfield>
+                    <tui-primitive-textfield>Telefonnummer</tui-primitive-textfield>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
                     </tui-badge>
                 </div>
                 <div class="button">
-                    <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showDialog()">
+                    <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showInterestDialog()">
                         Add
                     </button>
                 </div>
@@ -59,19 +59,4 @@
         <p>Lebenslauf</p>
         <app-timeline-view></app-timeline-view>
     </div>
-
 </div>
-
-<ng-template let-observer [tuiDialogOptions]="$any({ label: 'Interessen', size: 's' })" [(tuiDialog)]="open">
-    <form>
-        <p>Füge ein Hobby hinzu:</p>
-        <tui-input tuiAutoFocus [ngModelOptions]="{ standalone: true }" [(ngModel)]="newInterest">
-            Hobby
-        </tui-input>
-        <p>
-            <button tuiButton type="submit" (click)="observer.complete()">
-                Ok
-            </button>
-        </p>
-    </form>
-</ng-template>

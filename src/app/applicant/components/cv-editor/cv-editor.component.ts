@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, Injector, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as fromReducer from '../../store/applicant.reducer';
 import * as fromActions from '../../store/applicant.actions';
+
+import { TuiDialogService } from '@taiga-ui/core';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+import { InterestDialogComponent } from '../interest-dialog/interest-dialog.component';
+
 
 @Component({
   selector: 'app-cv-editor',
@@ -14,16 +19,26 @@ export class CvEditorComponent implements OnInit {
     'https://www.torsten-volkmer.de/wp-content/uploads/2017/06/20170613_011_by_TorstenVolkmer.jpg';
   newInterest = '';
   interests = ['Tennis', 'Klavier'];
-  open = false;
 
-  constructor(private store: Store<fromReducer.ApplicantState>) {}
+  private readonly interestDialog = this.dialogService.open(
+    new PolymorpheusComponent(InterestDialogComponent, this.injector),
+    {
+      dismissible: true,
+      label: 'Neue Interesse',
+    }
+  );
+
+  constructor(private store: Store<fromReducer.ApplicantState>, 
+    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector) {}
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadLebenslaufStationen());
   }
 
-  showDialog() {
-    this.open = true;
-    this.interests.push(this.newInterest);
+  showInterestDialog() {
+    console.log("interest");
+    this.interestDialog.subscribe();
   }
+  
 }

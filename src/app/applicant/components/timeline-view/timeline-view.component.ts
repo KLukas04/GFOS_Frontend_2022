@@ -1,6 +1,8 @@
-import {ChangeDetectionStrategy, Component, Inject} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Inject, Injector} from '@angular/core';
 import {TuiDialogService} from '@taiga-ui/core';
 
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+import { CvDialogComponent } from '../cv-dialog/cv-dialog.component';
 
 @Component({
   selector: 'app-timeline-view',
@@ -10,9 +12,16 @@ import {TuiDialogService} from '@taiga-ui/core';
 })
 export class TimelineViewComponent {
 
+  private readonly cvDialog = this.dialogService.open(
+    new PolymorpheusComponent(CvDialogComponent, this.injector),
+    {
+      dismissible: true,
+      label: 'Lebenslaufstation',
+    }
+  );
+
   value = '';
   year = '';
-  open = false;
 
   stations: Meilenstein[] = [
    {year: 2015, content: "Hallo"},
@@ -27,11 +36,13 @@ export class TimelineViewComponent {
 
   constructor(
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector,
 ) {}
 
-  showDialog() {
-    this.open = true;
-  }
+showCVDialog() {
+  console.log("Hello");
+  this.cvDialog.subscribe();
+}
 }
 
 interface Meilenstein {
