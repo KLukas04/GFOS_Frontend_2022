@@ -22,8 +22,9 @@ import {
   TuiSelectModule,
   TuiTagModule,
   TuiTextAreaModule,
+  TuiToggleModule,
 } from '@taiga-ui/kit';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HowItWorksComponent } from './components/main/how-it-works/how-it-works.component';
 import { TrendsComponent } from './components/main/trends/trends.component';
 import { TrendJobCardComponent } from './components/main/trend-job-card/trend-job-card.component';
@@ -40,6 +41,9 @@ import { StoreModule } from '@ngrx/store';
 import * as fromReducer from './store/jobs.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { JobsEffects } from './store/jobs.effects';
+import { ResultsComponent } from './components/results/results/results.component';
+import { SidebarComponent } from './components/results/sidebar/sidebar.component';
+import { JobPreviewComponent } from './components/results/job-preview/job-preview.component';
 @NgModule({
   declarations: [
     JobsComponent,
@@ -53,6 +57,9 @@ import { JobsEffects } from './store/jobs.effects';
     HeaderComponent,
     OverviewSectionComponent,
     InformationItemComponent,
+    ResultsComponent,
+    SidebarComponent,
+    JobPreviewComponent,
   ],
   imports: [
     CommonModule,
@@ -75,8 +82,11 @@ import { JobsEffects } from './store/jobs.effects';
     FontAwesomeModule,
     TuiInputFileModule,
     RemoteDataModule,
+    FormsModule,
+    ReactiveFormsModule,
+    TuiToggleModule,
     StoreModule.forFeature(fromReducer.jobsFeatureKey, fromReducer.reducer),
     EffectsModule.forFeature([JobsEffects]),
   ],
 })
-export class JobsModule {}
+export class JobsModule { }

@@ -1,0 +1,46 @@
+<div class="sidebar">
+    <h1> Filter </h1>
+    <form [formGroup]="filterForm">
+        <tui-select tuiTextfieldSize="l" class="tui-group__inherit-item b-form" formControlName="typeFormControl">
+            Fachgebiet
+            <tui-data-list-wrapper *tuiDataList size="l" [items]="mockExpertiseAreas" [itemContent]="content">
+            </tui-data-list-wrapper>
+        </tui-select>
+        <tui-select tuiTextfieldSize="l" class="tui-group__inherit-item first-select" [tuiTextfieldLabelOutside]="true"
+            formControlName="distanceFormControl">Art der Beschäftigung
+            <tui-data-list-wrapper *tuiDataList [items]="mockTypesOfEmployment"></tui-data-list-wrapper>
+        </tui-select>
+        <tui-select tuiTextfieldSize="l" class="tui-group__inherit-item" [tuiTextfieldLabelOutside]="true"
+            formControlName="expertiseFormControl">Im Umkreis von...
+            <tui-data-list-wrapper *tuiDataList [items]="mockDistances"></tui-data-list-wrapper>
+        </tui-select>
+
+        <div class="point">
+            <h3> Remote</h3>
+            <tui-toggle formControlName="remote" size="l"></tui-toggle>
+        </div>
+
+        <div class="point">
+            <h3> Befristet</h3>
+            <tui-toggle formControlName="befristet" size="l"></tui-toggle>
+        </div>
+
+        <tui-select tuiTextfieldSize="l" class="tui-group__inherit-item b-form" formControlName="yearlIncome">
+            Minimum Jahresgehalt
+            <tui-data-list-wrapper *tuiDataList size="l" [items]="mockYearlyIncome">
+            </tui-data-list-wrapper>
+        </tui-select>
+        <tui-select tuiTextfieldSize="l" class="tui-group__inherit-item b-form" formControlName="holidays">
+            Urlaubstage
+            <tui-data-list-wrapper *tuiDataList size="l" [items]="holidays">
+            </tui-data-list-wrapper>
+        </tui-select>
+    </form>
+</div>
+
+<ng-template #content let-data>
+    <div class="template">
+        <tui-avatar size="xs" class="avatar" [text]="data.text"></tui-avatar>
+        <div class="name">{{ data.text }}</div>
+    </div>
+</ng-template>
