@@ -1,10 +1,19 @@
-<a size="l" tuiIsland  [hoverable]="true" routerLink="openApplications">
+<a size="l" tuiIsland [hoverable]="true" >
     <div class="parent">
         <div class="info">
             <div class="heading">
                 <h2> {{ title }} </h2>
-                <tui-badge [value]="typ" [hoverable]=true status="neutral"></tui-badge>
+                <div class="actions">
+                    <tui-badge [value]="typ" [hoverable]=true status="neutral"></tui-badge>
+                    <tui-checkbox [formControl]="angepinnt"></tui-checkbox>
+                    <tui-marker-icon mode="link" size="xs" src="tuiIconTrash"></tui-marker-icon>
+                    <a tuiLink
+                    iconAlign="left"
+                    routerLink="openApplications">Öffnen</a>
+                 
+                </div>
             </div>
+
 
         </div>
         <div class="content">
@@ -17,4 +26,5 @@
             </div>
         </div>
     </div>
+
 </a>
