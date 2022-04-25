@@ -8,6 +8,7 @@ import {
   TuiButtonModule,
   TuiGroupModule,
   TuiLabelModule,
+  TuiScrollbarModule,
   TuiTextfieldControllerModule,
 } from '@taiga-ui/core';
 import {
@@ -87,6 +88,7 @@ import { JobPreviewComponent } from './components/results/job-preview/job-previe
     ReactiveFormsModule,
     TuiToggleModule,
     TuiBadgeModule,
+    TuiScrollbarModule,
     StoreModule.forFeature(fromReducer.jobsFeatureKey, fromReducer.reducer),
     EffectsModule.forFeature([JobsEffects]),
   ],
