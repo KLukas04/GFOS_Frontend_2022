@@ -4,8 +4,7 @@
       <h2> {{name}} </h2>
       <div class="job">
         <p>hat sich beworben auf:</p>
-        <!-- TODO: ROUTER FUNKTIONIERT NICHT - Fehler in Console -->
-      <a tuiLink routerLink="/jobs/details">
+        <a tuiLink routerLink="/jobs/details">
           <tui-badge [value]="job"></tui-badge>
         </a>
       </div>
@@ -34,12 +33,29 @@
       </div>
     </div>
     <div class="buttons">
-      <button tuiButton class="accept">
-        Annehmen
-      </button>
+      <tui-hosted-dropdown class="accept" [content]="dropdown" [(open)]="open">
+        <div tuiGroup>
+          <button tuiButton type="button" size="l" class="btn">
+            Annehmen
+          </button>
+          <button tuiIconButton type="button" tuiHostedDropdownHost title="Menu" size="l"
+            class="tui-group__auto-width-item" [iconRight]="icon"></button>
+          <ng-template #icon>
+            <tui-svg src="tuiIconChevronDown" class="icon" [class.icon_rotated]="open"></tui-svg>
+          </ng-template>
+        </div>
+      </tui-hosted-dropdown>
       <button tuiButton appearance="accent" class="decline">
         Ablehnen
       </button>
     </div>
   </div>
 </a>
+
+<ng-template #dropdown let-activeZone>
+  <tui-data-list>
+    <button tuiOption>Weiterleiten</button>
+    <button tuiOption>Delegieren (so beides Popup öffnen)</button>
+  </tui-data-list>
+
+</ng-template>

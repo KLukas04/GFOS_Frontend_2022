@@ -3,32 +3,16 @@
 <div class="container">
     <a size="l" tuiIsland [hoverable]="true" textAlign="center">
         <div class="card">
-            <h3> Kontaktdaten</h3>
+            <h3> Informationen </h3>
             <tui-input> Vorname </tui-input>
             <tui-input> Nachname </tui-input>
-            <p>  </p>
             <tui-input> Email </tui-input>
             <tui-input> Passwort </tui-input>
-        </div>
-    </a>
-    <a size="l" tuiIsland [hoverable]="true" textAlign="center">
-        <div class="card">
-            <h3> Abteilung</h3>
-            <form [formGroup]="inputForm">
-                <tui-select formControlName="abteilung">
+            <form *ngIf="istChef" [formGroup]="inputForm">
+                <tui-select tuiTextfieldSize="l" class="tui-group__inherit-item b-form" formControlName="abteilung">
                     Abteilung
-                    <tui-data-list-wrapper
-                        *tuiDataList
-                        [items]="abteilungen"
-                    ></tui-data-list-wrapper>
-                </tui-select>
-
-                <tui-select formControlName="ebene">
-                    Ebene (oder Team)
-                    <tui-data-list-wrapper
-                        *tuiDataList
-                        [items]="ebenen"
-                    ></tui-data-list-wrapper>
+                    <tui-data-list-wrapper *tuiDataList size="l" [items]="mockExpertiseAreas" [itemContent]="content">
+                    </tui-data-list-wrapper>
                 </tui-select>
             </form>
         </div>
@@ -44,3 +28,9 @@
         </div>
     </a>
 </div>
+<ng-template #content let-data>
+    <div class="template">
+        <tui-avatar [avatarUrl]="data.icon" size="xs" class="avatar" [text]="data.text"></tui-avatar>
+        <div class="name">{{ data.text }}</div>
+    </div>
+</ng-template>

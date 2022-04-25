@@ -35,5 +35,19 @@
             
         }
     }
-
 }
+
+.template {
+    display: flex;
+    align-items: center;
+  
+    .avatar {
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+  
+    .name {
+      text-overflow: ellipsis;
+      flex-shrink: 1;
+    }
+  }

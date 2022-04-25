@@ -7,7 +7,7 @@ import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
 import { EmployerRoutingModule } from './employer-routing.module';
 import { EmployerComponent } from './employer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { TuiButtonModule, TuiDataListModule, TuiDialogModule, TuiLinkModule, TuiNotificationModule, TuiPrimitiveTextfieldModule, TuiRootModule, TuiScrollbarModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiDataListModule, TuiDialogModule, TuiHostedDropdownModule, TuiLinkModule, TuiNotificationModule, TuiPrimitiveTextfieldModule, TuiRootModule, TuiScrollbarModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 import { TuiAxesModule, TuiLineChartModule } from '@taiga-ui/addon-charts';
 import { TuiAvatarModule, TuiBadgedContentModule, TuiBadgeModule, TuiCheckboxBlockModule, TuiCheckboxModule, TuiDataListWrapperModule, TuiInputModule, TuiIslandModule, TuiMarkerIconModule, TuiMultiSelectModule, TuiPdfViewerModule, TuiProgressModule, TuiSelectModule, TuiTextAreaModule, TuiToggleModule } from '@taiga-ui/kit';
 import { CreateJobComponent } from './components/createJob/create-job/create-job.component';
@@ -62,6 +62,8 @@ import { CreateDepartmentComponent } from './components/administration/create-de
     TuiDataListWrapperModule,
     TuiMultiSelectModule,
     TuiMarkerIconModule,
+    TuiHostedDropdownModule,
+    TuiSvgModule,
     
   ],
   providers:[
