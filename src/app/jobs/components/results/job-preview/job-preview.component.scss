@@ -1,0 +1,68 @@
+@import "../../../../../scss/colors.scss";
+
+a {
+    padding: 0px;
+}
+.parent {
+    display: flex;
+    flex-direction: column;
+
+    background-color: $color-4;
+    width: 500px;
+    border-radius: 16pt;
+
+    .info {
+        background-color: #7dff63;
+        border-radius: 16pt 16pt 16pt 0pt;
+        .heading {
+            display: flex;
+            flex-direction: row;
+
+            padding-left: 32pt;
+            padding-right: 32pt;
+
+            justify-content: space-between;
+            align-items: center;
+            color: black;
+
+            h2 {
+                font-weight: bolder;
+            }
+            .badge {
+                width: 50%;
+                display: flex;
+                flex-direction: row;
+                gap: 10px;
+                tui-badge {
+                    color: black;
+                }
+            }
+        }
+        p {
+            font-size: 12px;
+            padding: 0pt 16pt 0pt 16pt;
+        }
+    }
+
+    .content {
+        padding: 0pt 32pt 32pt 32pt;
+
+        form{
+            display: flex;
+            flex-direction: row;
+            gap: 100px;
+        }
+        .point{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            tui-toggle{
+              --tui-primary: #7DFF63;
+              --tui-primary-hover: #7DFF63;
+            }
+            
+        }
+    }
+}

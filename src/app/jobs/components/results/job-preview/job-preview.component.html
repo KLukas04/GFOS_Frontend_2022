@@ -1,1 +1,41 @@
-<p>job-preview works!</p>
+<a size="l" tuiIsland [hoverable]="true" routerLink="../details">
+    <div class="parent">
+        <div class="info">
+            <div class="heading">
+                <h2> {{ title }} </h2>
+                <div class="badge">
+                    <tui-badge [value]="fachgebiet" [hoverable]=true status="neutral"></tui-badge>
+                    <tui-badge [value]="typ" [hoverable]=true status="neutral"></tui-badge>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="content">
+            <p> {{ address }}</p>
+            <form [formGroup]="form">
+
+                <div class="point">
+                    <p> Remote</p>
+                    <tui-toggle formControlName="remote" size="m"></tui-toggle>
+                </div>
+
+                <div class="point">
+                    <p> Befristet</p>
+                    <tui-toggle formControlName="befristet" size="m"></tui-toggle>
+                </div>
+            </form>
+
+            <p>{{description}}</p>
+
+            <div class="point">
+                <p> Jahresgehalt</p>
+                <p> {{ jahregehalt }}</p>
+            </div>
+            <div class="point">
+                <p> Urlaubstage</p>
+                <p> {{ holidays }}</p>
+            </div>
+        </div>
+    </div>
+</a>

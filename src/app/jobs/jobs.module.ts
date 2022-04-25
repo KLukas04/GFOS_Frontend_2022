@@ -12,6 +12,7 @@ import {
 } from '@taiga-ui/core';
 import {
   TuiAvatarModule,
+  TuiBadgeModule,
   TuiCarouselModule,
   TuiDataListWrapperModule,
   TuiInputFileModule,
@@ -85,6 +86,7 @@ import { JobPreviewComponent } from './components/results/job-preview/job-previe
     FormsModule,
     ReactiveFormsModule,
     TuiToggleModule,
+    TuiBadgeModule,
     StoreModule.forFeature(fromReducer.jobsFeatureKey, fromReducer.reducer),
     EffectsModule.forFeature([JobsEffects]),
   ],

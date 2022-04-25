@@ -1,3 +1,5 @@
+@import "../../../../../scss/colors.scss";
+
 .sidebar{
     min-height: calc(100vh - 64px);
     max-height: calc(100vh - 64px);
@@ -6,6 +8,8 @@
     flex-direction: column;
     padding: 50px;
     gap: 25px;
+
+    background-color: $color-4;
 
     form{
         width: 100%;

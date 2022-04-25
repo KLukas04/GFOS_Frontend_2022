@@ -4,6 +4,10 @@
     height: 100%;
     .content{
         width: 70%;
-        background-color: green;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 50px;
     }
+    
 }
