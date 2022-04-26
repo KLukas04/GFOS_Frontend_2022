@@ -1,1 +1,46 @@
-<p>forgot-pw-page works!</p>
+<div class="header">
+    <div class="image"></div>
+    <div class="content">
+        <div class="text">
+            <p id="heading"> Setze dein <span class="markup">Passwort</span> zurück</p>
+        </div>
+        <img src="assets/forgotPw.svg" alt="">
+    </div>
+</div>
+
+<div class="main">
+    <a size="l" tuiIsland target="_blank" [hoverable]="true" textAlign="center">
+        <div class="card">
+            <h3> Passwort zurücksetzen</h3>
+            <p>Bitte gib den Pin aus der dir zugeschickten Email ein</p>
+            <tui-primitive-textfield [(value)]="pin">Pin</tui-primitive-textfield>
+
+            <h4> Dein neues Passwort</h4>
+
+            <tui-primitive-textfield [invalid]="computedInvalid" [focusable]="focusable" [disabled]="disabled"
+                [readOnly]="readOnly" [iconContent]="iconContent" [value]="newPassword1"
+                (valueChange)="onValueChange($event)" (focusedChange)="onFocused($event)">
+                Neues Passwort
+                <ng-content></ng-content>
+                <input tuiTextfield [type]="inputType" />
+            </tui-primitive-textfield>
+
+            <tui-primitive-textfield [invalid]="computedInvalid" [focusable]="focusable" [disabled]="disabled"
+                [readOnly]="readOnly" [iconContent]="iconContent" [value]="newPassword2"
+                (valueChange)="onValueChange($event)" (focusedChange)="onFocused($event)">
+                Neues Passwort
+                <ng-content></ng-content>
+                <input tuiTextfield [type]="inputType" />
+            </tui-primitive-textfield>
+
+            <button tuiButton type="button" class="tui-space_right-3 tui-space_bottom-3" (click)="changePasword()" routerLink="/auth">
+                Zurücksetzen
+            </button>
+        </div>
+    </a>
+</div>
+
+<ng-template #iconContent>
+    <tui-svg tuiHintId="not_required" class="icon" [src]="icon" (click)="togglePasswordVisibility()"></tui-svg>
+
+</ng-template>

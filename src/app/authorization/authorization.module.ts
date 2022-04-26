@@ -8,9 +8,11 @@ import {
   TuiButtonModule,
   TuiDialogModule,
   TuiLinkModule,
+  TuiPrimitiveTextfieldModule,
   TuiRootModule,
+  TuiSvgModule,
 } from '@taiga-ui/core';
-import { TuiInputModule } from '@taiga-ui/kit';
+import { TuiActionModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -31,6 +33,10 @@ import { ForgotPwPageComponent } from './components/forgot-pw-page/forgot-pw-pag
     TuiRootModule,
     FormsModule,
     TuiLinkModule,
+    TuiActionModule,
+    TuiIslandModule,
+    TuiSvgModule,
+    TuiPrimitiveTextfieldModule,
     StoreModule.forFeature(
       fromReducer.authorizationFeatureKey,
       fromReducer.reducer
