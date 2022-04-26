@@ -19,7 +19,7 @@
       </div>
       <div class="files">
 
-        <a tuiLink routerLink="../employer/myjobs/openApplications/applicantDetailView" class="file">
+        <a tuiLink routerLink="../employer/myjobs/openApplications/applicantDetailView" class="file" (click)="setStatusInWork()">
           <tui-avatar [avatarUrl]="avatar" text="Bild" size="xl" [rounded]="true"></tui-avatar>
         </a>
 
@@ -35,7 +35,7 @@
     <div class="buttons">
       <tui-hosted-dropdown class="accept" [content]="dropdown" [(open)]="open">
         <div tuiGroup>
-          <button tuiButton type="button" size="l" class="btn">
+          <button tuiButton type="button" size="l" class="btn" (click)="acceptApplication">
             Annehmen
           </button>
           <button tuiIconButton type="button" tuiHostedDropdownHost title="Menu" size="l"
@@ -45,7 +45,7 @@
           </ng-template>
         </div>
       </tui-hosted-dropdown>
-      <button tuiButton appearance="accent" class="decline">
+      <button tuiButton appearance="accent" class="decline" (click)="declineApplication">
         Ablehnen
       </button>
     </div>

@@ -8,9 +8,8 @@
   width: 500px;
   border-radius: 16pt;
 
-
   .info {
-    background-color: #7DFF63;
+    background-color: #7dff63;
     border-radius: 16pt 16pt 16pt 0pt;
     .heading {
       display: flex;
@@ -26,8 +25,14 @@
       h2 {
         font-weight: bolder;
       }
-      tui-badge{
-        color: black
+      .badges {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 10px;
+        tui-badge {
+          color: black;
+        }
       }
     }
     p {
@@ -40,16 +45,20 @@
     padding: 0pt 32pt 32pt 32pt;
     .date {
       display: flex;
+      flex-direction: row;
       justify-content: flex-end;
+      align-items: center;
+      gap: 10px;
       font-size: 12px;
+
     }
 
     h5 {
       // margin für die Überschriften wie "Beschreibung" und "Fortschritt"
       margin: 0;
     }
-    progress{
-      color: #7DFF63;
+    progress {
+      color: #7dff63;
     }
   }
 }

@@ -20,11 +20,8 @@ export class TimelineViewComponent {
     }
   );
 
-  value = '';
-  year = '';
-
   stations: Meilenstein[] = [
-   {year: 2015, content: "Hallo"},
+   {year: 2015, content: "Hallo", file: "file"},
    {year: 2015, content: "Hallo"},
    {year: 2015, content: "Hallo"},
    {year: 2015, content: "Hallo"},
@@ -48,4 +45,5 @@ showCVDialog() {
 interface Meilenstein {
   year: number;
   content: string;
+  file?: string;
 }

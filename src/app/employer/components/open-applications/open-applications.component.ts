@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
-import {TuiHostedDropdownComponent} from '@taiga-ui/core';
+import { TuiHostedDropdownComponent } from '@taiga-ui/core';
 
 @Component({
   selector: 'app-open-applications',
@@ -11,9 +11,9 @@ export class OpenApplicationsComponent implements OnInit {
 
   @ViewChild(TuiHostedDropdownComponent) component?: TuiHostedDropdownComponent;
   open = false;
-  
+
   public avatar: string = 'https://www.torsten-volkmer.de/wp-content/uploads/2017/06/20170613_011_by_TorstenVolkmer.jpg';
-  @Input() job ="";
+  @Input() job = "";
   @Input() name = "";
   @Input() beworbenAm = "";
 
@@ -22,7 +22,7 @@ export class OpenApplicationsComponent implements OnInit {
   //1 = in bearbeitung
   //2 = abgelehnt
   //3 = angenommen
-  
+
   constructor() { }
 
   ngOnInit(): void {
@@ -32,7 +32,21 @@ export class OpenApplicationsComponent implements OnInit {
     this.open = false;
 
     if (this.component && this.component.nativeFocusableElement) {
-        this.component.nativeFocusableElement.focus();
+      this.component.nativeFocusableElement.focus();
     }
-}
+  }
+
+  setStatusInWork(){
+    this.status = 1; //bei ersten Click auf Bewerbung status auf "in bearbeitung"
+  }
+
+  acceptApplication(){
+    this.status = 3;
+  }
+
+  declineApplication(){
+    this.status = 2;
+  }
+
+
 }

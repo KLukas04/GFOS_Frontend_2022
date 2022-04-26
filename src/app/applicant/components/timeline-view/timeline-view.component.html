@@ -5,7 +5,10 @@
             <div *ngFor="let station of stations; index as i" class="container"
                 [ngClass]=" i%2 == 0 ? 'left' : 'right'">
                 <div class="content">
-                    <h2>{{ station.year }}</h2>
+                    <div class="heading">
+                        <h2>{{ station.year }}</h2>
+                        <tui-marker-icon *ngIf="station.file !== ''" mode="link" size="xs" src="tuiIconFile"></tui-marker-icon>
+                    </div>
                     <p>{{ station.content }} </p>
                 </div>
             </div>
@@ -17,5 +20,4 @@
             </button>
 
         </div>
-    
 </div>

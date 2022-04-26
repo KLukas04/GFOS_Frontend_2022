@@ -17,6 +17,7 @@ import {
   TuiInputModule,
   TuiToggleModule,
   TuiInputFileModule,
+  TuiMarkerIconModule,
 } from '@taiga-ui/kit';
 
 import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
@@ -72,6 +73,7 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     TuiToggleModule,
     TuiScrollbarModule,
     TuiInputFileModule,
+    TuiMarkerIconModule,
     StoreModule.forFeature(
       fromReducer.applicantFeatureKey,
       fromReducer.reducer
