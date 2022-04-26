@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
@@ -25,6 +25,10 @@ import { TuiAvatarModule } from '@taiga-ui/kit';
 import * as fromRootStore from './store/root.reducer';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './authorization/service/token.interceptor';
+import { registerLocaleData } from '@angular/common';
+import localeDe from '@angular/common/locales/de';
+
+registerLocaleData(localeDe);
 
 @NgModule({
   declarations: [AppComponent, ToolbarComponent],
@@ -51,6 +55,10 @@ import { TokenInterceptor } from './authorization/service/token.interceptor';
     TuiScrollbarModule,
   ],
   providers: [
+    {
+      provide: LOCALE_ID,
+      useValue: 'de-DE',
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

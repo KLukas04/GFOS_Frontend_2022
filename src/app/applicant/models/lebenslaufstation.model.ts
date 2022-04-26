@@ -1,5 +1,5 @@
 export interface LebenslaufStation {
-  start: Date;
-  ende: Date;
+  start: string;
+  ende: string;
   info: string;
 }

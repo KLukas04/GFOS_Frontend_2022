@@ -1,41 +1,64 @@
-
-<div class="parent">
-    <tui-scrollbar class="box">
-        <div class="timeline">
-            <div *ngFor="let station of stations; index as i" class="container"
-                [ngClass]=" i%2 == 0 ? 'left' : 'right'">
-                <div class="content">
-                    <h2>{{ station.year }}</h2>
-                    <p>{{ station.content }} </p>
-                </div>
-            </div>
+<div class="parent" *ngIf="stationen$ | async | isSuccess">
+  <tui-scrollbar class="box">
+    <div
+      class="timeline"
+      *ngIf="stationen$ | async | successValue as stationen"
+    >
+      <div
+        *ngFor="let station of stationen; index as i"
+        class="container"
+        [ngClass]="i % 2 == 0 ? 'left' : 'right'"
+      >
+        <div class="content">
+          <h2>
+            {{
+              station.start | date: getDateFormat(station.start, station.ende)
+            }}
+            <span *ngIf="getDateFormat(station.start, station.ende) === 'YYYY'">
+              - {{ station.ende | date: "YYYY" }}</span
+            >
+          </h2>
+          <p>{{ station.info }}</p>
         </div>
-    </tui-scrollbar>
-        <div class="button">
-            <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showDialog()">
-                Add
-            </button>
-
-        </div>
-    
+      </div>
+    </div>
+  </tui-scrollbar>
+  <div class="button">
+    <button
+      tuiButton
+      type="button"
+      size="m"
+      icon="tuiIconPlusLarge"
+      (click)="showDialog()"
+    >
+      Add
+    </button>
+  </div>
 </div>
 
-
 <tui-root>
-    <ng-template let-observer [tuiDialogOptions]="$any({ label: 'Lebenslaufstation', size: 's' })" [(tuiDialog)]="open">
-        <form>
-            <p>Füge einen Meilenstein hinzu:</p>
-            <tui-input tuiAutoFocus [ngModelOptions]="{ standalone: true }" [(ngModel)]="value">
-                Meilenstein
-            </tui-input>
-            <tui-input [ngModelOptions]="{ standalone: true }" [(ngModel)]="year">
-                Jahr
-            </tui-input>
-            <p>
-                <button tuiButton type="submit" (click)="observer.complete()">
-                    Ok
-                </button>
-            </p>
-        </form>
-    </ng-template>
+  <ng-template
+    let-observer
+    [tuiDialogOptions]="$any({ label: 'Lebenslaufstation', size: 's' })"
+    [(tuiDialog)]="open"
+  >
+    <form>
+      <p>Füge einen Meilenstein hinzu:</p>
+      <tui-input
+        tuiAutoFocus
+        [ngModelOptions]="{ standalone: true }"
+        [(ngModel)]="value"
+      >
+        Meilenstein
+      </tui-input>
+      <tui-input [ngModelOptions]="{ standalone: true }" [(ngModel)]="year">
+        Jahr
+      </tui-input>
+      <p>
+        <button tuiButton type="submit" (click)="observer.complete()">
+          Ok
+        </button>
+      </p>
+    </form>
+  </ng-template>
 </tui-root>

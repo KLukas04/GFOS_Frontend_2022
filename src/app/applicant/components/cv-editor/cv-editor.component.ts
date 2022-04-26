@@ -3,6 +3,11 @@ import { Store } from '@ngrx/store';
 
 import * as fromReducer from '../../store/applicant.reducer';
 import * as fromActions from '../../store/applicant.actions';
+import * as fromSelectors from '../../store/applicant.selectors';
+import { Observable } from 'rxjs';
+import { RemoteData } from 'ngx-remotedata';
+import { LebenslaufStation } from '../../models/lebenslaufstation.model';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-cv-editor',
@@ -16,7 +21,15 @@ export class CvEditorComponent implements OnInit {
   interests = ['Tennis', 'Klavier'];
   open = false;
 
-  constructor(private store: Store<fromReducer.ApplicantState>) {}
+  public stationen$: Observable<
+    RemoteData<LebenslaufStation[], HttpErrorResponse>
+  >;
+
+  constructor(private store: Store<fromReducer.ApplicantState>) {
+    this.stationen$ = this.store.select(
+      fromSelectors.selectLebenslaufStationen
+    );
+  }
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadLebenslaufStationen());

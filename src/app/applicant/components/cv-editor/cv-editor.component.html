@@ -1,77 +1,106 @@
 <div class="main">
-    <div class="image"></div>
-    <div class="content">
-        <div class="text">
-            <p id="heading"> Dein Lebenslauf, <span class="markup">Lukas!</span></p>
-        </div>
-        <img src="assets/writing_resume.svg" alt="">
+  <div class="image"></div>
+  <div class="content">
+    <div class="text">
+      <p id="heading">Dein Lebenslauf, <span class="markup">Lukas!</span></p>
     </div>
+    <img src="assets/writing_resume.svg" alt="" />
+  </div>
 </div>
 
 <div class="parent">
-    <div class="sidebar">
-        <tui-avatar [avatarUrl]="avatar" size="xxl" class="tui-space_top-1" [rounded]="true"></tui-avatar>
-        <div class="file"> Lebenslauf-PDF hier </div>
-    </div>
-    <div class="main">
-        <div class="basic-info">
-            <div class="box first">
-                <p>Name</p>
-                <div class="input">
-                    <tui-primitive-textfield>Vorname</tui-primitive-textfield>
-                    <tui-primitive-textfield>Name</tui-primitive-textfield>
-                </div>
-                <p>Email</p>
-                <div class="input">
-                    <tui-primitive-textfield>Email</tui-primitive-textfield>
-                    <tui-primitive-textfield>Passwort</tui-primitive-textfield>
-                </div>
-            </div>
-
-            <div class="box">
-                <p>Addresse</p>
-                <div class="input">
-                    <tui-primitive-textfield>Straße</tui-primitive-textfield>
-                    <tui-primitive-textfield>Hausnummer</tui-primitive-textfield>
-                </div>
-                <div class="input">
-                    <tui-primitive-textfield>PLZ</tui-primitive-textfield>
-                    <tui-primitive-textfield>Stadt</tui-primitive-textfield>
-                </div>
-            </div>
+  <div class="sidebar">
+    <tui-avatar
+      [avatarUrl]="avatar"
+      size="xxl"
+      class="tui-space_top-1"
+      [rounded]="true"
+    ></tui-avatar>
+    <div class="file">Lebenslauf-PDF hier</div>
+  </div>
+  <div class="main">
+    <div class="basic-info">
+      <div class="box first">
+        <p>Name</p>
+        <div class="input">
+          <tui-primitive-textfield>Vorname</tui-primitive-textfield>
+          <tui-primitive-textfield>Name</tui-primitive-textfield>
         </div>
-        <div class="interessen">
-            <p>Interessen</p>
-            <div class="i-content">
-                <div class="interests">
-                    <tui-badge *ngFor='let interest of interests' size="l" status="primary" [value]="interest">
-                    </tui-badge>
-                </div>
-                <div class="button">
-                    <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showDialog()">
-                        Add
-                    </button>
-                </div>
-            </div>
+        <p>Email</p>
+        <div class="input">
+          <tui-primitive-textfield>Email</tui-primitive-textfield>
+          <tui-primitive-textfield>Passwort</tui-primitive-textfield>
         </div>
-    </div>
-    <div class="lebenslauf">
-        <p>Lebenslauf</p>
-        <app-timeline-view></app-timeline-view>
-    </div>
+      </div>
 
+      <div class="box">
+        <p>Addresse</p>
+        <div class="input">
+          <tui-primitive-textfield>Straße</tui-primitive-textfield>
+          <tui-primitive-textfield>Hausnummer</tui-primitive-textfield>
+        </div>
+        <div class="input">
+          <tui-primitive-textfield>PLZ</tui-primitive-textfield>
+          <tui-primitive-textfield>Stadt</tui-primitive-textfield>
+        </div>
+      </div>
+    </div>
+    <div class="interessen">
+      <p>Interessen</p>
+      <div class="i-content">
+        <div class="interests">
+          <tui-badge
+            *ngFor="let interest of interests"
+            size="l"
+            status="primary"
+            [value]="interest"
+          >
+          </tui-badge>
+        </div>
+        <div class="button">
+          <button
+            tuiButton
+            type="button"
+            size="m"
+            icon="tuiIconPlusLarge"
+            (click)="showDialog()"
+          >
+            Add
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lebenslauf">
+    <p>Lebenslauf</p>
+    <h3 *ngIf="stationen$ | async | isInProgress">
+      Stationen werden geladen...
+    </h3>
+    <div *ngIf="stationen$ | async | isSuccess">
+      <app-timeline-view></app-timeline-view>
+    </div>
+    <h3 *ngIf="stationen$ | async | isFailure">
+      Stationen konnten nicht geladen werden!
+    </h3>
+  </div>
 </div>
 
-<ng-template let-observer [tuiDialogOptions]="$any({ label: 'Interessen', size: 's' })" [(tuiDialog)]="open">
-    <form>
-        <p>Füge ein Hobby hinzu:</p>
-        <tui-input tuiAutoFocus [ngModelOptions]="{ standalone: true }" [(ngModel)]="newInterest">
-            Hobby
-        </tui-input>
-        <p>
-            <button tuiButton type="submit" (click)="observer.complete()">
-                Ok
-            </button>
-        </p>
-    </form>
+<ng-template
+  let-observer
+  [tuiDialogOptions]="$any({ label: 'Interessen', size: 's' })"
+  [(tuiDialog)]="open"
+>
+  <form>
+    <p>Füge ein Hobby hinzu:</p>
+    <tui-input
+      tuiAutoFocus
+      [ngModelOptions]="{ standalone: true }"
+      [(ngModel)]="newInterest"
+    >
+      Hobby
+    </tui-input>
+    <p>
+      <button tuiButton type="submit" (click)="observer.complete()">Ok</button>
+    </p>
+  </form>
 </ng-template>
