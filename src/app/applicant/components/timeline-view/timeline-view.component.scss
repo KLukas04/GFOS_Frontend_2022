@@ -42,7 +42,7 @@
     content: '';
     position: absolute;
     width: 6px;
-    background-color: white;
+    background-color: $color-3;
     top: 0;
     bottom: 0;
     left: 50%;
@@ -92,7 +92,7 @@
     right: 30px;
     border: medium solid white;
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent white;
+    border-color: transparent transparent transparent $color-3;
   }
   
   /* Add arrows to the right container (pointing left) */
@@ -106,7 +106,7 @@
     left: 30px;
     border: medium solid white;
     border-width: 10px 10px 10px 0;
-    border-color: transparent white transparent transparent;
+    border-color: transparent $color-3 transparent transparent;
   }
   
   /* Fix the circle for containers on the right side */
@@ -120,6 +120,11 @@
     background-color: $color-3;
     position: relative;
     border-radius: 6px;
+    .heading{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
   
   /* Media queries - Responsive timeline on screens less than 600px wide */

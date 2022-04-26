@@ -1,0 +1,9 @@
+<div class="container">
+    <tui-primitive-textfield> Lebenslaufstation </tui-primitive-textfield>
+    <tui-primitive-textfield> Jahr </tui-primitive-textfield>
+    <tui-input-file link="Choose a file" accept="application/pdf" class="container" [formControl]="control">
+    </tui-input-file>
+    <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="close()">
+        Add
+    </button>
+</div>

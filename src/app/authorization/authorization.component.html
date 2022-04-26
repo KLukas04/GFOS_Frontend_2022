@@ -5,22 +5,16 @@
         <h2 class="title">Anmelden</h2>
         <div class="input-field">
           <fa-icon [icon]="faUser"></fa-icon>
-          <input
-            type="text"
-            placeholder="E-Mail"
-            [formControl]="loginEmailForm"
-            (input)="saveLoginEmail()"
-          />
+          <input type="text" placeholder="E-Mail" [formControl]="loginEmailForm" (input)="saveLoginEmail()" />
         </div>
         <div class="input-field">
           <fa-icon [icon]="faLock"></fa-icon>
-          <input
-            type="password"
-            placeholder="Passwort"
-            [formControl]="loginPasswordForm"
-            (input)="saveLoginPassword()"
-          />
+          <input type="password" placeholder="Passwort" [formControl]="loginPasswordForm"
+            (input)="saveLoginPassword()" />
         </div>
+        <a tuiLink class="forgotPW" routerLink="forgotPw">
+          Passwort vergessen
+        </a>
         <input type="submit" value="Login" class="button" (click)="login()" />
       </form>
 
@@ -28,46 +22,25 @@
         <h2 class="title">Registrieren</h2>
         <div class="input-field">
           <fa-icon [icon]="faUser"></fa-icon>
-          <input
-            type="text"
-            placeholder="Vorname"
-            [formControl]="registrationFirstnameForm"
-            (input)="saveRegistrationFirstname()"
-          />
+          <input type="text" placeholder="Vorname" [formControl]="registrationFirstnameForm"
+            (input)="saveRegistrationFirstname()" />
         </div>
         <div class="input-field">
           <fa-icon [icon]="faUser"></fa-icon>
-          <input
-            type="text"
-            placeholder="Nachname"
-            [formControl]="registrationLastnameForm"
-            (input)="saveRegistrationLastname()"
-          />
+          <input type="text" placeholder="Nachname" [formControl]="registrationLastnameForm"
+            (input)="saveRegistrationLastname()" />
         </div>
         <div class="input-field">
           <fa-icon [icon]="faEnvelope"></fa-icon>
-          <input
-            type="text"
-            placeholder="Email"
-            [formControl]="registrationEmailForm"
-            (input)="saveRegistrationEmail()"
-          />
+          <input type="text" placeholder="Email" [formControl]="registrationEmailForm"
+            (input)="saveRegistrationEmail()" />
         </div>
         <div class="input-field">
           <fa-icon [icon]="faLock"></fa-icon>
-          <input
-            type="password"
-            placeholder="Passwort"
-            [formControl]="registrationPasswordForm"
-            (input)="saveRegistrationPassword()"
-          />
+          <input type="password" placeholder="Passwort" [formControl]="registrationPasswordForm"
+            (input)="saveRegistrationPassword()" />
         </div>
-        <input
-          type="submit"
-          value="Registrieren"
-          class="button"
-          (click)="register()"
-        />
+        <input type="submit" value="Registrieren" class="button" (click)="register()" />
       </form>
     </div>
   </div>
@@ -81,11 +54,7 @@
           Jobangebote. Über unsere Plattform kannst du dich einfach und
           unkompliziert bewerben!
         </p>
-        <button
-          class="button transparent"
-          id="sign-up-button"
-          (click)="changeToSignUp()"
-        >
+        <button class="button transparent" id="sign-up-button" (click)="changeToSignUp()">
           Registrieren
         </button>
       </div>
@@ -98,11 +67,7 @@
         <p>
           Dann kehre auf die Login-Seite zurück und melde dich im Portal an!
         </p>
-        <button
-          class="button transparent"
-          id="sign-up-button"
-          (click)="changeToSignIn()"
-        >
+        <button class="button transparent" id="sign-up-button" (click)="changeToSignIn()">
           Anmelden
         </button>
       </div>
@@ -112,21 +77,12 @@
 </div>
 
 <tui-root class="dialog">
-  <ng-template
-    let-observer
-    [tuiDialogOptions]="
+  <ng-template let-observer [tuiDialogOptions]="
       $any({ label: '2-Faktor-Authentifizierung', size: 's' })
-    "
-    [(tuiDialog)]="open2FA"
-  >
+    " [(tuiDialog)]="open2FA">
     <form>
       <p>Bitte gib die PIN ein, den wir dir per Mail zugeschickt haben!</p>
-      <tui-input
-        tuiAutoFocus
-        [ngModelOptions]="{ standalone: true }"
-        [(ngModel)]="pinValue"
-        >PIN</tui-input
-      >
+      <tui-input tuiAutoFocus [ngModelOptions]="{ standalone: true }" [(ngModel)]="pinValue">PIN</tui-input>
       <p>
         <button tuiButton (click)="observer.complete()">Login</button>
       </p>

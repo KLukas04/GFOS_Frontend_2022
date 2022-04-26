@@ -1,0 +1,20 @@
+.parent{
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+
+    tui-scrollbar{
+        min-height: calc(90vh);
+        max-height: calc(90vh);
+    }
+    .content{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 50px;
+        padding: 50px;
+    }
+    
+}

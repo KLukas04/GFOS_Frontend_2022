@@ -1,6 +1,6 @@
 @import "../../../../../scss/colors.scss";
 
-a{
+a {
   padding: 0px;
 }
 .parent {
@@ -11,9 +11,8 @@ a{
   width: 500px;
   border-radius: 16pt;
 
-
   .info {
-    background-color: #7DFF63;
+    background-color: #7dff63;
     border-radius: 16pt 16pt 16pt 0pt;
     .heading {
       display: flex;
@@ -29,8 +28,14 @@ a{
       h2 {
         font-weight: bolder;
       }
-      tui-badge{
-        color: black
+      .actions {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+        tui-badge {
+          color: black;
+        }
       }
     }
     p {
@@ -51,8 +56,8 @@ a{
       // margin für die Überschriften wie "Beschreibung" und "Fortschritt"
       margin: 0;
     }
-    progress{
-      color: #7DFF63;
+    progress {
+      color: #7dff63;
     }
   }
 }

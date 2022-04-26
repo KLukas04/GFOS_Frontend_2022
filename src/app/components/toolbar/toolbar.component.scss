@@ -14,10 +14,13 @@
     width: 200px;
     height: 56px;
     border-radius: 10px;
-    background-color: red;
     margin-left: 15px;
     margin-top: 3px;
     display: inline-block;
+
+    img{
+      width: 70%;
+    }
   }
 
   .links {

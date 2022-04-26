@@ -7,9 +7,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
   TuiButtonModule,
   TuiDialogModule,
+  TuiLinkModule,
+  TuiPrimitiveTextfieldModule,
   TuiRootModule,
+  TuiSvgModule,
 } from '@taiga-ui/core';
-import { TuiInputModule } from '@taiga-ui/kit';
+import { TuiActionModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -17,8 +20,9 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromReducer from './store/authorization.reducer';
 import { AuthorizationEffects } from './store/authorization.effects';
 import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.component';
+import { ForgotPwPageComponent } from './components/forgot-pw-page/forgot-pw-page.component';
 @NgModule({
-  declarations: [AuthorizationComponent, VerfiyDialogComponent],
+  declarations: [AuthorizationComponent, VerfiyDialogComponent, ForgotPwPageComponent],
   imports: [
     CommonModule,
     AuthorizationRoutingModule,
@@ -28,6 +32,11 @@ import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.
     TuiButtonModule,
     TuiRootModule,
     FormsModule,
+    TuiLinkModule,
+    TuiActionModule,
+    TuiIslandModule,
+    TuiSvgModule,
+    TuiPrimitiveTextfieldModule,
     StoreModule.forFeature(
       fromReducer.authorizationFeatureKey,
       fromReducer.reducer

@@ -1,0 +1,53 @@
+@import "../../../../../scss/colors.scss";
+
+.sidebar{
+    height: 100%;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    padding: 50px;
+    gap: 25px;
+
+    background-color: $color-4;
+
+    form{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        
+        gap: 10px;
+
+        tui-select{
+            width: 100%;
+        }
+
+        .point{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            tui-toggle{
+              --tui-primary: #7DFF63;
+              --tui-primary-hover: #7DFF63;
+            }
+            
+        }
+    }
+}
+
+.template {
+    display: flex;
+    align-items: center;
+  
+    .avatar {
+      margin-right: 8px;
+      flex-shrink: 0;
+    }
+  
+    .name {
+      text-overflow: ellipsis;
+      flex-shrink: 1;
+    }
+  }
