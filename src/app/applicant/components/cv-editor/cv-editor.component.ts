@@ -4,9 +4,7 @@ import { Store } from '@ngrx/store';
 import * as fromReducer from '../../store/applicant.reducer';
 import * as fromActions from '../../store/applicant.actions';
 
-import { TuiDialogService } from '@taiga-ui/core';
-import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
-import { InterestDialogComponent } from '../interest-dialog/interest-dialog.component';
+
 
 @Component({
   selector: 'app-cv-editor',
@@ -19,26 +17,12 @@ export class CvEditorComponent implements OnInit {
   newInterest = '';
   interests = ['Tennis', 'Klavier'];
 
-  private readonly interestDialog = this.dialogService.open(
-    new PolymorpheusComponent(InterestDialogComponent, this.injector),
-    {
-      dismissible: true,
-      label: 'Neue Interesse',
-    }
-  );
 
   constructor(
     private store: Store<fromReducer.ApplicantState>,
-    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    @Inject(Injector) private readonly injector: Injector
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadLebenslaufStationen());
-  }
-
-  showInterestDialog() {
-    console.log('interest');
-    this.interestDialog.subscribe();
   }
 }

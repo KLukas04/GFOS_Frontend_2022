@@ -38,8 +38,6 @@ import * as fromReducer from './store/applicant.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ApplicantEffects } from './store/applicant.effects';
 import { RemoteDataModule } from 'ngx-remotedata';
-import { InterestDialogComponent } from './components/interest-dialog/interest-dialog.component';
-import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,8 +49,6 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     ApplicationListItemComponent,
     GreetingsHeaderComponent,
     SettingsCardComponent,
-    InterestDialogComponent,
-    CvDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -80,6 +76,6 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     ),
     EffectsModule.forFeature([ApplicantEffects]),
     RemoteDataModule,
-  ],
+  ]
 })
 export class ApplicantModule {}
