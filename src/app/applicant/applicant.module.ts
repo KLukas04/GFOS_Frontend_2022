@@ -38,6 +38,7 @@ import * as fromReducer from './store/applicant.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { ApplicantEffects } from './store/applicant.effects';
 import { RemoteDataModule } from 'ngx-remotedata';
+import { InterestDialogComponent } from './components/interest-dialog/interest-dialog.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { RemoteDataModule } from 'ngx-remotedata';
     ApplicationListItemComponent,
     GreetingsHeaderComponent,
     SettingsCardComponent,
+    InterestDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -76,6 +78,9 @@ import { RemoteDataModule } from 'ngx-remotedata';
     ),
     EffectsModule.forFeature([ApplicantEffects]),
     RemoteDataModule,
-  ]
+  ],
+  entryComponents: [
+    InterestDialogComponent,
+]
 })
 export class ApplicantModule {}
