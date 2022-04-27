@@ -39,6 +39,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ApplicantEffects } from './store/applicant.effects';
 import { RemoteDataModule } from 'ngx-remotedata';
 import { InterestDialogComponent } from './components/interest-dialog/interest-dialog.component';
+import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { InterestDialogComponent } from './components/interest-dialog/interest-d
     GreetingsHeaderComponent,
     SettingsCardComponent,
     InterestDialogComponent,
+    CvDialogComponent,
   ],
   imports: [
     CommonModule,

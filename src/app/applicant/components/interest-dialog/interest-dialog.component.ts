@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { TuiDialogContext, TUI_HINT_OPTIONS } from '@taiga-ui/core';
+import { TuiDialogContext  } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 
 @Component({
@@ -11,9 +10,7 @@ import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 export class InterestDialogComponent implements OnInit {
 
   constructor(
-    @Inject(POLYMORPHEUS_CONTEXT)
-    private readonly context: TuiDialogContext<any>,
-    private router: Router
+    @Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiDialogContext<any>,
   ) {
   }
 

@@ -25,7 +25,7 @@ export class CvEditorComponent implements OnInit {
   private readonly verifyDialog = this.dialogService.open(
     new PolymorpheusComponent(InterestDialogComponent, this.injector),
     {
-      dismissible: false,
+      dismissible: true,
       label: 'Neues Interesse',
     }
   );
