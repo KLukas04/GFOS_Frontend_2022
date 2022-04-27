@@ -1,7 +1,9 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import {
   ChangeDetectionStrategy,
-  Component
+  Component,
+  Inject,
+  Injector
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RemoteData } from 'ngx-remotedata';
@@ -10,6 +12,11 @@ import { LebenslaufStation } from '../../models/lebenslaufstation.model';
 
 import * as fromReducer from '../../store/applicant.reducer';
 import * as fromSelectors from '../../store/applicant.selectors';
+
+import { TuiDialogService } from '@taiga-ui/core';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import { CvDialogComponent } from '../cv-dialog/cv-dialog.component';
+
 @Component({
   selector: 'app-timeline-view',
   templateUrl: './timeline-view.component.html',
@@ -21,12 +28,22 @@ export class TimelineViewComponent {
   year = '';
   open = false;
 
+  private readonly cvDialog = this.dialogService.open(
+    new PolymorpheusComponent(CvDialogComponent, this.injector),
+    {
+      dismissible: true,
+      label: 'Neuer Meilenstein',
+    }
+  );
+
   public stationen$: Observable<
     RemoteData<LebenslaufStation[], HttpErrorResponse>
   >;
 
   constructor(
-    private store: Store<fromReducer.ApplicantState>
+    private store: Store<fromReducer.ApplicantState>,
+    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector
   ) {
     this.stationen$ = this.store.select(
       fromSelectors.selectLebenslaufStationen
@@ -41,5 +58,9 @@ export class TimelineViewComponent {
     const days = difference / (1000 * 3600 * 24);
 
     return days > 365 ? 'YYYY' : 'longDate';
+  }
+
+  showCVDialog(){
+    this.cvDialog.subscribe();
   }
 }
