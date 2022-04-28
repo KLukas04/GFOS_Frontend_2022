@@ -1,23 +1,32 @@
 <div class="parent">
-    <app-greetings-header></app-greetings-header>
+  <app-greetings-header></app-greetings-header>
 
-    <div class="content">
-        <div class="settings">
-            <app-category-card category="Lebenslauf bearbeiten" link="cv" img="assets/resume.svg"></app-category-card>
-            <app-category-card category="Abgeschickte Bewerbungen" link="startedApplications" img="assets/jobs.svg"></app-category-card>
-            <app-category-card category="Zur Job-Suche" link="../jobs" img="assets/job_offers.svg"></app-category-card>
-            <app-settings-card></app-settings-card>
-        </div>
-        <app-application-list-item 
-            title="Designer"
-            typ="Praktikum"
-            startDate="30.06.2022"
-            description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit facere consequuntur sit, laboriosam
-            pariatur odio accusamus debitis culpa fuga architecto cupiditate excepturi quaerat quasi exercitationem
-            numquam, commodi nam consectetur. Necessitatibus."
-            [alreadyApplied]="false"
-            ></app-application-list-item>
+  <div class="content">
+    <div class="settings">
+      <app-category-card
+        category="Lebenslauf bearbeiten"
+        link="cv"
+        img="assets/resume.svg"
+      ></app-category-card>
+      <app-category-card
+        category="Abgeschickte Bewerbungen"
+        link="startedApplications"
+        img="assets/jobs.svg"
+      ></app-category-card>
+      <app-category-card
+        category="Zur Job-Suche"
+        link="../jobs"
+        img="assets/job_offers.svg"
+      ></app-category-card>
+      <app-settings-card></app-settings-card>
     </div>
-    
-
+    <app-application-list-item
+      *ngIf="applications$ | async | successValue as applications"
+      [title]="applications[0].jobangebot.title"
+      [typ]="applications[0].jobangebot.bewerbungstyp.art"
+      [startDate]="applications[0].datum"
+      [description]="applications[0].jobangebot.kurzbeschreibung"
+      [status]="applications[0].status"
+    ></app-application-list-item>
+  </div>
 </div>

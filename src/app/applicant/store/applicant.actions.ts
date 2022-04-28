@@ -3,6 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { TuiDayRange } from '@taiga-ui/cdk';
 import { Account } from '../models/account.model';
 import { Address } from '../models/address.model';
+import { Bewerbung } from '../models/bewerbung.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 import { Settings } from '../models/settings.model';
@@ -155,4 +156,18 @@ export const changeTwoFaSetting = createAction(
 
 export const newSettingsUpdate = createAction(
   '[CV [Einstellungen] Updated Settings'
+);
+
+export const loadSentApplications = createAction(
+  '[CV] [Bewerbungen] Load Bewerbungen'
+);
+
+export const loadSentApplicationsSuccess = createAction(
+  '[CV] [Bewerbungen] Load Bewerbungen Success',
+  props<{ applications: Bewerbung[] }>()
+);
+
+export const loadSentApplicationsError = createAction(
+  '[CV] [Bewerbungen] Load Bewerbungen Error',
+  props<{ error: HttpErrorResponse }>()
 );

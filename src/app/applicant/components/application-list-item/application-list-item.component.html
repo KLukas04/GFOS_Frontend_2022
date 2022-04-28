@@ -1,24 +1,38 @@
 <a size="l" tuiIsland [hoverable]="true" routerLink="/jobs/details">
-    <div class="parent">
-        <div class="info">
-            <div class="heading">
-                <h2> {{ title }} </h2>
-                <div class="badges">
-                    <tui-badge [value]="typ" [hoverable]=true status="neutral"></tui-badge>
-                    <tui-badge *ngIf="alreadyApplied" [value]="statusToString()" [hoverable]=true status="neutral"></tui-badge>
-                </div>
-            </div>
-
+  <div class="parent">
+    <div class="info">
+      <div class="heading">
+        <h2>{{ title }}</h2>
+        <div class="badges">
+          <tui-badge
+            [value]="typ"
+            [hoverable]="true"
+            status="neutral"
+          ></tui-badge>
+          <tui-badge
+            *ngIf="alreadyApplied"
+            [value]="statusToString()"
+            [hoverable]="true"
+            status="neutral"
+          ></tui-badge>
         </div>
-        <div class="content">
-            <div class="date">
-                <p> Angefangen am: {{ startDate }}</p>
-                <tui-marker-icon *ngIf="alreadyApplied" mode="link" size="xs" src="tuiIconTrash" (click)="deleteApplication()"></tui-marker-icon>
-            </div>
-            <div class="discription">
-                <h5>Beschreibung:</h5>
-                <p> {{ description }}</p>
-            </div>
-        </div>
+      </div>
     </div>
+    <div class="content">
+      <div class="date">
+        <p>Angefangen am: {{ startDate | date: "shortDate" }}</p>
+        <tui-marker-icon
+          *ngIf="alreadyApplied"
+          mode="link"
+          size="xs"
+          src="tuiIconTrash"
+          (click)="deleteApplication()"
+        ></tui-marker-icon>
+      </div>
+      <div class="discription">
+        <h5>Beschreibung:</h5>
+        <p>{{ description }}</p>
+      </div>
+    </div>
+  </div>
 </a>

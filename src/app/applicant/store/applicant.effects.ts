@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
+import { BewerbungService } from '../service/bewerbung.service';
 import { LebenslaufService } from '../service/lebenslauf.service';
 
 import * as fromActions from './applicant.actions';
@@ -13,6 +14,7 @@ export class ApplicantEffects {
   constructor(
     private actions$: Actions,
     private lebenslaufService: LebenslaufService,
+    private bewerbungService: BewerbungService,
     private store: Store<fromReducer.ApplicantState>
   ) {}
 
@@ -166,6 +168,24 @@ export class ApplicantEffects {
         this.lebenslaufService
           .updateSettings(data.getMails!, data.twoFa!)
           .pipe(map(() => fromActions.loadOwnSettings()))
+      )
+    )
+  );
+
+  loadSentApplications$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadSentApplications),
+      mergeMap(() =>
+        this.bewerbungService.getSentApplications().pipe(
+          map((applications) =>
+            fromActions.loadSentApplicationsSuccess({
+              applications: applications,
+            })
+          ),
+          catchError((err) =>
+            of(fromActions.loadSentApplicationsError({ error: err }))
+          )
+        )
       )
     )
   );

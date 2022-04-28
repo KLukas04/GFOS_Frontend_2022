@@ -11,6 +11,7 @@ import {
 } from 'ngx-remotedata';
 import { Account } from '../models/account.model';
 import { Address } from '../models/address.model';
+import { Bewerbung } from '../models/bewerbung.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 import { Settings } from '../models/settings.model';
@@ -50,6 +51,7 @@ export interface ApplicantState {
       twoFa: boolean | null;
     };
   };
+  sentApplications: RemoteData<Bewerbung[], HttpErrorResponse>;
 }
 
 export const initialState: ApplicantState = {
@@ -83,6 +85,7 @@ export const initialState: ApplicantState = {
       twoFa: null,
     },
   },
+  sentApplications: notAsked(),
 };
 
 const applicantReducer = createReducer(
@@ -269,6 +272,25 @@ const applicantReducer = createReducer(
     produce(state, (draft) => {
       draft.lebenslauf.changeSettings.twoFa =
         !draft.lebenslauf.changeSettings.twoFa;
+    })
+  ),
+  on(fromActions.loadSentApplications, (state) =>
+    produce(state, (draft) => {
+      draft.sentApplications = inProgress<Bewerbung[], HttpErrorResponse>(
+        getOrElse(draft.sentApplications, [])
+      );
+    })
+  ),
+  on(fromActions.loadSentApplicationsSuccess, (state, { applications }) =>
+    produce(state, (draft) => {
+      draft.sentApplications = success<Bewerbung[], HttpErrorResponse>(
+        applications
+      );
+    })
+  ),
+  on(fromActions.loadSentApplicationsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.sentApplications = failure<Bewerbung[], HttpErrorResponse>(error);
     })
   )
 );
