@@ -29,6 +29,12 @@ export interface ApplicantState {
     interessenfelder: RemoteData<Interessenfeld[], HttpErrorResponse>;
     createNewInteresse: string | null;
     kontakt: RemoteData<Account, HttpErrorResponse>;
+    changeKontakt: {
+      firstName: string | null;
+      lastName: string | null;
+      email: string | null;
+      phone: string | null;
+    };
     adresse: RemoteData<Address, HttpErrorResponse>;
   };
 }
@@ -44,6 +50,12 @@ export const initialState: ApplicantState = {
     interessenfelder: notAsked(),
     createNewInteresse: null,
     kontakt: notAsked(),
+    changeKontakt: {
+      firstName: null,
+      lastName: null,
+      email: null,
+      phone: null,
+    },
     adresse: notAsked(),
   },
 };
@@ -153,6 +165,26 @@ const applicantReducer = createReducer(
   on(fromActions.loadOwnAdressError, (state, { error }) =>
     produce(state, (draft) => {
       draft.lebenslauf.adresse = failure<Address, HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.newKontaktFirstName, (state, { firstName }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeKontakt.firstName = firstName;
+    })
+  ),
+  on(fromActions.newKontaktLastName, (state, { lastName }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeKontakt.lastName = lastName;
+    })
+  ),
+  on(fromActions.newKontaktEmailName, (state, { email }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeKontakt.email = email;
+    })
+  ),
+  on(fromActions.newKontaktPhoneName, (state, { phone }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeKontakt.phone = phone;
     })
   )
 );

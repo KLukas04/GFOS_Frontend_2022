@@ -53,6 +53,22 @@ export class LebenslaufService {
     return this.http.get<Account>(`${this.baseURL}/bewerber`).pipe(take(1));
   }
 
+  public updateAccount(
+    firstName: string | null,
+    lastName: string | null,
+    email: string | null,
+    phone: string | null
+  ): Observable<string> {
+    let data = {};
+
+    firstName !== null ? (data = { ...data, vorname: firstName }) : null;
+    lastName !== null ? (data = { ...data, nachname: lastName }) : null;
+    email !== null ? (data = { ...data, mail: email }) : null;
+    phone !== null ? (data = { ...data, telefon: phone }) : null;
+
+    return this.http.put<any>(`${this.baseURL}/bewerber`, data).pipe(take(1));
+  }
+
   public getOwnAddress(): Observable<Address> {
     return this.http.get<Address>(`${this.baseURL}/adresse`).pipe(take(1));
   }

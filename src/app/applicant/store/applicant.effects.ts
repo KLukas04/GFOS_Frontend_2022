@@ -90,6 +90,20 @@ export class ApplicantEffects {
     )
   );
 
+  updateOwnAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.newKontaktUpdate),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectChangeAccountData)
+      ),
+      switchMap(([_, data]) =>
+        this.lebenslaufService
+          .updateAccount(data.firstName, data.lastName, data.email, data.phone)
+          .pipe(map(() => fromActions.loadOwnAccount()))
+      )
+    )
+  );
+
   loadOwnAddress$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.loadOwnAdress),

@@ -23,19 +23,27 @@
       <div class="box first">
         <div class="heading">
           <p>Name</p>
-          <a tuiLink> Speichern </a>
+          <a tuiLink (click)="updateAccount()"> Speichern </a>
         </div>
         <div class="input">
-          <tui-input [formControl]="firstNameControl">Vorname</tui-input>
-          <tui-input [formControl]="lastNameControl">Name</tui-input>
+          <tui-input [formControl]="firstNameControl" (input)="saveFirstName()"
+            >Vorname</tui-input
+          >
+          <tui-input [formControl]="lastNameControl" (input)="saveLastName()"
+            >Name</tui-input
+          >
         </div>
         <div class="heading">
           <p>Kontakt</p>
-          <a tuiLink> Speichern </a>
+          <a tuiLink (click)="updateAccount()"> Speichern </a>
         </div>
         <div class="input">
-          <tui-input [formControl]="emailControl">Email</tui-input>
-          <tui-input [formControl]="phoneControl">Telefonnummer</tui-input>
+          <tui-input [formControl]="emailControl" (input)="saveEmail()"
+            >Email</tui-input
+          >
+          <tui-input [formControl]="phoneControl" (input)="savePhone()"
+            >Telefonnummer</tui-input
+          >
         </div>
       </div>
 

@@ -84,6 +84,42 @@ export class CvEditorComponent implements OnInit {
     this.store.dispatch(fromActions.loadOwnAdress());
   }
 
+  public saveFirstName(): void {
+    this.store.dispatch(
+      fromActions.newKontaktFirstName({
+        firstName: this.firstNameControl.value,
+      })
+    );
+  }
+
+  public saveLastName(): void {
+    this.store.dispatch(
+      fromActions.newKontaktLastName({
+        lastName: this.lastNameControl.value,
+      })
+    );
+  }
+
+  public saveEmail(): void {
+    this.store.dispatch(
+      fromActions.newKontaktEmailName({
+        email: this.emailControl.value,
+      })
+    );
+  }
+
+  public savePhone(): void {
+    this.store.dispatch(
+      fromActions.newKontaktPhoneName({
+        phone: this.phoneControl.value,
+      })
+    );
+  }
+
+  public updateAccount(): void {
+    this.store.dispatch(fromActions.newKontaktUpdate());
+  }
+
   showInterestDialog() {
     this.verifyDialog.subscribe();
   }

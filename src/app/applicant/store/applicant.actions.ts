@@ -69,6 +69,30 @@ export const loadOwnAccountError = createAction(
   props<{ error: HttpErrorResponse }>()
 );
 
+export const newKontaktFirstName = createAction(
+  '[CV] [Kontakt] New Vorname Inserted',
+  props<{ firstName: string }>()
+);
+
+export const newKontaktLastName = createAction(
+  '[CV] [Kontakt] New Nachname Inserted',
+  props<{ lastName: string }>()
+);
+
+export const newKontaktEmailName = createAction(
+  '[CV] [Kontakt] New Email Inserted',
+  props<{ email: string }>()
+);
+
+export const newKontaktPhoneName = createAction(
+  '[CV] [Kontakt] New Telefon Inserted',
+  props<{ phone: string }>()
+);
+
+export const newKontaktUpdate = createAction(
+  '[CV] [Kontakt] Changed Account Details'
+);
+
 export const loadOwnAdress = createAction('[CV] [Adresse] Load Adresse');
 
 export const loadOwnAdressSuccess = createAction(

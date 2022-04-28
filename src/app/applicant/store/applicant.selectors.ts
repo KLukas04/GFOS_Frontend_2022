@@ -31,6 +31,11 @@ export const selectOwnAccount = createSelector(
   (state: fromReducer.ApplicantState) => state.lebenslauf.kontakt
 );
 
+export const selectChangeAccountData = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.changeKontakt
+);
+
 export const selectOwnAddress = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.adresse
