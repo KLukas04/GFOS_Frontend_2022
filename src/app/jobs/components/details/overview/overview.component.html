@@ -1,41 +1,79 @@
 <app-header></app-header>
 
 <div class="container">
-    <div class="column column-left">
+    <div class="column-left">
         <app-overview-section></app-overview-section>
-        <div class="userinput">
-            <div *ngIf="applicationAlreadySended" class="box contact">
-                <span class="heading">Kontakt - Falls du Fragen hast</span>
-                <div class="line">
-                    <hr class="hr-grey">
-                    <hr class="hr-green">
+        <div *ngIf="applicationAlreadySended" class="box">
+            <span class="heading">Kontakt - Falls du Fragen hast</span>
+            <div class="line">
+                <hr class="hr-grey">
+                <hr class="hr-green">
+            </div>
+
+            <div class="chat">
+                <tui-scrollbar class="scrollbar">
+                    <div class="content">
+                        <div class="applicantN">
+                            <p>Hallo</p>
+                        </div>
+                        <div class="employerN">
+                            <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
+                        </div>
+                        <div class="applicantN">
+                            <p>Hallo</p>
+                        </div>
+                        <div class="applicantN">
+                            <p>Hallo</p>
+                        </div>
+                        <div class="employerN">
+                            <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
+                        </div>
+                        <div class="applicantN">
+                            <p>Hallo</p>
+                        </div>
+                        <div class="applicantN">
+                            <p>Hallo</p>
+                        </div>
+                        <div class="employerN">
+                            <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
+                        </div>
+                        <div class="applicantN">
+                            <p>Hallo</p>
+                        </div>
+                        <div class="applicantN">
+                            <p>Hallo</p>
+                        </div>
+                        <div class="employerN">
+                            <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
+                        </div>
+                        <div class="applicantN">
+                            <p>Hallo</p>
+                        </div>
+                    </div>
+                </tui-scrollbar>
+                <div class="input">
+                    <tui-input> Nachricht </tui-input>
+                    <button tuiButton> S</button>
                 </div>
-                <tui-input tuiTextfieldSize="m" [tuiTextfieldLabelOutside]="true">
-                    Betreff
-                    <input tuiTextfield type="text" />
-                </tui-input>
-                <tui-text-area [expandable]="false">
-                    Nachricht
-                </tui-text-area>
 
             </div>
-            <div class="box">
-                <span class="heading">Bewirb dich jetzt!</span>
-                <div class="line">
-                    <hr class="hr-grey">
-                    <hr class="hr-green">
-                </div>
-                <div class="cv">
-                    <tui-input-file link="Wähle dein Anschreiben aus" label="oder ziehe es hier hin" accept="application/pdf" class="container"
-                        [formControl]="control"></tui-input-file>
-                    <button tuiButton type="button" class="tui-space_right-3 tui-space_bottom-3">
-                        Bewerbung abschicken
-                    </button>
-                </div>
+        </div>
+        <div *ngIf="!applicationAlreadySended" class="box">
+            <span class="heading">Bewirb dich jetzt!</span>
+            <div class="line">
+                <hr class="hr-grey">
+                <hr class="hr-green">
+            </div>
+            <div class="cv">
+                <tui-input-file link="Wähle dein Anschreiben aus" label="oder ziehe es hier hin"
+                    accept="application/pdf" class="container" [formControl]="control"></tui-input-file>
+                <button tuiButton type="button" class="tui-space_right-3 tui-space_bottom-3">
+                    Bewerbung abschicken
+                </button>
             </div>
         </div>
     </div>
-    <div class="column column-right">
+    <div class="column-right">
         <div class="box">
             <span class="heading">Bezahlung</span>
             <div class="line">

@@ -6,71 +6,55 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  .column {
-    // background-color: aqua;
-    width: 95%;
-    margin-left: 2%;
-    margin-right: auto;
-  }
 
   .column-left {
     width: 65%;
-   
-    .userinput{
-      margin-top: 20px;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      .box {
-        padding: 30px;
-        width: 50%;
-        border-radius: 16pt;
-        background-color: $color-4;
 
-        .heading {
-          font-size: 1.5rem;
-        }
-
-        .line {
-          height: fit-content;
-          margin-top: 10px;
-          margin-bottom: 25px;
-          position: relative;
-
-          hr {
-            border-radius: 3px;
-          }
-
-          .hr-grey {
-            border: 2px solid $color-4;
-          }
-
-          .hr-green {
-            width: 75px;
-            border: 2px solid $color-2;
-            position: absolute;
-            top: 0;
-          }
-        }
-
-        .cv{
-          display: flex;
-          flex-direction: column;
-          height: 80%;
-          justify-content: flex-start;
-          gap: 30px;
-        }
-      }
-    }
-    .contact{
-      margin-right: 20px;
-
-      tui-input {
-        margin-bottom: 20px;
-      }
-    }
-
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     
+    gap: 10px;
+
+    .box {
+      padding: 30px;
+      border-radius: 16pt;
+      background-color: $color-4;
+      height: fit-content;
+      .heading {
+        font-size: 1.5rem;
+      }
+
+      .line {
+        height: fit-content;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        position: relative;
+
+        hr {
+          border-radius: 3px;
+        }
+
+        .hr-grey {
+          border: 2px solid $color-4;
+        }
+
+        .hr-green {
+          width: 75px;
+          border: 2px solid $color-2;
+          position: absolute;
+          top: 0;
+        }
+      }
+
+      .cv {
+        display: flex;
+        flex-direction: column;
+        height: 80%;
+        justify-content: flex-start;
+        gap: 30px;
+      }
+    }
   }
 
   .column-right {
@@ -120,6 +104,57 @@
       tui-input {
         margin-bottom: 20px;
       }
+    }
+  }
+}
+
+.chat {
+  .scrollbar{
+    height: 100%;
+  }
+  width: 450px;
+  max-height: 420px;
+  border-radius: 16pt;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 20px 10px 20px;
+
+    .applicantN {
+      background-color: $color-3;
+      width: 85%;
+      padding: 5px;
+      border-radius: 5pt;
+      align-self: flex-start;
+      padding-inline: 10px;
+    }
+
+    .employerN {
+      background-color: $color-3;
+      width: 85%;
+      padding: 5px;
+      border-radius: 5pt;
+      align-self: flex-end;
+      padding-inline: 10px;
+    }
+  }
+
+  .input {
+    padding-inline: 10px;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 20px;
+    justify-content: space-between;
+    gap: 10px;
+
+    tui-input {
+      width: 80%;
     }
   }
 }
