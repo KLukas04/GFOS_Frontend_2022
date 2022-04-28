@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 
 @Injectable({
@@ -29,6 +30,12 @@ export class LebenslaufService {
         ende: end,
         info: info,
       })
+      .pipe(take(1));
+  }
+
+  public getInteressenfelder(): Observable<Interessenfeld[]> {
+    return this.http
+      .get<Interessenfeld[]>(`${this.baseURL}/interessenfeld`)
       .pipe(take(1));
   }
 }

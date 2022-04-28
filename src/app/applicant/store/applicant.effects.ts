@@ -45,4 +45,20 @@ export class ApplicantEffects {
       )
     )
   );
+
+  loadInteressenfelder$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadInteressenfelder),
+      mergeMap(() =>
+        this.lebenslaufService.getInteressenfelder().pipe(
+          map((felder) =>
+            fromActions.loadInteressenfelderSuccess({ felder: felder })
+          ),
+          catchError((err) =>
+            of(fromActions.loadInteressenfelderError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

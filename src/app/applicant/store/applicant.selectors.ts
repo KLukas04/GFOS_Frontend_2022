@@ -15,3 +15,8 @@ export const selectNewStationData = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.createNewStation
 );
+
+export const selectInteressenfelder = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.interessenfelder
+);
