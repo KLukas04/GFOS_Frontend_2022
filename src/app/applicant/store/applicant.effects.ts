@@ -155,4 +155,18 @@ export class ApplicantEffects {
       )
     )
   );
+
+  updateOwnSettings$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.newSettingsUpdate),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectChangeSettingsData)
+      ),
+      switchMap(([_, data]) =>
+        this.lebenslaufService
+          .updateSettings(data.getMails!, data.twoFa!)
+          .pipe(map(() => fromActions.loadOwnSettings()))
+      )
+    )
+  );
 }

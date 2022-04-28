@@ -50,3 +50,8 @@ export const selectOwnSettings = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.settings
 );
+
+export const selectChangeSettingsData = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.changeSettings
+);

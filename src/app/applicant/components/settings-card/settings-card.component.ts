@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 
 import * as fromReducer from '../../store/applicant.reducer';
@@ -28,5 +28,17 @@ export class SettingsCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadOwnSettings());
+  }
+
+  public toggleMails(): void {
+    this.store.dispatch(fromActions.changeGetMailsSetting());
+  }
+
+  public toggleTwoFa(): void {
+    this.store.dispatch(fromActions.changeTwoFaSetting());
+  }
+
+  public saveSettings(): void {
+    this.store.dispatch(fromActions.newSettingsUpdate());
   }
 }

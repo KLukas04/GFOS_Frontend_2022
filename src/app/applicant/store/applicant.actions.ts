@@ -90,9 +90,7 @@ export const newKontaktPhoneName = createAction(
   props<{ phone: string }>()
 );
 
-export const newKontaktUpdate = createAction(
-  '[CV] [Kontakt] Changed Account Details'
-);
+export const newKontaktUpdate = createAction('[CV] [Kontakt] Updated Account');
 
 export const loadOwnAdress = createAction('[CV] [Adresse] Load Adresse');
 
@@ -131,9 +129,7 @@ export const newAddressCountry = createAction(
   props<{ country: string }>()
 );
 
-export const newAddressUpdate = createAction(
-  '[CV] [Adresse] Changed Address Details'
-);
+export const newAddressUpdate = createAction('[CV] [Adresse] Updated Address');
 
 export const loadOwnSettings = createAction(
   '[CV] [Einstellungen] Load Einstellungen'
@@ -147,4 +143,16 @@ export const loadOwnSettingsSuccess = createAction(
 export const loadOwnSettingsError = createAction(
   '[CV] [Einstellungen] Load Einstellungen Error',
   props<{ error: HttpErrorResponse }>()
+);
+
+export const changeGetMailsSetting = createAction(
+  '[CV] [Einstellungen] Change GetMails Setting'
+);
+
+export const changeTwoFaSetting = createAction(
+  '[CV] [Einstellungen] Change Two-FA Setting'
+);
+
+export const newSettingsUpdate = createAction(
+  '[CV [Einstellungen] Updated Settings'
 );

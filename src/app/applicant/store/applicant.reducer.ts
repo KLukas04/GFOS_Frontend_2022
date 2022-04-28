@@ -45,6 +45,10 @@ export interface ApplicantState {
       country: string | null;
     };
     settings: RemoteData<Settings, HttpErrorResponse>;
+    changeSettings: {
+      getMails: boolean | null;
+      twoFa: boolean | null;
+    };
   };
 }
 
@@ -74,6 +78,10 @@ export const initialState: ApplicantState = {
       country: null,
     },
     settings: notAsked(),
+    changeSettings: {
+      getMails: null,
+      twoFa: null,
+    },
   },
 };
 
@@ -238,6 +246,9 @@ const applicantReducer = createReducer(
   ),
   on(fromActions.loadOwnSettingsSuccess, (state, { settings }) =>
     produce(state, (draft) => {
+      draft.lebenslauf.changeSettings.getMails = settings.getmails;
+      draft.lebenslauf.changeSettings.twoFa = settings.twofa;
+
       draft.lebenslauf.settings = success<Settings, HttpErrorResponse>(
         settings
       );
@@ -246,6 +257,18 @@ const applicantReducer = createReducer(
   on(fromActions.loadOwnSettingsError, (state, { error }) =>
     produce(state, (draft) => {
       draft.lebenslauf.settings = failure<Settings, HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.changeGetMailsSetting, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeSettings.getMails =
+        !draft.lebenslauf.changeSettings.getMails;
+    })
+  ),
+  on(fromActions.changeTwoFaSetting, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeSettings.twoFa =
+        !draft.lebenslauf.changeSettings.twoFa;
     })
   )
 );

@@ -93,6 +93,17 @@ export class LebenslaufService {
   }
 
   public getOwnSettings(): Observable<Settings> {
-    return this.http.get<Settings>(`${this.baseURL}/bewerbereinstellungen`).pipe(take(1))
+    return this.http
+      .get<Settings>(`${this.baseURL}/bewerbereinstellungen`)
+      .pipe(take(1));
+  }
+
+  public updateSettings(getMails: boolean, twoFa: boolean): Observable<string> {
+    return this.http
+      .put<any>(`${this.baseURL}/bewerbereinstellungen`, {
+        getmails: getMails,
+        twofa: twoFa,
+      })
+      .pipe(take(1));
   }
 }
