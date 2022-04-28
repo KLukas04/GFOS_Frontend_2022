@@ -18,12 +18,22 @@ export const applicantFeatureKey = 'applicant';
 export interface ApplicantState {
   lebenslauf: {
     stationen: RemoteData<LebenslaufStation[], HttpErrorResponse>;
+    createNewStation: {
+      start: Date | null;
+      end: Date | null;
+      info: string | null;
+    };
   };
 }
 
 export const initialState: ApplicantState = {
   lebenslauf: {
     stationen: notAsked(),
+    createNewStation: {
+      start: null,
+      end: null,
+      info: null,
+    },
   },
 };
 
@@ -51,6 +61,24 @@ const applicantReducer = createReducer(
         LebenslaufStation[],
         HttpErrorResponse
       >(error);
+    })
+  ),
+  on(fromActions.newLebenslaufStationStartEnd, (state, { date }) =>
+    produce(state, (draft) => {
+      const start: Date = new Date(
+        date.from.year,
+        date.from.month,
+        date.from.day
+      );
+      const end: Date = new Date(date.to.year, date.to.month, date.to.day);
+
+      draft.lebenslauf.createNewStation.start = start;
+      draft.lebenslauf.createNewStation.end = end;
+    })
+  ),
+  on(fromActions.newLebenslaufStationInfo, (state, { info }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.createNewStation.info = info;
     })
   )
 );

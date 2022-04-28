@@ -1,5 +1,13 @@
-<tui-input-date-range>Start - Ende</tui-input-date-range>
-<tui-input tuiTextfieldSize="m"> Lebenslaufstation </tui-input>
+<tui-input-date-range [formControl]="dateControl" (focusedChange)="saveDates()"
+  >Start - Ende</tui-input-date-range
+>
+<tui-input
+  tuiTextfieldSize="m"
+  [formControl]="stationControl"
+  (input)="saveStation()"
+>
+  Lebenslaufstation
+</tui-input>
 <tui-input-file
   link="Choose an image"
   accept="application/pdf"
