@@ -18,6 +18,7 @@ import {
   TuiToggleModule,
   TuiInputFileModule,
   TuiMarkerIconModule,
+  TuiInputDateRangeModule,
 } from '@taiga-ui/kit';
 
 import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
@@ -80,9 +81,8 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     ),
     EffectsModule.forFeature([ApplicantEffects]),
     RemoteDataModule,
+    TuiInputDateRangeModule,
   ],
-  entryComponents: [
-    InterestDialogComponent,
-]
+  entryComponents: [InterestDialogComponent],
 })
 export class ApplicantModule {}

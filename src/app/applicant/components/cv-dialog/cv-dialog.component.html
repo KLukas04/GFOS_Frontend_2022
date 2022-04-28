@@ -1,6 +1,12 @@
-<tui-input tuiTextfieldSize="m"> Jahr </tui-input>
+<tui-input-date-range>Start - Ende</tui-input-date-range>
 <tui-input tuiTextfieldSize="m"> Lebenslaufstation </tui-input>
-<tui-input-file link="Choose an image" accept="application/pdf" class="container" [formControl]="control"
-    [loadingFiles]="(loading$ | async) || []" [rejectedFiles]="(rejected$ | async) || []"></tui-input-file>
+<tui-input-file
+  link="Choose an image"
+  accept="application/pdf"
+  class="container"
+  [formControl]="control"
+  [loadingFiles]="(loading$ | async) || []"
+  [rejectedFiles]="(rejected$ | async) || []"
+></tui-input-file>
 <br />
 <button tuiButton icon="tuiIconPlus" (click)="close()">Add</button>
