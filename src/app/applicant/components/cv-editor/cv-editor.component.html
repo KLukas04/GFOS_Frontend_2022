@@ -45,12 +45,13 @@
           <a tuiLink> Speichern </a>
         </div>
         <div class="input">
-          <tui-input>Straße</tui-input>
-          <tui-input>Hausnummer</tui-input>
+          <tui-input [formControl]="streetControl">Straße</tui-input>
+          <tui-input [formControl]="numberControl">Hausnummer</tui-input>
         </div>
         <div class="input">
-          <tui-input>PLZ</tui-input>
-          <tui-input>Stadt</tui-input>
+          <tui-input [formControl]="plzControl">PLZ</tui-input>
+          <tui-input [formControl]="townControl">Stadt</tui-input>
+          <tui-input [formControl]="countryControl">Land</tui-input>
         </div>
       </div>
     </div>

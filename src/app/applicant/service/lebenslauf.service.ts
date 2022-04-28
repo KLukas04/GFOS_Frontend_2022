@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Account } from '../models/account.model';
+import { Address } from '../models/address.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 
@@ -50,5 +51,9 @@ export class LebenslaufService {
 
   public getOwnAccount(): Observable<Account> {
     return this.http.get<Account>(`${this.baseURL}/bewerber`).pipe(take(1));
+  }
+
+  public getOwnAddress(): Observable<Address> {
+    return this.http.get<Address>(`${this.baseURL}/adresse`).pipe(take(1));
   }
 }

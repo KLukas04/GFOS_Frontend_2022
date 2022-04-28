@@ -15,6 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import * as fromSelectors from '../../store/applicant.selectors';
 import { FormControl } from '@angular/forms';
 import { Account } from '../../models/account.model';
+import { Address } from '../../models/address.model';
 
 @Component({
   selector: 'app-cv-editor',
@@ -30,6 +31,12 @@ export class CvEditorComponent implements OnInit {
   public lastNameControl: FormControl = new FormControl(null);
   public emailControl: FormControl = new FormControl(null);
   public phoneControl: FormControl = new FormControl(null);
+
+  public streetControl: FormControl = new FormControl(null);
+  public numberControl: FormControl = new FormControl(null);
+  public plzControl: FormControl = new FormControl(null);
+  public townControl: FormControl = new FormControl(null);
+  public countryControl: FormControl = new FormControl(null);
 
   public interests$: Observable<
     RemoteData<Interessenfeld[], HttpErrorResponse>
@@ -52,12 +59,21 @@ export class CvEditorComponent implements OnInit {
 
     this.store.select(fromSelectors.selectOwnAccount).subscribe((acc) => {
       const rawAccount: Account | null = getOrElse(acc, null);
-      console.log(rawAccount);
 
       this.firstNameControl.setValue(rawAccount?.vorname ?? '');
       this.lastNameControl.setValue(rawAccount?.name ?? '');
       this.emailControl.setValue(rawAccount?.email ?? '');
       this.phoneControl.setValue(rawAccount?.telefon ?? '');
+    });
+
+    this.store.select(fromSelectors.selectOwnAddress).subscribe((address) => {
+      const rawAddress: Address | null = getOrElse(address, null);
+
+      this.streetControl.setValue(rawAddress?.strasse ?? '');
+      this.numberControl.setValue(rawAddress?.hausnummer ?? '');
+      this.plzControl.setValue(rawAddress?.plz ?? '');
+      this.townControl.setValue(rawAddress?.stadt ?? '');
+      this.countryControl.setValue(rawAddress?.land ?? '');
     });
   }
 
@@ -65,6 +81,7 @@ export class CvEditorComponent implements OnInit {
     this.store.dispatch(fromActions.loadLebenslaufStationen());
     this.store.dispatch(fromActions.loadInteressenfelder());
     this.store.dispatch(fromActions.loadOwnAccount());
+    this.store.dispatch(fromActions.loadOwnAdress());
   }
 
   showInterestDialog() {

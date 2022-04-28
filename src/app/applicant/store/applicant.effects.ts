@@ -89,4 +89,20 @@ export class ApplicantEffects {
       )
     )
   );
+
+  loadOwnAddress$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadOwnAdress),
+      mergeMap(() =>
+        this.lebenslaufService.getOwnAddress().pipe(
+          map((address) =>
+            fromActions.loadOwnAdressSuccess({ address: address })
+          ),
+          catchError((err) =>
+            of(fromActions.loadOwnAdressError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

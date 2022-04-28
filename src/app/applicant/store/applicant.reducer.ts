@@ -10,6 +10,7 @@ import {
   success,
 } from 'ngx-remotedata';
 import { Account } from '../models/account.model';
+import { Address } from '../models/address.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 
@@ -28,6 +29,7 @@ export interface ApplicantState {
     interessenfelder: RemoteData<Interessenfeld[], HttpErrorResponse>;
     createNewInteresse: string | null;
     kontakt: RemoteData<Account, HttpErrorResponse>;
+    adresse: RemoteData<Address, HttpErrorResponse>;
   };
 }
 
@@ -42,6 +44,7 @@ export const initialState: ApplicantState = {
     interessenfelder: notAsked(),
     createNewInteresse: null,
     kontakt: notAsked(),
+    adresse: notAsked(),
   },
 };
 
@@ -133,6 +136,23 @@ const applicantReducer = createReducer(
   on(fromActions.loadOwnAccountError, (state, { error }) =>
     produce(state, (draft) => {
       draft.lebenslauf.kontakt = failure<Account, HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.loadOwnAdress, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.adresse = inProgress<Address, HttpErrorResponse>(
+        getOrElse(draft.lebenslauf.adresse, undefined)
+      );
+    })
+  ),
+  on(fromActions.loadOwnAdressSuccess, (state, { address }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.adresse = success<Address, HttpErrorResponse>(address);
+    })
+  ),
+  on(fromActions.loadOwnAdressError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.adresse = failure<Address, HttpErrorResponse>(error);
     })
   )
 );
