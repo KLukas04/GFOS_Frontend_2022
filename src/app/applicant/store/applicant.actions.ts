@@ -171,3 +171,8 @@ export const loadSentApplicationsError = createAction(
   '[CV] [Bewerbungen] Load Bewerbungen Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const deleteApplication = createAction(
+  '[CV] [Bewerbung] Delete Bewerbung',
+  props<{ id: number }>()
+);

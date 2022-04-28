@@ -17,4 +17,10 @@ export class BewerbungService {
       .get<Bewerbung[]>(`${this.baseURL}/bewerbung`)
       .pipe(take(1));
   }
+
+  public deleteApplication(id: number): Observable<string> {
+    return this.http
+      .delete<any>(`${this.baseURL}/bewerbung/${id}`)
+      .pipe(take(1));
+  }
 }

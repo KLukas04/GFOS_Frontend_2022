@@ -15,6 +15,7 @@
     <ng-container
       ><app-application-list-item
         *ngFor="let application of applications"
+        [id]="application.bewerbungid ?? 100000000"
         [title]="application.jobangebot.title"
         [typ]="application.jobangebot.bewerbungstyp.art"
         [startDate]="application.datum"

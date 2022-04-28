@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
+import { catchError, map, mergeMap, of, switchMap, tap } from 'rxjs';
 import { BewerbungService } from '../service/bewerbung.service';
 import { LebenslaufService } from '../service/lebenslauf.service';
 
@@ -186,6 +186,17 @@ export class ApplicantEffects {
             of(fromActions.loadSentApplicationsError({ error: err }))
           )
         )
+      )
+    )
+  );
+
+  deleteApplication$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.deleteApplication),
+      mergeMap((action) =>
+        this.bewerbungService
+          .deleteApplication(action.id)
+          .pipe(map(() => fromActions.loadSentApplications()))
       )
     )
   );

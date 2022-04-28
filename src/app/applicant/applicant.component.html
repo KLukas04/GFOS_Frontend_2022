@@ -22,6 +22,7 @@
     </div>
     <app-application-list-item
       *ngIf="applications$ | async | successValue as applications"
+      [id]="applications[0].bewerbungid ?? 100000000"
       [title]="applications[0].jobangebot.title"
       [typ]="applications[0].jobangebot.bewerbungstyp.art"
       [startDate]="applications[0].datum"
