@@ -48,6 +48,57 @@
       background-color: $color-4;
       height: fit-content;
       
+      .chat {
+        .scrollbar {
+          height: 100%;
+        }
+        width: 450px;
+        max-height: 420px;
+        border-radius: 16pt;
+      
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      
+        .content {
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          padding: 20px 20px 10px 20px;
+      
+          .applicantN {
+            background-color: $color-3;
+            width: 85%;
+            padding: 5px;
+            border-radius: 5pt;
+            align-self: flex-start;
+            padding-inline: 10px;
+          }
+      
+          .employerN {
+            background-color: $color-3;
+            width: 85%;
+            padding: 5px;
+            border-radius: 5pt;
+            align-self: flex-end;
+            padding-inline: 10px;
+          }
+        }
+      
+        .input {
+          padding-inline: 10px;
+          display: flex;
+          flex-direction: row;
+          padding-bottom: 20px;
+          justify-content: space-between;
+          gap: 10px;
+      
+          tui-input {
+            width: 80%;
+          }
+        }
+      }
+      
       
     }
 
@@ -120,53 +171,3 @@
   }
 }
 
-.chat {
-  .scrollbar {
-    height: 100%;
-  }
-  width: 450px;
-  max-height: 420px;
-  border-radius: 16pt;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  .content {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 20px 20px 10px 20px;
-
-    .applicantN {
-      background-color: $color-3;
-      width: 85%;
-      padding: 5px;
-      border-radius: 5pt;
-      align-self: flex-start;
-      padding-inline: 10px;
-    }
-
-    .employerN {
-      background-color: $color-3;
-      width: 85%;
-      padding: 5px;
-      border-radius: 5pt;
-      align-self: flex-end;
-      padding-inline: 10px;
-    }
-  }
-
-  .input {
-    padding-inline: 10px;
-    display: flex;
-    flex-direction: row;
-    padding-bottom: 20px;
-    justify-content: space-between;
-    gap: 10px;
-
-    tui-input {
-      width: 80%;
-    }
-  }
-}
