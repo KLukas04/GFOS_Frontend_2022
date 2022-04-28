@@ -18,7 +18,6 @@ import { ApplicantRoutingModule } from '../applicant/applicant-routing.module';
 import { MyJobsComponent } from './components/myjobs/my-jobs/my-jobs.component';
 import { JobOfferComponent } from './components/myjobs/job-offer/job-offer.component';
 import { ApplicationsForJobComponent } from './components/myjobs/applications-for-job/applications-for-job.component';
-import { ApplicationCardComponent } from './components/myjobs/application-card/application-card.component';
 import { TUI_SANITIZER } from '@taiga-ui/cdk';
 import { ApplicantDetailViewComponent } from './components/myjobs/applicant-detail-view/applicant-detail-view.component';
 import { OpenApplicationsComponent } from './components/open-applications/open-applications.component';
@@ -27,7 +26,7 @@ import { CreateEmployeeComponent } from './components/administration/create-empl
 import { CreateDepartmentComponent } from './components/administration/create-department/create-department.component';
 
 @NgModule({
-  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicationCardComponent, ApplicantDetailViewComponent, OpenApplicationsComponent, MyApplicationsComponent, CreateEmployeeComponent, CreateDepartmentComponent],
+  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicantDetailViewComponent, OpenApplicationsComponent, MyApplicationsComponent, CreateEmployeeComponent, CreateDepartmentComponent],
   imports: [
     CommonModule,
     EmployerRoutingModule,
