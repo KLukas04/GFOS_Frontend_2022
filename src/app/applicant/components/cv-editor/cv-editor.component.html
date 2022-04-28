@@ -16,7 +16,7 @@
     <div class="file">
       <h3> Lebenslauf </h3>
       <tui-root>
-        <button tuiButton>
+        <button tuiButton (click)="showPDF(actions, 'Referenz')">
           Lebenslauf
         </button>
       </tui-root>
@@ -83,3 +83,11 @@
     <app-timeline-view></app-timeline-view>
   </div>
 </div>
+
+<tui-root>
+  <ng-template #actions let-content="content">
+      <a tuiButton shape="rounded" size="s" download [href]="content">
+          Download
+      </a>
+  </ng-template>
+</tui-root>

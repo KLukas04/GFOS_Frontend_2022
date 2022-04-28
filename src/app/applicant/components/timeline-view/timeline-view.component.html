@@ -13,7 +13,7 @@
         <div class="content">
           <div class="action">
             
-            <tui-marker-icon mode="link" size="xs" src="tuiIconFile"></tui-marker-icon>
+            <tui-marker-icon mode="link" size="xs" src="tuiIconFile" (click)="showPDF(actions, 'Referenz')"></tui-marker-icon>
           
           </div>
           <h2>
@@ -42,4 +42,10 @@
   </div>
 </div>
 
-  
+<tui-root>
+  <ng-template #actions let-content="content">
+      <a tuiButton shape="rounded" size="s" download [href]="content">
+          Download
+      </a>
+  </ng-template>
+</tui-root>

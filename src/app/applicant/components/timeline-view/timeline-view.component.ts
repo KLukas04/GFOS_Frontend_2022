@@ -14,8 +14,10 @@ import * as fromReducer from '../../store/applicant.reducer';
 import * as fromSelectors from '../../store/applicant.selectors';
 
 import { TuiDialogService } from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import {PolymorpheusComponent, PolymorpheusContent} from '@tinkoff/ng-polymorpheus';
 import { CvDialogComponent } from '../cv-dialog/cv-dialog.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { TuiPdfViewerOptions, TuiPdfViewerService } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-timeline-view',
@@ -46,6 +48,8 @@ export class TimelineViewComponent {
     private store: Store<fromReducer.ApplicantState>,
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector,
+    @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+    @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService
   ) {
     this.stationen$ = this.store.select(
       fromSelectors.selectLebenslaufStationen
@@ -64,5 +68,17 @@ export class TimelineViewComponent {
 
   showCVDialog(){
     this.cvDialog.subscribe();
+  }
+
+  showPDF(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {
+    this.pdfService
+      .open(
+        this.sanitizer.bypassSecurityTrustResourceUrl(this.pdfInBase64),
+        {
+          label: titel,
+          actions,
+        },
+      )
+      .subscribe();
   }
 }

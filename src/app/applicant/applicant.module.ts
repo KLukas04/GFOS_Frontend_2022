@@ -19,6 +19,7 @@ import {
   TuiInputFileModule,
   TuiMarkerIconModule,
   TuiInputDateRangeModule,
+  TuiPdfViewerModule,
 } from '@taiga-ui/kit';
 
 import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
@@ -78,6 +79,7 @@ import { UpdateProfilpicDialogComponent } from './components/update-profilpic-di
     TuiInputFileModule,
     TuiMarkerIconModule,
     TuiLinkModule,
+    TuiPdfViewerModule,
     StoreModule.forFeature(
       fromReducer.applicantFeatureKey,
       fromReducer.reducer

@@ -5,7 +5,7 @@ import * as fromReducer from '../../store/applicant.reducer';
 import * as fromActions from '../../store/applicant.actions';
 
 import { TuiDialogService } from '@taiga-ui/core';
-import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+import { PolymorpheusComponent, PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 
 import { InterestDialogComponent } from '../interest-dialog/interest-dialog.component';
 import { Observable, take } from 'rxjs';
@@ -18,6 +18,8 @@ import { FormControl } from '@angular/forms';
 import { Account } from '../../models/account.model';
 import { Address } from '../../models/address.model';
 import { UpdateProfilpicDialogComponent } from '../update-profilpic-dialog/update-profilpic-dialog.component';
+import { DomSanitizer } from '@angular/platform-browser';
+import { TuiPdfViewerService, TuiPdfViewerOptions } from '@taiga-ui/kit';
 
 @Component({
   selector: 'app-cv-editor',
@@ -65,7 +67,9 @@ export class CvEditorComponent implements OnInit {
   constructor(
     private store: Store<fromReducer.ApplicantState>,
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    @Inject(Injector) private readonly injector: Injector
+    @Inject(Injector) private readonly injector: Injector,
+    @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+    @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService
   ) {
     this.interests$ = this.store.select(fromSelectors.selectInteressenfelder);
 
@@ -182,5 +186,17 @@ export class CvEditorComponent implements OnInit {
 
   showProfilPicDialog() {
     this.profilPicDialog.subscribe();
+  }
+
+  showPDF(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {
+    this.pdfService
+      .open(
+        this.sanitizer.bypassSecurityTrustResourceUrl(this.pdfInBase64),
+        {
+          label: titel,
+          actions,
+        },
+      )
+      .subscribe();
   }
 }
