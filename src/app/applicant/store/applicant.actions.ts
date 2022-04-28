@@ -176,3 +176,8 @@ export const deleteApplication = createAction(
   '[CV] [Bewerbung] Delete Bewerbung',
   props<{ id: number }>()
 );
+
+export const uploadNewProfilePic = createAction(
+  '[CV] [Profilbild] New Profile Pic',
+  props<{ base64: string }>()
+);

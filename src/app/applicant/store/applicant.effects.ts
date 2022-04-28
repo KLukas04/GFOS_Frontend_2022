@@ -200,4 +200,15 @@ export class ApplicantEffects {
       )
     )
   );
+
+  uploadProfilePic$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.uploadNewProfilePic),
+      mergeMap((action) =>
+        this.lebenslaufService.uploadProfilePic(action.base64).pipe(
+          map(() => fromActions.loadOwnAccount()) // hier dann Bild neu laden, wenn es auch aus db ist
+        )
+      )
+    )
+  );
 }
