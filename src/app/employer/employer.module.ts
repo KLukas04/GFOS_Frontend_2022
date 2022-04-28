@@ -24,9 +24,10 @@ import { OpenApplicationsComponent } from './components/open-applications/open-a
 import { MyApplicationsComponent } from './components/my-applications/my-applications/my-applications.component';
 import { CreateEmployeeComponent } from './components/administration/create-employee/create-employee.component';
 import { CreateDepartmentComponent } from './components/administration/create-department/create-department.component';
+import { SendOnDialogComponent } from './components/send-on-dialog/send-on-dialog.component';
 
 @NgModule({
-  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicantDetailViewComponent, OpenApplicationsComponent, MyApplicationsComponent, CreateEmployeeComponent, CreateDepartmentComponent],
+  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicantDetailViewComponent, OpenApplicationsComponent, MyApplicationsComponent, CreateEmployeeComponent, CreateDepartmentComponent, SendOnDialogComponent],
   imports: [
     CommonModule,
     EmployerRoutingModule,

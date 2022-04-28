@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, Injector, Input, OnInit, ViewChild } from '@angular/core';
 import { TuiHostedDropdownComponent } from '@taiga-ui/core';
+
+import { TuiDialogService } from '@taiga-ui/core';
+import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import { SendOnDialogComponent } from '../send-on-dialog/send-on-dialog.component';
+
 
 @Component({
   selector: 'app-open-applications',
@@ -23,7 +28,16 @@ export class OpenApplicationsComponent implements OnInit {
   //2 = abgelehnt
   //3 = angenommen
 
-  constructor() { }
+  private readonly sendOnDialog = this.dialogService.open(
+    new PolymorpheusComponent(SendOnDialogComponent, this.injector),
+    {
+      dismissible: true,
+      label: 'Weiterleiten',
+    }
+  );
+
+  constructor(@Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+  @Inject(Injector) private readonly injector: Injector) { }
 
   ngOnInit(): void {
   }
@@ -46,6 +60,10 @@ export class OpenApplicationsComponent implements OnInit {
 
   declineApplication(){
     this.status = 2;
+  }
+
+  showSendOnDialog(){
+    this.sendOnDialog.subscribe();
   }
 
 
