@@ -20,3 +20,8 @@ export const selectInteressenfelder = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.interessenfelder
 );
+
+export const selectNewInteresseData = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.createNewInteresse
+);

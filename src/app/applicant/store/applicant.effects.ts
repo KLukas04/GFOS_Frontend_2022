@@ -61,4 +61,18 @@ export class ApplicantEffects {
       )
     )
   );
+
+  addNewInteressenfeld$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.newInteresseAdd),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectNewInteresseData)
+      ),
+      switchMap(([_, data]) =>
+        this.lebenslaufService
+          .addInteressenfeld(data!)
+          .pipe(map(() => fromActions.loadInteressenfelder()))
+      )
+    )
+  );
 }

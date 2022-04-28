@@ -45,3 +45,12 @@ export const loadInteressenfelderError = createAction(
   '[CV] [Interessenfelder] Load Interessenfelder Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const newInteresseName = createAction(
+  '[CV] [Interessenfelder] New Name Inserted',
+  props<{ name: string }>()
+);
+
+export const newInteresseAdd = createAction(
+  '[CV] [Interessenfelder] Add New Interesse'
+);

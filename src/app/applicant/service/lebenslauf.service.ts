@@ -38,4 +38,12 @@ export class LebenslaufService {
       .get<Interessenfeld[]>(`${this.baseURL}/interessenfeld`)
       .pipe(take(1));
   }
+
+  public addInteressenfeld(name: string): Observable<string> {
+    return this.http
+      .post<any>(`${this.baseURL}/interessenfeld`, {
+        name: name,
+      })
+      .pipe(take(1));
+  }
 }

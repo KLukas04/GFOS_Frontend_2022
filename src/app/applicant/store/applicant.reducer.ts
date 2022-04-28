@@ -25,6 +25,7 @@ export interface ApplicantState {
       info: string | null;
     };
     interessenfelder: RemoteData<Interessenfeld[], HttpErrorResponse>;
+    createNewInteresse: string | null;
   };
 }
 
@@ -37,6 +38,7 @@ export const initialState: ApplicantState = {
       info: null,
     },
     interessenfelder: notAsked(),
+    createNewInteresse: null,
   },
 };
 
@@ -106,6 +108,11 @@ const applicantReducer = createReducer(
         Interessenfeld[],
         HttpErrorResponse
       >(error);
+    })
+  ),
+  on(fromActions.newInteresseName, (state, { name }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.createNewInteresse = name;
     })
   )
 );
