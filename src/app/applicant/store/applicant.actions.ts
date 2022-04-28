@@ -129,3 +129,7 @@ export const newAddressCountry = createAction(
   '[CV] [Adresse] New Land Inserted',
   props<{ country: string }>()
 );
+
+export const newAddressUpdate = createAction(
+  '[CV] [Adresse] Changed Address Details'
+);

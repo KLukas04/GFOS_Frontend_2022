@@ -119,4 +119,24 @@ export class ApplicantEffects {
       )
     )
   );
+
+  updateOwnAddress$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.newAddressUpdate),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectChangeAddressData)
+      ),
+      switchMap(([_, data]) =>
+        this.lebenslaufService
+          .updateAddress(
+            data.street,
+            data.number,
+            data.plz,
+            data.town,
+            data.country
+          )
+          .pipe(map(() => fromActions.loadOwnAdress()))
+      )
+    )
+  );
 }

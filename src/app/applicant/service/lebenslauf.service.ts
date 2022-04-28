@@ -72,4 +72,22 @@ export class LebenslaufService {
   public getOwnAddress(): Observable<Address> {
     return this.http.get<Address>(`${this.baseURL}/adresse`).pipe(take(1));
   }
+
+  public updateAddress(
+    street: string | null,
+    number: string | null,
+    plz: number | null,
+    town: string | null,
+    country: string | null
+  ): Observable<string> {
+    let data = {};
+
+    street !== null ? (data = { ...data, strasse: street }) : null;
+    number !== null ? (data = { ...data, hausnummer: number }) : null;
+    plz !== null ? (data = { ...data, plz: plz }) : null;
+    town !== null ? (data = { ...data, stadt: town }) : null;
+    country !== null ? (data = { ...data, stadt: country }) : null;
+
+    return this.http.put<any>(`${this.baseURL}/adresse`, data).pipe(take(1));
+  }
 }

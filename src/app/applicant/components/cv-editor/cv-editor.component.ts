@@ -160,6 +160,10 @@ export class CvEditorComponent implements OnInit {
     );
   }
 
+  public updateAddress(): void {
+    this.store.dispatch(fromActions.newAddressUpdate());
+  }
+
   showInterestDialog() {
     this.verifyDialog.subscribe();
   }
