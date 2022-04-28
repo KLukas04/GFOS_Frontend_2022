@@ -12,7 +12,7 @@
           <input type="password" placeholder="Passwort" [formControl]="loginPasswordForm"
             (input)="saveLoginPassword()" />
         </div>
-        <a tuiLink class="forgotPW" routerLink="forgotPw">
+        <a tuiLink class="forgotPW" (click)="showForgotPwDialog()">
           Passwort vergessen
         </a>
         <input type="submit" value="Login" class="button" (click)="login()" />

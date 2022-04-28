@@ -8,6 +8,7 @@ import * as fromActions from './store/authorization.actions';
 import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.component';
+import { ForgotPwDialogComponent } from './components/forgot-pw-dialog/forgot-pw-dialog.component';
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -26,6 +27,14 @@ export class AuthorizationComponent implements OnInit {
     {
       dismissible: false,
       label: 'Verfizierung',
+    }
+  );
+
+  private readonly forGotPwDialog = this.dialogService.open(
+    new PolymorpheusComponent(ForgotPwDialogComponent, this.injector),
+    {
+      dismissible: true,
+      label: 'Bitte gib deine Email an',
     }
   );
 
@@ -118,5 +127,9 @@ export class AuthorizationComponent implements OnInit {
   register(): void {
     this.store.dispatch(fromActions.tryRegistration());
     this.verifyDialog.subscribe();
+  }
+
+  showForgotPwDialog(){
+    this.forGotPwDialog.subscribe();
   }
 }
