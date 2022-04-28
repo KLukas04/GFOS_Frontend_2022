@@ -1,3 +1,4 @@
+
 <div tuiGroup class="group">
   <tui-select
     tuiTextfieldSize="l"
@@ -8,17 +9,6 @@
     <tui-data-list-wrapper
       *tuiDataList
       [items]="mockTypesOfEmployment"
-    ></tui-data-list-wrapper
-  ></tui-select>
-  <tui-select
-    tuiTextfieldSize="l"
-    class="tui-group__inherit-item"
-    [tuiTextfieldLabelOutside]="true"
-    [formControl]="distanceFormControl"
-    >Im Umkreis von...
-    <tui-data-list-wrapper
-      *tuiDataList
-      [items]="mockDistances"
     ></tui-data-list-wrapper
   ></tui-select>
   <tui-select
@@ -37,7 +27,6 @@
     Suchen
   </button>
 </div>
-
 <ng-template #content let-data>
   <div class="template">
     <tui-avatar [avatarUrl]="data.icon" size="xs" class="avatar" [text]="data.text"></tui-avatar>
