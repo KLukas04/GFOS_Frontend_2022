@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { TuiDayRange } from '@taiga-ui/cdk';
+import { Account } from '../models/account.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 
@@ -53,4 +54,16 @@ export const newInteresseName = createAction(
 
 export const newInteresseAdd = createAction(
   '[CV] [Interessenfelder] Add New Interesse'
+);
+
+export const loadOwnAccount = createAction('[CV] [Kontakt] Load Kontakt');
+
+export const loadOwnAccountSuccess = createAction(
+  '[CV] [Kontakt] Load Kontakt Success',
+  props<{ account: Account }>()
+);
+
+export const loadOwnAccountError = createAction(
+  '[CV] [Kontakt] Load Kontakt Error',
+  props<{ error: HttpErrorResponse }>()
 );

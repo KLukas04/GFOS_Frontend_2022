@@ -75,4 +75,18 @@ export class ApplicantEffects {
       )
     )
   );
+
+  loadOwnAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadOwnAccount),
+      mergeMap(() =>
+        this.lebenslaufService.getOwnAccount().pipe(
+          map((acc) => fromActions.loadOwnAccountSuccess({ account: acc })),
+          catchError((err) =>
+            of(fromActions.loadOwnAccountError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

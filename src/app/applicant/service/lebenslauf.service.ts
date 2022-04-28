@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Account } from '../models/account.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 
@@ -45,5 +46,9 @@ export class LebenslaufService {
         name: name,
       })
       .pipe(take(1));
+  }
+
+  public getOwnAccount(): Observable<Account> {
+    return this.http.get<Account>(`${this.baseURL}/bewerber`).pipe(take(1));
   }
 }

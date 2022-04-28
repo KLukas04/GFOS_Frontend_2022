@@ -7,12 +7,14 @@ import * as fromActions from '../../store/applicant.actions';
 import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { InterestDialogComponent } from '../interest-dialog/interest-dialog.component';
-import { Observable } from 'rxjs';
-import { RemoteData } from 'ngx-remotedata';
+import { Observable, take } from 'rxjs';
+import { getOrElse, RemoteData } from 'ngx-remotedata';
 import { Interessenfeld } from '../../models/interessenfeld.model';
 import { HttpErrorResponse } from '@angular/common/http';
 
 import * as fromSelectors from '../../store/applicant.selectors';
+import { FormControl } from '@angular/forms';
+import { Account } from '../../models/account.model';
 
 @Component({
   selector: 'app-cv-editor',
@@ -23,6 +25,11 @@ export class CvEditorComponent implements OnInit {
   public avatar: string =
     'https://www.torsten-volkmer.de/wp-content/uploads/2017/06/20170613_011_by_TorstenVolkmer.jpg';
   newInterest = '';
+
+  public firstNameControl: FormControl = new FormControl(null);
+  public lastNameControl: FormControl = new FormControl(null);
+  public emailControl: FormControl = new FormControl(null);
+  public phoneControl: FormControl = new FormControl(null);
 
   public interests$: Observable<
     RemoteData<Interessenfeld[], HttpErrorResponse>
@@ -35,17 +42,29 @@ export class CvEditorComponent implements OnInit {
       label: 'Neues Interesse',
     }
   );
+
   constructor(
     private store: Store<fromReducer.ApplicantState>,
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector
   ) {
     this.interests$ = this.store.select(fromSelectors.selectInteressenfelder);
+
+    this.store.select(fromSelectors.selectOwnAccount).subscribe((acc) => {
+      const rawAccount: Account | null = getOrElse(acc, null);
+      console.log(rawAccount);
+
+      this.firstNameControl.setValue(rawAccount?.vorname ?? '');
+      this.lastNameControl.setValue(rawAccount?.name ?? '');
+      this.emailControl.setValue(rawAccount?.email ?? '');
+      this.phoneControl.setValue(rawAccount?.telefon ?? '');
+    });
   }
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadLebenslaufStationen());
     this.store.dispatch(fromActions.loadInteressenfelder());
+    this.store.dispatch(fromActions.loadOwnAccount());
   }
 
   showInterestDialog() {
