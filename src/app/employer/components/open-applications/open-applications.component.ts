@@ -2,7 +2,9 @@ import { ChangeDetectionStrategy, Component, Inject, Injector, Input, OnInit, Vi
 import { TuiHostedDropdownComponent } from '@taiga-ui/core';
 
 import { TuiDialogService } from '@taiga-ui/core';
-import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import { DomSanitizer } from '@angular/platform-browser';
+import { TuiPdfViewerOptions, TuiPdfViewerService } from '@taiga-ui/kit';
+import { PolymorpheusComponent, PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { DelegateDialogComponent } from '../delegate-dialog/delegate-dialog.component';
 import { SendOnDialogComponent } from '../send-on-dialog/send-on-dialog.component';
 
@@ -45,8 +47,11 @@ export class OpenApplicationsComponent implements OnInit {
     }
   );
 
-  constructor(@Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-  @Inject(Injector) private readonly injector: Injector) { }
+  constructor(
+    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector,
+    @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
+    @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,) { }
 
   ngOnInit(): void {
   }
@@ -59,24 +64,35 @@ export class OpenApplicationsComponent implements OnInit {
     }
   }
 
-  setStatusInWork(){
+  setStatusInWork() {
     this.status = 1; //bei ersten Click auf Bewerbung status auf "in bearbeitung"
   }
 
-  acceptApplication(){
+  acceptApplication() {
     this.status = 3;
   }
 
-  declineApplication(){
+  declineApplication() {
     this.status = 2;
   }
 
-  showSendOnDialog(){
+  showSendOnDialog() {
     this.sendOnDialog.subscribe();
   }
 
-  showDelegateDialog(){
+  showDelegateDialog() {
     this.delegateDialog.subscribe();
   }
 
+  show(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {
+    this.pdfService
+      .open(
+        this.sanitizer.bypassSecurityTrustResourceUrl('/assets/Lebenslauf.pdf'),
+        {
+          label: titel,
+          actions,
+        },
+      )
+      .subscribe();
+  }
 }

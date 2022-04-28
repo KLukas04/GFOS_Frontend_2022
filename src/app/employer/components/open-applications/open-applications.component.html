@@ -24,10 +24,10 @@
           <tui-avatar [avatarUrl]="avatar" text="Bild" size="xl" [rounded]="true"></tui-avatar>
         </a>
 
-        <button class="file" tuiButton>
+        <button class="file" tuiButton (click)="show(actions, 'Anschreiben')">
           Anschreiben
         </button>
-        <button class="file" tuiButton>
+        <button class="file" tuiButton (click)="show(actions, 'Lebenslauf')">
           Lebenslauf
         </button>
 
@@ -66,4 +66,20 @@
       <button tuiOption (click)="showDelegateDialog()">Delegieren</button>
     </tui-data-list>
   </ng-template>
+
+  <ng-template
+  #actions
+  let-content="content"
+  class="pdf"
+>
+  <a
+      tuiButton
+      shape="rounded"
+      size="s"
+      download
+      [href]="content"
+  >
+      Download
+  </a>
+</ng-template>
 </tui-root>
