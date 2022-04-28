@@ -11,8 +11,10 @@ import {
 } from 'ngx-remotedata';
 import { Account } from '../models/account.model';
 import { Address } from '../models/address.model';
+import { Bewerbung } from '../models/bewerbung.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
+import { Settings } from '../models/settings.model';
 
 import * as fromActions from './applicant.actions';
 
@@ -43,7 +45,13 @@ export interface ApplicantState {
       town: string | null;
       country: string | null;
     };
+    settings: RemoteData<Settings, HttpErrorResponse>;
+    changeSettings: {
+      getMails: boolean | null;
+      twoFa: boolean | null;
+    };
   };
+  sentApplications: RemoteData<Bewerbung[], HttpErrorResponse>;
 }
 
 export const initialState: ApplicantState = {
@@ -71,7 +79,13 @@ export const initialState: ApplicantState = {
       town: null,
       country: null,
     },
+    settings: notAsked(),
+    changeSettings: {
+      getMails: null,
+      twoFa: null,
+    },
   },
+  sentApplications: notAsked(),
 };
 
 const applicantReducer = createReducer(
@@ -224,6 +238,59 @@ const applicantReducer = createReducer(
   on(fromActions.newAddressCountry, (state, { country }) =>
     produce(state, (draft) => {
       draft.lebenslauf.changeAddress.country = country;
+    })
+  ),
+  on(fromActions.loadOwnSettings, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.settings = inProgress<Settings, HttpErrorResponse>(
+        getOrElse(draft.lebenslauf.settings, undefined)
+      );
+    })
+  ),
+  on(fromActions.loadOwnSettingsSuccess, (state, { settings }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeSettings.getMails = settings.getmails;
+      draft.lebenslauf.changeSettings.twoFa = settings.twofa;
+
+      draft.lebenslauf.settings = success<Settings, HttpErrorResponse>(
+        settings
+      );
+    })
+  ),
+  on(fromActions.loadOwnSettingsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.settings = failure<Settings, HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.changeGetMailsSetting, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeSettings.getMails =
+        !draft.lebenslauf.changeSettings.getMails;
+    })
+  ),
+  on(fromActions.changeTwoFaSetting, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeSettings.twoFa =
+        !draft.lebenslauf.changeSettings.twoFa;
+    })
+  ),
+  on(fromActions.loadSentApplications, (state) =>
+    produce(state, (draft) => {
+      draft.sentApplications = inProgress<Bewerbung[], HttpErrorResponse>(
+        getOrElse(draft.sentApplications, [])
+      );
+    })
+  ),
+  on(fromActions.loadSentApplicationsSuccess, (state, { applications }) =>
+    produce(state, (draft) => {
+      draft.sentApplications = success<Bewerbung[], HttpErrorResponse>(
+        applications
+      );
+    })
+  ),
+  on(fromActions.loadSentApplicationsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.sentApplications = failure<Bewerbung[], HttpErrorResponse>(error);
     })
   )
 );

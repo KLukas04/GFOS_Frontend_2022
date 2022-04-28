@@ -6,6 +6,7 @@ import { Account } from '../models/account.model';
 import { Address } from '../models/address.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
+import { Settings } from '../models/settings.model';
 
 @Injectable({
   providedIn: 'root',
@@ -89,5 +90,20 @@ export class LebenslaufService {
     country !== null ? (data = { ...data, stadt: country }) : null;
 
     return this.http.put<any>(`${this.baseURL}/adresse`, data).pipe(take(1));
+  }
+
+  public getOwnSettings(): Observable<Settings> {
+    return this.http
+      .get<Settings>(`${this.baseURL}/bewerbereinstellungen`)
+      .pipe(take(1));
+  }
+
+  public updateSettings(getMails: boolean, twoFa: boolean): Observable<string> {
+    return this.http
+      .put<any>(`${this.baseURL}/bewerbereinstellungen`, {
+        getmails: getMails,
+        twofa: twoFa,
+      })
+      .pipe(take(1));
   }
 }

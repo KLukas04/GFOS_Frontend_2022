@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-greetings-header',
   templateUrl: './greetings-header.component.html',
-  styleUrls: ['./greetings-header.component.scss']
+  styleUrls: ['./greetings-header.component.scss'],
 })
 export class GreetingsHeaderComponent implements OnInit {
+  @Input() amoutOfApplicaions: number = 0;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

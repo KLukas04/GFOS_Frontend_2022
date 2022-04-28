@@ -3,8 +3,10 @@ import { createAction, props } from '@ngrx/store';
 import { TuiDayRange } from '@taiga-ui/cdk';
 import { Account } from '../models/account.model';
 import { Address } from '../models/address.model';
+import { Bewerbung } from '../models/bewerbung.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
+import { Settings } from '../models/settings.model';
 
 export const loadLebenslaufStationen = createAction(
   '[CV] [Stationen] Load Stationen'
@@ -89,9 +91,7 @@ export const newKontaktPhoneName = createAction(
   props<{ phone: string }>()
 );
 
-export const newKontaktUpdate = createAction(
-  '[CV] [Kontakt] Changed Account Details'
-);
+export const newKontaktUpdate = createAction('[CV] [Kontakt] Updated Account');
 
 export const loadOwnAdress = createAction('[CV] [Adresse] Load Adresse');
 
@@ -130,6 +130,44 @@ export const newAddressCountry = createAction(
   props<{ country: string }>()
 );
 
-export const newAddressUpdate = createAction(
-  '[CV] [Adresse] Changed Address Details'
+export const newAddressUpdate = createAction('[CV] [Adresse] Updated Address');
+
+export const loadOwnSettings = createAction(
+  '[CV] [Einstellungen] Load Einstellungen'
+);
+
+export const loadOwnSettingsSuccess = createAction(
+  '[CV] [Einstellungen] Load Einstellungen Success',
+  props<{ settings: Settings }>()
+);
+
+export const loadOwnSettingsError = createAction(
+  '[CV] [Einstellungen] Load Einstellungen Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const changeGetMailsSetting = createAction(
+  '[CV] [Einstellungen] Change GetMails Setting'
+);
+
+export const changeTwoFaSetting = createAction(
+  '[CV] [Einstellungen] Change Two-FA Setting'
+);
+
+export const newSettingsUpdate = createAction(
+  '[CV [Einstellungen] Updated Settings'
+);
+
+export const loadSentApplications = createAction(
+  '[CV] [Bewerbungen] Load Bewerbungen'
+);
+
+export const loadSentApplicationsSuccess = createAction(
+  '[CV] [Bewerbungen] Load Bewerbungen Success',
+  props<{ applications: Bewerbung[] }>()
+);
+
+export const loadSentApplicationsError = createAction(
+  '[CV] [Bewerbungen] Load Bewerbungen Error',
+  props<{ error: HttpErrorResponse }>()
 );

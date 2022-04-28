@@ -1,4 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { map } from 'ngx-remotedata';
+import { Bewerbung } from '../models/bewerbung.model';
 import * as fromReducer from './applicant.reducer';
 
 export const selectApplicantState =
@@ -44,4 +46,19 @@ export const selectOwnAddress = createSelector(
 export const selectChangeAddressData = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.changeAddress
+);
+
+export const selectOwnSettings = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.settings
+);
+
+export const selectChangeSettingsData = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.changeSettings
+);
+
+export const selectSentApplications = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.sentApplications
 );
