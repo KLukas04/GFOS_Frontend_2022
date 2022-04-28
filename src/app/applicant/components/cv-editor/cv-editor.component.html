@@ -15,12 +15,16 @@
       (click)="showProfilPicDialog()"></tui-avatar>
     <div class="file">
       <h3> Lebenslauf </h3>
-      <tui-root>
         <button tuiButton (click)="showPDF(actions, 'Referenz')">
-          Lebenslauf
+          Ansehen
         </button>
-      </tui-root>
-    </div>
+        <br><br>
+      <tui-input-file label=" " link="Lade deinen Lebenslauf hoch" accept="application/pdf" class="container" [formControl]="control"
+        [loadingFiles]="(loading$ | async) || []" [rejectedFiles]="(rejected$ | async) || []"></tui-input-file>
+        <button tuiButton (click)="showPDF(actions, 'Referenz')">
+          Speichern
+        </button>
+      </div>
   </div>
   <div class="main">
     <div class="basic-info">
@@ -86,8 +90,8 @@
 
 <tui-root>
   <ng-template #actions let-content="content">
-      <a tuiButton shape="rounded" size="s" download [href]="content">
-          Download
-      </a>
+    <a tuiButton shape="rounded" size="s" download [href]="content">
+      Download
+    </a>
   </ng-template>
 </tui-root>

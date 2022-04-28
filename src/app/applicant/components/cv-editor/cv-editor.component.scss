@@ -74,12 +74,19 @@
         .file{
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
+            gap: 10px;
             align-items: center;
             height: 30em;
-            background-color: black;
+            background-color: $color-4;
             border-radius: 16px;
             width: 90%;
+            padding: 10px;
+
+            button{
+                width: 100%;
+                padding: 5px;
+            }
         }
     }
 
