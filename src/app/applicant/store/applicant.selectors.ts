@@ -10,3 +10,8 @@ export const selectLebenslaufStationen = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.stationen
 );
+
+export const selectNewStationData = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.createNewStation
+);

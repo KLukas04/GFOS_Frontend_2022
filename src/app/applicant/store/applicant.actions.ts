@@ -26,3 +26,7 @@ export const newLebenslaufStationInfo = createAction(
   '[CV] [Stationen] New Info Inserted',
   props<{ info: string }>()
 );
+
+export const newLebenslaufStationAdd = createAction(
+  '[CV] [Stationen] Add New Station'
+);

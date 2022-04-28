@@ -45,7 +45,6 @@ export class CvDialogComponent implements OnInit {
   ngOnInit(): void {}
 
   public saveDates(): void {
-    console.log(this.dateControl.value);
     setTimeout(() => {
       this.store.dispatch(
         fromActions.newLebenslaufStationStartEnd({
@@ -62,6 +61,7 @@ export class CvDialogComponent implements OnInit {
   }
 
   close(): void {
+    this.store.dispatch(fromActions.newLebenslaufStationAdd());
     this.context.completeWith(null);
   }
 

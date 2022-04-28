@@ -17,4 +17,18 @@ export class LebenslaufService {
       .get<LebenslaufStation[]>(`${this.baseURL}/lebenslauf`)
       .pipe(take(1));
   }
+
+  public addLebenslaufStation(
+    start: Date,
+    end: Date,
+    info: string
+  ): Observable<string> {
+    return this.http
+      .post<any>(`${this.baseURL}/lebenslauf`, {
+        start: start,
+        ende: end,
+        info: info,
+      })
+      .pipe(take(1));
+  }
 }
