@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import {
   TuiNotificationModule,
   TuiButtonModule,
-  TuiPrimitiveTextfieldModule,
   TuiDialogModule,
   TuiRootModule,
   TuiScrollbarModule,
@@ -64,7 +63,7 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     TuiAvatarModule,
     TuiIslandModule,
     TuiButtonModule,
-    TuiPrimitiveTextfieldModule,
+    TuiInputModule,
     TuiProgressModule,
     TuiRootModule,
     TuiDialogModule,

@@ -10,7 +10,12 @@
 
 <div class="parent">
   <div class="sidebar">
-    <tui-avatar [avatarUrl]="avatar" size="xxl" class="tui-space_top-1" [rounded]="true"></tui-avatar>
+    <tui-avatar
+      [avatarUrl]="avatar"
+      size="xxl"
+      class="tui-space_top-1"
+      [rounded]="true"
+    ></tui-avatar>
     <div class="file">Lebenslauf-PDF hier</div>
   </div>
   <div class="main">
@@ -18,40 +23,53 @@
       <div class="box first">
         <div class="heading">
           <p>Name</p>
-          <a tuiLink>
-            Speichern
-          </a>
+          <a tuiLink (click)="updateAccount()"> Speichern </a>
         </div>
         <div class="input">
-          <tui-primitive-textfield>Vorname</tui-primitive-textfield>
-          <tui-primitive-textfield>Name</tui-primitive-textfield>
+          <tui-input [formControl]="firstNameControl" (input)="saveFirstName()"
+            >Vorname</tui-input
+          >
+          <tui-input [formControl]="lastNameControl" (input)="saveLastName()"
+            >Name</tui-input
+          >
         </div>
         <div class="heading">
           <p>Kontakt</p>
-          <a tuiLink>
-            Speichern
-          </a>
+          <a tuiLink (click)="updateAccount()"> Speichern </a>
         </div>
         <div class="input">
-          <tui-primitive-textfield>Email</tui-primitive-textfield>
-          <tui-primitive-textfield>Telefonnummer</tui-primitive-textfield>
+          <tui-input [formControl]="emailControl" (input)="saveEmail()"
+            >Email</tui-input
+          >
+          <tui-input [formControl]="phoneControl" (input)="savePhone()"
+            >Telefonnummer</tui-input
+          >
         </div>
       </div>
 
       <div class="box">
         <div class="heading">
           <p>Addresse</p>
-          <a tuiLink>
-            Speichern
-          </a>
+          <a tuiLink (click)="updateAddress()"> Speichern </a>
         </div>
         <div class="input">
-          <tui-primitive-textfield>Straße</tui-primitive-textfield>
-          <tui-primitive-textfield>Hausnummer</tui-primitive-textfield>
+          <tui-input [formControl]="streetControl" (input)="saveStreet()"
+            >Straße</tui-input
+          >
+          <tui-input [formControl]="numberControl" (input)="saveNumber()"
+            >Hausnummer</tui-input
+          >
         </div>
         <div class="input">
-          <tui-primitive-textfield>PLZ</tui-primitive-textfield>
-          <tui-primitive-textfield>Stadt</tui-primitive-textfield>
+          <tui-input [formControl]="plzControl" (input)="savePlz()"
+            >PLZ</tui-input
+          >
+          <tui-input [formControl]="townControl" (input)="saveTown()"
+            >Stadt</tui-input
+          >
+          <tui-input [formControl]="countryControl" (input)="saveCountry()"
+            >Land</tui-input
+          >
         </div>
       </div>
     </div>
@@ -60,13 +78,24 @@
       <div class="i-content">
         <div class="interests" *ngIf="interests$ | async | isSuccess">
           <ng-container *ngIf="interests$ | async | successValue as interests">
-            <tui-badge *ngFor="let interest of interests" size="l" status="primary" [value]="interest.name">
+            <tui-badge
+              *ngFor="let interest of interests"
+              size="l"
+              status="primary"
+              [value]="interest.name"
+            >
             </tui-badge>
           </ng-container>
         </div>
         <tui-root>
           <div class="button">
-            <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showInterestDialog()">
+            <button
+              tuiButton
+              type="button"
+              size="m"
+              icon="tuiIconPlusLarge"
+              (click)="showInterestDialog()"
+            >
               Add
             </button>
           </div>

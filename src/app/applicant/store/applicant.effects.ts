@@ -75,4 +75,68 @@ export class ApplicantEffects {
       )
     )
   );
+
+  loadOwnAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadOwnAccount),
+      mergeMap(() =>
+        this.lebenslaufService.getOwnAccount().pipe(
+          map((acc) => fromActions.loadOwnAccountSuccess({ account: acc })),
+          catchError((err) =>
+            of(fromActions.loadOwnAccountError({ error: err }))
+          )
+        )
+      )
+    )
+  );
+
+  updateOwnAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.newKontaktUpdate),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectChangeAccountData)
+      ),
+      switchMap(([_, data]) =>
+        this.lebenslaufService
+          .updateAccount(data.firstName, data.lastName, data.email, data.phone)
+          .pipe(map(() => fromActions.loadOwnAccount()))
+      )
+    )
+  );
+
+  loadOwnAddress$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadOwnAdress),
+      mergeMap(() =>
+        this.lebenslaufService.getOwnAddress().pipe(
+          map((address) =>
+            fromActions.loadOwnAdressSuccess({ address: address })
+          ),
+          catchError((err) =>
+            of(fromActions.loadOwnAdressError({ error: err }))
+          )
+        )
+      )
+    )
+  );
+
+  updateOwnAddress$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.newAddressUpdate),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectChangeAddressData)
+      ),
+      switchMap(([_, data]) =>
+        this.lebenslaufService
+          .updateAddress(
+            data.street,
+            data.number,
+            data.plz,
+            data.town,
+            data.country
+          )
+          .pipe(map(() => fromActions.loadOwnAdress()))
+      )
+    )
+  );
 }

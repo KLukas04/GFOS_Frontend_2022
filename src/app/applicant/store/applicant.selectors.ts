@@ -25,3 +25,23 @@ export const selectNewInteresseData = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.createNewInteresse
 );
+
+export const selectOwnAccount = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.kontakt
+);
+
+export const selectChangeAccountData = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.changeKontakt
+);
+
+export const selectOwnAddress = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.adresse
+);
+
+export const selectChangeAddressData = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.changeAddress
+);

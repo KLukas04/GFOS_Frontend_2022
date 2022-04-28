@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { TuiDayRange } from '@taiga-ui/cdk';
+import { Account } from '../models/account.model';
+import { Address } from '../models/address.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 
@@ -53,4 +55,81 @@ export const newInteresseName = createAction(
 
 export const newInteresseAdd = createAction(
   '[CV] [Interessenfelder] Add New Interesse'
+);
+
+export const loadOwnAccount = createAction('[CV] [Kontakt] Load Kontakt');
+
+export const loadOwnAccountSuccess = createAction(
+  '[CV] [Kontakt] Load Kontakt Success',
+  props<{ account: Account }>()
+);
+
+export const loadOwnAccountError = createAction(
+  '[CV] [Kontakt] Load Kontakt Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const newKontaktFirstName = createAction(
+  '[CV] [Kontakt] New Vorname Inserted',
+  props<{ firstName: string }>()
+);
+
+export const newKontaktLastName = createAction(
+  '[CV] [Kontakt] New Nachname Inserted',
+  props<{ lastName: string }>()
+);
+
+export const newKontaktEmailName = createAction(
+  '[CV] [Kontakt] New Email Inserted',
+  props<{ email: string }>()
+);
+
+export const newKontaktPhoneName = createAction(
+  '[CV] [Kontakt] New Telefon Inserted',
+  props<{ phone: string }>()
+);
+
+export const newKontaktUpdate = createAction(
+  '[CV] [Kontakt] Changed Account Details'
+);
+
+export const loadOwnAdress = createAction('[CV] [Adresse] Load Adresse');
+
+export const loadOwnAdressSuccess = createAction(
+  '[CV] [Adresse] Load Adresse Success',
+  props<{ address: Address }>()
+);
+
+export const loadOwnAdressError = createAction(
+  '[CV] [Adresse] Load Adresse Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const newAddressStreet = createAction(
+  '[CV] [Adresse] New Straße Inserted',
+  props<{ street: string }>()
+);
+
+export const newAddressNumber = createAction(
+  '[CV] [Adresse] New Hausnummer Inserted',
+  props<{ number: string }>()
+);
+
+export const newAddressPlz = createAction(
+  '[CV] [Adresse] New PLZ Inserted',
+  props<{ plz: number }>()
+);
+
+export const newAddressTown = createAction(
+  '[CV] [Adresse] New Stadt Inserted',
+  props<{ town: string }>()
+);
+
+export const newAddressCountry = createAction(
+  '[CV] [Adresse] New Land Inserted',
+  props<{ country: string }>()
+);
+
+export const newAddressUpdate = createAction(
+  '[CV] [Adresse] Changed Address Details'
 );
