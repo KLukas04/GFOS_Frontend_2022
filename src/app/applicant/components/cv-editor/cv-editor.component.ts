@@ -5,9 +5,8 @@ import * as fromReducer from '../../store/applicant.reducer';
 import * as fromActions from '../../store/applicant.actions';
 
 import { TuiDialogService } from '@taiga-ui/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { TuiPdfViewerOptions, TuiPdfViewerService } from '@taiga-ui/kit';
-import { PolymorpheusComponent, PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
+
 import { InterestDialogComponent } from '../interest-dialog/interest-dialog.component';
 import { Observable, take } from 'rxjs';
 import { getOrElse, RemoteData } from 'ngx-remotedata';
@@ -66,9 +65,7 @@ export class CvEditorComponent implements OnInit {
   constructor(
     private store: Store<fromReducer.ApplicantState>,
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
-    @Inject(Injector) private readonly injector: Injector,
-    @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
-    @Inject(TuiPdfViewerService) private readonly pdfService: TuiPdfViewerService,
+    @Inject(Injector) private readonly injector: Injector
   ) {
     this.interests$ = this.store.select(fromSelectors.selectInteressenfelder);
 
@@ -185,18 +182,5 @@ export class CvEditorComponent implements OnInit {
 
   showProfilPicDialog() {
     this.profilPicDialog.subscribe();
-  }
-
-  show(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {
-    //lade in variable 'pdfInBase64' richtiges file (entweder Lebenslauf oder Anschreiben) -> über 'titel' erkennbar
-    this.pdfService
-      .open(
-        this.sanitizer.bypassSecurityTrustResourceUrl(this.pdfInBase64),
-        {
-          label: titel,
-          actions,
-        },
-      )
-      .subscribe();
   }
 }

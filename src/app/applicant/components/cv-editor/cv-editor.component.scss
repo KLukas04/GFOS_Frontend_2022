@@ -73,11 +73,12 @@
 
         .file{
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             height: 30em;
             background-color: black;
-            border-radius: 50px;
+            border-radius: 16px;
             width: 90%;
         }
     }

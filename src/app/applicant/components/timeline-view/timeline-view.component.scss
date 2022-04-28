@@ -24,6 +24,12 @@
       width: 100%;
     }
   }
+
+  .action{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+  }
   
   tui-input{
     padding: 5px;
