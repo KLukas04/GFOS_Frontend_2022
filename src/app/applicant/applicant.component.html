@@ -20,14 +20,16 @@
       ></app-category-card>
       <app-settings-card></app-settings-card>
     </div>
-    <app-application-list-item
-      *ngIf="applications$ | async | successValue as applications"
-      [id]="applications[0].bewerbungid ?? 100000000"
-      [title]="applications[0].jobangebot.title"
-      [typ]="applications[0].jobangebot.bewerbungstyp.art"
-      [startDate]="applications[0].datum"
-      [description]="applications[0].jobangebot.kurzbeschreibung"
-      [status]="applications[0].status"
-    ></app-application-list-item>
+    <ng-container *ngIf="applications$ | async | successValue as applications">
+      <app-application-list-item
+        *ngIf="applications.length !== 0"
+        [id]="applications[0].bewerbungid ?? 100000000"
+        [title]="applications[0].jobangebot.title"
+        [typ]="applications[0].jobangebot.bewerbungstyp.art"
+        [startDate]="applications[0].datum"
+        [description]="applications[0].jobangebot.kurzbeschreibung"
+        [status]="applications[0].status"
+      ></app-application-list-item>
+    </ng-container>
   </div>
 </div>
