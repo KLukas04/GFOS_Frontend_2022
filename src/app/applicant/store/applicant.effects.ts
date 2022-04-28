@@ -139,4 +139,20 @@ export class ApplicantEffects {
       )
     )
   );
+
+  loadOwnSettings$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadOwnSettings),
+      mergeMap(() =>
+        this.lebenslaufService.getOwnSettings().pipe(
+          map((settings) =>
+            fromActions.loadOwnSettingsSuccess({ settings: settings })
+          ),
+          catchError((err) =>
+            of(fromActions.loadOwnSettingsError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

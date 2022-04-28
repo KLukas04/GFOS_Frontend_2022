@@ -5,6 +5,7 @@ import { Account } from '../models/account.model';
 import { Address } from '../models/address.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
+import { Settings } from '../models/settings.model';
 
 export const loadLebenslaufStationen = createAction(
   '[CV] [Stationen] Load Stationen'
@@ -132,4 +133,18 @@ export const newAddressCountry = createAction(
 
 export const newAddressUpdate = createAction(
   '[CV] [Adresse] Changed Address Details'
+);
+
+export const loadOwnSettings = createAction(
+  '[CV] [Einstellungen] Load Einstellungen'
+);
+
+export const loadOwnSettingsSuccess = createAction(
+  '[CV] [Einstellungen] Load Einstellungen Success',
+  props<{ settings: Settings }>()
+);
+
+export const loadOwnSettingsError = createAction(
+  '[CV] [Einstellungen] Load Einstellungen Error',
+  props<{ error: HttpErrorResponse }>()
 );

@@ -13,6 +13,7 @@ import { Account } from '../models/account.model';
 import { Address } from '../models/address.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
+import { Settings } from '../models/settings.model';
 
 import * as fromActions from './applicant.actions';
 
@@ -43,6 +44,7 @@ export interface ApplicantState {
       town: string | null;
       country: string | null;
     };
+    settings: RemoteData<Settings, HttpErrorResponse>;
   };
 }
 
@@ -71,6 +73,7 @@ export const initialState: ApplicantState = {
       town: null,
       country: null,
     },
+    settings: notAsked(),
   },
 };
 
@@ -224,6 +227,25 @@ const applicantReducer = createReducer(
   on(fromActions.newAddressCountry, (state, { country }) =>
     produce(state, (draft) => {
       draft.lebenslauf.changeAddress.country = country;
+    })
+  ),
+  on(fromActions.loadOwnSettings, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.settings = inProgress<Settings, HttpErrorResponse>(
+        getOrElse(draft.lebenslauf.settings, undefined)
+      );
+    })
+  ),
+  on(fromActions.loadOwnSettingsSuccess, (state, { settings }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.settings = success<Settings, HttpErrorResponse>(
+        settings
+      );
+    })
+  ),
+  on(fromActions.loadOwnSettingsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.settings = failure<Settings, HttpErrorResponse>(error);
     })
   )
 );

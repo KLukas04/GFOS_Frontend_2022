@@ -45,3 +45,8 @@ export const selectChangeAddressData = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.changeAddress
 );
+
+export const selectOwnSettings = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.settings
+);
