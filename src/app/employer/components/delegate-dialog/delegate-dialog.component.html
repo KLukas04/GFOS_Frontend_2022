@@ -1,2 +1,13 @@
 
-<button tuiButton  (click)="close()">Weiterleiten</button>
+<tui-select [formControl]="newPersonaler">
+    Neuer Sachbearbeiter
+    <input
+        tuiTextfield
+        placeholder="Wähle einen neuen Personaler"
+    />
+    <tui-data-list-wrapper
+        *tuiDataList
+        [items]="items"
+    ></tui-data-list-wrapper>
+</tui-select>
+<button tuiButton  (click)="close()">Delegieren</button>

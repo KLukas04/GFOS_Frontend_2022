@@ -65,7 +65,6 @@ import { DelegateDialogComponent } from './components/delegate-dialog/delegate-d
     TuiMarkerIconModule,
     TuiHostedDropdownModule,
     TuiSvgModule,
-    
   ],
   providers:[
     {
