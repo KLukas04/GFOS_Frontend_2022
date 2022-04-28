@@ -1,0 +1,11 @@
+
+<tui-input-file
+  link="Choose an image"
+  accept="application/pdf"
+  class="container"
+  [formControl]="control"
+  [loadingFiles]="(loading$ | async) || []"
+  [rejectedFiles]="(rejected$ | async) || []"
+></tui-input-file>
+<br />
+<button tuiButton icon="tuiIconPlus" (click)="close()">Add</button>

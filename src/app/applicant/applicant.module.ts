@@ -41,6 +41,7 @@ import { ApplicantEffects } from './store/applicant.effects';
 import { RemoteDataModule } from 'ngx-remotedata';
 import { InterestDialogComponent } from './components/interest-dialog/interest-dialog.component';
 import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
+import { UpdateProfilpicDialogComponent } from './components/update-profilpic-dialog/update-profilpic-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     SettingsCardComponent,
     InterestDialogComponent,
     CvDialogComponent,
+    UpdateProfilpicDialogComponent,
   ],
   imports: [
     CommonModule,

@@ -15,8 +15,11 @@
       size="xxl"
       class="tui-space_top-1"
       [rounded]="true"
+      (click)="showProfilPicDialog()"
     ></tui-avatar>
-    <div class="file">Lebenslauf-PDF hier</div>
+    <div class="file">
+      <h3> Lebenslauf </h3>
+    </div>
   </div>
   <div class="main">
     <div class="basic-info">
@@ -108,3 +111,21 @@
     <app-timeline-view></app-timeline-view>
   </div>
 </div>
+
+<tui-root>
+  <ng-template
+  #actions
+  let-content="content"
+  class="pdf"
+>
+  <a
+      tuiButton
+      shape="rounded"
+      size="s"
+      download
+      [href]="content"
+  >
+      Download
+  </a>
+</ng-template>
+</tui-root>
