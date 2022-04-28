@@ -7,6 +7,7 @@ import {
   TuiDialogModule,
   TuiRootModule,
   TuiScrollbarModule,
+  TuiLinkModule,
 } from '@taiga-ui/core';
 
 import {
@@ -75,6 +76,7 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     TuiScrollbarModule,
     TuiInputFileModule,
     TuiMarkerIconModule,
+    TuiLinkModule,
     StoreModule.forFeature(
       fromReducer.applicantFeatureKey,
       fromReducer.reducer

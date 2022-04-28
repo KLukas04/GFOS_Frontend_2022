@@ -10,23 +10,28 @@
 
 <div class="parent">
   <div class="sidebar">
-    <tui-avatar
-      [avatarUrl]="avatar"
-      size="xxl"
-      class="tui-space_top-1"
-      [rounded]="true"
-    ></tui-avatar>
+    <tui-avatar [avatarUrl]="avatar" size="xxl" class="tui-space_top-1" [rounded]="true"></tui-avatar>
     <div class="file">Lebenslauf-PDF hier</div>
   </div>
   <div class="main">
     <div class="basic-info">
       <div class="box first">
-        <p>Name</p>
+        <div class="heading">
+          <p>Name</p>
+          <a tuiLink>
+            Speichern
+          </a>
+        </div>
         <div class="input">
           <tui-primitive-textfield>Vorname</tui-primitive-textfield>
           <tui-primitive-textfield>Name</tui-primitive-textfield>
         </div>
-        <p>Kontakt</p>
+        <div class="heading">
+          <p>Kontakt</p>
+          <a tuiLink>
+            Speichern
+          </a>
+        </div>
         <div class="input">
           <tui-primitive-textfield>Email</tui-primitive-textfield>
           <tui-primitive-textfield>Telefonnummer</tui-primitive-textfield>
@@ -34,7 +39,12 @@
       </div>
 
       <div class="box">
-        <p>Addresse</p>
+        <div class="heading">
+          <p>Addresse</p>
+          <a tuiLink>
+            Speichern
+          </a>
+        </div>
         <div class="input">
           <tui-primitive-textfield>Straße</tui-primitive-textfield>
           <tui-primitive-textfield>Hausnummer</tui-primitive-textfield>
@@ -50,24 +60,13 @@
       <div class="i-content">
         <div class="interests" *ngIf="interests$ | async | isSuccess">
           <ng-container *ngIf="interests$ | async | successValue as interests">
-            <tui-badge
-              *ngFor="let interest of interests"
-              size="l"
-              status="primary"
-              [value]="interest.name"
-            >
+            <tui-badge *ngFor="let interest of interests" size="l" status="primary" [value]="interest.name">
             </tui-badge>
           </ng-container>
         </div>
         <tui-root>
           <div class="button">
-            <button
-              tuiButton
-              type="button"
-              size="m"
-              icon="tuiIconPlusLarge"
-              (click)="showInterestDialog()"
-            >
+            <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showInterestDialog()">
               Add
             </button>
           </div>
