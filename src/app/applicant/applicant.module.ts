@@ -19,6 +19,7 @@ import {
   TuiInputFileModule,
   TuiMarkerIconModule,
   TuiInputDateRangeModule,
+  TuiPdfViewerModule,
 } from '@taiga-ui/kit';
 
 import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
@@ -41,6 +42,7 @@ import { ApplicantEffects } from './store/applicant.effects';
 import { RemoteDataModule } from 'ngx-remotedata';
 import { InterestDialogComponent } from './components/interest-dialog/interest-dialog.component';
 import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
+import { UpdateProfilpicDialogComponent } from './components/update-profilpic-dialog/update-profilpic-dialog.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +56,7 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     SettingsCardComponent,
     InterestDialogComponent,
     CvDialogComponent,
+    UpdateProfilpicDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -76,6 +79,7 @@ import { CvDialogComponent } from './components/cv-dialog/cv-dialog.component';
     TuiInputFileModule,
     TuiMarkerIconModule,
     TuiLinkModule,
+    TuiPdfViewerModule,
     StoreModule.forFeature(
       fromReducer.applicantFeatureKey,
       fromReducer.reducer

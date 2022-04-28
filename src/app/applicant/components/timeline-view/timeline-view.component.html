@@ -1,3 +1,4 @@
+
 <div class="parent" *ngIf="stationen$ | async | isSuccess">
   <tui-scrollbar class="box">
     <div
@@ -10,6 +11,11 @@
         [ngClass]="i % 2 == 0 ? 'left' : 'right'"
       >
         <div class="content">
+          <div class="action">
+            
+            <tui-marker-icon mode="link" size="xs" src="tuiIconFile" (click)="showPDF(actions, 'Referenz')"></tui-marker-icon>
+          
+          </div>
           <h2>
             {{
               station.start | date: getDateFormat(station.start, station.ende)
@@ -35,3 +41,16 @@
     </button>
   </div>
 </div>
+
+<tui-root>
+  <ng-template #actions let-content="content">
+    <div class="dialogActions">
+    <a tuiButton shape="rounded" size="s" download [href]="content">
+      Download
+    </a>
+    <a tuiButton appearance="accent" shape="rounded" size="s">
+      Löschen
+    </a>
+  </div>
+  </ng-template>
+</tui-root>
