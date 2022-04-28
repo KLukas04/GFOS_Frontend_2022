@@ -3,6 +3,7 @@ import { TuiHostedDropdownComponent } from '@taiga-ui/core';
 
 import { TuiDialogService } from '@taiga-ui/core';
 import {PolymorpheusComponent} from '@tinkoff/ng-polymorpheus';
+import { DelegateDialogComponent } from '../delegate-dialog/delegate-dialog.component';
 import { SendOnDialogComponent } from '../send-on-dialog/send-on-dialog.component';
 
 
@@ -36,6 +37,14 @@ export class OpenApplicationsComponent implements OnInit {
     }
   );
 
+  private readonly delegateDialog = this.dialogService.open(
+    new PolymorpheusComponent(DelegateDialogComponent, this.injector),
+    {
+      dismissible: true,
+      label: 'Delegieren',
+    }
+  );
+
   constructor(@Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
   @Inject(Injector) private readonly injector: Injector) { }
 
@@ -66,5 +75,8 @@ export class OpenApplicationsComponent implements OnInit {
     this.sendOnDialog.subscribe();
   }
 
+  showDelegateDialog(){
+    this.delegateDialog.subscribe();
+  }
 
 }
