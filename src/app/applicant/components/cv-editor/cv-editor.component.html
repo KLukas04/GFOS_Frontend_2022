@@ -10,7 +10,12 @@
 
 <div class="parent">
   <div class="sidebar">
-    <tui-avatar [avatarUrl]="avatar" size="xxl" class="tui-space_top-1" [rounded]="true"></tui-avatar>
+    <tui-avatar
+      [avatarUrl]="avatar"
+      size="xxl"
+      class="tui-space_top-1"
+      [rounded]="true"
+    ></tui-avatar>
     <div class="file">Lebenslauf-PDF hier</div>
   </div>
   <div class="main">
@@ -43,13 +48,26 @@
     <div class="interessen">
       <p>Interessen</p>
       <div class="i-content">
-        <div class="interests">
-          <tui-badge *ngFor="let interest of interests" size="l" status="primary" [value]="interest">
-          </tui-badge>
+        <div class="interests" *ngIf="interests$ | async | isSuccess">
+          <ng-container *ngIf="interests$ | async | successValue as interests">
+            <tui-badge
+              *ngFor="let interest of interests"
+              size="l"
+              status="primary"
+              [value]="interest.name"
+            >
+            </tui-badge>
+          </ng-container>
         </div>
         <tui-root>
           <div class="button">
-            <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showInterestDialog()">
+            <button
+              tuiButton
+              type="button"
+              size="m"
+              icon="tuiIconPlusLarge"
+              (click)="showInterestDialog()"
+            >
               Add
             </button>
           </div>
