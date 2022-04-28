@@ -53,13 +53,23 @@
           <a tuiLink> Speichern </a>
         </div>
         <div class="input">
-          <tui-input [formControl]="streetControl">Straße</tui-input>
-          <tui-input [formControl]="numberControl">Hausnummer</tui-input>
+          <tui-input [formControl]="streetControl" (input)="saveStreet()"
+            >Straße</tui-input
+          >
+          <tui-input [formControl]="numberControl" (input)="saveNumber()"
+            >Hausnummer</tui-input
+          >
         </div>
         <div class="input">
-          <tui-input [formControl]="plzControl">PLZ</tui-input>
-          <tui-input [formControl]="townControl">Stadt</tui-input>
-          <tui-input [formControl]="countryControl">Land</tui-input>
+          <tui-input [formControl]="plzControl" (input)="savePlz()"
+            >PLZ</tui-input
+          >
+          <tui-input [formControl]="townControl" (input)="saveTown()"
+            >Stadt</tui-input
+          >
+          <tui-input [formControl]="countryControl" (input)="saveCountry()"
+            >Land</tui-input
+          >
         </div>
       </div>
     </div>

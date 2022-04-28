@@ -36,6 +36,13 @@ export interface ApplicantState {
       phone: string | null;
     };
     adresse: RemoteData<Address, HttpErrorResponse>;
+    changeAddress: {
+      street: string | null;
+      number: string | null;
+      plz: number | null;
+      town: string | null;
+      country: string | null;
+    };
   };
 }
 
@@ -57,6 +64,13 @@ export const initialState: ApplicantState = {
       phone: null,
     },
     adresse: notAsked(),
+    changeAddress: {
+      street: null,
+      number: null,
+      plz: null,
+      town: null,
+      country: null,
+    },
   },
 };
 
@@ -185,6 +199,31 @@ const applicantReducer = createReducer(
   on(fromActions.newKontaktPhoneName, (state, { phone }) =>
     produce(state, (draft) => {
       draft.lebenslauf.changeKontakt.phone = phone;
+    })
+  ),
+  on(fromActions.newAddressStreet, (state, { street }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeAddress.street = street;
+    })
+  ),
+  on(fromActions.newAddressNumber, (state, { number }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeAddress.number = number;
+    })
+  ),
+  on(fromActions.newAddressPlz, (state, { plz }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeAddress.plz = plz;
+    })
+  ),
+  on(fromActions.newAddressTown, (state, { town }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeAddress.town = town;
+    })
+  ),
+  on(fromActions.newAddressCountry, (state, { country }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.changeAddress.country = country;
     })
   )
 );

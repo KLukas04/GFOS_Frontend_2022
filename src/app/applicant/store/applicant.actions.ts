@@ -104,3 +104,28 @@ export const loadOwnAdressError = createAction(
   '[CV] [Adresse] Load Adresse Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const newAddressStreet = createAction(
+  '[CV] [Adresse] New Straße Inserted',
+  props<{ street: string }>()
+);
+
+export const newAddressNumber = createAction(
+  '[CV] [Adresse] New Hausnummer Inserted',
+  props<{ number: string }>()
+);
+
+export const newAddressPlz = createAction(
+  '[CV] [Adresse] New PLZ Inserted',
+  props<{ plz: number }>()
+);
+
+export const newAddressTown = createAction(
+  '[CV] [Adresse] New Stadt Inserted',
+  props<{ town: string }>()
+);
+
+export const newAddressCountry = createAction(
+  '[CV] [Adresse] New Land Inserted',
+  props<{ country: string }>()
+);
