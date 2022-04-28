@@ -44,8 +44,13 @@
 
 <tui-root>
   <ng-template #actions let-content="content">
-      <a tuiButton shape="rounded" size="s" download [href]="content">
-          Download
-      </a>
+    <div class="dialogActions">
+    <a tuiButton shape="rounded" size="s" download [href]="content">
+      Download
+    </a>
+    <a tuiButton appearance="accent" shape="rounded" size="s">
+      Löschen
+    </a>
+  </div>
   </ng-template>
 </tui-root>
