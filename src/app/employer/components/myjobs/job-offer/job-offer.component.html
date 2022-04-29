@@ -1,30 +1,32 @@
-<a size="l" tuiIsland [hoverable]="true" >
-    <div class="parent">
-        <div class="info">
-            <div class="heading">
-                <h2> {{ title }} </h2>
-                <div class="actions">
-                    <tui-badge [value]="typ" [hoverable]=true status="neutral"></tui-badge>
-                    <tui-checkbox [formControl]="angepinnt"></tui-checkbox>
-                    <tui-marker-icon mode="link" size="xs" src="tuiIconTrash"></tui-marker-icon>
-                    <a tuiLink
-                    iconAlign="left"
-                    routerLink="openApplications">Öffnen</a>
-                 
-                </div>
-            </div>
-
-
+<a size="l" tuiIsland [hoverable]="true">
+  <div class="parent">
+    <div class="info">
+      <div class="heading">
+        <h2>{{ title }}</h2>
+        <div class="actions">
+          <tui-badge
+            [value]="typ"
+            [hoverable]="true"
+            status="neutral"
+          ></tui-badge>
+          <tui-checkbox [formControl]="angepinnt"></tui-checkbox>
+          <tui-marker-icon
+            mode="link"
+            size="xs"
+            src="tuiIconTrash"
+          ></tui-marker-icon>
+          <a tuiLink iconAlign="left" routerLink="openApplications">Öffnen</a>
         </div>
-        <div class="content">
-            <div class="date">
-                <p> Angefangen am: {{ startDate }}</p>
-            </div>
-            <div class="discription">
-                <h5>Beschreibung:</h5>
-                <p> {{ description }}</p>
-            </div>
-        </div>
+      </div>
     </div>
-
+    <div class="content">
+      <div class="date">
+        <p>Angefangen am: {{ startDate | date: "shortDate" }}</p>
+      </div>
+      <div class="discription">
+        <h5>Beschreibung:</h5>
+        <p>{{ description }}</p>
+      </div>
+    </div>
+  </div>
 </a>

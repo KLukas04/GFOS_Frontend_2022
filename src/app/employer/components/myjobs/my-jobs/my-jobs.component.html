@@ -1,20 +1,18 @@
-<app-header text="Die von dir erstellten" markup="Jobangebote!" img="assets/interview.svg"></app-header>
-<div class="container">
-
-    <app-job-offer 
-        title="Designer" 
-        typ="Praktikum" 
-        startDate="30.06.2022" 
-        description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit facere consequuntur sit, laboriosam
-                pariatur odio accusamus debitis culpa fuga architecto cupiditate excepturi quaerat quasi exercitationem
-                numquam, commodi nam consectetur. Necessitatibus."
+<app-header
+  text="Die von dir erstellten"
+  markup="Jobangebote!"
+  img="assets/interview.svg"
+></app-header>
+<h3 *ngIf="jobs$ | async | isInProgress">Jobs werden geladen...</h3>
+<h3 *ngIf="jobs$ | async | isFailure">Jobs konnten nicht geladen werden!</h3>
+<div class="container" *ngIf="jobs$ | async | isSuccess">
+  <ng-container *ngIf="jobs$ | async | successValue as jobs">
+    <app-job-offer
+      *ngFor="let job of jobs"
+      [title]="job.title"
+      [typ]="job.bewerbungstyp.art"
+      [startDate]="job.start"
+      [description]="job.kurzbeschreibung"
     ></app-job-offer>
-    <app-job-offer 
-        title="Designer" 
-        typ="Praktikum" 
-        startDate="30.06.2022" 
-        description="Lorem ipsum dolor, sit amet consectetur adipisicing elit. Impedit facere consequuntur sit, laboriosam
-                pariatur odio accusamus debitis culpa fuga architecto cupiditate excepturi quaerat quasi exercitationem
-                numquam, commodi nam consectetur. Necessitatibus."
-    ></app-job-offer>
+  </ng-container>
 </div>

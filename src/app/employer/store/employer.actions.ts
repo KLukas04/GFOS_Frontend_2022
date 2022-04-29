@@ -1,6 +1,7 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { Employer } from '../models/employer.model';
+import { Job } from '../models/job.model';
 import { Todo } from '../models/todo.model';
 
 export const loadTodos = createAction('[Employer] [Todos] Load Todos');
@@ -184,4 +185,18 @@ export const saveNewJobSuccess = createAction(
 
 export const saveNewJobError = createAction(
   '[Employer] [New Job] Safe New Job Error'
+);
+
+export const loadCreatedJobs = createAction(
+  '[Employer] [Jobs] Load Created Jobs'
+);
+
+export const loadCreatedJobsSuccess = createAction(
+  '[Employer] [Jobs] Load Created Jobs Success',
+  props<{ jobs: Job[] }>()
+);
+
+export const loadCreatedJobsError = createAction(
+  '[Employer] [Jobs] Load Created Jobs Error',
+  props<{ error: HttpErrorResponse }>()
 );

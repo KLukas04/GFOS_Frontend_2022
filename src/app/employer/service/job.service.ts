@@ -64,4 +64,8 @@ export class JobService {
       })
       .pipe(take(1));
   }
+
+  public getCreatedJobs(): Observable<Job[]> {
+    return this.http.get<Job[]>(`${this.baseURL}/jobs/created`).pipe(take(1));
+  }
 }

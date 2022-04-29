@@ -124,4 +124,18 @@ export class EmployerEffects {
       )
     )
   );
+
+  loadCreatedJobs$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadCreatedJobs),
+      mergeMap(() =>
+        this.jobService.getCreatedJobs().pipe(
+          map((jobs) => fromActions.loadCreatedJobsSuccess({ jobs: jobs })),
+          catchError((err) =>
+            of(fromActions.loadCreatedJobsError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

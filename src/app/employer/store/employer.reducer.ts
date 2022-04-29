@@ -8,6 +8,7 @@ import {
   RemoteData,
   success,
 } from 'ngx-remotedata';
+import { Job } from 'src/app/jobs/models/job.model';
 import { Employer } from '../models/employer.model';
 import { Todo } from '../models/todo.model';
 
@@ -27,6 +28,7 @@ export interface EmployerState {
     password: string | null;
     section: string | null;
   };
+  createdJobs: RemoteData<Job[], HttpErrorResponse>;
   createNewJob: {
     basics: {
       title: string | null;
@@ -66,6 +68,7 @@ export const initialState: EmployerState = {
     password: null,
     section: null,
   },
+  createdJobs: notAsked(),
   createNewJob: {
     basics: {
       title: null,
@@ -255,6 +258,21 @@ const employerReducer = createReducer(
   on(fromActions.newJobAdvantagesInserted, (state, { advantages }) =>
     produce(state, (draft) => {
       draft.createNewJob.advantages = advantages;
+    })
+  ),
+  on(fromActions.loadCreatedJobs, (state) =>
+    produce(state, (draft) => {
+      draft.createdJobs = inProgress<Job[], HttpErrorResponse>();
+    })
+  ),
+  on(fromActions.loadCreatedJobsSuccess, (state, { jobs }) =>
+    produce(state, (draft) => {
+      draft.createdJobs = success<Job[], HttpErrorResponse>(jobs);
+    })
+  ),
+  on(fromActions.loadCreatedJobsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.createdJobs = failure<Job[], HttpErrorResponse>(error);
     })
   )
 );
