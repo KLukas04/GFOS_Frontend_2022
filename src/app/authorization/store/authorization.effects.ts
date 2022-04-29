@@ -26,19 +26,20 @@ export class AuthorizationEffects {
       concatLatestFrom(() => this.store.select(fromSelectors.selectLoginCreds)),
       switchMap(([_, creds]) =>
         this.loginService.tryToLogin(creds.email, creds.password).pipe(
-          tap((res) => this.tokenStorage.saveToken(res.token)),
-          tap((res) =>
-            res.ispersonaler
-              ? localStorage.setItem('defaultRoute', 'exployer')
-              : localStorage.setItem('defaultRoute', 'applicant')
-          ),
-          tap(() => this.router.navigateByUrl('jobs')),
-          map((res) =>
-            fromActions.tryLoginSuccess({
-              token: res.token,
-              isPersonaler: res.ispersonaler,
-            })
-          ),
+          map((res) => {
+            if (!res.twofa) {
+              this.tokenStorage.saveToken(res.token);
+              res.ispersonaler
+                ? localStorage.setItem('defaultRoute', 'exployer')
+                : localStorage.setItem('defaultRoute', 'applicant');
+              this.router.navigateByUrl('jobs');
+              return fromActions.tryLoginSuccess({
+                token: res.token,
+                isPersonaler: res.ispersonaler,
+              });
+            }
+            return fromActions.loginNeedTwoFa();
+          }),
           catchError((err) => of(fromActions.tryLoginError({ error: err })))
         )
       )
