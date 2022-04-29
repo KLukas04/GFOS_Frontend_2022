@@ -87,7 +87,7 @@ export class LebenslaufService {
     number !== null ? (data = { ...data, hausnummer: number }) : null;
     plz !== null ? (data = { ...data, plz: plz }) : null;
     town !== null ? (data = { ...data, stadt: town }) : null;
-    country !== null ? (data = { ...data, stadt: country }) : null;
+    country !== null ? (data = { ...data, land: country }) : null;
 
     return this.http.put<any>(`${this.baseURL}/adresse`, data).pipe(take(1));
   }
