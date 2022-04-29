@@ -15,14 +15,27 @@ export class JobOfferComponent implements OnInit {
   @Input() startDate: Date | undefined;
   @Input() description = '';
   @Input() id: number | undefined;
+  @Input() pinned: boolean | undefined;
 
-  angepinnt: FormControl = new FormControl(true);
+  public angepinntControl: FormControl = new FormControl(false);
 
-  constructor(private store: Store<fromReducer.EmployerState>) {}
+  constructor(private store: Store<fromReducer.EmployerState>) {
+    setTimeout(() => {
+      this.angepinntControl.setValue(this.pinned);
+    }, 50);
+  }
 
   ngOnInit(): void {}
 
   public deleteJob(): void {
     this.store.dispatch(fromActions.deleteJob({ id: this.id ?? 100000000 }));
+  }
+
+  public pinJob(): void {
+    const action: boolean = !this.angepinntControl.value; //muss umgedreht werden, weil Methode triggert vor FormControl change
+
+    action
+      ? this.store.dispatch(fromActions.pinJob({ id: this.id ?? 10000000 }))
+      : null;
   }
 }

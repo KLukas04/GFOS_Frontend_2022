@@ -205,3 +205,8 @@ export const deleteJob = createAction(
   '[Employer] [Jobs] Delete Job',
   props<{ id: number }>()
 );
+
+export const pinJob = createAction(
+  '[Employer] [Jobs] Pin Job',
+  props<{ id: number }>()
+);

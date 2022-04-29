@@ -149,4 +149,15 @@ export class EmployerEffects {
       )
     )
   );
+
+  pinJob$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.pinJob),
+      mergeMap((action) =>
+        this.jobService
+          .pinJob(action.id)
+          .pipe(map(() => fromActions.loadCreatedJobs()))
+      )
+    )
+  );
 }

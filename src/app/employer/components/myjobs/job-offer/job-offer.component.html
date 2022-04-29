@@ -9,7 +9,10 @@
             [hoverable]="true"
             status="neutral"
           ></tui-badge>
-          <tui-checkbox [formControl]="angepinnt"></tui-checkbox>
+          <tui-checkbox
+            [formControl]="angepinntControl"
+            (click)="pinJob()"
+          ></tui-checkbox>
           <tui-marker-icon
             mode="link"
             size="xs"

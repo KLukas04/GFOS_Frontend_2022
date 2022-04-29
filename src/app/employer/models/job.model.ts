@@ -38,4 +38,5 @@ export interface Job {
     telefon: string;
     ischef: boolean;
   };
+  vonchefgepinnt?: boolean;
 }

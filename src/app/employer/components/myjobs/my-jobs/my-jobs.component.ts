@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { RemoteData } from 'ngx-remotedata';
 import { Observable } from 'rxjs';
-import { Job } from 'src/app/jobs/models/job.model';
+import { Job } from 'src/app/employer/models/job.model';
 
 import * as fromActions from '../../../store/employer.actions';
 import * as fromReducer from '../../../store/employer.reducer';

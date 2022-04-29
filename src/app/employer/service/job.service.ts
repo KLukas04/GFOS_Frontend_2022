@@ -72,4 +72,10 @@ export class JobService {
   public deleteJob(id: number): Observable<string> {
     return this.http.delete<any>(`${this.baseURL}/jobs/${id}`).pipe(take(1));
   }
+
+  public pinJob(id: number): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseURL}/jobs/admin/pin/${id}`)
+      .pipe(take(1));
+  }
 }
