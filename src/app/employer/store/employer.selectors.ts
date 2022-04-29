@@ -15,3 +15,8 @@ export const selectNewTodoData = createSelector(
   selectEmployerState,
   (state: fromReducer.EmployerState) => state.createNewTodo
 );
+
+export const selectOwnAccount = createSelector(
+  selectEmployerState,
+  (state: fromReducer.EmployerState) => state.onwAccount
+);

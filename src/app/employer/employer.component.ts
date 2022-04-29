@@ -4,6 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { RemoteData } from 'ngx-remotedata';
 import { Observable } from 'rxjs';
+import { Employer } from './models/employer.model';
 import { Todo } from './models/todo.model';
 
 import * as fromActions from './store/employer.actions';
@@ -17,15 +18,18 @@ import * as fromSelectors from './store/employer.selectors';
 })
 export class EmployerComponent implements OnInit {
   public todos$: Observable<RemoteData<Todo[], HttpErrorResponse>>;
+  public name$: Observable<RemoteData<Employer, HttpErrorResponse>>;
 
   public todoControl: FormControl = new FormControl(null);
 
   constructor(private store: Store<fromReducer.EmployerState>) {
     this.todos$ = this.store.select(fromSelectors.selectTodos);
+    this.name$ = this.store.select(fromSelectors.selectOwnAccount);
   }
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadTodos());
+    this.store.dispatch(fromActions.loadSelf());
   }
 
   public saveTodo(): void {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
+import { AccountService } from '../service/account.service';
 import { TodoService } from '../service/todo.service';
 
 import * as fromActions from './employer.actions';
@@ -12,7 +13,8 @@ export class EmployerEffects {
   constructor(
     private actions$: Actions,
     private store: Store<fromReducer.EmployerState>,
-    private todoService: TodoService
+    private todoService: TodoService,
+    private accountService: AccountService
   ) {}
 
   loadTodos$ = createEffect(() =>
@@ -46,6 +48,18 @@ export class EmployerEffects {
         this.todoService
           .deleteTodo(action.id)
           .pipe(map(() => fromActions.loadTodos()))
+      )
+    )
+  );
+
+  loadOwnAccount$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadSelf),
+      mergeMap(() =>
+        this.accountService.getSelf().pipe(
+          map((acc) => fromActions.loadSelfSuccess({ employer: acc })),
+          catchError((err) => of(fromActions.loadSelfError({ error: err })))
+        )
       )
     )
   );
