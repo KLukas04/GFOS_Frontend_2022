@@ -1,9 +1,7 @@
 @import "../../../../../scss/colors.scss";
 
 .sidebar{
-  
     height: calc(100% - 70px);
-    width: 500px;
     display: flex;
     flex-direction: column;
     padding: 50px;

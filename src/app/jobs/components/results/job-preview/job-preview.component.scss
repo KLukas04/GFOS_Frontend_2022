@@ -2,13 +2,14 @@
 
 a {
     padding: 0px;
+    border-radius: 16pt;
 }
 .parent {
     display: flex;
     flex-direction: column;
 
     background-color: $color-4;
-    width: 500px;
+    max-width: 500px;
     border-radius: 16pt;
 
     .info {
@@ -29,9 +30,10 @@ a {
                 font-weight: bolder;
             }
             .badge {
-                width: 50%;
                 display: flex;
                 flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: flex-end;
                 gap: 10px;
                 tui-badge {
                     color: black;
