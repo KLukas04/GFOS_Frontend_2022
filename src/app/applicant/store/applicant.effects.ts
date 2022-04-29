@@ -226,4 +226,16 @@ export class ApplicantEffects {
       )
     )
   );
+
+  loadCvPdf$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadCv),
+      mergeMap(() =>
+        this.lebenslaufService.getCvPdf().pipe(
+          map((pdf) => fromActions.loadCvSuccess({ base64: pdf })),
+          catchError((err) => of(fromActions.loadCvError({ error: err })))
+        )
+      )
+    )
+  );
 }

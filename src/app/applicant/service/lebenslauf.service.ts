@@ -120,4 +120,10 @@ export class LebenslaufService {
       })
       .pipe(take(1));
   }
+
+  public getCvPdf(): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseURL}/datei/lebenslauf`)
+      .pipe(take(1));
+  }
 }

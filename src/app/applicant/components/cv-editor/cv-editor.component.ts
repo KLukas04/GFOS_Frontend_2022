@@ -120,6 +120,7 @@ export class CvEditorComponent implements OnInit {
     this.store.dispatch(fromActions.loadOwnAccount());
     this.store.dispatch(fromActions.loadOwnAdress());
     this.store.dispatch(fromActions.loadProfilePic());
+    this.store.dispatch(fromActions.loadCv());
   }
 
   public saveFirstName(): void {
