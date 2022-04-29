@@ -12,6 +12,7 @@ export interface AuthorizationState {
   token: string | null;
   registrationData: RegistrationData;
   verificationPin: string;
+  twofaPin: string;
   defaultRoute: string;
 }
 
@@ -28,6 +29,7 @@ export const initialState: AuthorizationState = {
     password: '',
   },
   verificationPin: '',
+  twofaPin: '',
   defaultRoute: 'employer',
 };
 
@@ -85,6 +87,23 @@ const authorizationReducer = createReducer(
     })
   ),
   on(fromActions.tryVerificationPinSuccess, (state, { token }) =>
+    produce(state, (draft) => {
+      draft.token = token;
+    })
+  ),
+  on(fromActions.loginNeedTwoFa, (state, { isPersonaler }) =>
+    produce(state, (draft) => {
+      isPersonaler
+        ? (draft.defaultRoute = 'employer')
+        : (draft.defaultRoute = 'applicant');
+    })
+  ),
+  on(fromActions.newTwoFaPin, (state, { pin }) =>
+    produce(state, (draft) => {
+      draft.twofaPin = pin;
+    })
+  ),
+  on(fromActions.tryTwoFaSuccess, (state, { token }) =>
     produce(state, (draft) => {
       draft.token = token;
     })

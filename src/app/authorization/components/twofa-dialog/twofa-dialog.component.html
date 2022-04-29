@@ -1,6 +1,6 @@
 <tui-input tuiTextfieldSize="m">
   PIN
-  <input tuiTextfield [formControl]="pinForm" />
+  <input tuiTextfield [formControl]="pinForm" (input)="savePin()" />
 </tui-input>
 <br />
-<button tuiButton (click)="close()">2 Faktor Auth</button>
+<button tuiButton (click)="close()">Anmelden</button>

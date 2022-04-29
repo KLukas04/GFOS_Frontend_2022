@@ -23,10 +23,6 @@ export const tryLoginError = createAction(
   props<{ error: HttpErrorResponse }>()
 );
 
-export const loginNeedTwoFa = createAction(
-  '[Authorization] [Login] 2FA Pin Needed'
-);
-
 export const newRegistrationFirstname = createAction(
   '[Authorization] [Registration] Firstname Inserted',
   props<{ firstname: string }>()
@@ -76,5 +72,27 @@ export const tryVerificationPinSuccess = createAction(
 
 export const tryVerificationPinError = createAction(
   '[Authorization] [Registration] Verification PIN Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const loginNeedTwoFa = createAction(
+  '[Authorization] [Login] 2FA Pin Needed',
+  props<{ isPersonaler: boolean }>()
+);
+
+export const newTwoFaPin = createAction(
+  '[Authorization] [2FA] 2FA PIN Inserted',
+  props<{ pin: string }>()
+);
+
+export const tryTwoFaPin = createAction('[Authorization] [2FA] 2FA PIN Try');
+
+export const tryTwoFaSuccess = createAction(
+  '[Authorization] [2FA] 2FA PIN Success',
+  props<{ token: string }>()
+);
+
+export const tryTwoFaError = createAction(
+  '[Authorization] [2FA] 2FA PIN Error',
   props<{ error: HttpErrorResponse }>()
 );
