@@ -21,8 +21,9 @@ import * as fromReducer from './store/authorization.reducer';
 import { AuthorizationEffects } from './store/authorization.effects';
 import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.component';
 import { ForgotPwPageComponent } from './components/forgot-pw-page/forgot-pw-page.component';
+import { ForgotPwDialogComponent } from './components/forgot-pw-dialog/forgot-pw-dialog.component';
 @NgModule({
-  declarations: [AuthorizationComponent, VerfiyDialogComponent, ForgotPwPageComponent],
+  declarations: [AuthorizationComponent, VerfiyDialogComponent, ForgotPwPageComponent, ForgotPwDialogComponent],
   imports: [
     CommonModule,
     AuthorizationRoutingModule,
