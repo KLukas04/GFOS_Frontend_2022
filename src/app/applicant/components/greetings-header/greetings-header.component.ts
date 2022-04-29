@@ -14,7 +14,7 @@ import * as fromSelectors from '../../store/applicant.selectors';
   styleUrls: ['./greetings-header.component.scss'],
 })
 export class GreetingsHeaderComponent implements OnInit {
-  @Input() amoutOfApplicaions: number = 0;
+  @Input() amountOfApplications: number = 0;
 
   public name$: Observable<RemoteData<Account, HttpErrorResponse>>;
 

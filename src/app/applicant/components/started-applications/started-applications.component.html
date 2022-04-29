@@ -3,13 +3,13 @@
   *ngIf="applications$ | async | successValue as applications"
 >
   <app-greetings-header
-    [amoutOfApplicaions]="applications.length"
+    [amountOfApplications]="applications.length"
   ></app-greetings-header>
   <h3 *ngIf="applications$ | async | isInProgress">
-    Bewerbungen werden geladen...
+    Bewerbungen; werden; geladen;...
   </h3>
   <h3 *ngIf="applications$ | async | isFailure">
-    Bewerbungen konnten nicht geladen werden!
+    Bewerbungen; konnten; nicht; geladen; werden!
   </h3>
   <div class="list" *ngIf="applications$ | async | isSuccess">
     <ng-container
