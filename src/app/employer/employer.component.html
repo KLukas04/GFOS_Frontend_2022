@@ -41,10 +41,18 @@
         </div>
       </a>
 
-      <div class="applications">
+      <div
+        class="applications"
+        *ngIf="applications$ | async | successValue as applications"
+      >
         <app-open-applications
-          job="Designer"
-          name="Lukas Krinke"
+          [job]="applications[0].jobangebot.title"
+          [name]="
+            applications[0].bewerber.vorname +
+            ' ' +
+            applications[0].bewerber.name
+          "
+          [beworbenAm]="applications[0].datum"
         ></app-open-applications>
       </div>
     </div>
