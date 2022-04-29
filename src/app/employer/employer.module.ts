@@ -1,15 +1,43 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import {NgDompurifySanitizer} from '@tinkoff/ng-dompurify';
-import {PolymorpheusModule} from '@tinkoff/ng-polymorpheus';
+import { NgDompurifySanitizer } from '@tinkoff/ng-dompurify';
+import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
 
 import { EmployerRoutingModule } from './employer-routing.module';
 import { EmployerComponent } from './employer.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { TuiButtonModule, TuiDataListModule, TuiDialogModule, TuiHostedDropdownModule, TuiLinkModule, TuiNotificationModule, TuiPrimitiveTextfieldModule, TuiRootModule, TuiScrollbarModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import {
+  TuiButtonModule,
+  TuiDataListModule,
+  TuiDialogModule,
+  TuiHostedDropdownModule,
+  TuiLinkModule,
+  TuiNotificationModule,
+  TuiPrimitiveTextfieldModule,
+  TuiRootModule,
+  TuiScrollbarModule,
+  TuiSvgModule,
+  TuiTextfieldControllerModule,
+} from '@taiga-ui/core';
 import { TuiAxesModule, TuiLineChartModule } from '@taiga-ui/addon-charts';
-import { TuiAvatarModule, TuiBadgedContentModule, TuiBadgeModule, TuiCheckboxBlockModule, TuiCheckboxModule, TuiDataListWrapperModule, TuiInputModule, TuiIslandModule, TuiMarkerIconModule, TuiMultiSelectModule, TuiPdfViewerModule, TuiProgressModule, TuiSelectModule, TuiTextAreaModule, TuiToggleModule } from '@taiga-ui/kit';
+import {
+  TuiAvatarModule,
+  TuiBadgedContentModule,
+  TuiBadgeModule,
+  TuiCheckboxBlockModule,
+  TuiCheckboxModule,
+  TuiDataListWrapperModule,
+  TuiInputModule,
+  TuiIslandModule,
+  TuiMarkerIconModule,
+  TuiMultiSelectModule,
+  TuiPdfViewerModule,
+  TuiProgressModule,
+  TuiSelectModule,
+  TuiTextAreaModule,
+  TuiToggleModule,
+} from '@taiga-ui/kit';
 import { CreateJobComponent } from './components/createJob/create-job/create-job.component';
 import { HeaderComponent } from './components/createJob/header/header.component';
 import { ContentComponent } from './components/createJob/content/content.component';
@@ -26,9 +54,29 @@ import { CreateEmployeeComponent } from './components/administration/create-empl
 import { CreateDepartmentComponent } from './components/administration/create-department/create-department.component';
 import { SendOnDialogComponent } from './components/send-on-dialog/send-on-dialog.component';
 import { DelegateDialogComponent } from './components/delegate-dialog/delegate-dialog.component';
+import { StoreModule } from '@ngrx/store';
 
+import * as fromReducer from './store/employer.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { EmployerEffects } from './store/employer.effects';
 @NgModule({
-  declarations: [EmployerComponent, SidebarComponent, CreateJobComponent, HeaderComponent, ContentComponent, MyJobsComponent, JobOfferComponent, ApplicationsForJobComponent, ApplicantDetailViewComponent, OpenApplicationsComponent, MyApplicationsComponent, CreateEmployeeComponent, CreateDepartmentComponent, SendOnDialogComponent, DelegateDialogComponent],
+  declarations: [
+    EmployerComponent,
+    SidebarComponent,
+    CreateJobComponent,
+    HeaderComponent,
+    ContentComponent,
+    MyJobsComponent,
+    JobOfferComponent,
+    ApplicationsForJobComponent,
+    ApplicantDetailViewComponent,
+    OpenApplicationsComponent,
+    MyApplicationsComponent,
+    CreateEmployeeComponent,
+    CreateDepartmentComponent,
+    SendOnDialogComponent,
+    DelegateDialogComponent,
+  ],
   imports: [
     CommonModule,
     EmployerRoutingModule,
@@ -65,12 +113,14 @@ import { DelegateDialogComponent } from './components/delegate-dialog/delegate-d
     TuiMarkerIconModule,
     TuiHostedDropdownModule,
     TuiSvgModule,
+    StoreModule.forFeature(fromReducer.employerFeatureKey, fromReducer.reducer),
+    EffectsModule.forFeature([EmployerEffects]),
   ],
-  providers:[
+  providers: [
     {
       provide: TUI_SANITIZER,
       useClass: NgDompurifySanitizer,
     },
-  ]
+  ],
 })
 export class EmployerModule {}
