@@ -219,10 +219,9 @@ export class ApplicantEffects {
     this.actions$.pipe(
       ofType(fromActions.uploadNewProfilePic),
       switchMap((action) =>
-        this.lebenslaufService.uploadProfilePic(action.base64).pipe(
-          map(() => fromActions.loadProfilePic()),
-          catchError(() => of(fromActions.loadProfilePic()))
-        )
+        this.lebenslaufService
+          .uploadProfilePic(action.base64)
+          .pipe(map(() => fromActions.loadProfilePic()))
       )
     )
   );
@@ -253,7 +252,7 @@ export class ApplicantEffects {
   deleteCvPdf$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.deleteCvPdf),
-      mergeMap((action) =>
+      mergeMap(() =>
         this.lebenslaufService
           .deleteCvPdf()
           .pipe(map(() => fromActions.loadCv()))
