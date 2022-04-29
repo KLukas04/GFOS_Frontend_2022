@@ -80,3 +80,98 @@ export const saveNewEmployerSuccess = createAction(
 export const saveNewEmployerError = createAction(
   '[Employer] [New Employer] Save New Employer Error'
 );
+
+export const newJobTitleInserted = createAction(
+  '[Employer] [New Job] Title Inserted',
+  props<{ title: string }>()
+);
+
+export const newJobTypeInserted = createAction(
+  '[Employer] [New Job] Type Inserted',
+  props<{ typ: string }>()
+);
+
+export const newJobSectionInserted = createAction(
+  '[Employer] [New Job] Section Inserted',
+  props<{ section: string }>()
+);
+
+export const newJobDeadlineInserted = createAction(
+  '[Employer] [New Job] Deadline Inserted',
+  props<{ deadline: Date }>()
+);
+
+export const newJobStartDateInserted = createAction(
+  '[Employer] [New Job] Start Date Inserted',
+  props<{ startDate: Date }>()
+);
+
+export const newJobTemporaryInserted = createAction(
+  '[Employer] [New Job] Temporary Inserted',
+  props<{ temporary: boolean }>()
+);
+
+export const newJobEndDateInserted = createAction(
+  '[Employer] [New Job] End Datte Inserted',
+  props<{ endDate: Date }>()
+);
+
+export const newJobStreetInserted = createAction(
+  '[Employer] [New Job] Street Inserted',
+  props<{ street: string }>()
+);
+
+export const newJobNumberInserted = createAction(
+  '[Employer] [New Job] Number Inserted',
+  props<{ number: string }>()
+);
+
+export const newJobPlzInserted = createAction(
+  '[Employer] [New Job] PLZ Inserted',
+  props<{ plz: number }>()
+);
+
+export const newJobTownInserted = createAction(
+  '[Employer] [New Job] Town Inserted',
+  props<{ town: string }>()
+);
+
+export const newJobCountryInserted = createAction(
+  '[Employer] [New Job] Country Inserted',
+  props<{ country: string }>()
+);
+
+export const newJobShortDescriptionInserted = createAction(
+  '[Employer] [New Job] Short Description Inserted',
+  props<{ shortDescription: string }>()
+);
+
+export const newJobDescriptionInserted = createAction(
+  '[Employer] [New Job] Description Inserted',
+  props<{ description: string }>()
+);
+
+export const newJobVacationInserted = createAction(
+  '[Employer] [New Job] Vacation Inserted',
+  props<{ vacation: number }>()
+);
+
+export const newJobRemoteInserted = createAction(
+  '[Employer] [New Job] Remote Inserted',
+  props<{ remote: boolean }>()
+);
+
+export const newJobWageMonthInserted = createAction(
+  '[Employer] [New Job] Wage Month Inserted',
+  props<{ wageMonth: number }>()
+);
+
+export const newJobWageYearInserted = createAction(
+  '[Employer] [New Job] Wage Year Inserted',
+  props<{ wageYear: number }>()
+);
+
+export const newJobAdvantagesInserted = createAction(
+  '[Employer] [New Job] Advantages Inserted',
+  props<{ advantages: string }>()
+);

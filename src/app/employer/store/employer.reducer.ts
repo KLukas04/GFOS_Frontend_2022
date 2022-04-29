@@ -161,6 +161,103 @@ const employerReducer = createReducer(
     produce(state, (draft) => {
       draft.createNewEmployer.section = section;
     })
+  ),
+  on(fromActions.newJobTitleInserted, (state, { title }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.basics.title = title;
+    })
+  ),
+  on(fromActions.newJobTypeInserted, (state, { typ }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.basics.type = typ;
+    })
+  ),
+  on(fromActions.newJobSectionInserted, (state, { section }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.basics.section = section;
+    })
+  ),
+  on(fromActions.newJobDeadlineInserted, (state, { deadline }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.basics.deadline = deadline;
+    })
+  ),
+  on(fromActions.newJobStartDateInserted, (state, { startDate }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.basics.startDate = startDate;
+    })
+  ),
+  on(fromActions.newJobTemporaryInserted, (state, { temporary }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.basics.temporary = temporary;
+    })
+  ),
+  on(fromActions.newJobEndDateInserted, (state, { endDate }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.basics.end = endDate;
+    })
+  ),
+  on(fromActions.newJobStreetInserted, (state, { street }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.address.street = street;
+    })
+  ),
+  on(fromActions.newJobNumberInserted, (state, { number }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.address.number = number;
+    })
+  ),
+  on(fromActions.newJobPlzInserted, (state, { plz }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.address.plz = plz;
+    })
+  ),
+  on(fromActions.newJobTownInserted, (state, { town }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.address.town = town;
+    })
+  ),
+  on(fromActions.newJobCountryInserted, (state, { country }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.address.country = country;
+    })
+  ),
+  on(
+    fromActions.newJobShortDescriptionInserted,
+    (state, { shortDescription }) =>
+      produce(state, (draft) => {
+        draft.createNewJob.shortDescription = shortDescription;
+      })
+  ),
+  on(fromActions.newJobDescriptionInserted, (state, { description }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.description = description;
+    })
+  ),
+  on(fromActions.newJobVacationInserted, (state, { vacation }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.vacation = vacation;
+    })
+  ),
+  on(fromActions.newJobRemoteInserted, (state, { remote }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.remote = remote;
+    })
+  ),
+  on(fromActions.newJobWageMonthInserted, (state, { wageMonth }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.wageMonth = wageMonth;
+    })
+  ),
+  on(fromActions.newJobWageYearInserted, (state, { wageYear }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.wageYear = wageYear;
+    })
+  ),
+  on(fromActions.newJobAdvantagesInserted, (state, { advantages }) =>
+    produce(state, (draft) => {
+      draft.createNewJob.advantages = advantages;
+    })
   )
 );
 
