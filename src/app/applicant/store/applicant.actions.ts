@@ -205,3 +205,8 @@ export const loadCvError = createAction(
   '[CV] [PDF] Load Lebenslauf Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const uploadNewCvPdf = createAction(
+  '[CV] [PDF] New CV PDF',
+  props<{ base64: string }>()
+);

@@ -126,4 +126,12 @@ export class LebenslaufService {
       .get<string>(`${this.baseURL}/datei/lebenslauf`)
       .pipe(take(1));
   }
+
+  public uploadCvPdf(base64: string): Observable<string> {
+    return this.http
+      .post<any>(`${this.baseURL}/datei/lebenslauf`, {
+        string: base64,
+      })
+      .pipe(take(1));
+  }
 }

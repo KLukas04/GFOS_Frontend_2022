@@ -49,6 +49,7 @@ export class CvEditorComponent implements OnInit {
 
   public profilePic$: Observable<RemoteData<string, HttpErrorResponse>>;
   public pdfInBase64: string = '';
+  private newFileBase64: any = '';
 
   private readonly interestDialog = this.dialogService.open(
     new PolymorpheusComponent(InterestDialogComponent, this.injector),
@@ -190,20 +191,40 @@ export class CvEditorComponent implements OnInit {
     this.store.dispatch(fromActions.newAddressUpdate());
   }
 
-  showInterestDialog() {
+  public showInterestDialog() {
     this.interestDialog.subscribe();
   }
 
-  showProfilPicDialog() {
+  public showProfilPicDialog() {
     this.profilPicDialog.subscribe();
   }
 
-  showPDF(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {
+  public showPDF(
+    actions: PolymorpheusContent<TuiPdfViewerOptions>,
+    titel: string
+  ) {
     this.pdfService
       .open(this.sanitizer.bypassSecurityTrustResourceUrl(this.pdfInBase64), {
         label: titel,
         actions,
       })
       .subscribe();
+  }
+
+  public loadNewPdf(event: any): void {
+    const fileReader = new FileReader();
+    const file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        this.newFileBase64 = fileReader.result;
+      };
+    }
+  }
+
+  public saveNewPdf(): void {
+    this.store.dispatch(
+      fromActions.uploadNewCvPdf({ base64: this.newFileBase64 })
+    );
   }
 }

@@ -32,8 +32,9 @@
         accept="application/pdf"
         [formControl]="cvControl"
         class="container"
+        (input)="loadNewPdf($event)"
       ></tui-input-file>
-      <button tuiButton>Speichern</button>
+      <button tuiButton (click)="saveNewPdf()">Speichern</button>
     </div>
   </div>
   <div class="main">

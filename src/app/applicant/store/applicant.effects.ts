@@ -238,4 +238,15 @@ export class ApplicantEffects {
       )
     )
   );
+
+  uploadCvPdf$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.uploadNewCvPdf),
+      switchMap((action) =>
+        this.lebenslaufService
+          .uploadCvPdf(action.base64)
+          .pipe(map(() => fromActions.loadCv()))
+      )
+    )
+  );
 }

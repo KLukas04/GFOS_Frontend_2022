@@ -2,10 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { TuiDialogContext } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 import { FormControl } from '@angular/forms';
-import { tuiPure } from '@taiga-ui/cdk';
-import { TuiFileLike } from '@taiga-ui/kit';
-import { Observable, of, timer } from 'rxjs';
-import { map, mapTo, share, startWith, switchMap, tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
 import * as fromActions from '../../store/applicant.actions';
