@@ -1,17 +1,11 @@
 @import "../../../../../scss/colors.scss";
 
-.group{
-  width: 100%;
-  background-color: red;
-}
-
 .group {
-  width: 50%;
+  width: 100%;
+  max-width: 900px;
   background: linear-gradient(-45deg, #adadad, $color-5);
 
   padding: 5px;
-  margin-left: 25%;
-  margin-right: auto;
   border-radius: 10px;
   
 

@@ -1,17 +1,11 @@
 @import "../../../../../scss/colors.scss";
 
 .panel {
-  width: 100%;
-  min-width: 100%;
-
   .carousel-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-
-    tui-carousel {
-      max-width: 70%;
-    }
+    width: 100%;
   }
 
   tui-pagination {

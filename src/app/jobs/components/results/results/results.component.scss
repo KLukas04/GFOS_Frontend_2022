@@ -1,20 +1,43 @@
 .parent{
     display: flex;
     flex-direction: row;
-    height: 100%;
-    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+    @media screen and (max-width: 1999px) {
+        app-sidebar{
+            width: 100%;
+        }
+
+        tui-scrollbar{
+            width: 100%;
+            padding: 20px;
+            padding-inline: 10px;
+        }
+    }
+    
+    @media screen and (min-width: 1200px) {
+        app-sidebar{
+            width: 30%;
+            min-width: 360px;
+        }
+
+        tui-scrollbar{
+            width: 68%;
+        }
+    }
 
     tui-scrollbar{
         min-height: calc(90vh);
         max-height: calc(90vh);
     }
     .content{
+        min-width: none;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         gap: 50px;
-        padding: 50px;
     }
     
 }

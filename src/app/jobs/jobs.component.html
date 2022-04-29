@@ -4,9 +4,12 @@
       >Jobs in deiner Nähe <span class="green">Bewirb dich jetzt</span>
     </span>
     <span class="subtitle">Noch nie war die Jobsuche so einfach...</span>
-    <app-search class="search"></app-search>
+    <div class="search">
+      <app-search></app-search>
+    </div>
   </div>
   <div class="divider"></div>
+
   <div class="trends-panel">
     <div class="heading">Aktuelle Trends</div>
     <h3 *ngIf="trendJobs$ | async | isInProgress">
@@ -19,6 +22,7 @@
       Job Trends konnten nicht geladen werden!
     </h3>
   </div>
+  
   <div class="section">
     <div class="divider"></div>
     <div class="how-it-works-panel">

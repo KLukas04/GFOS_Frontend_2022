@@ -10,26 +10,33 @@
   display: flex;
 
   .logo {
-    width: 200px;
-    height: 56px;
-    border-radius: 10px;
     margin-left: 15px;
     margin-top: 3px;
     display: inline-block;
 
     img{
-      width: 70%;
+      width: 120px;
+    }
+  }
+
+  @media screen and (max-width: 580px) {
+    .logo{
+      width: 0px;
+    }
+    img{
+      visibility: hidden;
     }
   }
 
   .links {
-    height: 64px;
     width: 20%;
+    height: 64px;
     margin-left: 40px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     font-size: 1.1rem;
+    gap: 10px;
 
     a {
       color: #a8a8a8;

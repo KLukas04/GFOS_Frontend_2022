@@ -36,8 +36,16 @@
     }
 
     .search {
-      width: 100%;
+      display: flex;
+      width: 90%;
+      align-items: center;
+      justify-content: center;
       margin-top: 30px;
+      
+      app-search{
+        width: 100%;
+        max-width: 900px;
+      }
     }
   }
 
@@ -67,4 +75,6 @@
       left: 20px;
     }
   }
+
+  
 }
