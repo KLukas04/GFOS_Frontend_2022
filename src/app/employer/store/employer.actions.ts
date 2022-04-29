@@ -38,3 +38,37 @@ export const loadSelfError = createAction(
   '[Employer] [Account] Load Self Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const newEmployerFirstNameInserted = createAction(
+  '[Employer] [New Employer] Firstname Inserted',
+  props<{ firstName: string }>()
+);
+
+export const newEmployerLastNameInserted = createAction(
+  '[Employer] [New Employer] Lastname Inserted',
+  props<{ lastName: string }>()
+);
+
+export const newEmployerEmailInserted = createAction(
+  '[Employer] [New Employer] Email Inserted',
+  props<{ email: string }>()
+);
+
+export const newEmployerPhoneInserted = createAction(
+  '[Employer] [New Employer] Phone Inserted',
+  props<{ phone: string }>()
+);
+
+export const newEmployerPasswordInserted = createAction(
+  '[Employer] [New Employer] Password Inserted',
+  props<{ password: string }>()
+);
+
+export const newEmployerSectionInserted = createAction(
+  '[Employer] [New Employer] Section Inserted',
+  props<{ section: string }>()
+);
+
+export const saveNewEmployer = createAction(
+  '[Employer] [New Employer] Save New Employer'
+);

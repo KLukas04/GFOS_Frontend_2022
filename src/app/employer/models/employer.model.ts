@@ -5,4 +5,7 @@ export interface Employer {
   vorname: string;
   email: string;
   telefon: string;
+  fachgebiet?: {
+    name: string;
+  };
 }

@@ -20,3 +20,8 @@ export const selectOwnAccount = createSelector(
   selectEmployerState,
   (state: fromReducer.EmployerState) => state.onwAccount
 );
+
+export const selectNewEmployerData = createSelector(
+  selectEmployerState,
+  (state: fromReducer.EmployerState) => state.createNewEmployer
+);

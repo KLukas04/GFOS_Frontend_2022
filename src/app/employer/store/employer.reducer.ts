@@ -19,12 +19,28 @@ export interface EmployerState {
   todos: RemoteData<Todo[], HttpErrorResponse>;
   createNewTodo: string | null;
   onwAccount: RemoteData<Employer, HttpErrorResponse>;
+  createNewEmployer: {
+    firstName: string | null;
+    lastName: string | null;
+    email: string | null;
+    phone: string | null;
+    password: string | null;
+    section: string | null;
+  };
 }
 
 export const initialState: EmployerState = {
   todos: notAsked(),
   createNewTodo: null,
   onwAccount: notAsked(),
+  createNewEmployer: {
+    firstName: null,
+    lastName: null,
+    email: null,
+    phone: null,
+    password: null,
+    section: null,
+  },
 };
 
 const employerReducer = createReducer(
@@ -62,6 +78,36 @@ const employerReducer = createReducer(
   on(fromActions.loadSelfError, (state, { error }) =>
     produce(state, (draft) => {
       draft.onwAccount = failure<Employer, HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.newEmployerFirstNameInserted, (state, { firstName }) =>
+    produce(state, (draft) => {
+      draft.createNewEmployer.firstName = firstName;
+    })
+  ),
+  on(fromActions.newEmployerLastNameInserted, (state, { lastName }) =>
+    produce(state, (draft) => {
+      draft.createNewEmployer.lastName = lastName;
+    })
+  ),
+  on(fromActions.newEmployerEmailInserted, (state, { email }) =>
+    produce(state, (draft) => {
+      draft.createNewEmployer.email = email;
+    })
+  ),
+  on(fromActions.newEmployerPhoneInserted, (state, { phone }) =>
+    produce(state, (draft) => {
+      draft.createNewEmployer.phone = phone;
+    })
+  ),
+  on(fromActions.newEmployerPasswordInserted, (state, { password }) =>
+    produce(state, (draft) => {
+      draft.createNewEmployer.password = password;
+    })
+  ),
+  on(fromActions.newEmployerSectionInserted, (state, { section }) =>
+    produce(state, (draft) => {
+      draft.createNewEmployer.section = section;
     })
   )
 );
