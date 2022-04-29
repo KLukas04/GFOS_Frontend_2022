@@ -59,6 +59,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromReducer from './store/employer.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployerEffects } from './store/employer.effects';
+import { RemoteDataModule } from 'ngx-remotedata';
 @NgModule({
   declarations: [
     EmployerComponent,
@@ -115,6 +116,7 @@ import { EmployerEffects } from './store/employer.effects';
     TuiSvgModule,
     StoreModule.forFeature(fromReducer.employerFeatureKey, fromReducer.reducer),
     EffectsModule.forFeature([EmployerEffects]),
+    RemoteDataModule,
   ],
   providers: [
     {

@@ -1,6 +1,13 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { RemoteData } from 'ngx-remotedata';
+import { Observable } from 'rxjs';
+import { Todo } from './models/todo.model';
 
+import * as fromActions from './store/employer.actions';
+import * as fromReducer from './store/employer.reducer';
+import * as fromSelectors from './store/employer.selectors';
 @Component({
   selector: 'app-employer',
   templateUrl: './employer.component.html',
@@ -8,11 +15,13 @@ import {FormControl, FormGroup} from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class EmployerComponent implements OnInit {
-  constructor() {}
+  public todos$: Observable<RemoteData<Todo[], HttpErrorResponse>>;
 
-  ngOnInit(): void {}
+  constructor(private store: Store<fromReducer.EmployerState>) {
+    this.todos$ = this.store.select(fromSelectors.selectTodos);
+  }
 
-  testForm = new FormGroup({
-    finished: new FormControl(true),
-});
+  ngOnInit(): void {
+    this.store.dispatch(fromActions.loadTodos());
+  }
 }

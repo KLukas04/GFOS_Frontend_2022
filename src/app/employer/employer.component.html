@@ -3,36 +3,41 @@
   <div class="container">
     <div class="header">
       <p>Guten Tag, <span class="markup"> Lukas!</span></p>
-      <img src="assets/hello.svg">
+      <img src="assets/hello.svg" />
     </div>
 
     <div class="main">
-
       <a tuiIsland [hoverable]="true" class="todo">
         <div class="content">
-          <tui-scrollbar class="box">
-            <form [formGroup]="testForm">
-              <div class="todo">
+          <h3 *ngIf="todos$ | async | isInProgress">Todos werden geladen...</h3>
+          <h3 *ngIf="todos$ | async | isFailure">
+            Todos konnten nicht geladen werden!
+          </h3>
+          <tui-scrollbar class="box" *ngIf="todos$ | async | isSuccess">
+            <div *ngIf="todos$ | async | successValue as todos">
+              <div class="todo" *ngFor="let todo of todos">
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis, ipsa delectus nisi, harum
-                  architecto ut similique deserunt, temporibus ipsum explicabo atque nam soluta labore accusantium optio
-                  rerum dolor rem quos?
+                  {{ todo.title }}
                 </p>
-                <tui-checkbox formControlName="finished" class="tui-space_bottom-3"></tui-checkbox>
+                <tui-checkbox class="tui-space_bottom-3"></tui-checkbox>
               </div>
-            </form>
+            </div>
           </tui-scrollbar>
         </div>
 
         <div class="input">
           <tui-input> Todo </tui-input>
-          <button tuiButton> S</button>
+          <button tuiButton>+</button>
         </div>
       </a>
 
       <div class="applications">
-        <app-open-applications job="Designer" name="Lukas Krinke" beworbenAm="23.04.22"></app-open-applications>
+        <app-open-applications
+          job="Designer"
+          name="Lukas Krinke"
+          beworbenAm="23.04.22"
+        ></app-open-applications>
       </div>
-
     </div>
   </div>
+</div>
