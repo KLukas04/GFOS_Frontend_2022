@@ -2,7 +2,17 @@
 
 .wrapper {
   display: flex;
-  flex-direction: row;
+  
+  flex-wrap: wrap;
+
+  @media screen and (max-width: 1187px) {
+    flex-direction: column;
+  }
+
+  @media screen and (min-width: 1188px) {
+    flex-direction: row;
+  }
+
   .container {
     flex-grow: 2;
     .header {
@@ -10,6 +20,7 @@
       height: 200px;
       background-color: $color-4;
       width: 90%;
+      
       border-radius: 0px 100px 100px 0px;
 
       display: flex;
@@ -22,10 +33,21 @@
       img {
         float: right;
         height: 150px;
+        @media screen and (max-width: 709px) {
+          height: 0px;
+          width: 0px;
+          visibility: collapse;
+        }
       }
 
       p {
-        font-size: 80px;
+        @media screen and (max-width: 1379px) {
+          font-size: 40px;
+        }
+        @media screen and (min-width: 1380px) {
+          font-size: 80px;
+        }
+        
         .markup {
           color: #7dff63;
         }
@@ -36,6 +58,7 @@
       padding: 50px;
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
       justify-content: space-around;
       gap: 50px;
       .todo {
@@ -43,7 +66,11 @@
         flex-direction: column;
         justify-content: space-between;
         padding: 10px;
+        min-width: 250px;
         width: 40%;
+        @media screen and (max-width: 849px) {
+          width: 70%;
+        }
         background-color: $color-4;
         height: 500px;
 
@@ -85,6 +112,7 @@
       .applications{
         height: 500px;
         width: 40%;
+        min-width: 360px;
         padding: 10px;
       }
     }

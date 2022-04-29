@@ -1,15 +1,31 @@
 @import "../../../../scss/colors.scss";
 
 .container {
-  min-height: calc(100vh - 64px);
-  max-height: calc(100vh - 64px);
-  width: 350px;
+  @media screen and (max-width: 1187px) {
+    height: fit-content;
+  }
+
+  @media screen and (min-width: 1188px) {
+    min-height: calc(100vh - 64px);
+    max-height: calc(100vh - 64px);
+  }
+  
   background: linear-gradient(66deg, $color-4 0%, $color-5 50%, $color-5 100%);
   padding: 50px;
   box-sizing: border-box;
 
   ul {
-    list-style: none;
+    @media screen and (max-width: 1187px) {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      @media screen and (max-width: 576px) {
+        flex-direction: column;
+        justify-content: center;
+        align-items:center;
+      }
+    }
 
     .empty {
       height: 50px;
