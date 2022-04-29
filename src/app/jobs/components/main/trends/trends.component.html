@@ -1,43 +1,20 @@
 <div class="panel" *ngIf="trendJobs$ | async | isSuccess">
   <ng-container *ngIf="trendJobs$ | async | successValue as jobs">
     <h3 *ngIf="jobs.length === 0">Aktuell liegen leider keine Trends vor!</h3>
+
     <div class="carousel-wrapper" *ngIf="jobs.length !== 0">
-      <button
-        tuiIconButton
-        icon="tuiIconChevronLeftLarge"
-        appearance="secondary"
-        shape="rounded"
-        size="m"
-        (click)="carousel.prev()"
-      ></button>
-      <tui-carousel
-        #carousel
-        [(index)]="carouselIndex"
-        [itemsCount]="numberOfItems"
-      >
+      <button tuiIconButton icon="tuiIconChevronLeftLarge" appearance="secondary" shape="rounded" size="m"
+        (click)="carousel.prev()"></button>
+      <tui-carousel #carousel [(index)]="carouselIndex" [itemsCount]="numberOfItems">
         <ng-container *ngFor="let job of jobs">
-          <app-trend-job-card
-            *tuiItem
-            [title]="job.title"
-            [fachgebiet]="job.fachgebiet.fachgebietid"
-            [kurzbeschreibung]="job.kurzbeschreibung"
-          ></app-trend-job-card>
+          <app-trend-job-card *tuiItem [title]="job.title" [fachgebiet]="job.fachgebiet.fachgebietid"
+            [kurzbeschreibung]="job.kurzbeschreibung"></app-trend-job-card>
         </ng-container>
       </tui-carousel>
-      <button
-        tuiIconButton
-        icon="tuiIconChevronRightLarge"
-        appearance="secondary"
-        shape="rounded"
-        size="m"
-        (click)="carousel.next()"
-      ></button>
+      <button tuiIconButton icon="tuiIconChevronRightLarge" appearance="secondary" shape="rounded" size="m"
+        (click)="carousel.next()"></button>
     </div>
-    <tui-pagination
-      size="m"
-      [length]="jobs.length"
-      [(index)]="carouselIndex"
-      *ngIf="jobs.length !== 0"
-    ></tui-pagination>
+    <tui-pagination size="m" [length]="jobs.length" [(index)]="carouselIndex" *ngIf="jobs.length !== 0">
+    </tui-pagination>
   </ng-container>
 </div>
