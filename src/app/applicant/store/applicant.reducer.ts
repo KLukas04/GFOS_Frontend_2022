@@ -22,6 +22,7 @@ export const applicantFeatureKey = 'applicant';
 
 export interface ApplicantState {
   lebenslauf: {
+    profilePic: RemoteData<string, HttpErrorResponse>;
     stationen: RemoteData<LebenslaufStation[], HttpErrorResponse>;
     createNewStation: {
       start: Date | null;
@@ -56,6 +57,7 @@ export interface ApplicantState {
 
 export const initialState: ApplicantState = {
   lebenslauf: {
+    profilePic: notAsked(),
     stationen: notAsked(),
     createNewStation: {
       start: null,
@@ -291,6 +293,23 @@ const applicantReducer = createReducer(
   on(fromActions.loadSentApplicationsError, (state, { error }) =>
     produce(state, (draft) => {
       draft.sentApplications = failure<Bewerbung[], HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.loadProfilePic, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.profilePic = inProgress<string, HttpErrorResponse>(
+        getOrElse(draft.lebenslauf.profilePic, undefined)
+      );
+    })
+  ),
+  on(fromActions.loadProfilePicSuccess, (state, { base64 }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.profilePic = success<string, HttpErrorResponse>(base64);
+    })
+  ),
+  on(fromActions.loadProfilePicError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.profilePic = failure<string, HttpErrorResponse>(error);
     })
   )
 );

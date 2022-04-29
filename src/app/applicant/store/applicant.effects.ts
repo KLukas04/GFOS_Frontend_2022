@@ -201,12 +201,27 @@ export class ApplicantEffects {
     )
   );
 
+  loadProfilePic$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadProfilePic),
+      mergeMap(() =>
+        this.lebenslaufService.getProfilePic().pipe(
+          map((pic) => fromActions.loadProfilePicSuccess({ base64: pic })),
+          catchError((err) =>
+            of(fromActions.loadProfilePicError({ error: err }))
+          )
+        )
+      )
+    )
+  );
+
   uploadProfilePic$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.uploadNewProfilePic),
-      mergeMap((action) =>
+      switchMap((action) =>
         this.lebenslaufService.uploadProfilePic(action.base64).pipe(
-          map(() => fromActions.loadOwnAccount()) // hier dann Bild neu laden, wenn es auch aus db ist
+          map(() => fromActions.loadProfilePic()),
+          catchError(() => of(fromActions.loadProfilePic()))
         )
       )
     )

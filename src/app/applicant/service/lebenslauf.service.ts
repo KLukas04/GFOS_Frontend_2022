@@ -107,6 +107,12 @@ export class LebenslaufService {
       .pipe(take(1));
   }
 
+  public getProfilePic(): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseURL}/foto/profilbild`)
+      .pipe(take(1));
+  }
+
   public uploadProfilePic(base64: string): Observable<string> {
     return this.http
       .post<any>(`${this.baseURL}/foto/profilbild`, {

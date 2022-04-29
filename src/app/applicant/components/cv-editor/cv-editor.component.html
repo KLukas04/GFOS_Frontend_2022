@@ -8,23 +8,33 @@
   </div>
 </div>
 
-
 <div class="parent">
   <div class="sidebar">
-    <tui-avatar [avatarUrl]="avatar" size="xxl" class="tui-space_top-1" [rounded]="true"
-      (click)="showProfilPicDialog()"></tui-avatar>
+    <ng-container *ngIf="profilePic$ | async | isSuccess"
+      ><tui-avatar
+        *ngIf="profilePic$ | async | successValue as pic"
+        [avatarUrl]="pic"
+        size="xxl"
+        class="tui-space_top-1"
+        [rounded]="true"
+        (click)="showProfilPicDialog()"
+      ></tui-avatar
+    ></ng-container>
     <div class="file">
-      <h3> Lebenslauf </h3>
-        <button tuiButton (click)="showPDF(actions, 'Referenz')">
-          Ansehen
-        </button>
-        <br><br>
-      <tui-input-file label=" " link="Lade deinen Lebenslauf hoch" accept="application/pdf" class="container" [formControl]="control"
-        [loadingFiles]="(loading$ | async) || []" [rejectedFiles]="(rejected$ | async) || []"></tui-input-file>
-        <button tuiButton>
-          Speichern
-        </button>
-      </div>
+      <h3>Lebenslauf</h3>
+      <button tuiButton (click)="showPDF(actions, 'Referenz')">Ansehen</button>
+      <br /><br />
+      <tui-input-file
+        label=" "
+        link="Lade deinen Lebenslauf hoch"
+        accept="application/pdf"
+        class="container"
+        [formControl]="control"
+        [loadingFiles]="(loading$ | async) || []"
+        [rejectedFiles]="(rejected$ | async) || []"
+      ></tui-input-file>
+      <button tuiButton>Speichern</button>
+    </div>
   </div>
   <div class="main">
     <div class="basic-info">
@@ -34,16 +44,24 @@
           <a tuiLink (click)="updateAccount()"> Speichern </a>
         </div>
         <div class="input">
-          <tui-input [formControl]="firstNameControl" (input)="saveFirstName()">Vorname</tui-input>
-          <tui-input [formControl]="lastNameControl" (input)="saveLastName()">Name</tui-input>
+          <tui-input [formControl]="firstNameControl" (input)="saveFirstName()"
+            >Vorname</tui-input
+          >
+          <tui-input [formControl]="lastNameControl" (input)="saveLastName()"
+            >Name</tui-input
+          >
         </div>
         <div class="heading">
           <p>Kontakt</p>
           <a tuiLink (click)="updateAccount()"> Speichern </a>
         </div>
         <div class="input">
-          <tui-input [formControl]="emailControl" (input)="saveEmail()">Email</tui-input>
-          <tui-input [formControl]="phoneControl" (input)="savePhone()">Telefonnummer</tui-input>
+          <tui-input [formControl]="emailControl" (input)="saveEmail()"
+            >Email</tui-input
+          >
+          <tui-input [formControl]="phoneControl" (input)="savePhone()"
+            >Telefonnummer</tui-input
+          >
         </div>
       </div>
 
@@ -53,13 +71,23 @@
           <a tuiLink (click)="updateAddress()"> Speichern </a>
         </div>
         <div class="input">
-          <tui-input [formControl]="streetControl" (input)="saveStreet()">Straße</tui-input>
-          <tui-input [formControl]="numberControl" (input)="saveNumber()">Hausnummer</tui-input>
+          <tui-input [formControl]="streetControl" (input)="saveStreet()"
+            >Straße</tui-input
+          >
+          <tui-input [formControl]="numberControl" (input)="saveNumber()"
+            >Hausnummer</tui-input
+          >
         </div>
         <div class="input">
-          <tui-input [formControl]="plzControl" (input)="savePlz()">PLZ</tui-input>
-          <tui-input [formControl]="townControl" (input)="saveTown()">Stadt</tui-input>
-          <tui-input [formControl]="countryControl" (input)="saveCountry()">Land</tui-input>
+          <tui-input [formControl]="plzControl" (input)="savePlz()"
+            >PLZ</tui-input
+          >
+          <tui-input [formControl]="townControl" (input)="saveTown()"
+            >Stadt</tui-input
+          >
+          <tui-input [formControl]="countryControl" (input)="saveCountry()"
+            >Land</tui-input
+          >
         </div>
       </div>
     </div>
@@ -68,13 +96,24 @@
       <div class="i-content">
         <div class="interests" *ngIf="interests$ | async | isSuccess">
           <ng-container *ngIf="interests$ | async | successValue as interests">
-            <tui-badge *ngFor="let interest of interests" size="l" status="primary" [value]="interest.name">
+            <tui-badge
+              *ngFor="let interest of interests"
+              size="l"
+              status="primary"
+              [value]="interest.name"
+            >
             </tui-badge>
           </ng-container>
         </div>
         <tui-root>
           <div class="button">
-            <button tuiButton type="button" size="m" icon="tuiIconPlusLarge" (click)="showInterestDialog()">
+            <button
+              tuiButton
+              type="button"
+              size="m"
+              icon="tuiIconPlusLarge"
+              (click)="showInterestDialog()"
+            >
               Add
             </button>
           </div>
@@ -91,12 +130,10 @@
 <tui-root>
   <ng-template #actions let-content="content">
     <div class="dialogActions">
-    <a tuiButton shape="rounded" size="s" download [href]="content">
-      Download
-    </a>
-    <a tuiButton appearance="accent" shape="rounded" size="s">
-      Löschen
-    </a>
-  </div>
+      <a tuiButton shape="rounded" size="s" download [href]="content">
+        Download
+      </a>
+      <a tuiButton appearance="accent" shape="rounded" size="s"> Löschen </a>
+    </div>
   </ng-template>
 </tui-root>

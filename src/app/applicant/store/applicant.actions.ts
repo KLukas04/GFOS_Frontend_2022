@@ -177,6 +177,18 @@ export const deleteApplication = createAction(
   props<{ id: number }>()
 );
 
+export const loadProfilePic = createAction('[CV] [Profilbild] Load Profilbild');
+
+export const loadProfilePicSuccess = createAction(
+  '[CV] [Profilbild] Load Profilbild Success',
+  props<{ base64: string }>()
+);
+
+export const loadProfilePicError = createAction(
+  '[CV] [Profilbild] Load Profilbild Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
 export const uploadNewProfilePic = createAction(
   '[CV] [Profilbild] New Profile Pic',
   props<{ base64: string }>()

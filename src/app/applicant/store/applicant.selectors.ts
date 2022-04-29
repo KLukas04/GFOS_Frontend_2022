@@ -62,3 +62,8 @@ export const selectSentApplications = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.sentApplications
 );
+
+export const selectProfilePic = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.profilePic
+);
