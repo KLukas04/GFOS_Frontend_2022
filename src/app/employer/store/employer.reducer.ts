@@ -16,10 +16,12 @@ export const employerFeatureKey = 'employer';
 
 export interface EmployerState {
   todos: RemoteData<Todo[], HttpErrorResponse>;
+  createNewTodo: string | null;
 }
 
 export const initialState: EmployerState = {
   todos: notAsked(),
+  createNewTodo: null,
 };
 
 const employerReducer = createReducer(
@@ -37,6 +39,11 @@ const employerReducer = createReducer(
   on(fromActions.loadTodosError, (state, { error }) =>
     produce(state, (draft) => {
       draft.todos = failure<Todo[], HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.newTodoInserted, (state, { todo }) =>
+    produce(state, (draft) => {
+      draft.createNewTodo = todo;
     })
   )
 );

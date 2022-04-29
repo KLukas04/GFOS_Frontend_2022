@@ -26,8 +26,10 @@
         </div>
 
         <div class="input">
-          <tui-input> Todo </tui-input>
-          <button tuiButton>+</button>
+          <tui-input [formControl]="todoControl" (input)="saveTodo()">
+            Todo
+          </tui-input>
+          <button tuiButton (click)="addTodo()">+</button>
         </div>
       </a>
 

@@ -13,3 +13,10 @@ export const loadTodosError = createAction(
   '[Employer] [Todos] Load Todos Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const newTodoInserted = createAction(
+  '[Employer] [Todos] New Todo Inserted',
+  props<{ todo: string }>()
+);
+
+export const saveNewTodo = createAction('[Employer] [Todos] Save New Todo');

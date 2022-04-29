@@ -10,3 +10,8 @@ export const selectTodos = createSelector(
   selectEmployerState,
   (state: fromReducer.EmployerState) => state.todos
 );
+
+export const selectNewTodoData = createSelector(
+  selectEmployerState,
+  (state: fromReducer.EmployerState) => state.createNewTodo
+);

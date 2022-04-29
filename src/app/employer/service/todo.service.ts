@@ -15,4 +15,12 @@ export class TodoService {
   public getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(`${this.baseURL}/todo`).pipe(take(1));
   }
+
+  public addTodo(todo: string): Observable<string> {
+    return this.http
+      .post<any>(`${this.baseURL}/todo`, {
+        title: todo,
+      })
+      .pipe(take(1));
+  }
 }
