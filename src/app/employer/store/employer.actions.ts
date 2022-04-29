@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
+import { Application } from '../models/application.model';
 import { Employer } from '../models/employer.model';
 import { Job } from '../models/job.model';
 import { Todo } from '../models/todo.model';
@@ -214,4 +215,18 @@ export const pinJob = createAction(
 export const unpinJob = createAction(
   '[Employer] [Jobs] Unpin Job',
   props<{ id: number }>()
+);
+
+export const loadApplications = createAction(
+  '[Employer] [Applications] Load Applications'
+);
+
+export const loadApplicationsSuccess = createAction(
+  '[Employer] [Applications] Load Applications Success',
+  props<{ applications: Application[] }>()
+);
+
+export const loadApplicationsError = createAction(
+  '[Employer] [Applications] Load Applications Error',
+  props<{ error: HttpErrorResponse }>()
 );

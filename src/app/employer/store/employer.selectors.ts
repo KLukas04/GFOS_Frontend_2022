@@ -35,3 +35,8 @@ export const selectCreatedJobs = createSelector(
   selectEmployerState,
   (state: fromReducer.EmployerState) => state.createdJobs
 );
+
+export const selectApplications = createSelector(
+  selectEmployerState,
+  (state: fromReducer.EmployerState) => state.applications
+);

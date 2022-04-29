@@ -1,7 +1,7 @@
 <a tuiIsland [hoverable]="true" class="application">
   <div class="info">
     <div class="heading">
-      <h2> {{name}} </h2>
+      <h2>{{ name }}</h2>
       <div class="job">
         <p>hat sich beworben auf:</p>
         <a tuiLink routerLink="/jobs/details">
@@ -9,19 +9,25 @@
         </a>
       </div>
     </div>
-
-
   </div>
   <div class="main">
     <div class="content">
       <div class="date">
-        <p> Beworben am: {{ beworbenAm }}</p>
+        <p>Beworben am: {{ beworbenAm | date: "shortDate" }}</p>
       </div>
       <div class="files">
-
-        <a tuiLink routerLink="/employer/myjobs/openApplications/applicantDetailView" class="file"
-          (click)="setStatusInWork()">
-          <tui-avatar [avatarUrl]="avatar" text="Bild" size="xl" [rounded]="true"></tui-avatar>
+        <a
+          tuiLink
+          routerLink="/employer/myjobs/openApplications/applicantDetailView"
+          class="file"
+          (click)="setStatusInWork()"
+        >
+          <tui-avatar
+            [avatarUrl]="avatar"
+            text="Bild"
+            size="xl"
+            [rounded]="true"
+          ></tui-avatar>
         </a>
 
         <button class="file" tuiButton (click)="show(actions, 'Anschreiben')">
@@ -30,27 +36,46 @@
         <button class="file" tuiButton (click)="show(actions, 'Lebenslauf')">
           Lebenslauf
         </button>
-
       </div>
     </div>
     <div class="buttons">
       <tui-hosted-dropdown class="accept" [content]="dropdown" [(open)]="open">
         <div tuiGroup>
-
-          <button tuiButton type="button" size="l" class="btn" (click)="acceptApplication">
+          <button
+            tuiButton
+            type="button"
+            size="l"
+            class="btn"
+            (click)="(acceptApplication)"
+          >
             Annehmen
           </button>
 
-          <button tuiIconButton type="button" tuiHostedDropdownHost title="Menu" size="l"
-            class="tui-group__auto-width-item" [iconRight]="icon"></button>
+          <button
+            tuiIconButton
+            type="button"
+            tuiHostedDropdownHost
+            title="Menu"
+            size="l"
+            class="tui-group__auto-width-item"
+            [iconRight]="icon"
+          ></button>
 
           <ng-template #icon>
-            <tui-svg src="tuiIconChevronDown" class="icon" [class.icon_rotated]="open"></tui-svg>
+            <tui-svg
+              src="tuiIconChevronDown"
+              class="icon"
+              [class.icon_rotated]="open"
+            ></tui-svg>
           </ng-template>
-
         </div>
       </tui-hosted-dropdown>
-      <button tuiButton appearance="accent" class="decline" (click)="declineApplication">
+      <button
+        tuiButton
+        appearance="accent"
+        class="decline"
+        (click)="(declineApplication)"
+      >
         Ablehnen
       </button>
     </div>
@@ -60,25 +85,15 @@
 <tui-root>
   <ng-template #dropdown let-activeZone>
     <tui-data-list>
-
       <button tuiOption (click)="showSendOnDialog()">Weiterleiten</button>
 
       <button tuiOption (click)="showDelegateDialog()">Delegieren</button>
     </tui-data-list>
   </ng-template>
 
-  <ng-template
-  #actions
-  let-content="content"
->
-  <a
-      tuiButton
-      shape="rounded"
-      size="s"
-      download
-      [href]="content"
-  >
+  <ng-template #actions let-content="content">
+    <a tuiButton shape="rounded" size="s" download [href]="content">
       Download
-  </a>
-</ng-template>
+    </a>
+  </ng-template>
 </tui-root>

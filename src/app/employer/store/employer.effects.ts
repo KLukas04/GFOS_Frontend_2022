@@ -4,6 +4,7 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
 import { AccountService } from '../service/account.service';
+import { ApplicationService } from '../service/application.service';
 import { JobService } from '../service/job.service';
 import { TodoService } from '../service/todo.service';
 
@@ -18,7 +19,8 @@ export class EmployerEffects {
     private router: Router,
     private todoService: TodoService,
     private accountService: AccountService,
-    private jobService: JobService
+    private jobService: JobService,
+    private applicationService: ApplicationService
   ) {}
 
   loadTodos$ = createEffect(() =>
@@ -168,6 +170,22 @@ export class EmployerEffects {
         this.jobService
           .unpinJob(action.id)
           .pipe(map(() => fromActions.loadCreatedJobs()))
+      )
+    )
+  );
+
+  loadApplications$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplications),
+      mergeMap(() =>
+        this.applicationService.getEditableApplications().pipe(
+          map((applications) =>
+            fromActions.loadApplicationsSuccess({ applications: applications })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationsError({ error: err }))
+          )
+        )
       )
     )
   );

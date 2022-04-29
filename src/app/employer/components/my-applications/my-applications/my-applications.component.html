@@ -1,7 +1,15 @@
-<app-header text="Du hast [wert]" markup="Bewerbungen!" img="assets/openApplications.svg"></app-header>
-<div class="container">
-    <app-open-applications job="Designer" name="Lukas Krinke" beworbenAm="23.04.22"></app-open-applications>
-    <app-open-applications job="Informatik" name="Lukas Krinke" beworbenAm="23.04.22"></app-open-applications>
-    <app-open-applications job="Designer" name="Lukas Krinke" beworbenAm="23.04.22"></app-open-applications>
-    <app-open-applications job="Designer" name="Lukas Krinke" beworbenAm="23.04.22"></app-open-applications>
-</div>
+<ng-container *ngIf="applications$ | async | successValue as applications">
+  <app-header
+    [text]="'Du hast ' + applications.length"
+    markup="Bewerbung(en)!"
+    img="assets/openApplications.svg"
+  ></app-header>
+  <div class="container">
+    <app-open-applications
+      *ngFor="let application of applications"
+      [job]="application.jobangebot.title"
+      [name]="application.bewerber.vorname + ' ' + application.bewerber.name"
+      [beworbenAm]="application.datum"
+    ></app-open-applications>
+  </div>
+</ng-container>

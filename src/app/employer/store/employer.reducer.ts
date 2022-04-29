@@ -9,6 +9,7 @@ import {
   success,
 } from 'ngx-remotedata';
 import { Job } from 'src/app/jobs/models/job.model';
+import { Application } from '../models/application.model';
 import { Employer } from '../models/employer.model';
 import { Todo } from '../models/todo.model';
 
@@ -54,6 +55,7 @@ export interface EmployerState {
     wageYear: number | null;
     advantages: string | null;
   };
+  applications: RemoteData<Application[], HttpErrorResponse>;
 }
 
 export const initialState: EmployerState = {
@@ -94,6 +96,7 @@ export const initialState: EmployerState = {
     wageYear: null,
     advantages: null,
   },
+  applications: notAsked(),
 };
 
 const employerReducer = createReducer(
@@ -273,6 +276,23 @@ const employerReducer = createReducer(
   on(fromActions.loadCreatedJobsError, (state, { error }) =>
     produce(state, (draft) => {
       draft.createdJobs = failure<Job[], HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.loadApplications, (state) =>
+    produce(state, (draft) => {
+      draft.applications = inProgress<Application[], HttpErrorResponse>();
+    })
+  ),
+  on(fromActions.loadApplicationsSuccess, (state, { applications }) =>
+    produce(state, (draft) => {
+      draft.applications = success<Application[], HttpErrorResponse>(
+        applications
+      );
+    })
+  ),
+  on(fromActions.loadApplicationsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.applications = failure<Application[], HttpErrorResponse>(error);
     })
   )
 );
