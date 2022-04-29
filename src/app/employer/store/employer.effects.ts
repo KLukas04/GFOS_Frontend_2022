@@ -138,4 +138,15 @@ export class EmployerEffects {
       )
     )
   );
+
+  deleteJob$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.deleteJob),
+      mergeMap((action) =>
+        this.jobService
+          .deleteJob(action.id)
+          .pipe(map(() => fromActions.loadCreatedJobs()))
+      )
+    )
+  );
 }

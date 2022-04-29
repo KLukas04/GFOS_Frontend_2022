@@ -68,4 +68,8 @@ export class JobService {
   public getCreatedJobs(): Observable<Job[]> {
     return this.http.get<Job[]>(`${this.baseURL}/jobs/created`).pipe(take(1));
   }
+
+  public deleteJob(id: number): Observable<string> {
+    return this.http.delete<any>(`${this.baseURL}/jobs/${id}`).pipe(take(1));
+  }
 }

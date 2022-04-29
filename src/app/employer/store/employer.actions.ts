@@ -200,3 +200,8 @@ export const loadCreatedJobsError = createAction(
   '[Employer] [Jobs] Load Created Jobs Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const deleteJob = createAction(
+  '[Employer] [Jobs] Delete Job',
+  props<{ id: number }>()
+);
