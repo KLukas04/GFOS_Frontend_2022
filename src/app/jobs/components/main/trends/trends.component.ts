@@ -15,7 +15,7 @@ import * as fromSelectors from '../../../store/jobs.selectors';
 })
 export class TrendsComponent implements OnInit {
   public carouselIndex = 0;
-  public numberOfItems = 4;
+  public numberOfItems = 1;
 
   public trendJobs$: Observable<RemoteData<Job[], HttpErrorResponse>>;
 
