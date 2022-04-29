@@ -22,16 +22,16 @@
     ></ng-container>
     <div class="file">
       <h3>Lebenslauf</h3>
-      <button tuiButton (click)="showPDF(actions, 'Referenz')">Ansehen</button>
+      <button tuiButton (click)="showPDF(actions, 'Lebenslauf')">
+        Ansehen
+      </button>
       <br /><br />
       <tui-input-file
         label=" "
         link="Lade deinen Lebenslauf hoch"
         accept="application/pdf"
+        [formControl]="cvControl"
         class="container"
-        [formControl]="control"
-        [loadingFiles]="(loading$ | async) || []"
-        [rejectedFiles]="(rejected$ | async) || []"
       ></tui-input-file>
       <button tuiButton>Speichern</button>
     </div>
