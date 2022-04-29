@@ -20,3 +20,8 @@ export const newTodoInserted = createAction(
 );
 
 export const saveNewTodo = createAction('[Employer] [Todos] Save New Todo');
+
+export const deleteTodo = createAction(
+  '[Employer] [Todos] Delete Todo',
+  props<{ id: number }>()
+);

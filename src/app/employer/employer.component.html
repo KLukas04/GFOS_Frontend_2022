@@ -19,7 +19,10 @@
                 <p>
                   {{ todo.title }}
                 </p>
-                <tui-checkbox class="tui-space_bottom-3"></tui-checkbox>
+                <tui-checkbox
+                  class="tui-space_bottom-3"
+                  (click)="deleteTodo(todo.todoid!)"
+                ></tui-checkbox>
               </div>
             </div>
           </tui-scrollbar>

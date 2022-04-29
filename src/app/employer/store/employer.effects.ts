@@ -38,4 +38,15 @@ export class EmployerEffects {
       )
     )
   );
+
+  deleteTodo$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.deleteTodo),
+      mergeMap((action) =>
+        this.todoService
+          .deleteTodo(action.id)
+          .pipe(map(() => fromActions.loadTodos()))
+      )
+    )
+  );
 }

@@ -38,4 +38,8 @@ export class EmployerComponent implements OnInit {
     this.store.dispatch(fromActions.saveNewTodo());
     this.todoControl.reset();
   }
+
+  public deleteTodo(id: number): void {
+    this.store.dispatch(fromActions.deleteTodo({ id: id }));
+  }
 }

@@ -23,4 +23,8 @@ export class TodoService {
       })
       .pipe(take(1));
   }
+
+  public deleteTodo(id: number): Observable<string> {
+    return this.http.delete<any>(`${this.baseURL}/todo/${id}`).pipe(take(1));
+  }
 }
