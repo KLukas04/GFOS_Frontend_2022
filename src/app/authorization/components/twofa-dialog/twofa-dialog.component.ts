@@ -25,8 +25,12 @@ export class TwofaDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  savePin(): void {
+    this.store.dispatch(fromActions.newTwoFaPin({ pin: this.pinForm.value }));
+  }
+
   close(): void {
-    this.store.dispatch(fromActions.tryVerificationPin());
+    this.store.dispatch(fromActions.tryTwoFaPin());
     this.context.completeWith(null);
   }
 }

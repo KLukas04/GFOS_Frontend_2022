@@ -46,4 +46,13 @@ export class LoginService {
       })
       .pipe(take(1));
   }
+
+  public tryTwoFaPin(email: string, pin: string): Observable<string> {
+    return this.http
+      .post<any>(`${this.baseURL}/anmeldung/2fa`, {
+        pin: pin,
+        mail: email,
+      })
+      .pipe(take(1));
+  }
 }

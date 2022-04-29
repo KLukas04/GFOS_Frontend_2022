@@ -1,36 +1,61 @@
-<app-header text="Erstelle einen neuen" markup="Mitarbeiter!" img="assets/employee.svg"></app-header>
+<app-header
+  text="Erstelle einen neuen"
+  markup="Mitarbeiter!"
+  img="assets/employee.svg"
+></app-header>
 
 <div class="container">
-    <a size="l" tuiIsland [hoverable]="true" textAlign="center">
-        <div class="card">
-            <h3> Informationen </h3>
-            <tui-input> Vorname </tui-input>
-            <tui-input> Nachname </tui-input>
-            <tui-input> Email </tui-input>
-            <tui-input> Passwort </tui-input>
-            <form *ngIf="istChef" [formGroup]="inputForm">
-                <tui-select tuiTextfieldSize="l" class="tui-group__inherit-item b-form" formControlName="abteilung">
-                    Abteilung
-                    <tui-data-list-wrapper *tuiDataList size="l" [items]="mockExpertiseAreas" [itemContent]="content">
-                    </tui-data-list-wrapper>
-                </tui-select>
-            </form>
-        </div>
-    </a>
+  <a size="l" tuiIsland [hoverable]="true" textAlign="center">
+    <div class="card">
+      <h3>Informationen</h3>
+      <tui-input [formControl]="firstNameControl" (input)="saveFirstName()">
+        Vorname
+      </tui-input>
+      <tui-input [formControl]="lastNameControl" (input)="saveLastName()">
+        Nachname
+      </tui-input>
+      <tui-input [formControl]="emailControl" (input)="saveEmail()">
+        Email
+      </tui-input>
+      <tui-input [formControl]="phoneControl" (input)="savePhone()">
+        Telefon
+      </tui-input>
+      <tui-input [formControl]="passwordControl" (input)="savePassword()">
+        Passwort
+      </tui-input>
+      <form>
+        <tui-select
+          tuiTextfieldSize="l"
+          class="tui-group__inherit-item b-form"
+          [formControl]="sectionControl"
+          (focusedChange)="saveSection()"
+        >
+          Abteilung
+          <tui-data-list-wrapper
+            *tuiDataList
+            size="l"
+            [items]="mockExpertiseAreas"
+            [itemContent]="content"
+          >
+          </tui-data-list-wrapper>
+        </tui-select>
+      </form>
+    </div>
+  </a>
 
-    <a size="l" tuiIsland [hoverable]="true" textAlign="center">
-        <div class="card spacing">
-            <img src="assets/check.svg" alt="">
-            <h2> Alles richtig ?</h2>
-            <button tuiButton type="button">
-                Erstellen
-            </button>
-        </div>
-    </a>
+  <a size="l" tuiIsland [hoverable]="true" textAlign="center">
+    <div class="card spacing">
+      <img src="assets/check.svg" alt="" />
+      <h2>Alles richtig ?</h2>
+      <button tuiButton type="button" (click)="saveNewEmployer()">
+        Erstellen
+      </button>
+    </div>
+  </a>
 </div>
 <ng-template #content let-data>
-    <div class="template">
-        <tui-avatar [avatarUrl]="data.icon" size="xs" class="avatar" [text]="data.text"></tui-avatar>
-        <div class="name">{{ data.text }}</div>
-    </div>
+  <div class="template">
+    <tui-avatar size="xs" class="avatar" [text]="data"></tui-avatar>
+    <div class="name">{{ data }}</div>
+  </div>
 </ng-template>

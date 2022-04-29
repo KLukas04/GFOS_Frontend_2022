@@ -26,6 +26,14 @@ export const selectVerificationPin = createSelector(
   })
 );
 
+export const selectTwoFaPin = createSelector(
+  selectAuthorizationState,
+  (state: fromReducer.AuthorizationState) => ({
+    email: state.loginCreds.email,
+    pin: state.twofaPin,
+  })
+);
+
 export const selectDefaultRoute = createSelector(
   selectAuthorizationState,
   (state: fromReducer.AuthorizationState) => state.defaultRoute
