@@ -16,9 +16,12 @@
   .parent{
     display: flex;
     flex-direction: column;
-    height: 500px;
-    justify-content: space-between;
-    align-items: flex-end;
+    height: fit-content;
+    max-height: 500px;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+
 
     .box{
       width: 100%;

@@ -47,9 +47,25 @@
     }
 
     #heading{
-        font-size: 70px;
-        line-height: 80px;
+        
         margin: 0px;
+        
+        @media screen and (max-width: 480px) {
+            font-size: 20px;
+            line-height: 20px;
+        }
+        @media screen and (min-width: 481px) {
+            font-size: 30px;
+            line-height: 30px;
+        }
+        @media screen and (min-width: 735px) {
+            font-size: 50px;
+            line-height: 50px;
+        }
+        @media screen and (min-width: 1140px) {
+            font-size: 70px;
+            line-height: 80px;
+        }
     }
 
     #content{
@@ -59,8 +75,15 @@
 .parent{
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    padding-inline: 50px;
+    flex-wrap: wrap;
+    gap: 10px;
+    @media screen and (max-width: 1930px) {
+        justify-content: center;
+    }
+    @media screen and (min-width: 1931px) {
+        justify-content: flex-start;
+    }
+    
     
     .sidebar{
         display: flex;
@@ -69,8 +92,8 @@
         justify-content: flex-start;
         gap: 50px;
         padding-top: 50px;
-        width: 15%;
-
+        width: 100%;
+        max-width: 300px;
         .file{
             display: flex;
             flex-direction: column;
@@ -91,9 +114,14 @@
     }
 
     .main{
-        width: 40%;
+        width: fit-content;
+        min-width: 45%;
         display: flex;
         flex-direction: column;
+
+        @media screen and (max-width: 1816px) {
+            align-items: center;
+        }
 
         .heading{
             display: flex;
@@ -107,8 +135,16 @@
         .basic-info{
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-           
+            flex-wrap: wrap;
+            min-width: 350px;
+            @media screen and (max-width: 1816px) {
+                justify-content: center;
+            }
+            @media screen and (min-width: 1817px) {
+                justify-content: space-between;
+            }
+            
+            
             margin-bottom: 10px;
             p{
                 color: #7DFF63;
@@ -116,11 +152,12 @@
             
             .box{
                 padding: 40px 50px 10px 50px;
-                width: 40%;
+                width: 100%;
+                max-width: 300px;
                 background-color: $color-4;
-                margin-top: 50px;
                 border-radius: 16pt;
                 height: 450px;
+                margin-top: 50px;
 
             }
             .first{
@@ -136,28 +173,54 @@
             }
         }
         .interessen{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            @media screen and (max-width: 1824px) {
+                max-width: 300px;
+                
+            }
+            @media screen and (min-width: 1825px) {
+                max-width: 760px;
+            }
+            
             p{
                 color: #7DFF63;
             }
             background-color: $color-4;
             border-radius: 16pt;
             padding: 10px 50px 10px 50px;
+            margin: 10px;
             .i-content{
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
+                
                 .interests{
                     display: flex;
                     flex-direction: row;
                     justify-content: flex-start;
                     gap: 10px;
                     width: 100%;
+                    
+                }
+                .badge{
+                    color: black;
+                    width: fit-content;
+                    background-color: #7DFF63;
+                    border-radius: 16pt;
+                    padding: 10px;
                 }
             }
         }
     }
     
     .lebenslauf{
+
+        @media screen and (max-width: 571px) {
+            width: 360px;
+        }
+        @media screen and (min-width: 570px) {
+            min-width: 500px;
+        }
+        
         p{
             color: #7DFF63;
         }

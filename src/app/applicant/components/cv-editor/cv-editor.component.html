@@ -94,35 +94,33 @@
         </div>
       </div>
     </div>
-    <div class="interessen">
+
+    <div class="interessen box">
       <p>Interessen</p>
       <div class="i-content">
+        <tui-scrollbar>
         <div class="interests" *ngIf="interests$ | async | isSuccess">
           <ng-container *ngIf="interests$ | async | successValue as interests">
-            <tui-badge
-              *ngFor="let interest of interests"
-              size="l"
-              status="primary"
-              [value]="interest.name"
-            >
-            </tui-badge>
+            <p class="badge" *ngFor="let interest of interests"> {{ interest.name }}</p>
+            
           </ng-container>
         </div>
-        <tui-root>
-          <div class="button">
-            <button
-              tuiButton
-              type="button"
-              size="m"
-              icon="tuiIconPlusLarge"
-              (click)="showInterestDialog()"
-            >
-              Add
-            </button>
-          </div>
-        </tui-root>
+      </tui-scrollbar>
+         
+      </div>
+      <div class="button">
+        <button
+          tuiButton
+          type="button"
+          size="m"
+          icon="tuiIconPlusLarge"
+          (click)="showInterestDialog()"
+        >
+          Add
+        </button>
       </div>
     </div>
+
   </div>
   <div class="lebenslauf">
     <p>Lebenslauf</p>
