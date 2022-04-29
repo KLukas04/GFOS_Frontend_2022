@@ -193,3 +193,22 @@ export const uploadNewProfilePic = createAction(
   '[CV] [Profilbild] New Profile Pic',
   props<{ base64: string }>()
 );
+
+export const loadCv = createAction('[CV] [PDF] Load Lebenslauf');
+
+export const loadCvSuccess = createAction(
+  '[CV] [PDF] Load Lebenslauf Success',
+  props<{ base64: string }>()
+);
+
+export const loadCvError = createAction(
+  '[CV] [PDF] Load Lebenslauf Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const uploadNewCvPdf = createAction(
+  '[CV] [PDF] New CV PDF',
+  props<{ base64: string }>()
+);
+
+export const deleteCvPdf = createAction('[CV] [PDF] Delete Lebenslauf');

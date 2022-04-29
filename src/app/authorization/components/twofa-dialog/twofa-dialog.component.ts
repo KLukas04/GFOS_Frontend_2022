@@ -8,11 +8,11 @@ import * as fromActions from '../../store/authorization.actions';
 import * as fromReducer from '../../store/authorization.reducer';
 
 @Component({
-  selector: 'app-verfiy-dialog',
-  templateUrl: './verfiy-dialog.component.html',
-  styleUrls: ['./verfiy-dialog.component.scss'],
+  selector: 'app-twofa-dialog',
+  templateUrl: './twofa-dialog.component.html',
+  styleUrls: ['./twofa-dialog.component.scss'],
 })
-export class VerfiyDialogComponent implements OnInit {
+export class TwofaDialogComponent implements OnInit {
   public pinForm: FormControl;
 
   constructor(
@@ -24,12 +24,6 @@ export class VerfiyDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {}
-
-  savePin(): void {
-    this.store.dispatch(
-      fromActions.newVerificationPin({ pin: this.pinForm.value })
-    );
-  }
 
   close(): void {
     this.store.dispatch(fromActions.tryVerificationPin());

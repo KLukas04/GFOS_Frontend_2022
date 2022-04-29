@@ -1,11 +1,15 @@
 <div class="main">
   <div class="image"></div>
   <div class="content">
-    <div class="text">
-      <p id="heading">Willkommen zurück, <span class="markup">Lukas!</span></p>
+    <div class="text" *ngIf="name$ | async | successValue as name">
+      <p id="heading">
+        Willkommen zurück, <span class="markup">{{ name.vorname }}!</span>
+      </p>
       <p id="content">
         Du hast
-        <span class="markup">{{ amoutOfApplicaions }} offene Bewerbungen.</span>
+        <span class="markup"
+          >{{ amountOfApplications }} offene Bewerbungen.</span
+        >
       </p>
     </div>
     <img src="assets/hello.svg" alt="" />

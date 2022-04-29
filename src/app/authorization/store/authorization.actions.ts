@@ -23,6 +23,10 @@ export const tryLoginError = createAction(
   props<{ error: HttpErrorResponse }>()
 );
 
+export const loginNeedTwoFa = createAction(
+  '[Authorization] [Login] 2FA Pin Needed'
+);
+
 export const newRegistrationFirstname = createAction(
   '[Authorization] [Registration] Firstname Inserted',
   props<{ firstname: string }>()

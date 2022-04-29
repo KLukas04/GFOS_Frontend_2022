@@ -219,10 +219,43 @@ export class ApplicantEffects {
     this.actions$.pipe(
       ofType(fromActions.uploadNewProfilePic),
       switchMap((action) =>
-        this.lebenslaufService.uploadProfilePic(action.base64).pipe(
-          map(() => fromActions.loadProfilePic()),
-          catchError(() => of(fromActions.loadProfilePic()))
+        this.lebenslaufService
+          .uploadProfilePic(action.base64)
+          .pipe(map(() => fromActions.loadProfilePic()))
+      )
+    )
+  );
+
+  loadCvPdf$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadCv),
+      mergeMap(() =>
+        this.lebenslaufService.getCvPdf().pipe(
+          map((pdf) => fromActions.loadCvSuccess({ base64: pdf })),
+          catchError((err) => of(fromActions.loadCvError({ error: err })))
         )
+      )
+    )
+  );
+
+  uploadCvPdf$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.uploadNewCvPdf),
+      switchMap((action) =>
+        this.lebenslaufService
+          .uploadCvPdf(action.base64)
+          .pipe(map(() => fromActions.loadCv()))
+      )
+    )
+  );
+
+  deleteCvPdf$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.deleteCvPdf),
+      mergeMap(() =>
+        this.lebenslaufService
+          .deleteCvPdf()
+          .pipe(map(() => fromActions.loadCv()))
       )
     )
   );

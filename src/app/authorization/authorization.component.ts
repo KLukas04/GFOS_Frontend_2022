@@ -72,10 +72,6 @@ export class AuthorizationComponent implements OnInit {
     container?.classList.remove('sign-up-mode');
   }
 
-  show2FADialog(): void {
-    this.open2FA = true;
-  }
-
   saveLoginEmail(): void {
     this.store.dispatch(
       fromActions.newLoginEmail({ email: this.loginEmailForm.value })
@@ -129,7 +125,7 @@ export class AuthorizationComponent implements OnInit {
     this.verifyDialog.subscribe();
   }
 
-  showForgotPwDialog(){
+  showForgotPwDialog() {
     this.forGotPwDialog.subscribe();
   }
 }

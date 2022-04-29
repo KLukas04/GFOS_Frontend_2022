@@ -87,7 +87,7 @@ export class LebenslaufService {
     number !== null ? (data = { ...data, hausnummer: number }) : null;
     plz !== null ? (data = { ...data, plz: plz }) : null;
     town !== null ? (data = { ...data, stadt: town }) : null;
-    country !== null ? (data = { ...data, stadt: country }) : null;
+    country !== null ? (data = { ...data, land: country }) : null;
 
     return this.http.put<any>(`${this.baseURL}/adresse`, data).pipe(take(1));
   }
@@ -118,6 +118,26 @@ export class LebenslaufService {
       .post<any>(`${this.baseURL}/foto/profilbild`, {
         string: base64,
       })
+      .pipe(take(1));
+  }
+
+  public getCvPdf(): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseURL}/datei/lebenslauf`)
+      .pipe(take(1));
+  }
+
+  public uploadCvPdf(base64: string): Observable<string> {
+    return this.http
+      .post<any>(`${this.baseURL}/datei/lebenslauf`, {
+        string: base64,
+      })
+      .pipe(take(1));
+  }
+
+  public deleteCvPdf(): Observable<string> {
+    return this.http
+      .delete<any>(`${this.baseURL}/datei/lebenslauf`)
       .pipe(take(1));
   }
 }

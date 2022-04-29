@@ -67,3 +67,8 @@ export const selectProfilePic = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.profilePic
 );
+
+export const selectCvPdf = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.pdf
+);

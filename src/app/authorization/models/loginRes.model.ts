@@ -1,5 +1,5 @@
 export interface LoginRes {
   ispersonaler: boolean;
-  twoFa: boolean;
+  twofa: boolean;
   token: string;
 }

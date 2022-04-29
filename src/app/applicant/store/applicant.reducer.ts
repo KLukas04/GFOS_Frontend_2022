@@ -23,6 +23,7 @@ export const applicantFeatureKey = 'applicant';
 export interface ApplicantState {
   lebenslauf: {
     profilePic: RemoteData<string, HttpErrorResponse>;
+    pdf: RemoteData<string, HttpErrorResponse>;
     stationen: RemoteData<LebenslaufStation[], HttpErrorResponse>;
     createNewStation: {
       start: Date | null;
@@ -58,6 +59,7 @@ export interface ApplicantState {
 export const initialState: ApplicantState = {
   lebenslauf: {
     profilePic: notAsked(),
+    pdf: notAsked(),
     stationen: notAsked(),
     createNewStation: {
       start: null,
@@ -310,6 +312,28 @@ const applicantReducer = createReducer(
   on(fromActions.loadProfilePicError, (state, { error }) =>
     produce(state, (draft) => {
       draft.lebenslauf.profilePic = failure<string, HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.loadCv, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.pdf = inProgress<string, HttpErrorResponse>(
+        getOrElse(draft.lebenslauf.pdf, undefined)
+      );
+    })
+  ),
+  on(fromActions.loadCvSuccess, (state, { base64 }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.pdf = success<string, HttpErrorResponse>(base64);
+    })
+  ),
+  on(fromActions.loadCvError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.pdf = failure<string, HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.deleteCvPdf, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.pdf = notAsked<string, HttpErrorResponse>();
     })
   )
 );

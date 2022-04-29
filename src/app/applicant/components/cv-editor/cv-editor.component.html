@@ -1,8 +1,10 @@
 <div class="main">
   <div class="image"></div>
   <div class="content">
-    <div class="text">
-      <p id="heading">Dein Lebenslauf, <span class="markup">Lukas!</span></p>
+    <div class="text" *ngIf="name$ | async | successValue as name">
+      <p id="heading">
+        Dein Lebenslauf, <span class="markup">{{ name.vorname }}!</span>
+      </p>
     </div>
     <img src="assets/writing_resume.svg" alt="" />
   </div>
@@ -22,18 +24,19 @@
     ></ng-container>
     <div class="file">
       <h3>Lebenslauf</h3>
-      <button tuiButton (click)="showPDF(actions, 'Referenz')">Ansehen</button>
+      <button tuiButton (click)="showPDF(actions, 'Lebenslauf')">
+        Ansehen
+      </button>
       <br /><br />
       <tui-input-file
         label=" "
         link="Lade deinen Lebenslauf hoch"
         accept="application/pdf"
+        [formControl]="cvControl"
         class="container"
-        [formControl]="control"
-        [loadingFiles]="(loading$ | async) || []"
-        [rejectedFiles]="(rejected$ | async) || []"
+        (input)="loadNewPdf($event)"
       ></tui-input-file>
-      <button tuiButton>Speichern</button>
+      <button tuiButton (click)="saveNewPdf()">Speichern</button>
     </div>
   </div>
   <div class="main">
@@ -133,7 +136,15 @@
       <a tuiButton shape="rounded" size="s" download [href]="content">
         Download
       </a>
-      <a tuiButton appearance="accent" shape="rounded" size="s"> Löschen </a>
+      <a
+        tuiButton
+        appearance="accent"
+        shape="rounded"
+        size="s"
+        (click)="deleteCvPdf()"
+      >
+        Löschen
+      </a>
     </div>
   </ng-template>
 </tui-root>

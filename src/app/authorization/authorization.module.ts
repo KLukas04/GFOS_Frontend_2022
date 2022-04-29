@@ -22,8 +22,9 @@ import { AuthorizationEffects } from './store/authorization.effects';
 import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.component';
 import { ForgotPwPageComponent } from './components/forgot-pw-page/forgot-pw-page.component';
 import { ForgotPwDialogComponent } from './components/forgot-pw-dialog/forgot-pw-dialog.component';
+import { TwofaDialogComponent } from './components/twofa-dialog/twofa-dialog.component';
 @NgModule({
-  declarations: [AuthorizationComponent, VerfiyDialogComponent, ForgotPwPageComponent, ForgotPwDialogComponent],
+  declarations: [AuthorizationComponent, VerfiyDialogComponent, ForgotPwPageComponent, ForgotPwDialogComponent, TwofaDialogComponent],
   imports: [
     CommonModule,
     AuthorizationRoutingModule,

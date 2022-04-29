@@ -1,14 +1,18 @@
-import { Injectable } from '@angular/core';
+import { HttpErrorResponse } from '@angular/common/http';
+import { Inject, Injectable, Injector } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, map, of, switchMap, tap } from 'rxjs';
+import { TuiDialogService } from '@taiga-ui/core';
+import { catchError, map, of, switchMap } from 'rxjs';
 import { LoginService } from '../service/login.service';
 import { TokenStorageService } from '../service/token-storage.service';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 
 import * as fromActions from './authorization.actions';
 import * as fromReducer from './authorization.reducer';
 import * as fromSelectors from './authorization.selectors';
+import { VerfiyDialogComponent } from '../components/verfiy-dialog/verfiy-dialog.component';
 
 @Injectable()
 export class AuthorizationEffects {
@@ -17,8 +21,18 @@ export class AuthorizationEffects {
     private store: Store<fromReducer.AuthorizationState>,
     private loginService: LoginService,
     private tokenStorage: TokenStorageService,
-    private router: Router
+    private router: Router,
+    @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
+    @Inject(Injector) private readonly injector: Injector
   ) {}
+
+  private readonly verifyDialog = this.dialogService.open(
+    new PolymorpheusComponent(VerfiyDialogComponent, this.injector),
+    {
+      dismissible: false,
+      label: 'Verfizierung',
+    }
+  );
 
   tryToLogin$ = createEffect(() =>
     this.actions$.pipe(
@@ -26,19 +40,20 @@ export class AuthorizationEffects {
       concatLatestFrom(() => this.store.select(fromSelectors.selectLoginCreds)),
       switchMap(([_, creds]) =>
         this.loginService.tryToLogin(creds.email, creds.password).pipe(
-          tap((res) => this.tokenStorage.saveToken(res.token)),
-          tap((res) =>
-            res.ispersonaler
-              ? localStorage.setItem('defaultRoute', 'exployer')
-              : localStorage.setItem('defaultRoute', 'applicant')
-          ),
-          tap(() => this.router.navigateByUrl('jobs')),
-          map((res) =>
-            fromActions.tryLoginSuccess({
-              token: res.token,
-              isPersonaler: res.ispersonaler,
-            })
-          ),
+          map((res) => {
+            if (!res.twofa) {
+              this.tokenStorage.saveToken(res.token);
+              res.ispersonaler
+                ? localStorage.setItem('defaultRoute', 'exployer')
+                : localStorage.setItem('defaultRoute', 'applicant');
+              this.router.navigateByUrl('jobs');
+              return fromActions.tryLoginSuccess({
+                token: res.token,
+                isPersonaler: res.ispersonaler,
+              });
+            }
+            return fromActions.loginNeedTwoFa();
+          }),
           catchError((err) => of(fromActions.tryLoginError({ error: err })))
         )
       )
@@ -70,11 +85,17 @@ export class AuthorizationEffects {
       ),
       switchMap(([_, pin]) =>
         this.loginService.tryVerificationPin(pin).pipe(
-          tap((res) => this.tokenStorage.saveToken(res)),
-          map((res) => fromActions.tryVerificationPinSuccess({ token: res })),
-          catchError((err) =>
-            of(fromActions.tryVerificationPinError({ error: err }))
-          )
+          map((res) => {
+            this.tokenStorage.saveToken(res);
+            this.router.navigateByUrl('jobs');
+            return fromActions.tryVerificationPinSuccess({ token: res });
+          }),
+          catchError((err: HttpErrorResponse) => {
+            if (err.status === 401) {
+              this.verifyDialog.subscribe();
+            }
+            return of(fromActions.tryVerificationPinError({ error: err }));
+          })
         )
       )
     )
