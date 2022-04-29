@@ -5,16 +5,20 @@
   margin-top: 20px;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: space-around;
-
+gap: 10px;
   .column-left {
-    width: 65%;
+    max-width: 2000px;
 
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: center;
 
     gap: 10px;
+
+    padding: 10px;
 
     .line {
       height: fit-content;
@@ -107,9 +111,8 @@
       border-radius: 16pt;
       background-color: $color-4;
       height: fit-content;
-
+      max-width: 700px;
       .cv {
-        width: 450px;
         height: 100px;
         display: flex;
         flex-direction: column;
@@ -121,8 +124,10 @@
   }
 
   .column-right {
-    width: 30%;
+    min-width: 350px;
     margin-bottom: 50px;
+    width: 100%;
+    max-width: 550px;
     .box {
       width: 95%;
       padding: 16px;
