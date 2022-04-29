@@ -330,6 +330,11 @@ const applicantReducer = createReducer(
     produce(state, (draft) => {
       draft.lebenslauf.pdf = failure<string, HttpErrorResponse>(error);
     })
+  ),
+  on(fromActions.deleteCvPdf, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.pdf = notAsked<string, HttpErrorResponse>();
+    })
   )
 );
 

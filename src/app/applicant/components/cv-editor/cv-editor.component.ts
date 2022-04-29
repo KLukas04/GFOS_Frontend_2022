@@ -227,4 +227,8 @@ export class CvEditorComponent implements OnInit {
       fromActions.uploadNewCvPdf({ base64: this.newFileBase64 })
     );
   }
+
+  public deleteCvPdf(): void {
+    this.store.dispatch(fromActions.deleteCvPdf());
+  }
 }

@@ -134,4 +134,10 @@ export class LebenslaufService {
       })
       .pipe(take(1));
   }
+
+  public deleteCvPdf(): Observable<string> {
+    return this.http
+      .delete<any>(`${this.baseURL}/datei/lebenslauf`)
+      .pipe(take(1));
+  }
 }

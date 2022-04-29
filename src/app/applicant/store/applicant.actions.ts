@@ -210,3 +210,5 @@ export const uploadNewCvPdf = createAction(
   '[CV] [PDF] New CV PDF',
   props<{ base64: string }>()
 );
+
+export const deleteCvPdf = createAction('[CV] [PDF] Delete Lebenslauf');

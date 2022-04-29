@@ -134,7 +134,15 @@
       <a tuiButton shape="rounded" size="s" download [href]="content">
         Download
       </a>
-      <a tuiButton appearance="accent" shape="rounded" size="s"> Löschen </a>
+      <a
+        tuiButton
+        appearance="accent"
+        shape="rounded"
+        size="s"
+        (click)="deleteCvPdf()"
+      >
+        Löschen
+      </a>
     </div>
   </ng-template>
 </tui-root>

@@ -249,4 +249,15 @@ export class ApplicantEffects {
       )
     )
   );
+
+  deleteCvPdf$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.deleteCvPdf),
+      mergeMap((action) =>
+        this.lebenslaufService
+          .deleteCvPdf()
+          .pipe(map(() => fromActions.loadCv()))
+      )
+    )
+  );
 }
