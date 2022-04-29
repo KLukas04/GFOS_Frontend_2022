@@ -43,6 +43,8 @@ export class CvEditorComponent implements OnInit {
 
   public cvControl: FormControl = new FormControl(null);
 
+  public name$: Observable<RemoteData<Account, HttpErrorResponse>>;
+
   public interests$: Observable<
     RemoteData<Interessenfeld[], HttpErrorResponse>
   >;
@@ -100,6 +102,8 @@ export class CvEditorComponent implements OnInit {
     this.store
       .select(fromSelectors.selectCvPdf)
       .subscribe((pdf) => (this.pdfInBase64 = getOrElse(pdf, '')));
+
+    this.name$ = this.store.select(fromSelectors.selectOwnAccount);
   }
 
   ngOnInit(): void {
