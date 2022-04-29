@@ -3,7 +3,7 @@
     <div class="card">
       <h3>Basics</h3>
       <form>
-        <tui-input tuiTextfieldSize="m">
+        <tui-input tuiTextfieldSize="m" [formControl]="titleControl">
           Titel
           <input tuiTextfield type="text" />
         </tui-input>
@@ -11,13 +11,18 @@
           tuiTextfieldSize="l"
           class="tui-group__inherit-item first-select"
           [tuiTextfieldLabelOutside]="true"
+          [formControl]="typeControl"
           >Art der Beschäftigung
           <tui-data-list-wrapper
             *tuiDataList
             [items]="mockTypesOfEmployment"
           ></tui-data-list-wrapper>
         </tui-select>
-        <tui-select tuiTextfieldSize="l" class="tui-group__inherit-item b-form">
+        <tui-select
+          tuiTextfieldSize="l"
+          class="tui-group__inherit-item b-form"
+          [formControl]="sectionControl"
+        >
           Fachgebiet
           <tui-data-list-wrapper
             *tuiDataList
@@ -27,56 +32,72 @@
           >
           </tui-data-list-wrapper>
         </tui-select>
-        <tui-input tuiTextfieldSize="m">
+        <tui-input-date tuiTextfieldSize="m" [formControl]="deadlineControl">
           Bewerbungsfrist
           <input tuiTextfield type="text" />
-        </tui-input>
-        <tui-input tuiTextfieldSize="m">
+        </tui-input-date>
+        <tui-input-date tuiTextfieldSize="m" [formControl]="startDateControl">
           Beginn des Vertrags
           <input tuiTextfield type="text" />
-        </tui-input>
+        </tui-input-date>
 
         <div class="toggle">
           <p>Befristet</p>
-          <tui-toggle size="l"></tui-toggle>
+          <tui-toggle size="l" [formControl]="temporaryControl"></tui-toggle>
         </div>
 
-        <tui-input *ngIf="" tuiTextfieldSize="m">
+        <tui-input-date tuiTextfieldSize="m" [formControl]="endControl">
           Endedatum des Vertrags
           <input tuiTextfield type="text" />
-        </tui-input>
+        </tui-input-date>
       </form>
     </div>
   </a>
   <a size="l" tuiIsland [hoverable]="true" textAlign="center">
     <div class="card">
       <h3>Addresse</h3>
-      <tui-input tuiTextfieldSize="m">Land</tui-input>
-      <tui-input tuiTextfieldSize="m">Straße</tui-input>
-      <tui-input tuiTextfieldSize="m">Hausnummer</tui-input>
-      <tui-input tuiTextfieldSize="m">PLZ</tui-input>
-      <tui-input tuiTextfieldSize="m">Stadt</tui-input>
+      <tui-input tuiTextfieldSize="m" [formControl]="streetControl"
+        >Straße</tui-input
+      >
+      <tui-input tuiTextfieldSize="m" [formControl]="numberControl"
+        >Hausnummer</tui-input
+      >
+      <tui-input tuiTextfieldSize="m" [formControl]="plzControl">PLZ</tui-input>
+      <tui-input tuiTextfieldSize="m" [formControl]="townControl"
+        >Stadt</tui-input
+      >
+      <tui-input tuiTextfieldSize="m" [formControl]="countryControl"
+        >Land</tui-input
+      >
     </div>
   </a>
   <a size="l" tuiIsland [hoverable]="true" textAlign="center">
     <div class="card">
       <h3>Kurzbeschreibung</h3>
-      <tui-text-area [expandable]="false" [tuiTextfieldCleaner]="true">
-        (max 500 Zeichen)
+      <tui-text-area
+        [expandable]="false"
+        [tuiTextfieldCleaner]="true"
+        [formControl]="shortDescriptionControl"
+      >
+        (max. 500 Zeichen)
       </tui-text-area>
     </div>
   </a>
   <a size="l" tuiIsland [hoverable]="true" textAlign="center">
     <div class="card">
       <h3>Ausführliche Beschreibung</h3>
-      <tui-text-area [expandable]="false" [tuiTextfieldCleaner]="true">
+      <tui-text-area
+        [expandable]="false"
+        [tuiTextfieldCleaner]="true"
+        [formControl]="descriptionControl"
+      >
       </tui-text-area>
     </div>
   </a>
   <a size="l" tuiIsland [hoverable]="true" textAlign="center">
     <div class="card">
       <h3>Vorteile</h3>
-      <tui-input tuiTextfieldSize="m">
+      <tui-input tuiTextfieldSize="m" [formControl]="vacationControl">
         Urlaubstage
         <input tuiTextfield type="text" />
       </tui-input>
@@ -84,14 +105,19 @@
       <form>
         <div class="toggle">
           <p>Remote</p>
-          <tui-toggle size="l"></tui-toggle>
+          <tui-toggle size="l" [formControl]="remoteControl"></tui-toggle>
         </div>
       </form>
-      <tui-input tuiTextfieldSize="m">
+      <tui-input tuiTextfieldSize="m" [formControl]="wageMonthControl">
         Monatsgehalt
         <input tuiTextfield type="text" />
       </tui-input>
-      <tui-input tuiTextfieldSize="m">
+      <tui-input tuiTextfieldSize="m" [formControl]="wageYearControl">
+        Jahresgehalt
+        <input tuiTextfield type="text" />
+      </tui-input>
+      <br />
+      <tui-input tuiTextfieldSize="m" [formControl]="advantagesControl">
         Weitere Vorteile
         <input tuiTextfield type="text" />
       </tui-input>
