@@ -51,7 +51,7 @@ export class AuthorizationEffects {
         this.loginService.tryToLogin(creds.email, creds.password).pipe(
           map((res) => {
             res.ispersonaler
-              ? localStorage.setItem('defaultRoute', 'exployer')
+              ? localStorage.setItem('defaultRoute', 'employer')
               : localStorage.setItem('defaultRoute', 'applicant');
             if (!res.twofa) {
               this.tokenStorage.saveToken(res.token);
