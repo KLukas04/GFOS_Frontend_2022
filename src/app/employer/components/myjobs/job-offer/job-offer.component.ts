@@ -36,6 +36,6 @@ export class JobOfferComponent implements OnInit {
 
     action
       ? this.store.dispatch(fromActions.pinJob({ id: this.id ?? 10000000 }))
-      : null;
+      : this.store.dispatch(fromActions.unpinJob({ id: this.id ?? 10000000 }));
   }
 }

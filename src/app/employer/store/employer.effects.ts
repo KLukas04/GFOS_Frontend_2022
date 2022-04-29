@@ -160,4 +160,15 @@ export class EmployerEffects {
       )
     )
   );
+
+  unpinJob$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.unpinJob),
+      mergeMap((action) =>
+        this.jobService
+          .unpinJob(action.id)
+          .pipe(map(() => fromActions.loadCreatedJobs()))
+      )
+    )
+  );
 }

@@ -210,3 +210,8 @@ export const pinJob = createAction(
   '[Employer] [Jobs] Pin Job',
   props<{ id: number }>()
 );
+
+export const unpinJob = createAction(
+  '[Employer] [Jobs] Unpin Job',
+  props<{ id: number }>()
+);

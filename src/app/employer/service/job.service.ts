@@ -78,4 +78,10 @@ export class JobService {
       .get<string>(`${this.baseURL}/jobs/admin/pin/${id}`)
       .pipe(take(1));
   }
+
+  public unpinJob(id: number): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseURL}/jobs/admin/unpin/${id}`)
+      .pipe(take(1));
+  }
 }
