@@ -81,4 +81,8 @@ export class CreateEmployeeComponent implements OnInit {
       })
     );
   }
+
+  public saveNewEmployer(): void {
+    this.store.dispatch(fromActions.saveNewEmployer());
+  }
 }

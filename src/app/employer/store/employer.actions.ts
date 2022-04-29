@@ -72,3 +72,11 @@ export const newEmployerSectionInserted = createAction(
 export const saveNewEmployer = createAction(
   '[Employer] [New Employer] Save New Employer'
 );
+
+export const saveNewEmployerSuccess = createAction(
+  '[Employer] [New Employer] Save New Employer Success'
+);
+
+export const saveNewEmployerError = createAction(
+  '[Employer] [New Employer] Save New Employer Error'
+);

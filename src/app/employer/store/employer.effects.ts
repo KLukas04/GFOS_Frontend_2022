@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
@@ -13,6 +14,7 @@ export class EmployerEffects {
   constructor(
     private actions$: Actions,
     private store: Store<fromReducer.EmployerState>,
+    private router: Router,
     private todoService: TodoService,
     private accountService: AccountService
   ) {}
@@ -59,6 +61,24 @@ export class EmployerEffects {
         this.accountService.getSelf().pipe(
           map((acc) => fromActions.loadSelfSuccess({ employer: acc })),
           catchError((err) => of(fromActions.loadSelfError({ error: err })))
+        )
+      )
+    )
+  );
+
+  saveNewEmployer$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.saveNewEmployer),
+      concatLatestFrom(() =>
+        this.store.select(fromSelectors.selectNewEmployerData)
+      ),
+      switchMap(([_, data]) =>
+        this.accountService.saveNewEmployer(data).pipe(
+          map(() => {
+            this.router.navigateByUrl('employer');
+            return fromActions.saveNewEmployerSuccess();
+          }),
+          catchError(() => of(fromActions.saveNewEmployerError()))
         )
       )
     )
