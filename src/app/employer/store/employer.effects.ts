@@ -4,6 +4,7 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
 import { AccountService } from '../service/account.service';
+import { JobService } from '../service/job.service';
 import { TodoService } from '../service/todo.service';
 
 import * as fromActions from './employer.actions';
@@ -16,7 +17,8 @@ export class EmployerEffects {
     private store: Store<fromReducer.EmployerState>,
     private router: Router,
     private todoService: TodoService,
-    private accountService: AccountService
+    private accountService: AccountService,
+    private jobService: JobService
   ) {}
 
   loadTodos$ = createEffect(() =>
@@ -80,6 +82,45 @@ export class EmployerEffects {
           }),
           catchError(() => of(fromActions.saveNewEmployerError()))
         )
+      )
+    )
+  );
+
+  saveNewJob$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.saveNewJob),
+      concatLatestFrom(() => this.store.select(fromSelectors.selectNewJobData)),
+      switchMap(([_, data]) =>
+        this.jobService
+          .createNewJob(
+            data.basics.title!,
+            data.shortDescription!,
+            data.description!,
+            data.wageMonth!,
+            data.wageYear!,
+            data.vacation!,
+            data.remote,
+            data.advantages!,
+            data.basics.startDate!,
+            data.basics.deadline!,
+            data.basics.temporary,
+            data.basics.startDate,
+            data.basics.end!,
+            data.address.street!,
+            data.address.number!,
+            data.address.plz!,
+            data.address.town!,
+            data.address.country!,
+            data.basics.type!,
+            data.basics.section!
+          )
+          .pipe(
+            map(() => {
+              this.router.navigateByUrl('employer');
+              return fromActions.saveNewJobSuccess();
+            }),
+            catchError(() => of(fromActions.saveNewJobError()))
+          )
       )
     )
   );

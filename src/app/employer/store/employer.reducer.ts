@@ -35,7 +35,6 @@ export interface EmployerState {
       deadline: Date | null;
       startDate: Date | null;
       temporary: boolean;
-      start: Date | null;
       end: Date | null;
     };
     address: {
@@ -75,7 +74,6 @@ export const initialState: EmployerState = {
       deadline: null,
       startDate: null,
       temporary: false,
-      start: null,
       end: null,
     },
     address: {

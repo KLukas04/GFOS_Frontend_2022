@@ -198,4 +198,8 @@ export class ContentComponent implements OnInit {
       })
     );
   }
+
+  public addNewJob(): void {
+    this.store.dispatch(fromActions.saveNewJob());
+  }
 }

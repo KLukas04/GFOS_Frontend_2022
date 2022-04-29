@@ -175,3 +175,13 @@ export const newJobAdvantagesInserted = createAction(
   '[Employer] [New Job] Advantages Inserted',
   props<{ advantages: string }>()
 );
+
+export const saveNewJob = createAction('[Employer] [New Job] Safe New Job');
+
+export const saveNewJobSuccess = createAction(
+  '[Employer] [New Job] Safe New Job Success'
+);
+
+export const saveNewJobError = createAction(
+  '[Employer] [New Job] Safe New Job Error'
+);
