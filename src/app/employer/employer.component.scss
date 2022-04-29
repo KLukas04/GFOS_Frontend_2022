@@ -5,11 +5,11 @@
   
   flex-wrap: wrap;
 
-  @media screen and (max-width: 1187px) {
+  @media screen and (max-width: 1280px) {
     flex-direction: column;
   }
 
-  @media screen and (min-width: 1188px) {
+  @media screen and (min-width: 1281px) {
     flex-direction: row;
   }
 
@@ -20,6 +20,10 @@
       height: 200px;
       background-color: $color-4;
       width: 90%;
+      @media screen and (max-width: 709px) {
+        
+        width: 70%;
+      }
       
       border-radius: 0px 100px 100px 0px;
 
@@ -43,6 +47,7 @@
       p {
         @media screen and (max-width: 1379px) {
           font-size: 40px;
+          line-height: 40px;
         }
         @media screen and (min-width: 1380px) {
           font-size: 80px;
@@ -111,8 +116,6 @@
       
       .applications{
         height: 500px;
-        width: 40%;
-        min-width: 360px;
         padding: 10px;
       }
     }
