@@ -27,6 +27,32 @@ export interface EmployerState {
     password: string | null;
     section: string | null;
   };
+  createNewJob: {
+    basics: {
+      title: string | null;
+      type: string | null;
+      section: string | null;
+      deadline: Date | null;
+      startDate: Date | null;
+      temporary: boolean;
+      start: Date | null;
+      end: Date | null;
+    };
+    address: {
+      street: string | null;
+      number: string | null;
+      plz: number | null;
+      town: string | null;
+      country: string | null;
+    };
+    shortDescription: string | null;
+    description: string | null;
+    vacation: number | null;
+    remote: boolean;
+    wageMonth: number | null;
+    wageYear: number | null;
+    advantages: string | null;
+  };
 }
 
 export const initialState: EmployerState = {
@@ -40,6 +66,32 @@ export const initialState: EmployerState = {
     phone: null,
     password: null,
     section: null,
+  },
+  createNewJob: {
+    basics: {
+      title: null,
+      type: null,
+      section: null,
+      deadline: null,
+      startDate: null,
+      temporary: false,
+      start: null,
+      end: null,
+    },
+    address: {
+      street: null,
+      number: null,
+      plz: null,
+      town: null,
+      country: null,
+    },
+    shortDescription: null,
+    description: null,
+    vacation: null,
+    remote: false,
+    wageMonth: null,
+    wageYear: null,
+    advantages: null,
   },
 };
 
