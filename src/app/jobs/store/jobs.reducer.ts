@@ -10,6 +10,7 @@ import {
   success,
 } from 'ngx-remotedata';
 import { Fachgebiet } from '../models/fachgebiet.model';
+import { Filter } from '../models/filter.model';
 import { Job } from '../models/job.model';
 
 import * as fromActions from './jobs.actions';
@@ -21,6 +22,7 @@ export interface JobsState {
   fachgebiete: RemoteData<Fachgebiet[], HttpErrorResponse>;
   singleJob: RemoteData<Job, HttpErrorResponse>;
   letter: string | null;
+  filter: Filter;
 }
 
 export const initialState: JobsState = {
@@ -28,6 +30,14 @@ export const initialState: JobsState = {
   fachgebiete: notAsked(),
   singleJob: notAsked(),
   letter: null,
+  filter: {
+    fachgebiet: null,
+    typ: null,
+    istremote: false,
+    istbefristet: false,
+    jahresgehalt: null,
+    urlaubstage: null,
+  },
 };
 
 const jobsReducer = createReducer(
@@ -86,6 +96,36 @@ const jobsReducer = createReducer(
   on(fromActions.newLetterInsert, (state, { letter }) =>
     produce(state, (draft) => {
       draft.letter = letter;
+    })
+  ),
+  on(fromActions.searchFilterFachgebiet, (state, { fachgebiet }) =>
+    produce(state, (draft) => {
+      draft.filter.fachgebiet = fachgebiet;
+    })
+  ),
+  on(fromActions.searchFilterType, (state, { typ }) =>
+    produce(state, (draft) => {
+      draft.filter.typ = typ;
+    })
+  ),
+  on(fromActions.searchFilterRemote, (state, { remote }) =>
+    produce(state, (draft) => {
+      draft.filter.istremote = remote;
+    })
+  ),
+  on(fromActions.searchFilterBefristet, (state, { befristet }) =>
+    produce(state, (draft) => {
+      draft.filter.istbefristet = befristet;
+    })
+  ),
+  on(fromActions.searchFilterGehalt, (state, { gehalt }) =>
+    produce(state, (draft) => {
+      draft.filter.jahresgehalt = gehalt;
+    })
+  ),
+  on(fromActions.searchFilterUrlaubstage, (state, { tage }) =>
+    produce(state, (draft) => {
+      draft.filter.urlaubstage = tage;
     })
   )
 );

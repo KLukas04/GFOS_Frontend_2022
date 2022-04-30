@@ -55,3 +55,33 @@ export const sendApplicationSuccess = createAction(
 export const sendApplicationError = createAction(
   '[Jobs] [Details] Send Application Error'
 );
+
+export const searchFilterFachgebiet = createAction(
+  '[Jobs] [Search] New Fachgebiet Inserted',
+  props<{ fachgebiet: string }>()
+);
+
+export const searchFilterType = createAction(
+  '[Jobs] [Search] New Type Inserted',
+  props<{ typ: string }>()
+);
+
+export const searchFilterRemote = createAction(
+  '[Jobs] [Search] New Remote Inserted',
+  props<{ remote: boolean }>()
+);
+
+export const searchFilterBefristet = createAction(
+  '[Jobs] [Search] New Befristet Inserted',
+  props<{ befristet: boolean }>()
+);
+
+export const searchFilterGehalt = createAction(
+  '[Jobs] [Search] New Gehalt Inserted',
+  props<{ gehalt: number }>()
+);
+
+export const searchFilterUrlaubstage = createAction(
+  '[Jobs] [Search] New Urlaubstage Inserted',
+  props<{ tage: number }>()
+);
