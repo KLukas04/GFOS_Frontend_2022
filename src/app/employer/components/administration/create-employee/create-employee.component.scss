@@ -8,13 +8,15 @@
     gap: 50px;
     padding: 50px;
     a {
+        width: 100%;
+        max-width: 500px;
         background-color: $color-4;
         .card {
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             gap: 10px;
-            width: 30rem;
             height: 30rem;
             border-radius: 16pt;
             tui-select{
