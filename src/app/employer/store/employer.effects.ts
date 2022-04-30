@@ -318,4 +318,23 @@ export class EmployerEffects {
       )
     )
   );
+
+  loadApplicationDetailsMessages$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplicationDetailsMessages),
+      concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
+      switchMap(([_, params]) =>
+        this.applicationService.getMessages(params['bewerbungId']).pipe(
+          map((messages) =>
+            fromActions.loadApplicationDetailsMessagesSuccess({
+              messages: messages,
+            })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationDetailsMessagesError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

@@ -81,3 +81,8 @@ export const selectDetailsStations = createSelector(
   selectApplicationDetails,
   (details: ApplicationDetails) => details.stations
 );
+
+export const selectDetailsMessages = createSelector(
+  selectApplicationDetails,
+  (details: ApplicationDetails) => details.messages
+);

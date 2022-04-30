@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { Applicant } from 'src/app/employer/models/applicant.model';
 import { Interesse } from 'src/app/employer/models/interesse.model';
 import { LebenslaufStation } from 'src/app/employer/models/lebenslaufstation.model';
+import { Message } from 'src/app/employer/models/message.model';
 
 import * as fromActions from '../../../store/employer.actions';
 import * as fromReducer from '../../../store/employer.reducer';
@@ -29,6 +30,8 @@ export class ApplicantDetailViewComponent implements OnInit {
 
   public applicant$: Observable<RemoteData<Applicant, HttpErrorResponse>>;
   public interests$: Observable<RemoteData<Interesse[], HttpErrorResponse>>;
+
+  public messages$: Observable<RemoteData<Message[], HttpErrorResponse>>;
 
   public stations$: Observable<
     RemoteData<LebenslaufStation[], HttpErrorResponse>
@@ -51,6 +54,8 @@ export class ApplicantDetailViewComponent implements OnInit {
     this.applicant$ = this.store.select(fromSelectors.selectDetailsApplicant);
     this.interests$ = this.store.select(fromSelectors.selectDetailsInterest);
 
+    this.messages$ = this.store.select(fromSelectors.selectDetailsMessages);
+
     this.stations$ = this.store.select(fromSelectors.selectDetailsStations);
   }
 
@@ -61,6 +66,8 @@ export class ApplicantDetailViewComponent implements OnInit {
 
     this.store.dispatch(fromActions.loadApplicationDetailsApplicant());
     this.store.dispatch(fromActions.loadApplicationDetailsInterests());
+
+    this.store.dispatch(fromActions.loadApplicationDetailsMessages());
 
     this.store.dispatch(fromActions.loadApplicationDetailsStations());
   }

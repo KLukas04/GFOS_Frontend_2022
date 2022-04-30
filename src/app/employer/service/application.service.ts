@@ -4,6 +4,7 @@ import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Applicant } from '../models/applicant.model';
 import { Application } from '../models/application.model';
+import { Message } from '../models/message.model';
 
 @Injectable({
   providedIn: 'root',
@@ -40,6 +41,12 @@ export class ApplicationService {
   public getApplicant(id: number): Observable<Applicant> {
     return this.http
       .get<Applicant>(`${this.baseURL}/bewerber/${id}`)
+      .pipe(take(1));
+  }
+
+  public getMessages(id: number): Observable<Message[]> {
+    return this.http
+      .get<Message[]>(`${this.baseURL}/bewerbungsnachricht/${id}`)
       .pipe(take(1));
   }
 }

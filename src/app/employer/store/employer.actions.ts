@@ -6,6 +6,7 @@ import { Employer } from '../models/employer.model';
 import { Interesse } from '../models/interesse.model';
 import { Job } from '../models/job.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
+import { Message } from '../models/message.model';
 import { Todo } from '../models/todo.model';
 
 export const loadTodos = createAction('[Employer] [Todos] Load Todos');
@@ -329,5 +330,19 @@ export const loadApplicationDetailsStationsSuccess = createAction(
 
 export const loadApplicationDetailsStationsError = createAction(
   '[Employer] [Details] Load Stations Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const loadApplicationDetailsMessages = createAction(
+  '[Employer] [Details] Load Messages'
+);
+
+export const loadApplicationDetailsMessagesSuccess = createAction(
+  '[Employer] [Details] Load Messages Success',
+  props<{ messages: Message[] }>()
+);
+
+export const loadApplicationDetailsMessagesError = createAction(
+  '[Employer] [Details] Load Messages Error',
   props<{ error: HttpErrorResponse }>()
 );

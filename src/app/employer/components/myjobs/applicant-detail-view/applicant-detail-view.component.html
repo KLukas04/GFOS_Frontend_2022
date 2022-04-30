@@ -69,54 +69,17 @@
   <div class="chat layout">
     <p class="title">Chat</p>
     <tui-scrollbar class="scrollbar">
-      <div class="content">
-        <div class="applicantN">
-          <p>Hallo</p>
-        </div>
-        <div class="employerN">
+      <div class="content" *ngIf="messages$ | async | successValue as messages">
+        <div
+          *ngFor="let message of messages"
+          [ngClass]="{
+            employerN: !message.vonbewerber,
+            applicantN: message.vonbewerber
+          }"
+        >
           <p>
-            Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel
-            viele viele Text
+            {{ message.text }}
           </p>
-        </div>
-        <div class="applicantN">
-          <p>Hallo</p>
-        </div>
-        <div class="applicantN">
-          <p>Hallo</p>
-        </div>
-        <div class="employerN">
-          <p>
-            Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel
-            viele viele Text
-          </p>
-        </div>
-        <div class="applicantN">
-          <p>Hallo</p>
-        </div>
-        <div class="applicantN">
-          <p>Hallo</p>
-        </div>
-        <div class="employerN">
-          <p>
-            Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel
-            viele viele Text
-          </p>
-        </div>
-        <div class="applicantN">
-          <p>Hallo</p>
-        </div>
-        <div class="applicantN">
-          <p>Hallo</p>
-        </div>
-        <div class="employerN">
-          <p>
-            Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel
-            viele viele Text
-          </p>
-        </div>
-        <div class="applicantN">
-          <p>Hallo</p>
         </div>
       </div>
     </tui-scrollbar>
