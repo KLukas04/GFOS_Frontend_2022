@@ -280,4 +280,23 @@ export class EmployerEffects {
       )
     )
   );
+
+  loadApplicationDetailsInterests$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplicationDetailsInterests),
+      concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
+      switchMap(([_, params]) =>
+        this.accountService.getInterestsById(params['bewerberId']).pipe(
+          map((interests) =>
+            fromActions.loadApplicationDetailsInterestsSuccess({
+              interests: interests,
+            })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationDetailsInterestsError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

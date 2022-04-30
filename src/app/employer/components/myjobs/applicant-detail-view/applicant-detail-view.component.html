@@ -53,12 +53,15 @@
     <p class="tui-text_body-l-2">{{ applicant.email }}</p>
 
     <p class="title">Interessen</p>
-    <div class="interessen">
+    <div
+      class="interessen"
+      *ngIf="interests$ | async | successValue as interests"
+    >
       <tui-badge
         *ngFor="let interest of interests"
         size="l"
         status="primary"
-        [value]="interest"
+        [value]="interest.name"
       ></tui-badge>
     </div>
   </div>

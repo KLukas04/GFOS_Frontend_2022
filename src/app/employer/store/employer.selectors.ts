@@ -71,3 +71,8 @@ export const selectDetailsApplicant = createSelector(
   selectApplicationDetails,
   (details: ApplicationDetails) => details.applicant
 );
+
+export const selectDetailsInterest = createSelector(
+  selectApplicationDetails,
+  (details: ApplicationDetails) => details.interests
+);

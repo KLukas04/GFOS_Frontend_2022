@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Employer } from '../models/employer.model';
+import { Interesse } from '../models/interesse.model';
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,12 @@ export class AccountService {
   public getPicById(id: number): Observable<string> {
     return this.http
       .get<string>(`${this.baseURL}/foto/profilbild/${id}`)
+      .pipe(take(1));
+  }
+
+  public getInterestsById(id: number): Observable<Interesse[]> {
+    return this.http
+      .get<Interesse[]>(`${this.baseURL}/interessenfeld/${id}`)
       .pipe(take(1));
   }
 }

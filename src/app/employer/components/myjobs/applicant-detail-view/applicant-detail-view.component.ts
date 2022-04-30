@@ -8,6 +8,7 @@ import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { getOrElse, RemoteData } from 'ngx-remotedata';
 import { Observable } from 'rxjs';
 import { Applicant } from 'src/app/employer/models/applicant.model';
+import { Interesse } from 'src/app/employer/models/interesse.model';
 
 import * as fromActions from '../../../store/employer.actions';
 import * as fromReducer from '../../../store/employer.reducer';
@@ -22,15 +23,6 @@ export class ApplicantDetailViewComponent implements OnInit {
   public letterPdf: string | undefined;
 
   newInterest = '';
-  interests = [
-    'Tennis',
-    'Klaviesdfddr',
-    'Klavier',
-    'Klavier',
-    'Klavier',
-    'Klavier',
-    'Klavier',
-  ];
   stations: Meilenstein[] = [
     { year: 2015, content: 'Hallo' },
     { year: 2015, content: 'Hallo' },
@@ -45,6 +37,7 @@ export class ApplicantDetailViewComponent implements OnInit {
   public image$: Observable<RemoteData<string, HttpErrorResponse>>;
 
   public applicant$: Observable<RemoteData<Applicant, HttpErrorResponse>>;
+  public interests$: Observable<RemoteData<Interesse[], HttpErrorResponse>>;
 
   constructor(
     @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
@@ -61,6 +54,7 @@ export class ApplicantDetailViewComponent implements OnInit {
     });
 
     this.applicant$ = this.store.select(fromSelectors.selectDetailsApplicant);
+    this.interests$ = this.store.select(fromSelectors.selectDetailsInterest);
   }
 
   ngOnInit(): void {
@@ -69,6 +63,7 @@ export class ApplicantDetailViewComponent implements OnInit {
     this.store.dispatch(fromActions.loadApplicationDetailsLetterPdf());
 
     this.store.dispatch(fromActions.loadApplicationDetailsApplicant());
+    this.store.dispatch(fromActions.loadApplicationDetailsInterests());
   }
 
   show(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {

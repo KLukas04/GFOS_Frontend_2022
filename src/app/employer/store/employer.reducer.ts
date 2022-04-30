@@ -13,6 +13,7 @@ import { Applicant } from '../models/applicant.model';
 import { Application } from '../models/application.model';
 import { ApplicationDetails } from '../models/applicationDetails.model';
 import { Employer } from '../models/employer.model';
+import { Interesse } from '../models/interesse.model';
 import { Todo } from '../models/todo.model';
 
 import * as fromActions from './employer.actions';
@@ -81,6 +82,7 @@ export const initialState: EmployerState = {
     cvPdf: notAsked(),
     letterPdf: notAsked(),
     applicant: notAsked(),
+    interests: notAsked(),
   },
   createNewJob: {
     basics: {
@@ -407,6 +409,58 @@ const employerReducer = createReducer(
     produce(state, (draft) => {
       draft.applicationDetails.applicant = failure<
         Applicant,
+        HttpErrorResponse
+      >(error);
+    })
+  ),
+  on(fromActions.loadApplicationDetailsApplicant, (state) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.applicant = inProgress<
+        Applicant,
+        HttpErrorResponse
+      >();
+    })
+  ),
+  on(
+    fromActions.loadApplicationDetailsApplicantSuccess,
+    (state, { applicant }) =>
+      produce(state, (draft) => {
+        draft.applicationDetails.applicant = success<
+          Applicant,
+          HttpErrorResponse
+        >(applicant);
+      })
+  ),
+  on(fromActions.loadApplicationDetailsApplicantError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.applicant = failure<
+        Applicant,
+        HttpErrorResponse
+      >(error);
+    })
+  ),
+  on(fromActions.loadApplicationDetailsInterests, (state) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.interests = inProgress<
+        Interesse[],
+        HttpErrorResponse
+      >();
+    })
+  ),
+  on(
+    fromActions.loadApplicationDetailsInterestsSuccess,
+    (state, { interests }) =>
+      produce(state, (draft) => {
+        draft.applicationDetails.interests = success<
+          Interesse[],
+          HttpErrorResponse
+        >(interests);
+      })
+  ),
+  on(fromActions.loadApplicationDetailsInterestsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.interests = failure<
+        Interesse[],
         HttpErrorResponse
       >(error);
     })

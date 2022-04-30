@@ -3,6 +3,7 @@ import { createAction, props } from '@ngrx/store';
 import { Applicant } from '../models/applicant.model';
 import { Application } from '../models/application.model';
 import { Employer } from '../models/employer.model';
+import { Interesse } from '../models/interesse.model';
 import { Job } from '../models/job.model';
 import { Todo } from '../models/todo.model';
 
@@ -299,5 +300,19 @@ export const loadApplicationDetailsApplicantSuccess = createAction(
 
 export const loadApplicationDetailsApplicantError = createAction(
   '[Employer] [Details] Load Applicant Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const loadApplicationDetailsInterests = createAction(
+  '[Employer] [Details] Load Interests'
+);
+
+export const loadApplicationDetailsInterestsSuccess = createAction(
+  '[Employer] [Details] Load Interests Success',
+  props<{ interests: Interesse[] }>()
+);
+
+export const loadApplicationDetailsInterestsError = createAction(
+  '[Employer] [Details] Load Interests Error',
   props<{ error: HttpErrorResponse }>()
 );
