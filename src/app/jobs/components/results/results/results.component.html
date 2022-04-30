@@ -1,29 +1,37 @@
 <div class="parent">
-    <app-sidebar></app-sidebar>
-    <tui-scrollbar>
-        <div class="content">
-            <app-job-preview title="Designer" fachgebiet="Informatik" typ="Praktikum" [remote]="false"
-                [befristet]="true" jahregehalt="10000€" address="Test Str. 55, 45257 Essen" holidays="30 Tage"
-                description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi a id, facere sint eveniet amet doloremque omnis consequatur iste voluptatibus quos eligendi dicta, optio saepe. Numquam dignissimos molestias esse quis.">
-            </app-job-preview>
-            <app-job-preview title="Designer" fachgebiet="Informatik" typ="Praktikum" [remote]="false"
-                [befristet]="true" jahregehalt="10000€" address="Test Str. 55, 45257 Essen" holidays="30 Tage"
-                description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi a id, facere sint eveniet amet doloremque omnis consequatur iste voluptatibus quos eligendi dicta, optio saepe. Numquam dignissimos molestias esse quis.">
-            </app-job-preview>
-            <app-job-preview title="Designer" fachgebiet="Informatik" typ="Praktikum" [remote]="false"
-                [befristet]="true" jahregehalt="10000€" address="Test Str. 55, 45257 Essen" holidays="30 Tage"
-                description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi a id, facere sint eveniet amet doloremque omnis consequatur iste voluptatibus quos eligendi dicta, optio saepe. Numquam dignissimos molestias esse quis.">
-            </app-job-preview>
-            <app-job-preview title="Designer" fachgebiet="Informatik" typ="Praktikum" [remote]="false"
-                [befristet]="true" jahregehalt="10000€" address="Test Str. 55, 45257 Essen" holidays="30 Tage"
-                description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi a id, facere sint eveniet amet doloremque omnis consequatur iste voluptatibus quos eligendi dicta, optio saepe. Numquam dignissimos molestias esse quis.">
-            </app-job-preview>
-            <app-job-preview title="Designer" fachgebiet="Informatik" typ="Praktikum" [remote]="false"
-                [befristet]="true" jahregehalt="10000€" address="Test Str. 55, 45257 Essen" holidays="30 Tage"
-                description="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi a id, facere sint eveniet amet doloremque omnis consequatur iste voluptatibus quos eligendi dicta, optio saepe. Numquam dignissimos molestias esse quis.">
-            </app-job-preview>
-        </div>
+  <app-sidebar></app-sidebar>
+  <h1 *ngIf="jobs$ | async | isNotAsked">
+    Es wurde noch keine Suche gestartet!
+  </h1>
+  <h1 *ngIf="jobs$ | async | isInProgress">Jobs werden geladen...</h1>
+  <h1 *ngIf="jobs$ | async | isFailure">
+    Jobs konnten nicht geladen werden...
+  </h1>
+  <ng-container *ngIf="jobs$ | async | successValue as jobs">
+    <h1 *ngIf="jobs.length === 0">Keine Suchergebnisse gefunden!</h1>
+    <tui-scrollbar *ngIf="jobs.length !== 0">
+      <div class="content">
+        <app-job-preview
+          *ngFor="let job of jobs"
+          [title]="job.title"
+          [fachgebiet]="job.fachgebiet.name"
+          [typ]="job.bewerbungstyp.art"
+          [remote]="job.istremote"
+          [befristet]="job.istbefristet"
+          [jahregehalt]="job.jahresgehalt.toString() + '€'"
+          [address]="
+            job.adresse.strasse +
+            ' ' +
+            job.adresse.hausnummer +
+            ', ' +
+            job.adresse.plz +
+            ' ' +
+            job.adresse.stadt
+          "
+          [holidays]="job.urlaubstage + ' Tage'"
+          [description]="job.kurzbeschreibung"
+        ></app-job-preview>
+      </div>
     </tui-scrollbar>
-
-
+  </ng-container>
 </div>

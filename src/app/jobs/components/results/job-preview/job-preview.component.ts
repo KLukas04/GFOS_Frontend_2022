@@ -4,27 +4,25 @@ import { FormGroup, FormControl } from '@angular/forms';
 @Component({
   selector: 'app-job-preview',
   templateUrl: './job-preview.component.html',
-  styleUrls: ['./job-preview.component.scss']
+  styleUrls: ['./job-preview.component.scss'],
 })
 export class JobPreviewComponent implements OnInit {
+  @Input() title = '';
+  @Input() fachgebiet = '';
+  @Input() typ = '';
+  @Input() remote = false;
+  @Input() befristet = false;
+  @Input() jahregehalt = '';
+  @Input() address = '';
+  @Input() holidays = '';
+  @Input() description = '';
 
-  @Input() title = ""; //
-  @Input() fachgebiet = "";//
-  @Input() typ = "";//
-  @Input() remote = false; //
-  @Input() befristet = false; //
-  @Input() jahregehalt = ""; //
-  @Input() address = "";
-  @Input() holidays = "";
-  @Input() description = "";
-  
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   form = new FormGroup({
     remote: new FormControl(true),
-    befristet: new FormControl(false)
+    befristet: new FormControl(false),
   });
 }
