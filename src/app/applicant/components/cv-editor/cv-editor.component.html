@@ -22,6 +22,19 @@
         (click)="showProfilPicDialog()"
       ></tui-avatar
     ></ng-container>
+    <ng-container
+      *ngIf="
+        (profilePic$ | async | isInProgress) ||
+        (profilePic$ | async | isFailure)
+      "
+      ><tui-avatar
+        size="xxl"
+        class="tui-space_top-1"
+        [rounded]="true"
+        text="P B"
+        (click)="showProfilPicDialog()"
+      ></tui-avatar
+    ></ng-container>
     <div class="file">
       <h3>Lebenslauf</h3>
       <button tuiButton (click)="showPDF(actions, 'Lebenslauf')">
