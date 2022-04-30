@@ -4,6 +4,7 @@ import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Account } from '../models/account.model';
 import { Address } from '../models/address.model';
+import { Fachgebiet } from '../models/fachgebiet.model';
 import { Interessenfeld } from '../models/interessenfeld.model';
 import { LebenslaufStation } from '../models/lebenslaufstation.model';
 import { Settings } from '../models/settings.model';
@@ -143,6 +144,20 @@ export class LebenslaufService {
   public deleteCvPdf(): Observable<string> {
     return this.http
       .delete<any>(`${this.baseURL}/datei/lebenslauf`)
+      .pipe(take(1));
+  }
+
+  public setFachgebiet(fachgebiet: string): Observable<string> {
+    return this.http
+      .put<any>(`${this.baseURL}/fachgebiet/bewerber`, {
+        neuesfachgebiet: fachgebiet,
+      })
+      .pipe(take(1));
+  }
+
+  public getOwnFachgebiet(): Observable<Fachgebiet> {
+    return this.http
+      .get<Fachgebiet>(`${this.baseURL}/fachgebiet`)
       .pipe(take(1));
   }
 }

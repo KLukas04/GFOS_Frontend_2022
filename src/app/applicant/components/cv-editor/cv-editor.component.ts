@@ -30,6 +30,8 @@ import { TuiPdfViewerService, TuiPdfViewerOptions } from '@taiga-ui/kit';
   styleUrls: ['./cv-editor.component.scss'],
 })
 export class CvEditorComponent implements OnInit {
+  public typeControl: FormControl = new FormControl(null);
+
   public firstNameControl: FormControl = new FormControl(null);
   public lastNameControl: FormControl = new FormControl(null);
   public emailControl: FormControl = new FormControl(null);
@@ -69,6 +71,19 @@ export class CvEditorComponent implements OnInit {
     }
   );
 
+  mockExpertiseAreas: string[] = [
+    'Softwareentwicklung',
+    'IT-Sicherheit',
+    'Marketing',
+    'Human Ressources',
+    'Buchhaltung',
+    'Kundendienst ',
+    'Vertrieb',
+    'Techniker',
+    'Produktion',
+    'Einkauf',
+  ];
+
   constructor(
     private store: Store<fromReducer.ApplicantState>,
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
@@ -104,15 +119,29 @@ export class CvEditorComponent implements OnInit {
       .subscribe((pdf) => (this.pdfInBase64 = getOrElse(pdf, '')));
 
     this.name$ = this.store.select(fromSelectors.selectOwnAccount);
+
+    this.store
+      .select(fromSelectors.selectFachgebiet)
+      .subscribe((fachgebiet) => {
+        const text = getOrElse(fachgebiet, '');
+        this.typeControl.setValue(text);
+      });
   }
 
   ngOnInit(): void {
+    this.store.dispatch(fromActions.loadFachgebiet());
     this.store.dispatch(fromActions.loadLebenslaufStationen());
     this.store.dispatch(fromActions.loadInteressenfelder());
     this.store.dispatch(fromActions.loadOwnAccount());
     this.store.dispatch(fromActions.loadOwnAdress());
     this.store.dispatch(fromActions.loadProfilePic());
     this.store.dispatch(fromActions.loadCv());
+  }
+
+  public saveFachgebiet(): void {
+    this.store.dispatch(
+      fromActions.setFachgebiet({ fachgebiet: this.typeControl.value })
+    );
   }
 
   public saveFirstName(): void {

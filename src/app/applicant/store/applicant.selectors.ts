@@ -72,3 +72,8 @@ export const selectCvPdf = createSelector(
   selectApplicantState,
   (state: fromReducer.ApplicantState) => state.lebenslauf.pdf
 );
+
+export const selectFachgebiet = createSelector(
+  selectApplicantState,
+  (state: fromReducer.ApplicantState) => state.lebenslauf.fachgebiet
+);

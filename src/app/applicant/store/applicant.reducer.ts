@@ -24,6 +24,7 @@ export interface ApplicantState {
   lebenslauf: {
     profilePic: RemoteData<string, HttpErrorResponse>;
     pdf: RemoteData<string, HttpErrorResponse>;
+    fachgebiet: RemoteData<string, HttpErrorResponse>;
     stationen: RemoteData<LebenslaufStation[], HttpErrorResponse>;
     createNewStation: {
       start: Date | null;
@@ -61,6 +62,7 @@ export const initialState: ApplicantState = {
   lebenslauf: {
     profilePic: notAsked(),
     pdf: notAsked(),
+    fachgebiet: notAsked(),
     stationen: notAsked(),
     createNewStation: {
       start: null,
@@ -341,6 +343,25 @@ const applicantReducer = createReducer(
   on(fromActions.deleteCvPdf, (state) =>
     produce(state, (draft) => {
       draft.lebenslauf.pdf = notAsked<string, HttpErrorResponse>();
+    })
+  ),
+  on(fromActions.loadFachgebiet, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.fachgebiet = inProgress<string, HttpErrorResponse>(
+        getOrElse(draft.lebenslauf.fachgebiet, undefined)
+      );
+    })
+  ),
+  on(fromActions.loadFachgebietSuccess, (state, { fachgebiet }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.fachgebiet = success<string, HttpErrorResponse>(
+        fachgebiet
+      );
+    })
+  ),
+  on(fromActions.loadFachgebietError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.fachgebiet = failure<string, HttpErrorResponse>(error);
     })
   )
 );

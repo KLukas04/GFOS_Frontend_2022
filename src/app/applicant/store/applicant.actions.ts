@@ -217,3 +217,20 @@ export const uploadNewCvPdf = createAction(
 );
 
 export const deleteCvPdf = createAction('[CV] [PDF] Delete Lebenslauf');
+
+export const setFachgebiet = createAction(
+  '[CV] [Fachgebiet] Set New Fachgebiet',
+  props<{ fachgebiet: string }>()
+);
+
+export const loadFachgebiet = createAction('[CV] [Fachgebiet] Load Fachgebiet');
+
+export const loadFachgebietSuccess = createAction(
+  '[CV] [Fachgebiet] Load Fachgebiet Success',
+  props<{ fachgebiet: string }>()
+);
+
+export const loadFachgebietError = createAction(
+  '[CV] [Fachgebiet] Load Fachgebiet Error',
+  props<{ error: HttpErrorResponse }>()
+);

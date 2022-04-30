@@ -69,6 +69,33 @@ export class ApplicantEffects {
     )
   );
 
+  loadFachgebiet$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadFachgebiet),
+      mergeMap(() =>
+        this.lebenslaufService.getOwnFachgebiet().pipe(
+          map((fachgebiet) =>
+            fromActions.loadFachgebietSuccess({ fachgebiet: fachgebiet.name })
+          ),
+          catchError((err) =>
+            of(fromActions.loadFachgebietError({ error: err }))
+          )
+        )
+      )
+    )
+  );
+
+  saveNewFachgebiet$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.setFachgebiet),
+      switchMap((action) =>
+        this.lebenslaufService
+          .setFachgebiet(action.fachgebiet)
+          .pipe(map(() => fromActions.loadFachgebiet()))
+      )
+    )
+  );
+
   addNewInteressenfeld$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.newInteresseAdd),
