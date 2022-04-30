@@ -299,4 +299,23 @@ export class EmployerEffects {
       )
     )
   );
+
+  loadApplicationDetailsStations$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplicationDetailsStations),
+      concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
+      switchMap(([_, params]) =>
+        this.accountService.getStationsById(params['bewerberId']).pipe(
+          map((stations) =>
+            fromActions.loadApplicationDetailsStationsSuccess({
+              stations: stations,
+            })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationDetailsStationsError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

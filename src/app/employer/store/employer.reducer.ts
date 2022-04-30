@@ -14,6 +14,7 @@ import { Application } from '../models/application.model';
 import { ApplicationDetails } from '../models/applicationDetails.model';
 import { Employer } from '../models/employer.model';
 import { Interesse } from '../models/interesse.model';
+import { LebenslaufStation } from '../models/lebenslaufstation.model';
 import { Todo } from '../models/todo.model';
 
 import * as fromActions from './employer.actions';
@@ -83,6 +84,7 @@ export const initialState: EmployerState = {
     letterPdf: notAsked(),
     applicant: notAsked(),
     interests: notAsked(),
+    stations: notAsked(),
   },
   createNewJob: {
     basics: {
@@ -461,6 +463,30 @@ const employerReducer = createReducer(
     produce(state, (draft) => {
       draft.applicationDetails.interests = failure<
         Interesse[],
+        HttpErrorResponse
+      >(error);
+    })
+  ),
+  on(fromActions.loadApplicationDetailsStations, (state) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.stations = inProgress<
+        LebenslaufStation[],
+        HttpErrorResponse
+      >();
+    })
+  ),
+  on(fromActions.loadApplicationDetailsStationsSuccess, (state, { stations }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.stations = success<
+        LebenslaufStation[],
+        HttpErrorResponse
+      >(stations);
+    })
+  ),
+  on(fromActions.loadApplicationDetailsStationsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.stations = failure<
+        LebenslaufStation[],
         HttpErrorResponse
       >(error);
     })

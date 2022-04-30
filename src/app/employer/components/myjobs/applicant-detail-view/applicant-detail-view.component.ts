@@ -9,6 +9,7 @@ import { getOrElse, RemoteData } from 'ngx-remotedata';
 import { Observable } from 'rxjs';
 import { Applicant } from 'src/app/employer/models/applicant.model';
 import { Interesse } from 'src/app/employer/models/interesse.model';
+import { LebenslaufStation } from 'src/app/employer/models/lebenslaufstation.model';
 
 import * as fromActions from '../../../store/employer.actions';
 import * as fromReducer from '../../../store/employer.reducer';
@@ -23,21 +24,15 @@ export class ApplicantDetailViewComponent implements OnInit {
   public letterPdf: string | undefined;
 
   newInterest = '';
-  stations: Meilenstein[] = [
-    { year: 2015, content: 'Hallo' },
-    { year: 2015, content: 'Hallo' },
-    { year: 2015, content: 'Hallo' },
-    { year: 2015, content: 'Hallo' },
-    { year: 2015, content: 'Hallo' },
-    { year: 2015, content: 'Hallo' },
-    { year: 2015, content: 'Hallo' },
-    { year: 2015, content: 'Hallo' },
-  ];
 
   public image$: Observable<RemoteData<string, HttpErrorResponse>>;
 
   public applicant$: Observable<RemoteData<Applicant, HttpErrorResponse>>;
   public interests$: Observable<RemoteData<Interesse[], HttpErrorResponse>>;
+
+  public stations$: Observable<
+    RemoteData<LebenslaufStation[], HttpErrorResponse>
+  >;
 
   constructor(
     @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
@@ -55,6 +50,8 @@ export class ApplicantDetailViewComponent implements OnInit {
 
     this.applicant$ = this.store.select(fromSelectors.selectDetailsApplicant);
     this.interests$ = this.store.select(fromSelectors.selectDetailsInterest);
+
+    this.stations$ = this.store.select(fromSelectors.selectDetailsStations);
   }
 
   ngOnInit(): void {
@@ -64,6 +61,18 @@ export class ApplicantDetailViewComponent implements OnInit {
 
     this.store.dispatch(fromActions.loadApplicationDetailsApplicant());
     this.store.dispatch(fromActions.loadApplicationDetailsInterests());
+
+    this.store.dispatch(fromActions.loadApplicationDetailsStations());
+  }
+
+  getDateFormat(startI: string, endI: string): string {
+    const start = new Date(startI);
+    const end = new Date(endI);
+
+    const difference = end.getTime() - start.getTime();
+    const days = difference / (1000 * 3600 * 24);
+
+    return days > 365 ? 'YYYY' : 'longDate';
   }
 
   show(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {
@@ -78,9 +87,17 @@ export class ApplicantDetailViewComponent implements OnInit {
       })
       .subscribe();
   }
-}
 
-interface Meilenstein {
-  year: number;
-  content: string;
+  showPdfReferenz(
+    actions: PolymorpheusContent<TuiPdfViewerOptions>,
+    titel: string,
+    pdf: string
+  ) {
+    this.pdfService
+      .open(this.sanitizer.bypassSecurityTrustResourceUrl(pdf), {
+        label: titel,
+        actions,
+      })
+      .subscribe();
+  }
 }

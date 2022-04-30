@@ -4,6 +4,7 @@ import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Employer } from '../models/employer.model';
 import { Interesse } from '../models/interesse.model';
+import { LebenslaufStation } from '../models/lebenslaufstation.model';
 
 @Injectable({
   providedIn: 'root',
@@ -46,6 +47,12 @@ export class AccountService {
   public getInterestsById(id: number): Observable<Interesse[]> {
     return this.http
       .get<Interesse[]>(`${this.baseURL}/interessenfeld/${id}`)
+      .pipe(take(1));
+  }
+
+  public getStationsById(id: number): Observable<LebenslaufStation[]> {
+    return this.http
+      .get<LebenslaufStation[]>(`${this.baseURL}/lebenslauf/${id}`)
       .pipe(take(1));
   }
 }
