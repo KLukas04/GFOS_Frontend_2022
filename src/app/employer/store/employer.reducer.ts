@@ -63,6 +63,7 @@ export interface EmployerState {
     advantages: string | null;
   };
   applications: RemoteData<Application[], HttpErrorResponse>;
+  acceptedApplications: RemoteData<Application[], HttpErrorResponse>;
 }
 
 export const initialState: EmployerState = {
@@ -115,6 +116,7 @@ export const initialState: EmployerState = {
     advantages: null,
   },
   applications: notAsked(),
+  acceptedApplications: notAsked(),
 };
 
 const employerReducer = createReducer(
@@ -519,6 +521,28 @@ const employerReducer = createReducer(
   on(fromActions.applicationDetailsNewMessageInserted, (state, { message }) =>
     produce(state, (draft) => {
       draft.applicationDetails.newMessage = message;
+    })
+  ),
+  on(fromActions.loadAcceptedApplications, (state) =>
+    produce(state, (draft) => {
+      draft.acceptedApplications = inProgress<
+        Application[],
+        HttpErrorResponse
+      >();
+    })
+  ),
+  on(fromActions.loadAcceptedApplicationsSuccess, (state, { applications }) =>
+    produce(state, (draft) => {
+      draft.acceptedApplications = success<Application[], HttpErrorResponse>(
+        applications
+      );
+    })
+  ),
+  on(fromActions.loadAcceptedApplicationsError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.acceptedApplications = failure<Application[], HttpErrorResponse>(
+        error
+      );
     })
   )
 );

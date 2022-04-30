@@ -370,3 +370,17 @@ export const denyApplication = createAction(
   '[Employer] [Application] Deny Application',
   props<{ id: number }>()
 );
+
+export const loadAcceptedApplications = createAction(
+  '[Employer] [Applications] Load Accepted Applications'
+);
+
+export const loadAcceptedApplicationsSuccess = createAction(
+  '[Employer] [Applications] Load Accepted Applications Success',
+  props<{ applications: Application[] }>()
+);
+
+export const loadAcceptedApplicationsError = createAction(
+  '[Employer] [Applications] Load Accepted Applications Error',
+  props<{ error: HttpErrorResponse }>()
+);

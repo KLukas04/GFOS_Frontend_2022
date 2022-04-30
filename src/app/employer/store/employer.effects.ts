@@ -397,4 +397,22 @@ export class EmployerEffects {
       )
     )
   );
+
+  loadAcceptedApplications$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadAcceptedApplications),
+      mergeMap(() =>
+        this.applicationService.getAcceptedApplications().pipe(
+          map((applications) =>
+            fromActions.loadAcceptedApplicationsSuccess({
+              applications: applications,
+            })
+          ),
+          catchError((err) =>
+            of(fromActions.loadAcceptedApplicationsError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

@@ -68,4 +68,10 @@ export class ApplicationService {
       })
       .pipe(take(1));
   }
+
+  public getAcceptedApplications(): Observable<Application[]> {
+    return this.http
+      .get<Application[]>(`${this.baseURL}/bewerbung/angenommen`)
+      .pipe(take(1));
+  }
 }
