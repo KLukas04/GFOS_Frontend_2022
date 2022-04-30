@@ -98,5 +98,5 @@ export const tryTwoFaError = createAction(
 );
 
 export const setPwWrongError = createAction(
-  '[Authorization] [Login] Wrong PW Error',
+  '[Authorization] [Login] Wrong PW Error'
 );

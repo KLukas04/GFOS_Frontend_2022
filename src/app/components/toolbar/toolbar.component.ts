@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import * as fromReducer from '../../authorization/store/authorization.reducer';
 import * as fromSelectors from '../../authorization/store/authorization.selectors';
+import { LogoutService } from '../logout.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -22,7 +23,7 @@ export class ToolbarComponent {
 
   public defaultRoute$: Observable<string>;
 
-  constructor(private store: Store<fromReducer.AuthorizationState>) {
+  constructor(private store: Store<fromReducer.AuthorizationState> ,private logoutService: LogoutService) {
     this.defaultRoute$ = this.store.select(fromSelectors.selectDefaultRoute);
   }
 
@@ -35,5 +36,6 @@ export class ToolbarComponent {
     if (this.dropComponent && this.dropComponent.nativeFocusableElement) {
       this.dropComponent.nativeFocusableElement.focus();
     }
+    this.logoutService.logout().subscribe();
   }
 }

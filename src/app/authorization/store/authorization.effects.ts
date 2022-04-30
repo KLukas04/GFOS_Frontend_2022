@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType, concatLatestFrom } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { TuiDialogService } from '@taiga-ui/core';
-import { catchError, map, of, switchMap, take } from 'rxjs';
+import { catchError, map, mergeMap, of, switchMap, take } from 'rxjs';
 import { LoginService } from '../service/login.service';
 import { TokenStorageService } from '../service/token-storage.service';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
@@ -68,7 +68,7 @@ export class AuthorizationEffects {
           }),
           catchError((err: HttpErrorResponse) => {
             console.log(err);
-            if(err.statusText === "Falsches Passwort"){
+            if (err.statusText === 'Falsches Passwort') {
               this.store.dispatch(fromActions.setPwWrongError());
             }
             return of(fromActions.tryLoginError({ error: err }));
