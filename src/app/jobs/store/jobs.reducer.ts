@@ -20,12 +20,14 @@ export interface JobsState {
   trends: RemoteData<Job[], HttpErrorResponse>;
   fachgebiete: RemoteData<Fachgebiet[], HttpErrorResponse>;
   singleJob: RemoteData<Job, HttpErrorResponse>;
+  letter: string | null;
 }
 
 export const initialState: JobsState = {
   trends: notAsked(),
   fachgebiete: notAsked(),
   singleJob: notAsked(),
+  letter: null,
 };
 
 const jobsReducer = createReducer(
@@ -79,6 +81,11 @@ const jobsReducer = createReducer(
   on(fromActions.loadSingleJobError, (state, { error }) =>
     produce(state, (draft) => {
       draft.singleJob = failure<Job, HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.newLetterInsert, (state, { letter }) =>
+    produce(state, (draft) => {
+      draft.letter = letter;
     })
   )
 );

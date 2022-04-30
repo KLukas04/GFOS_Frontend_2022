@@ -18,6 +18,7 @@ import * as fromRouter from '../../../../store/router.selectors';
 })
 export class OverviewComponent implements OnInit {
   readonly control = new FormControl();
+  private newFileBase64: any = '';
 
   public job$: Observable<RemoteData<Job, HttpErrorResponse>>;
 
@@ -33,5 +34,27 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadSingleJob());
+  }
+
+  public loadNewPdf(event: any): void {
+    const fileReader = new FileReader();
+    const file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        this.newFileBase64 = fileReader.result;
+
+        this.store.dispatch(
+          fromActions.newLetterInsert({
+            letter: this.newFileBase64,
+          })
+        );
+      };
+    }
+  }
+
+  public apply(): void {
+    this.store.dispatch(fromActions.sendApplication());
+    this.control.reset();
   }
 }

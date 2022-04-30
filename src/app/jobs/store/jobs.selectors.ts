@@ -20,3 +20,8 @@ export const selectSingleJob = createSelector(
   selectJobsState,
   (state: fromReducer.JobsState) => state.singleJob
 );
+
+export const selectLetter = createSelector(
+  selectJobsState,
+  (state: fromReducer.JobsState) => state.letter
+);

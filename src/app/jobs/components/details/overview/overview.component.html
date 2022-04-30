@@ -93,11 +93,13 @@
             accept="application/pdf"
             class="container"
             [formControl]="control"
+            (input)="loadNewPdf($event)"
           ></tui-input-file>
           <button
             tuiButton
             type="button"
             class="tui-space_right-3 tui-space_bottom-3"
+            (click)="apply()"
           >
             Bewerbung abschicken
           </button>

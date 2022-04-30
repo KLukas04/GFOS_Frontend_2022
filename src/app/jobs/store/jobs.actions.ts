@@ -27,14 +27,31 @@ export const loadFachgebieteError = createAction(
   props<{ error: HttpErrorResponse }>()
 );
 
-export const loadSingleJob = createAction('[Jobs] Load Single Job');
+export const loadSingleJob = createAction('[Jobs] [Details] Load Single Job');
 
 export const loadSingleJobSuccess = createAction(
-  '[Jobs] Load Single Job Success',
+  '[Jobs] [Details] Load Single Job Success',
   props<{ job: Job }>()
 );
 
 export const loadSingleJobError = createAction(
-  '[Jobs] Load Single Job Error',
+  '[Jobs] [Details] Load Single Job Error',
   props<{ error: HttpErrorResponse }>()
+);
+
+export const newLetterInsert = createAction(
+  '[Jobs] [Details] New Letter Inserted',
+  props<{ letter: string }>()
+);
+
+export const sendApplication = createAction(
+  '[Jobs] [Details] Send Application'
+);
+
+export const sendApplicationSuccess = createAction(
+  '[Jobs] [Details] Send Application Success'
+);
+
+export const sendApplicationError = createAction(
+  '[Jobs] [Details] Send Application Error'
 );

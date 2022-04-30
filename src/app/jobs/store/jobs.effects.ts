@@ -3,6 +3,7 @@ import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 
 import * as fromActions from './jobs.actions';
 import * as fromReducer from './jobs.reducer';
+import * as fromSelectors from './jobs.selectors';
 import * as fromRouter from '../../store/router.selectors';
 import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
 import { JobService } from '../service/job.service';
@@ -56,6 +57,22 @@ export class JobsEffects {
           catchError((err) =>
             of(fromActions.loadSingleJobError({ error: err }))
           )
+        )
+      )
+    )
+  );
+
+  apply$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.sendApplication),
+      concatLatestFrom(() => [
+        this.store.select(fromSelectors.selectLetter),
+        this.store.select(fromRouter.selectQueryParams),
+      ]),
+      switchMap(([_, letter, params]) =>
+        this.jobService.apply(params['jobId'], letter!).pipe(
+          map(() => fromActions.sendApplicationSuccess()),
+          catchError(() => of(fromActions.sendApplicationError))
         )
       )
     )
