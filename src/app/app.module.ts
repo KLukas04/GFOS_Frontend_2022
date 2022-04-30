@@ -27,6 +27,8 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TokenInterceptor } from './authorization/service/token.interceptor';
 import { registerLocaleData } from '@angular/common';
 import localeDe from '@angular/common/locales/de';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CustomRouterSerializer } from './store/router.serializer';
 
 registerLocaleData(localeDe);
 
@@ -45,6 +47,7 @@ registerLocaleData(localeDe);
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([]),
+    StoreRouterConnectingModule.forRoot({ serializer: CustomRouterSerializer }),
     TuiAvatarModule,
     TuiHostedDropdownModule,
     TuiDataListModule,
