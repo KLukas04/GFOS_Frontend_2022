@@ -1,4 +1,4 @@
-<tui-input-date-range [formControl]="dateControl" (focusedChange)="saveDates()"
+<tui-input-date-range [formControl]="dateControl"
   >Start - Ende</tui-input-date-range
 >
 <tui-input
@@ -13,8 +13,7 @@
   accept="application/pdf"
   class="container"
   [formControl]="control"
-  [loadingFiles]="(loading$ | async) || []"
-  [rejectedFiles]="(rejected$ | async) || []"
+  (input)="loadNewPdf($event)"
 ></tui-input-file>
 <br />
 <button tuiButton icon="tuiIconPlus" (click)="close()">Add</button>

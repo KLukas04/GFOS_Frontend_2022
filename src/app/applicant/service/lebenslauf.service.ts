@@ -24,15 +24,20 @@ export class LebenslaufService {
 
   public addLebenslaufStation(
     start: Date,
-    end: Date,
-    info: string
+    ende: Date,
+    info: string,
+    referenz: string | null
   ): Observable<string> {
+    let data = {};
+    start !== null ? (data = { ...data, start }) : null;
+    ende !== null ? (data = { ...data, ende }) : null;
+    info !== null ? (data = { ...data, info }) : null;
+    referenz !== null ? (data = { ...data, string: referenz }) : null;
+
+    console.log(data);
+
     return this.http
-      .post<any>(`${this.baseURL}/lebenslauf`, {
-        start: start,
-        ende: end,
-        info: info,
-      })
+      .post<any>(`${this.baseURL}/lebenslauf`, data)
       .pipe(take(1));
   }
 

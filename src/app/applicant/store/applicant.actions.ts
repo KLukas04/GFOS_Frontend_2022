@@ -32,6 +32,11 @@ export const newLebenslaufStationInfo = createAction(
   props<{ info: string }>()
 );
 
+export const newLebenslaufStationReferenz = createAction(
+  '[CV] [Stationen] New Referenz Inserted',
+  props<{ referenz: string }>()
+);
+
 export const newLebenslaufStationAdd = createAction(
   '[CV] [Stationen] Add New Station'
 );

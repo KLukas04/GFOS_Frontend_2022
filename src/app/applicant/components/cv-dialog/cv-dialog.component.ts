@@ -33,6 +33,9 @@ export class CvDialogComponent implements OnInit {
   public dateControl: FormControl;
   public stationControl: FormControl;
 
+  readonly control = new FormControl();
+  private newFileBase64: any = '';
+
   constructor(
     @Inject(POLYMORPHEUS_CONTEXT)
     private readonly context: TuiDialogContext<any>,
@@ -51,62 +54,35 @@ export class CvDialogComponent implements OnInit {
           date: this.dateControl.value,
         })
       );
-    }, 2000);
+    }, 1000);
   }
 
   public saveStation(): void {
+    this.saveDates();
     this.store.dispatch(
       fromActions.newLebenslaufStationInfo({ info: this.stationControl.value })
     );
   }
 
+  public loadNewPdf(event: any): void {
+    const fileReader = new FileReader();
+    const file = event.target.files[0];
+    if (event.target.files && event.target.files[0]) {
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        this.newFileBase64 = fileReader.result;
+
+        this.store.dispatch(
+          fromActions.newLebenslaufStationReferenz({
+            referenz: this.newFileBase64,
+          })
+        );
+      };
+    }
+  }
+
   close(): void {
     this.store.dispatch(fromActions.newLebenslaufStationAdd());
     this.context.completeWith(null);
-  }
-
-  readonly control = new FormControl();
-
-  @tuiPure
-  get loading$(): Observable<readonly File[]> {
-    return this.requests$.pipe(
-      map((file) => (file instanceof File ? [file] : [])),
-      startWith([])
-    );
-  }
-
-  @tuiPure
-  get rejected$(): Observable<readonly TuiFileLike[]> {
-    return this.requests$.pipe(
-      map((file) =>
-        file instanceof RejectedFile ? [convertRejected(file)] : []
-      ),
-      tap(({ length }) => {
-        if (length) {
-          this.control.setValue(null);
-        }
-      }),
-      startWith([])
-    );
-  }
-
-  @tuiPure
-  private get requests$(): Observable<RejectedFile | File | null> {
-    return this.control.valueChanges.pipe(
-      switchMap((file) =>
-        file ? this.serverRequest(file).pipe(startWith(file)) : of(null)
-      ),
-      share()
-    );
-  }
-
-  private serverRequest(file: File): Observable<RejectedFile | File | null> {
-    const delay = Math.round(Math.random() * 5000 + 500);
-    const result =
-      delay % 2
-        ? null
-        : new RejectedFile(file, 'Server responded for odd number of time');
-
-    return timer(delay).pipe(mapTo(result));
   }
 }

@@ -42,7 +42,12 @@ export class ApplicantEffects {
       ),
       switchMap(([_, data]) =>
         this.lebenslaufService
-          .addLebenslaufStation(data.start!, data.end!, data.info!)
+          .addLebenslaufStation(
+            data.start!,
+            data.end!,
+            data.info!,
+            data.referenz
+          )
           .pipe(map(() => fromActions.loadLebenslaufStationen()))
       )
     )
