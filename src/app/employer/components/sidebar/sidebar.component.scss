@@ -5,9 +5,10 @@
   background: linear-gradient(66deg, $color-4 0%, $color-5 50%, $color-5 100%);
   padding: 50px;
   box-sizing: border-box;
+  width: 100%;
 
   ul {
-    @media screen and (max-width: 1280px) {
+    @media screen and (max-width: 1444px) {
       display: flex;
       flex-direction: row;
       flex-wrap: wrap;

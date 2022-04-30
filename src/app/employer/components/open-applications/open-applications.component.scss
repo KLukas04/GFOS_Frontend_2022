@@ -1,123 +1,129 @@
 @import "../../../../scss/colors.scss";
 
-.application{
-    padding: 0px;
-    border-radius: 16pt;
-    margin-right: 0px;
-   
-    @media screen and (max-width: 450px) {
-      width: 260px;
-    }
-    @media screen and (min-width: 451px) {
-      width: 100%;
-    }
+.application {
+  padding: 0px;
+  border-radius: 16pt;
+  margin-right: 0px;
 
-    background-color: $color-4;
-    .info {
-      background-color: #7dff63;
-      border-radius: 16pt 16pt 16pt 0pt;
-      .heading {
+  @media screen and (max-width: 450px) {
+    width: 260px;
+  }
+  @media screen and (min-width: 451px) {
+    width: 100%;
+  }
+
+  background-color: $color-4;
+  .info {
+    background-color: #7dff63;
+    border-radius: 16pt 16pt 16pt 0pt;
+    .heading {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 5px;
+
+      justify-content: space-between;
+      align-items: center;
+
+      @media screen and (max-width: 455px) {
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      padding-left: 32pt;
+      padding-right: 32pt;
+
+      color: black;
+
+      .job {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        tui-badge {
+          padding: 15px;
+          color: black;
+        }
+        @media screen and (max-width: 450px) {
+          justify-content: center;
+        }
+      }
+    }
+    p {
+      font-size: 12px;
+      padding: 0pt 16pt 0pt 16pt;
+    }
+  }
+
+  .main {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      .date {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 12px;
+      }
+      .files {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-
         justify-content: space-between;
-        align-items: center;
-  
-        padding-left: 32pt;
-        padding-right: 32pt;
-  
-        
-        color: black;
-        
-        .job{
-          display: flex;
-          align-items: center;
-          flex-wrap: wrap;
-          justify-content: flex-end;
-          tui-badge {
-            padding: 15px;
-            color: black;
-          }
+        @media screen and (max-width: 450px) {
+          justify-content: center;
         }
-        
-        
-      }
-      p {
-        font-size: 12px;
-        padding: 0pt 16pt 0pt 16pt;
-      }
-    }
+        gap: 10px;
 
-    .main {
-      display: flex;
-      flex-direction: column;
-      padding: 10px;
-      .content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        
-        .date {
-          display: flex;
-          justify-content: flex-end;
-          font-size: 12px;
-        }
-        .files {
-          display: flex;
-          flex-direction: row;
-          flex-wrap: wrap;
-          justify-content: space-between;
+        tui-avatar {
           @media screen and (max-width: 450px) {
-            justify-content: center;
-          }
-          gap: 10px;
-
-          tui-avatar{
-            @media screen and (max-width: 450px) {
-              height: 50px;
-              width: 50px;
-            }
-          }
-  
-          .file {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 150px;
-            height: 150px;
-            @media screen and (max-width: 450px) {
-              height: 80px;
-              border-radius: 5pt;
-            }
-            border-radius: 16pt;
-            background-color: $color-3;
+            height: 50px;
+            width: 50px;
           }
         }
-      }
-    }
 
-    .buttons {
-      display: flex;
-      flex-direction: row;
-      @media screen and (max-width: 572px) {
-        flex-direction: column;
-      }
-      
-      justify-content: space-between;
-      gap: 10px;
-
-      padding-top: 10px;
-
-      .accept {
-        width: 100%;
-        .btn{
-          width: 75%;
+        .file {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 150px;
+          height: 150px;
+          @media screen and (max-width: 450px) {
+            height: 80px;
+            border-radius: 5pt;
+          }
+          border-radius: 16pt;
+          background-color: $color-3;
         }
-      }
-
-      .btn{
-        width: 80%;
       }
     }
   }
+
+  .buttons {
+    display: flex;
+    flex-direction: row;
+    @media screen and (max-width: 572px) {
+      flex-direction: column;
+    }
+
+    justify-content: space-between;
+    gap: 10px;
+
+    padding-top: 10px;
+
+    .accept {
+      width: 100%;
+      .btn {
+        width: 75%;
+      }
+    }
+
+    .btn {
+      width: 80%;
+    }
+  }
+}
