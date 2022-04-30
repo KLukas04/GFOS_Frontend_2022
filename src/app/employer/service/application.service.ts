@@ -29,4 +29,10 @@ export class ApplicationService {
       .get<string>(`${this.baseURL}/datei/lebenslauf/${id}`)
       .pipe(take(1));
   }
+
+  public getLetterPdfById(id: number): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseURL}/datei/bewerbung/${id}`)
+      .pipe(take(1));
+  }
 }

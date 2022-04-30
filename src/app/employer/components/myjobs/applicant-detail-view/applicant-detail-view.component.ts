@@ -18,6 +18,7 @@ import * as fromSelectors from '../../../store/employer.selectors';
 })
 export class ApplicantDetailViewComponent implements OnInit {
   public cvPdf: string | undefined;
+  public letterPdf: string | undefined;
 
   newInterest = '';
   interests = [
@@ -52,16 +53,22 @@ export class ApplicantDetailViewComponent implements OnInit {
     this.store.select(fromSelectors.selectDetailsCv).subscribe((pdf) => {
       this.cvPdf = getOrElse(pdf, '');
     });
+    this.store.select(fromSelectors.selectDetailsLetter).subscribe((pdf) => {
+      this.letterPdf = getOrElse(pdf, '');
+    });
   }
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadApplicationDetailsImage());
     this.store.dispatch(fromActions.loadApplicationDetailsCvPdf());
+    this.store.dispatch(fromActions.loadApplicationDetailsLetterPdf());
   }
 
   show(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {
     let fileToShow: string | undefined;
-    titel === 'Lebenslauf' ? (fileToShow = this.cvPdf) : null;
+    titel === 'Lebenslauf'
+      ? (fileToShow = this.cvPdf)
+      : (fileToShow = this.letterPdf);
     this.pdfService
       .open(this.sanitizer.bypassSecurityTrustResourceUrl(fileToShow ?? ''), {
         label: titel,

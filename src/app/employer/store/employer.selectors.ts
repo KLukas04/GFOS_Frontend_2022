@@ -61,3 +61,8 @@ export const selectDetailsCv = createSelector(
   selectApplicationDetails,
   (details: ApplicationDetails) => details.cvPdf
 );
+
+export const selectDetailsLetter = createSelector(
+  selectApplicationDetails,
+  (details: ApplicationDetails) => details.letterPdf
+);

@@ -272,3 +272,17 @@ export const loadApplicationDetailsCvPdfError = createAction(
   '[Employer] [Details] Load CV Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const loadApplicationDetailsLetterPdf = createAction(
+  '[Employer] [Details] Load Letter'
+);
+
+export const loadApplicationDetailsLetterPdfSuccess = createAction(
+  '[Employer] [Details] Load Letter Success',
+  props<{ base64: string }>()
+);
+
+export const loadApplicationDetailsLetterPdfError = createAction(
+  '[Employer] [Details] Load Letter Error',
+  props<{ error: HttpErrorResponse }>()
+);

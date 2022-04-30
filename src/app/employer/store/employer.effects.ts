@@ -244,4 +244,21 @@ export class EmployerEffects {
       )
     )
   );
+
+  loadApplicationDetailsLetterPdf$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplicationDetailsLetterPdf),
+      concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
+      switchMap(([_, params]) =>
+        this.applicationService.getLetterPdfById(params['bewerbungId']).pipe(
+          map((pdf) =>
+            fromActions.loadApplicationDetailsLetterPdfSuccess({ base64: pdf })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationDetailsLetterPdfError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }
