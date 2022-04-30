@@ -210,4 +210,21 @@ export class EmployerEffects {
       )
     )
   );
+
+  loadApplicationDetails$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplicationDetailsImage),
+      concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
+      switchMap(([_, params]) =>
+        this.accountService.getPicById(params['bewerberId']).pipe(
+          map((pic) =>
+            fromActions.loadApplicationDetailsImageSuccess({ base64: pic })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationDetailsImageError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }

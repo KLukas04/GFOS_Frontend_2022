@@ -10,6 +10,7 @@ import {
 } from 'ngx-remotedata';
 import { Job } from 'src/app/jobs/models/job.model';
 import { Application } from '../models/application.model';
+import { ApplicationDetails } from '../models/applicationDetails.model';
 import { Employer } from '../models/employer.model';
 import { Todo } from '../models/todo.model';
 
@@ -31,6 +32,7 @@ export interface EmployerState {
   };
   createdJobs: RemoteData<Job[], HttpErrorResponse>;
   applicationsForJob: RemoteData<Application[], HttpErrorResponse>;
+  applicationDetails: ApplicationDetails;
   createNewJob: {
     basics: {
       title: string | null;
@@ -73,6 +75,9 @@ export const initialState: EmployerState = {
   },
   createdJobs: notAsked(),
   applicationsForJob: notAsked(),
+  applicationDetails: {
+    image: notAsked(),
+  },
   createNewJob: {
     basics: {
       title: null,
@@ -314,6 +319,25 @@ const employerReducer = createReducer(
   on(fromActions.loadApplicationsError, (state, { error }) =>
     produce(state, (draft) => {
       draft.applications = failure<Application[], HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.loadApplicationDetailsImage, (state) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.image = inProgress<string, HttpErrorResponse>();
+    })
+  ),
+  on(fromActions.loadApplicationDetailsImageSuccess, (state, { base64 }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.image = success<string, HttpErrorResponse>(
+        base64
+      );
+    })
+  ),
+  on(fromActions.loadApplicationDetailsImageError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.image = failure<string, HttpErrorResponse>(
+        error
+      );
     })
   )
 );

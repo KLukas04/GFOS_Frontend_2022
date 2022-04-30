@@ -1,99 +1,138 @@
-<app-header text="Hi, ich bin" markup="Lukas!" subheading="Ich freue mich auf eine Rückmeldung!" img="assets/hello.svg">
+<app-header
+  text="Hi, ich bin"
+  markup="Lukas!"
+  subheading="Ich freue mich auf eine Rückmeldung!"
+  img="assets/hello.svg"
+>
 </app-header>
 
 <div class="parent">
-    <div class="sidebar layout">
-        <tui-avatar [avatarUrl]="avatar" size="xxl" class="tui-space_top-1" [rounded]="true"></tui-avatar>
-        <button tuiButton class="file" type="button" (click)="show(actions, 'Lebenslauf')">
-            Lebenslauf
-        </button>
-        <button tuiButton class="file" type="button" (click)="show(actions, 'Anschreiben')">
-            Anschreiben
-        </button>
+  <div class="sidebar layout">
+    <tui-avatar
+      *ngIf="image$ | async | successValue as image"
+      [avatarUrl]="image"
+      text="Profil Bild"
+      size="xxl"
+      class="tui-space_top-1"
+      [rounded]="true"
+    ></tui-avatar>
+    <button
+      tuiButton
+      class="file"
+      type="button"
+      (click)="show(actions, 'Lebenslauf')"
+    >
+      Lebenslauf
+    </button>
+    <button
+      tuiButton
+      class="file"
+      type="button"
+      (click)="show(actions, 'Anschreiben')"
+    >
+      Anschreiben
+    </button>
+  </div>
+  <div class="box layout">
+    <p class="title">Name</p>
+    <p class="tui-text_h5">Lukas Krinke</p>
+
+    <p class="title">Addresse</p>
+    <p class="tui-text_body-l-2">Straße Str. 121, 45257 Essen</p>
+
+    <p class="title">Interessen</p>
+    <div class="interessen">
+      <tui-badge
+        *ngFor="let interest of interests"
+        size="l"
+        status="primary"
+        [value]="interest"
+      ></tui-badge>
     </div>
-    <div class="box layout">
-        <p class="title">Name</p>
-        <p class="tui-text_h5"> Lukas Krinke </p>
+  </div>
 
-        <p class="title">Addresse</p>
-        <p class="tui-text_body-l-2"> Straße Str. 121, 45257 Essen</p>
-
-        <p class="title">Interessen</p>
-        <div class="interessen">
-            <tui-badge *ngFor='let interest of interests' size="l" status="primary" [value]="interest"></tui-badge>
+  <div class="chat layout">
+    <p class="title">Chat</p>
+    <tui-scrollbar class="scrollbar">
+      <div class="content">
+        <div class="applicantN">
+          <p>Hallo</p>
         </div>
-    </div>
-
-    <div class="chat layout">
-        <p class="title">Chat</p>
-        <tui-scrollbar class="scrollbar">
-            <div class="content">
-
-                <div class="applicantN">
-                    <p>Hallo</p>
-                </div>
-                <div class="employerN">
-                    <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
-                </div>
-                <div class="applicantN">
-                    <p>Hallo</p>
-                </div>
-                <div class="applicantN">
-                    <p>Hallo</p>
-                </div>
-                <div class="employerN">
-                    <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
-                </div>
-                <div class="applicantN">
-                    <p>Hallo</p>
-                </div>
-                <div class="applicantN">
-                    <p>Hallo</p>
-                </div>
-                <div class="employerN">
-                    <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
-                </div>
-                <div class="applicantN">
-                    <p>Hallo</p>
-                </div>
-                <div class="applicantN">
-                    <p>Hallo</p>
-                </div>
-                <div class="employerN">
-                    <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
-                </div>
-                <div class="applicantN">
-                    <p>Hallo</p>
-                </div>
-            </div>
-        </tui-scrollbar>
-        <div class="input">
-            <tui-input> Nachricht </tui-input>
-            <button tuiButton> S</button>
+        <div class="employerN">
+          <p>
+            Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel
+            viele viele Text
+          </p>
         </div>
-
+        <div class="applicantN">
+          <p>Hallo</p>
+        </div>
+        <div class="applicantN">
+          <p>Hallo</p>
+        </div>
+        <div class="employerN">
+          <p>
+            Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel
+            viele viele Text
+          </p>
+        </div>
+        <div class="applicantN">
+          <p>Hallo</p>
+        </div>
+        <div class="applicantN">
+          <p>Hallo</p>
+        </div>
+        <div class="employerN">
+          <p>
+            Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel
+            viele viele Text
+          </p>
+        </div>
+        <div class="applicantN">
+          <p>Hallo</p>
+        </div>
+        <div class="applicantN">
+          <p>Hallo</p>
+        </div>
+        <div class="employerN">
+          <p>
+            Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel
+            viele viele Text
+          </p>
+        </div>
+        <div class="applicantN">
+          <p>Hallo</p>
+        </div>
+      </div>
+    </tui-scrollbar>
+    <div class="input">
+      <tui-input> Nachricht </tui-input>
+      <button tuiButton>S</button>
     </div>
-    <div class="lebenslauf layout">
-        <p class="title">Lebenslauf</p>
-        <tui-scrollbar class="box">
-            <div class="timeline">
-                <div *ngFor="let station of stations; index as i" class="container"
-                    [ngClass]=" i%2 == 0 ? 'left' : 'right'">
-                    <div class="content">
-                        <h2>{{ station.year }}</h2>
-                        <p>{{ station.content }} </p>
-                    </div>
-                </div>
-            </div>
-        </tui-scrollbar>
-    </div>
-
+  </div>
+  <div class="lebenslauf layout">
+    <p class="title">Lebenslauf</p>
+    <tui-scrollbar class="box">
+      <div class="timeline">
+        <div
+          *ngFor="let station of stations; index as i"
+          class="container"
+          [ngClass]="i % 2 == 0 ? 'left' : 'right'"
+        >
+          <div class="content">
+            <h2>{{ station.year }}</h2>
+            <p>{{ station.content }}</p>
+          </div>
+        </div>
+      </div>
+    </tui-scrollbar>
+  </div>
 </div>
 
 <tui-root>
-    <ng-template #actions let-content="content">
-        <a tuiButton shape="rounded" size="s" download [href]="content">
-            Download
-        </a>
-    </ng-template>
+  <ng-template #actions let-content="content">
+    <a tuiButton shape="rounded" size="s" download [href]="content">
+      Download
+    </a>
+  </ng-template>
 </tui-root>

@@ -1,4 +1,5 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { ApplicationDetails } from '../models/applicationDetails.model';
 import * as fromReducer from './employer.reducer';
 
 export const selectEmployerState =
@@ -44,4 +45,14 @@ export const selectApplications = createSelector(
 export const selectApplicationsForJob = createSelector(
   selectEmployerState,
   (state: fromReducer.EmployerState) => state.applicationsForJob
+);
+
+export const selectApplicationDetails = createSelector(
+  selectEmployerState,
+  (state: fromReducer.EmployerState) => state.applicationDetails
+);
+
+export const selectDetailsImage = createSelector(
+  selectApplicationDetails,
+  (details: ApplicationDetails) => details.image
 );

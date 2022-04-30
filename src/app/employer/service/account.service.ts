@@ -35,4 +35,10 @@ export class AccountService {
       })
       .pipe(take(1));
   }
+
+  public getPicById(id: number): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseURL}/foto/profilbild/${id}`)
+      .pipe(take(1));
+  }
 }

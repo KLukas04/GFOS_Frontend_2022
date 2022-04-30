@@ -38,6 +38,7 @@ export class OpenApplicationsComponent implements OnInit {
   @Input() name = '';
   @Input() beworbenAm: Date | undefined;
   @Input() bewerbungId: number | undefined;
+  @Input() bewerberId: number | undefined;
 
   status = 0;
   //0 = noch nicht gesehen

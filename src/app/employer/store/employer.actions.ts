@@ -244,3 +244,17 @@ export const loadApplicationsError = createAction(
   '[Employer] [Applications] Load Applications Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const loadApplicationDetailsImage = createAction(
+  '[Employer] [Details] Load Image'
+);
+
+export const loadApplicationDetailsImageSuccess = createAction(
+  '[Employer] [Details] Load Image Success',
+  props<{ base64: string }>()
+);
+
+export const loadApplicationDetailsImageError = createAction(
+  '[Employer] [Details] Load Image Error',
+  props<{ error: HttpErrorResponse }>()
+);
