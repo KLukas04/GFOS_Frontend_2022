@@ -7,6 +7,7 @@ import { FormGroup, FormControl } from '@angular/forms';
   styleUrls: ['./job-preview.component.scss'],
 })
 export class JobPreviewComponent implements OnInit {
+  @Input() id: number | undefined;
   @Input() title = '';
   @Input() fachgebiet = '';
   @Input() typ = '';

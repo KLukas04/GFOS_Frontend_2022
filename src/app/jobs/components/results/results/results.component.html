@@ -13,6 +13,7 @@
       <div class="content">
         <app-job-preview
           *ngFor="let job of jobs"
+          [id]="job.jobangebotid"
           [title]="job.title"
           [fachgebiet]="job.fachgebiet.name"
           [typ]="job.bewerbungstyp.art"
