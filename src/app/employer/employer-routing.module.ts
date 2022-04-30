@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AcceptedApplicationsComponent } from './components/accepted-applications/accepted-applications.component';
 import { CreateDepartmentComponent } from './components/administration/create-department/create-department.component';
 import { CreateEmployeeComponent } from './components/administration/create-employee/create-employee.component';
 import { CreateJobComponent } from './components/createJob/create-job/create-job.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'myApplications', component: MyApplicationsComponent},
   { path: 'createEmployee', component: CreateEmployeeComponent},
   { path: 'createDepartment', component: CreateDepartmentComponent},
+  { path: 'acceptedApplications', component: AcceptedApplicationsComponent},
 ];
 
 @NgModule({

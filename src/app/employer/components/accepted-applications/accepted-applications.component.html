@@ -1,0 +1,45 @@
+<app-header text="Mit dir ins Team" markup="gekommen!" img="assets/interview.svg"></app-header>
+
+<div class="container">
+    <a tuiIsland [hoverable]="true" class="application">
+        <div class="info">
+            <div class="heading">
+                <h2>{{ name }}</h2>
+                <div class="job">
+                    <p>arbeitet nun im Bereich:</p>
+                    <a tuiLink routerLink="/jobs/details">
+                        <tui-badge [value]="job"></tui-badge>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="content">
+                <div class="date">
+                    <p>Mitarbeiter seit: {{ mitarbeiterSeit | date: "shortDate" }}</p>
+                </div>
+                <div class="files">
+                    <a tuiLink routerLink="/employer/myjobs/openApplications/applicantDetailView"
+                        [queryParams]="{ bewerbungId: bewerbungId, bewerberId: bewerberId }" class="file">
+                        <tui-avatar [text]="name" size="xl" [rounded]="true"></tui-avatar>
+                    </a>
+
+                    <button class="file" tuiButton (click)="show(actions, 'Anschreiben')">
+                        Anschreiben
+                    </button>
+                    <button class="file" tuiButton (click)="show(actions, 'Lebenslauf')">
+                        Lebenslauf
+                    </button>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+
+<tui-root>
+    <ng-template #actions let-content="content">
+        <a tuiButton shape="rounded" size="s" download [href]="content">
+            Download
+        </a>
+    </ng-template>
+</tui-root>

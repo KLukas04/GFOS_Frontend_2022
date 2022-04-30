@@ -61,6 +61,7 @@ import * as fromReducer from './store/employer.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { EmployerEffects } from './store/employer.effects';
 import { RemoteDataModule } from 'ngx-remotedata';
+import { AcceptedApplicationsComponent } from './components/accepted-applications/accepted-applications.component';
 @NgModule({
   declarations: [
     EmployerComponent,
@@ -78,6 +79,7 @@ import { RemoteDataModule } from 'ngx-remotedata';
     CreateDepartmentComponent,
     SendOnDialogComponent,
     DelegateDialogComponent,
+    AcceptedApplicationsComponent,
   ],
   imports: [
     CommonModule,
