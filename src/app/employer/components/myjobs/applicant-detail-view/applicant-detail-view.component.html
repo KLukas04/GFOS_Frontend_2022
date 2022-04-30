@@ -1,43 +1,19 @@
-<app-header
-  *ngIf="applicant$ | async | successValue as applicant"
-  text="Hi, ich bin"
-  [markup]="applicant.vorname + '!'"
-  subheading="Ich freue mich auf eine Rückmeldung!"
-  img="assets/hello.svg"
->
+<app-header *ngIf="applicant$ | async | successValue as applicant" text="Hi, ich bin" [markup]="applicant.vorname + '!'"
+  subheading="Ich freue mich auf eine Rückmeldung!" img="assets/hello.svg">
 </app-header>
 
 <div class="parent">
   <div class="sidebar layout">
-    <tui-avatar
-      *ngIf="image$ | async | successValue as image"
-      [avatarUrl]="image"
-      text="Profil Bild"
-      size="xxl"
-      class="tui-space_top-1"
-      [rounded]="true"
-    ></tui-avatar>
-    <button
-      tuiButton
-      class="file"
-      type="button"
-      (click)="show(actions, 'Lebenslauf')"
-    >
+    <tui-avatar *ngIf="image$ | async | successValue as image" [avatarUrl]="image" text="Profil Bild" size="xxl"
+      class="tui-space_top-1" [rounded]="true"></tui-avatar>
+    <button tuiButton class="file" type="button" (click)="show(actions, 'Lebenslauf')">
       Lebenslauf
     </button>
-    <button
-      tuiButton
-      class="file"
-      type="button"
-      (click)="show(actions, 'Anschreiben')"
-    >
+    <button tuiButton class="file" type="button" (click)="show(actions, 'Anschreiben')">
       Anschreiben
     </button>
   </div>
-  <div
-    class="box layout"
-    *ngIf="applicant$ | async | successValue as applicant"
-  >
+  <div class="box layout" *ngIf="applicant$ | async | successValue as applicant">
     <p class="title">Name</p>
     <p class="tui-text_h6">{{ applicant.vorname }} {{ applicant.name }}</p>
 
@@ -53,30 +29,21 @@
     <p class="tui-text_body-l-2">{{ applicant.email }}</p>
 
     <p class="title">Interessen</p>
-    <div
-      class="interessen"
-      *ngIf="interests$ | async | successValue as interests"
-    >
-      <tui-badge
-        *ngFor="let interest of interests"
-        size="l"
-        status="primary"
-        [value]="interest.name"
-      ></tui-badge>
-    </div>
+    <tui-scrollbar class="scrollbar">
+      <div class="interessen" *ngIf="interests$ | async | successValue as interests">
+        <tui-badge *ngFor="let interest of interests" size="l" status="primary" [value]="interest.name"></tui-badge>
+      </div>
+    </tui-scrollbar>
   </div>
 
   <div class="chat layout">
     <p class="title">Chat</p>
     <tui-scrollbar class="scrollbar">
       <div class="content" *ngIf="messages$ | async | successValue as messages">
-        <div
-          *ngFor="let message of messages"
-          [ngClass]="{
+        <div *ngFor="let message of messages" [ngClass]="{
             employerN: !message.vonbewerber,
             applicantN: message.vonbewerber
-          }"
-        >
+          }">
           <p>
             {{ message.text }}
           </p>
@@ -93,33 +60,19 @@
   <div class="lebenslauf layout">
     <p class="title">Lebenslauf</p>
     <tui-scrollbar class="box">
-      <div
-        class="timeline"
-        *ngIf="stations$ | async | successValue as stations"
-      >
-        <div
-          *ngFor="let station of stations; index as i"
-          class="container"
-          [ngClass]="i % 2 == 0 ? 'left' : 'right'"
-        >
+      <div class="timeline" *ngIf="stations$ | async | successValue as stations">
+        <div *ngFor="let station of stations; index as i" class="container" [ngClass]="i % 2 == 0 ? 'left' : 'right'">
           <div class="content">
             <div class="action" *ngIf="station.referenz !== null">
-              <tui-marker-icon
-                mode="link"
-                size="xs"
-                src="tuiIconFile"
-                (click)="showPdfReferenz(actions, 'Referenz', station.referenz)"
-              ></tui-marker-icon>
+              <tui-marker-icon mode="link" size="xs" src="tuiIconFile"
+                (click)="showPdfReferenz(actions, 'Referenz', station.referenz)"></tui-marker-icon>
             </div>
             <h2>
               {{
-                station.start | date: getDateFormat(station.start, station.ende)
+              station.start | date: getDateFormat(station.start, station.ende)
               }}
-              <span
-                *ngIf="getDateFormat(station.start, station.ende) === 'YYYY'"
-              >
-                - {{ station.ende | date: "YYYY" }}</span
-              >
+              <span *ngIf="getDateFormat(station.start, station.ende) === 'YYYY'">
+                - {{ station.ende | date: "YYYY" }}</span>
             </h2>
             <p>{{ station.info }}</p>
           </div>
