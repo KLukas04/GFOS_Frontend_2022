@@ -94,13 +94,18 @@
         padding-top: 50px;
         width: 100%;
         max-width: 300px;
+
+        tui-select {
+            width: 100%;
+        }
+
         .file{
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             gap: 10px;
             align-items: center;
-            height: 30em;
+            // height: 30em;
             background-color: $color-4;
             border-radius: 16px;
             width: 90%;

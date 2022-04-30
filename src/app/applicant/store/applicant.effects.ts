@@ -42,7 +42,12 @@ export class ApplicantEffects {
       ),
       switchMap(([_, data]) =>
         this.lebenslaufService
-          .addLebenslaufStation(data.start!, data.end!, data.info!)
+          .addLebenslaufStation(
+            data.start!,
+            data.end!,
+            data.info!,
+            data.referenz
+          )
           .pipe(map(() => fromActions.loadLebenslaufStationen()))
       )
     )
@@ -60,6 +65,33 @@ export class ApplicantEffects {
             of(fromActions.loadInteressenfelderError({ error: err }))
           )
         )
+      )
+    )
+  );
+
+  loadFachgebiet$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadFachgebiet),
+      mergeMap(() =>
+        this.lebenslaufService.getOwnFachgebiet().pipe(
+          map((fachgebiet) =>
+            fromActions.loadFachgebietSuccess({ fachgebiet: fachgebiet.name })
+          ),
+          catchError((err) =>
+            of(fromActions.loadFachgebietError({ error: err }))
+          )
+        )
+      )
+    )
+  );
+
+  saveNewFachgebiet$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.setFachgebiet),
+      switchMap((action) =>
+        this.lebenslaufService
+          .setFachgebiet(action.fachgebiet)
+          .pipe(map(() => fromActions.loadFachgebiet()))
       )
     )
   );

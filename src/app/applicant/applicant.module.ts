@@ -20,6 +20,8 @@ import {
   TuiMarkerIconModule,
   TuiInputDateRangeModule,
   TuiPdfViewerModule,
+  TuiSelectModule,
+  TuiDataListWrapperModule,
 } from '@taiga-ui/kit';
 
 import { PolymorpheusModule } from '@tinkoff/ng-polymorpheus';
@@ -87,6 +89,9 @@ import { UpdateProfilpicDialogComponent } from './components/update-profilpic-di
     EffectsModule.forFeature([ApplicantEffects]),
     RemoteDataModule,
     TuiInputDateRangeModule,
+
+    TuiSelectModule,
+    TuiDataListWrapperModule,
   ],
   entryComponents: [InterestDialogComponent],
 })

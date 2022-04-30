@@ -24,11 +24,13 @@ export interface ApplicantState {
   lebenslauf: {
     profilePic: RemoteData<string, HttpErrorResponse>;
     pdf: RemoteData<string, HttpErrorResponse>;
+    fachgebiet: RemoteData<string, HttpErrorResponse>;
     stationen: RemoteData<LebenslaufStation[], HttpErrorResponse>;
     createNewStation: {
       start: Date | null;
       end: Date | null;
       info: string | null;
+      referenz: string | null;
     };
     interessenfelder: RemoteData<Interessenfeld[], HttpErrorResponse>;
     createNewInteresse: string | null;
@@ -60,11 +62,13 @@ export const initialState: ApplicantState = {
   lebenslauf: {
     profilePic: notAsked(),
     pdf: notAsked(),
+    fachgebiet: notAsked(),
     stationen: notAsked(),
     createNewStation: {
       start: null,
       end: null,
       info: null,
+      referenz: null,
     },
     interessenfelder: notAsked(),
     createNewInteresse: null,
@@ -134,6 +138,11 @@ const applicantReducer = createReducer(
   on(fromActions.newLebenslaufStationInfo, (state, { info }) =>
     produce(state, (draft) => {
       draft.lebenslauf.createNewStation.info = info;
+    })
+  ),
+  on(fromActions.newLebenslaufStationReferenz, (state, { referenz }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.createNewStation.referenz = referenz;
     })
   ),
   on(fromActions.loadInteressenfelder, (state) =>
@@ -334,6 +343,25 @@ const applicantReducer = createReducer(
   on(fromActions.deleteCvPdf, (state) =>
     produce(state, (draft) => {
       draft.lebenslauf.pdf = notAsked<string, HttpErrorResponse>();
+    })
+  ),
+  on(fromActions.loadFachgebiet, (state) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.fachgebiet = inProgress<string, HttpErrorResponse>(
+        getOrElse(draft.lebenslauf.fachgebiet, undefined)
+      );
+    })
+  ),
+  on(fromActions.loadFachgebietSuccess, (state, { fachgebiet }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.fachgebiet = success<string, HttpErrorResponse>(
+        fachgebiet
+      );
+    })
+  ),
+  on(fromActions.loadFachgebietError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.lebenslauf.fachgebiet = failure<string, HttpErrorResponse>(error);
     })
   )
 );

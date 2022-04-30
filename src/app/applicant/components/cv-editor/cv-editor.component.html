@@ -22,6 +22,19 @@
         (click)="showProfilPicDialog()"
       ></tui-avatar
     ></ng-container>
+    <ng-container
+      *ngIf="
+        (profilePic$ | async | isInProgress) ||
+        (profilePic$ | async | isFailure)
+      "
+      ><tui-avatar
+        size="xxl"
+        class="tui-space_top-1"
+        [rounded]="true"
+        text="P B"
+        (click)="showProfilPicDialog()"
+      ></tui-avatar
+    ></ng-container>
     <div class="file">
       <h3>Lebenslauf</h3>
       <button tuiButton (click)="showPDF(actions, 'Lebenslauf')">
@@ -37,6 +50,22 @@
         (input)="loadNewPdf($event)"
       ></tui-input-file>
       <button tuiButton (click)="saveNewPdf()">Speichern</button>
+      <br /><br />
+      <tui-select
+        tuiTextfieldSize="l"
+        class="tui-group__inherit-item b-form"
+        [formControl]="typeControl"
+        (focusedChange)="saveFachgebiet()"
+      >
+        Fachgebiet
+        <tui-data-list-wrapper
+          *tuiDataList
+          size="l"
+          [items]="mockExpertiseAreas"
+          [itemContent]="content"
+        >
+        </tui-data-list-wrapper>
+      </tui-select>
     </div>
   </div>
   <div class="main">
@@ -99,14 +128,16 @@
       <p>Interessen</p>
       <div class="i-content">
         <tui-scrollbar>
-        <div class="interests" *ngIf="interests$ | async | isSuccess">
-          <ng-container *ngIf="interests$ | async | successValue as interests">
-            <p class="badge" *ngFor="let interest of interests"> {{ interest.name }}</p>
-            
-          </ng-container>
-        </div>
-      </tui-scrollbar>
-         
+          <div class="interests" *ngIf="interests$ | async | isSuccess">
+            <ng-container
+              *ngIf="interests$ | async | successValue as interests"
+            >
+              <p class="badge" *ngFor="let interest of interests">
+                {{ interest.name }}
+              </p>
+            </ng-container>
+          </div>
+        </tui-scrollbar>
       </div>
       <div class="button">
         <button
@@ -120,7 +151,6 @@
         </button>
       </div>
     </div>
-
   </div>
   <div class="lebenslauf">
     <p>Lebenslauf</p>
@@ -146,3 +176,10 @@
     </div>
   </ng-template>
 </tui-root>
+
+<ng-template #content let-data>
+  <div class="template">
+    <tui-avatar size="xs" class="avatar" [text]="data"></tui-avatar>
+    <div class="name">{{ data }}</div>
+  </div>
+</ng-template>
