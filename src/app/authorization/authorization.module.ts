@@ -9,6 +9,7 @@ import {
   TuiDialogModule,
   TuiLinkModule,
   TuiPrimitiveTextfieldModule,
+  TuiScrollbarModule,
   TuiRootModule,
   TuiSvgModule,
 } from '@taiga-ui/core';
@@ -38,6 +39,7 @@ import { TwofaDialogComponent } from './components/twofa-dialog/twofa-dialog.com
     TuiActionModule,
     TuiIslandModule,
     TuiSvgModule,
+    TuiScrollbarModule,
     TuiPrimitiveTextfieldModule,
     StoreModule.forFeature(
       fromReducer.authorizationFeatureKey,
