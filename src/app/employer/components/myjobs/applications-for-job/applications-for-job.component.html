@@ -10,6 +10,8 @@
       *ngFor="let application of applications"
       [job]="application.jobangebot.title"
       [name]="application.bewerber.vorname + ' ' + application.bewerber.name"
+      [beworbenAm]="application.datum"
+      [bewerbungId]="application.bewerbungid"
     ></app-open-applications>
   </div>
 </div>

@@ -19,6 +19,7 @@
         <a
           tuiLink
           routerLink="/employer/myjobs/openApplications/applicantDetailView"
+          [queryParams]="{ bewerbungId: bewerbungId }"
           class="file"
           (click)="setStatusInWork()"
         >
