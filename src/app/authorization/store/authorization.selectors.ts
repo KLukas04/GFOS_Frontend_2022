@@ -38,3 +38,8 @@ export const selectDefaultRoute = createSelector(
   selectAuthorizationState,
   (state: fromReducer.AuthorizationState) => state.defaultRoute
 );
+
+export const selectPwError = createSelector(
+  selectAuthorizationState,
+  (state: fromReducer.AuthorizationState) => state.wrongPw
+);

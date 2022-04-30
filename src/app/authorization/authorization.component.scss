@@ -156,7 +156,19 @@ input {
         display: grid;
         grid-template-columns: 15% 85%;
         padding: 0 0.4rem;
+        margin-bottom: 30px;
         position: relative;
+
+        tui-field-error{
+          margin: 10px;
+          z-index: 10;
+          width: 100px;
+        }
+
+        tui-error{
+          z-index: 10;
+          width: 360px;
+        }
 
         fa-icon {
           text-align: center;

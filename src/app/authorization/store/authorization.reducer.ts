@@ -14,6 +14,7 @@ export interface AuthorizationState {
   verificationPin: string;
   twofaPin: string;
   defaultRoute: string;
+  wrongPw: boolean;
 }
 
 export const initialState: AuthorizationState = {
@@ -31,6 +32,7 @@ export const initialState: AuthorizationState = {
   verificationPin: '',
   twofaPin: '',
   defaultRoute: 'employer',
+  wrongPw: false,
 };
 
 const authorizationReducer = createReducer(
@@ -42,6 +44,7 @@ const authorizationReducer = createReducer(
   ),
   on(fromActions.newLoginPassword, (state, { password }) =>
     produce(state, (draft) => {
+      draft.wrongPw = false;
       draft.loginCreds.password = password;
     })
   ),
@@ -107,7 +110,13 @@ const authorizationReducer = createReducer(
     produce(state, (draft) => {
       draft.token = token;
     })
-  )
+  ),
+  on(fromActions.setPwWrongError, (state) => 
+    produce(state, (draft) => {
+      draft.wrongPw = true;
+    })
+  ),
+
 );
 
 export function reducer(state: AuthorizationState | undefined, action: Action) {

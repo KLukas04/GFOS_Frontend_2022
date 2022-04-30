@@ -11,6 +11,7 @@
             [formControl]="loginEmailForm"
             (input)="saveLoginEmail()"
           />
+          <tui-error [error]="getEmailErrorLogin()"></tui-error>
         </div>
         <div class="input-field">
           <fa-icon [icon]="faLock"></fa-icon>
@@ -20,11 +21,12 @@
             [formControl]="loginPasswordForm"
             (input)="saveLoginPassword()"
           />
+          <tui-error [error]="getPwError()"></tui-error>
         </div>
         <a tuiLink class="forgotPW" (click)="showForgotPwDialog()">
           Passwort vergessen
         </a>
-        <input type="submit" value="Login" class="button" (click)="login()" />
+        <input type="submit" value="Login" class="button" [disabled]="loginEmailForm.invalid || loginPasswordForm.invalid" (click)="login()" />
       </form>
 
       <form class="sign-up-form">
@@ -37,6 +39,7 @@
             [formControl]="registrationFirstnameForm"
             (input)="saveRegistrationFirstname()"
           />
+          <tui-error [error]="getFirstNameError()"></tui-error>
         </div>
         <div class="input-field">
           <fa-icon [icon]="faUser"></fa-icon>
@@ -46,6 +49,7 @@
             [formControl]="registrationLastnameForm"
             (input)="saveRegistrationLastname()"
           />
+          <tui-error [error]="getLastNameError()"></tui-error>
         </div>
         <div class="input-field">
           <fa-icon [icon]="faEnvelope"></fa-icon>
@@ -55,6 +59,7 @@
             [formControl]="registrationEmailForm"
             (input)="saveRegistrationEmail()"
           />
+          <tui-error [error]="getEmailErrorRegister()"></tui-error>
         </div>
         <div class="input-field">
           <fa-icon [icon]="faLock"></fa-icon>
@@ -64,6 +69,7 @@
             [formControl]="registrationPasswordForm"
             (input)="saveRegistrationPassword()"
           />
+          <tui-error [error]="getPwErrorRegister()"></tui-error>
         </div>
         <input
           type="submit"

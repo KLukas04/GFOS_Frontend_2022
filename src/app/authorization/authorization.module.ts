@@ -12,8 +12,9 @@ import {
   TuiScrollbarModule,
   TuiRootModule,
   TuiSvgModule,
+  TuiErrorModule,
 } from '@taiga-ui/core';
-import { TuiActionModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
+import { TuiActionModule, TuiFieldErrorModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
@@ -41,6 +42,8 @@ import { TwofaDialogComponent } from './components/twofa-dialog/twofa-dialog.com
     TuiSvgModule,
     TuiScrollbarModule,
     TuiPrimitiveTextfieldModule,
+    TuiFieldErrorModule,
+    TuiErrorModule,
     StoreModule.forFeature(
       fromReducer.authorizationFeatureKey,
       fromReducer.reducer
