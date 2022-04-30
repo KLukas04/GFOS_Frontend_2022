@@ -59,4 +59,13 @@ export class ApplicationService {
       })
       .pipe(take(1));
   }
+
+  public setStatus(id: number, status: number): Observable<string> {
+    return this.http
+      .post<any>(`${this.baseURL}/bewerbung/status`, {
+        bewerbung: id,
+        status: status,
+      })
+      .pipe(take(1));
+  }
 }

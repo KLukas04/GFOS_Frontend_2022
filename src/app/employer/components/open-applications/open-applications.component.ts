@@ -19,6 +19,9 @@ import {
 import { DelegateDialogComponent } from '../delegate-dialog/delegate-dialog.component';
 import { SendOnDialogComponent } from '../send-on-dialog/send-on-dialog.component';
 
+import * as fromActions from '../../store/employer.actions';
+import * as fromReducer from '../../store/employer.reducer';
+import { Store } from '@ngrx/store';
 @Component({
   selector: 'app-open-applications',
   templateUrl: './open-applications.component.html',
@@ -67,7 +70,8 @@ export class OpenApplicationsComponent implements OnInit {
     @Inject(Injector) private readonly injector: Injector,
     @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
     @Inject(TuiPdfViewerService)
-    private readonly pdfService: TuiPdfViewerService
+    private readonly pdfService: TuiPdfViewerService,
+    private store: Store<fromReducer.EmployerState>
   ) {}
 
   ngOnInit(): void {}
@@ -81,15 +85,23 @@ export class OpenApplicationsComponent implements OnInit {
   }
 
   setStatusInWork() {
-    this.status = 1; //bei ersten Click auf Bewerbung status auf "in bearbeitung"
+    this.store.dispatch(
+      fromActions.firstLookApplication({
+        id: this.bewerbungId ?? 1000000,
+      })
+    );
   }
 
   acceptApplication() {
-    this.status = 3;
+    this.store.dispatch(
+      fromActions.acceptApplication({ id: this.bewerbungId ?? 1000000 })
+    );
   }
 
   declineApplication() {
-    this.status = 2;
+    this.store.dispatch(
+      fromActions.denyApplication({ id: this.bewerbungId ?? 1000000 })
+    );
   }
 
   showSendOnDialog() {

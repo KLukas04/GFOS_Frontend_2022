@@ -352,4 +352,49 @@ export class EmployerEffects {
       )
     )
   );
+
+  firstLookAtApplication$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.firstLookApplication),
+      mergeMap((action) =>
+        this.applicationService
+          .setStatus(action.id, 1)
+          .pipe(map(() => fromActions.loadApplications()))
+      )
+    )
+  );
+
+  acceptApplication$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.acceptApplication),
+      concatLatestFrom(() => this.store.select(fromRouter.selectURL)),
+      switchMap(([action, url]) =>
+        this.applicationService.setStatus(action.id, 3).pipe(
+          map(() => {
+            if (url.includes('myApplications')) {
+              return fromActions.loadApplications();
+            }
+            return fromActions.loadApplicationsForJob();
+          })
+        )
+      )
+    )
+  );
+
+  denyApplication$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.denyApplication),
+      concatLatestFrom(() => this.store.select(fromRouter.selectURL)),
+      switchMap(([action, url]) =>
+        this.applicationService.setStatus(action.id, 2).pipe(
+          map(() => {
+            if (url.includes('myApplications')) {
+              return fromActions.loadApplications();
+            }
+            return fromActions.loadApplicationsForJob();
+          })
+        )
+      )
+    )
+  );
 }

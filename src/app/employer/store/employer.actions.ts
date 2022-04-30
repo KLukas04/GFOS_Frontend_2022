@@ -355,3 +355,18 @@ export const applicationDetailsNewMessageInserted = createAction(
 export const applicationDetailsNewMessageSent = createAction(
   '[Employer] [Details] New Message Sent'
 );
+
+export const firstLookApplication = createAction(
+  '[Employer] [Application] First Look At Application',
+  props<{ id: number }>()
+);
+
+export const acceptApplication = createAction(
+  '[Employer] [Application] Accept Application',
+  props<{ id: number }>()
+);
+
+export const denyApplication = createAction(
+  '[Employer] [Application] Deny Application',
+  props<{ id: number }>()
+);
