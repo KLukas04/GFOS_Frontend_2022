@@ -1,3 +1,5 @@
+import { Adresse } from './adresse.model';
+
 export interface Job {
   jobangebotid: number;
   title: string;
@@ -13,14 +15,7 @@ export interface Job {
   istbefristet: boolean;
   start: Date;
   ende: Date;
-  adresse: {
-    adresseid: number;
-    strasse: string;
-    hausnummer: string;
-    plz: number;
-    stadt: string;
-    land: string;
-  };
+  adresse: Adresse;
   bewerbungstyp: {
     bewerbungstypid: number;
     art: string;

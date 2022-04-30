@@ -1,28 +1,44 @@
 <div class="container">
-    <div class="info">
-        <div class="icon"><img src="assets/Round_Icon_Example.svg"></div>
-        <div class="text">
-            <div class="rows">
-                <div class="row">
-                    <span class="country">[adresse_land]</span>
-                    <span class="flag-icon flag-icon-de flag"></span>
-                </div>
-                <div class="row">
-                    <span class="job">[title]</span>
-                </div>
-                <div class="tags">
-                    <tui-tag size="l" value="[bewerbungstyp]" [leftContent]="typeIcon" status="custom"></tui-tag>
-                    <tui-tag size="l" value="[monatsgehalt]" class="tui-space_left-2" [leftContent]="moneyIcon" status="custom"></tui-tag>
-                </div>
-            </div>
+  <div class="info">
+    <div class="icon"><img src="assets/Round_Icon_Example.svg" /></div>
+    <div class="text">
+      <div class="rows">
+        <div class="row">
+          <div>
+            <p class="country">{{ adresse?.land }}</p>
+            <p class="country">
+              {{ adresse?.strasse }} {{ adresse?.hausnummer }},
+              {{ adresse?.plz }} {{ adresse?.stadt }}
+            </p>
+          </div>
         </div>
+        <div class="row">
+          <span class="job">{{ title }}</span>
+        </div>
+        <div class="tags">
+          <tui-tag
+            size="l"
+            [value]="type ?? ''"
+            [leftContent]="typeIcon"
+            status="custom"
+          ></tui-tag>
+          <tui-tag
+            size="l"
+            [value]="wage + '€'"
+            class="tui-space_left-2"
+            [leftContent]="moneyIcon"
+            status="custom"
+          ></tui-tag>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <ng-template #typeIcon>
-    <fa-icon class="fa-icon" [icon]="flag"></fa-icon>
+  <fa-icon class="fa-icon" [icon]="flag"></fa-icon>
 </ng-template>
 
 <ng-template #moneyIcon>
-    <fa-icon class="fa-icon" [icon]="moneyBill"></fa-icon>
+  <fa-icon class="fa-icon" [icon]="moneyBill"></fa-icon>
 </ng-template>

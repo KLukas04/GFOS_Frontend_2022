@@ -1,110 +1,162 @@
-<app-header></app-header>
+<h1 *ngIf="job$ | async | isInProgress">Job wird geladen...</h1>
+<h1 *ngIf="job$ | async | isFailure">Job konnte nicht geladen werden...</h1>
+<ng-container *ngIf="job$ | async | successValue as job">
+  <app-header
+    [adresse]="job.adresse"
+    [title]="job.title"
+    [type]="job.bewerbungstyp.art"
+    [wage]="job.monatsgehalt.toString()"
+  ></app-header>
 
-<div class="container">
+  <div class="container">
     <div class="column-left">
-        <app-overview-section></app-overview-section>
-        <div *ngIf="applicationAlreadySended" class="contact">
-            <span class="heading">Kontakt - Falls du Fragen hast</span>
-            <div class="line">
-                <hr class="hr-grey">
-                <hr class="hr-green">
-            </div>
-
-            <div class="chat">
-                <tui-scrollbar class="scrollbar">
-                    <div class="content">
-                        <div class="applicantN">
-                            <p>Hallo</p>
-                        </div>
-                        <div class="employerN">
-                            <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
-                        </div>
-                        <div class="applicantN">
-                            <p>Hallo</p>
-                        </div>
-                        <div class="applicantN">
-                            <p>Hallo</p>
-                        </div>
-                        <div class="employerN">
-                            <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
-                        </div>
-                        <div class="applicantN">
-                            <p>Hallo</p>
-                        </div>
-                        <div class="applicantN">
-                            <p>Hallo</p>
-                        </div>
-                        <div class="employerN">
-                            <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
-                        </div>
-                        <div class="applicantN">
-                            <p>Hallo</p>
-                        </div>
-                        <div class="applicantN">
-                            <p>Hallo</p>
-                        </div>
-                        <div class="employerN">
-                            <p>Hallo, das ist viel viel viele viele Text Hallo, das ist viel viel viele viele Text</p>
-                        </div>
-                        <div class="applicantN">
-                            <p>Hallo</p>
-                        </div>
-                    </div>
-                </tui-scrollbar>
-                <div class="input">
-                    <tui-input> Nachricht </tui-input>
-                    <button tuiButton> S</button>
-                </div>
-
-            </div>
+      <app-overview-section
+        [beschreibung]="job.langbeschreibung"
+      ></app-overview-section>
+      <div *ngIf="applicationAlreadySended" class="contact">
+        <span class="heading">Kontakt - Falls du Fragen hast</span>
+        <div class="line">
+          <hr class="hr-grey" />
+          <hr class="hr-green" />
         </div>
-        <div *ngIf="!applicationAlreadySended" class="sendApplication">
-            <span class="heading">Bewirb dich jetzt!</span>
-            <div class="line">
-                <hr class="hr-grey">
-                <hr class="hr-green">
+
+        <div class="chat">
+          <tui-scrollbar class="scrollbar">
+            <div class="content">
+              <div class="applicantN">
+                <p>Hallo</p>
+              </div>
+              <div class="employerN">
+                <p>
+                  Hallo, das ist viel viel viele viele Text Hallo, das ist viel
+                  viel viele viele Text
+                </p>
+              </div>
+              <div class="applicantN">
+                <p>Hallo</p>
+              </div>
+              <div class="applicantN">
+                <p>Hallo</p>
+              </div>
+              <div class="employerN">
+                <p>
+                  Hallo, das ist viel viel viele viele Text Hallo, das ist viel
+                  viel viele viele Text
+                </p>
+              </div>
+              <div class="applicantN">
+                <p>Hallo</p>
+              </div>
+              <div class="applicantN">
+                <p>Hallo</p>
+              </div>
+              <div class="employerN">
+                <p>
+                  Hallo, das ist viel viel viele viele Text Hallo, das ist viel
+                  viel viele viele Text
+                </p>
+              </div>
+              <div class="applicantN">
+                <p>Hallo</p>
+              </div>
+              <div class="applicantN">
+                <p>Hallo</p>
+              </div>
+              <div class="employerN">
+                <p>
+                  Hallo, das ist viel viel viele viele Text Hallo, das ist viel
+                  viel viele viele Text
+                </p>
+              </div>
+              <div class="applicantN">
+                <p>Hallo</p>
+              </div>
             </div>
-            <div class="cv">
-                <tui-input-file link="Wähle dein Anschreiben aus" label="oder ziehe es hier hin"
-                    accept="application/pdf" class="container" [formControl]="control"></tui-input-file>
-                <button tuiButton type="button" class="tui-space_right-3 tui-space_bottom-3">
-                    Bewerbung abschicken
-                </button>
-            </div>
+          </tui-scrollbar>
+          <div class="input">
+            <tui-input> Nachricht </tui-input>
+            <button tuiButton>S</button>
+          </div>
         </div>
+      </div>
+      <div *ngIf="!applicationAlreadySended" class="sendApplication">
+        <span class="heading">Bewirb dich jetzt!</span>
+        <div class="line">
+          <hr class="hr-grey" />
+          <hr class="hr-green" />
+        </div>
+        <div class="cv">
+          <tui-input-file
+            link="Wähle dein Anschreiben aus"
+            label="oder ziehe es hier hin"
+            accept="application/pdf"
+            class="container"
+            [formControl]="control"
+          ></tui-input-file>
+          <button
+            tuiButton
+            type="button"
+            class="tui-space_right-3 tui-space_bottom-3"
+          >
+            Bewerbung abschicken
+          </button>
+        </div>
+      </div>
     </div>
     <div class="column-right">
-        <div>
-            <div class="box">
-                <span class="heading">Bezahlung</span>
-                <div class="line">
-                    <hr class="hr-grey">
-                    <hr class="hr-green">
-                </div>
-                <span class="money">[montasgehalt]</span>
-            </div>
-            <div class="box">
-                <span class="heading">Kurzüberblick</span>
-                <div class="line">
-                    <hr class="hr-grey">
-                    <hr class="hr-green">
-                </div>
-                <app-information-item title="Fachgebiet" value="[fachgebiet]"></app-information-item>
-                <hr>
-                <app-information-item title="Typ" value="[Bewerbungstyp]"></app-information-item>
-                <hr>
-                <app-information-item title="Jahresgehalt" value="[gehalt]€"></app-information-item>
-                <hr>
-                <app-information-item title="Urlaubstage" value="[Urlaubstage]"></app-information-item>
-                <hr>
-                <app-information-item title="Remote" value="[Ja NEin]"></app-information-item>
-                <hr>
-                <app-information-item title="Befristet" value="[Ja NEin]"></app-information-item>
-                <hr>
-                <app-information-item title="Start" value="[Datum]"></app-information-item>
-                <hr>
-                <app-information-item title="Ende" value="[nur falls Befristet]"></app-information-item>
-            </div>
+      <div>
+        <div class="box">
+          <span class="heading">Bezahlung</span>
+          <div class="line">
+            <hr class="hr-grey" />
+            <hr class="hr-green" />
+          </div>
+          <span class="money">{{ job.jahresgehalt }} € / Jahr</span>
         </div>
+        <div class="box">
+          <span class="heading">Kurzüberblick</span>
+          <div class="line">
+            <hr class="hr-grey" />
+            <hr class="hr-green" />
+          </div>
+          <app-information-item
+            title="Fachgebiet"
+            [value]="job.fachgebiet.name"
+          ></app-information-item>
+          <hr />
+          <app-information-item
+            title="Typ"
+            [value]="job.bewerbungstyp.art"
+          ></app-information-item>
+          <hr />
+          <app-information-item
+            title="Urlaubstage"
+            [value]="job.urlaubstage.toString()"
+          ></app-information-item>
+          <hr />
+          <app-information-item
+            title="Remote"
+            [value]="job.istremote ? 'Ja' : 'Nein'"
+          ></app-information-item>
+          <hr />
+          <app-information-item
+            title="Befristet"
+            [value]="job.istbefristet ? 'Ja' : 'Nein'"
+          ></app-information-item>
+          <hr />
+          <app-information-item
+            *ngIf="job.istbefristet"
+            title="Start"
+            [value]="(job.start | date: 'shortDate') ?? ''"
+          ></app-information-item>
+          <hr />
+          <app-information-item
+            *ngIf="job.istbefristet"
+            title="Ende"
+            [value]="(job.ende | date: 'shortDate') ?? ''"
+          ></app-information-item>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
+</ng-container>

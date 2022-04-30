@@ -15,3 +15,8 @@ export const selectAllFachgebiete = createSelector(
   selectJobsState,
   (state: fromReducer.JobsState) => state.fachgebiete
 );
+
+export const selectSingleJob = createSelector(
+  selectJobsState,
+  (state: fromReducer.JobsState) => state.singleJob
+);

@@ -19,11 +19,13 @@ export const jobsFeatureKey = 'jobs';
 export interface JobsState {
   trends: RemoteData<Job[], HttpErrorResponse>;
   fachgebiete: RemoteData<Fachgebiet[], HttpErrorResponse>;
+  singleJob: RemoteData<Job, HttpErrorResponse>;
 }
 
 export const initialState: JobsState = {
   trends: notAsked(),
   fachgebiete: notAsked(),
+  singleJob: notAsked(),
 };
 
 const jobsReducer = createReducer(
@@ -60,6 +62,23 @@ const jobsReducer = createReducer(
   on(fromActions.loadFachgebieteError, (state, { error }) =>
     produce(state, (draft) => {
       draft.fachgebiete = failure<Fachgebiet[], HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.loadSingleJob, (state) =>
+    produce(state, (draft) => {
+      draft.singleJob = inProgress<Job, HttpErrorResponse>(
+        getOrElse(draft.singleJob, undefined)
+      );
+    })
+  ),
+  on(fromActions.loadSingleJobSuccess, (state, { job }) =>
+    produce(state, (draft) => {
+      draft.singleJob = success<Job, HttpErrorResponse>(job);
+    })
+  ),
+  on(fromActions.loadSingleJobError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.singleJob = failure<Job, HttpErrorResponse>(error);
     })
   )
 );
