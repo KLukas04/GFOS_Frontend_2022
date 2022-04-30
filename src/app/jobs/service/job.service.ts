@@ -22,4 +22,8 @@ export class JobService {
       .get<Fachgebiet[]>(`${this.baseURL}/fachgebiet/all`)
       .pipe(take(1));
   }
+
+  public getJobById(id: number): Observable<Job> {
+    return this.http.get<Job>(`${this.baseURL}/jobs/${id}`).pipe(take(1));
+  }
 }

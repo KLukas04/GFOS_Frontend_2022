@@ -26,3 +26,15 @@ export const loadFachgebieteError = createAction(
   '[Jobs] Load Fachgebiete Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const loadSingleJob = createAction('[Jobs] Load Single Job');
+
+export const loadSingleJobSuccess = createAction(
+  '[Jobs] Load Single Job Success',
+  props<{ job: Job }>()
+);
+
+export const loadSingleJobError = createAction(
+  '[Jobs] Load Single Job Error',
+  props<{ error: HttpErrorResponse }>()
+);

@@ -1,74 +1,31 @@
-import {ChangeDetectionStrategy, Component} from '@angular/core';
-import {FormControl} from '@angular/forms';
-import {tuiPure} from '@taiga-ui/cdk';
-import {TuiFileLike} from '@taiga-ui/kit';
-import {Observable, of, timer} from 'rxjs';
-import {map, mapTo, share, startWith, switchMap, tap} from 'rxjs/operators';
+import { HttpErrorResponse } from '@angular/common/http';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { RemoteData } from 'ngx-remotedata';
+import { Observable } from 'rxjs';
+import { Job } from 'src/app/jobs/models/job.model';
 
-class RejectedFile {
-  constructor(readonly file: TuiFileLike, readonly reason: string) {}
-}
-
-function convertRejected({file, reason}: RejectedFile): TuiFileLike {
-  return {
-      name: file.name,
-      size: file.size,
-      type: file.type,
-      content: reason,
-  };
-}
-
+import * as fromActions from '../../../store/jobs.actions';
+import * as fromReducer from '../../../store/jobs.reducer';
+import * as fromSelectors from '../../../store/jobs.selectors';
 @Component({
   selector: 'app-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OverviewComponent {
-
+export class OverviewComponent implements OnInit {
   readonly control = new FormControl();
- 
-   /* @tuiPure
-    get loading$(): Observable<readonly File[]> {
-        return this.requests$.pipe(
-            map(file => (file instanceof File ? [file] : [])),
-            startWith([]),
-        );
-    }
- 
-    @tuiPure
-    get rejected$(): Observable<readonly TuiFileLike[]> {
-        return this.requests$.pipe(
-            map(file => (file instanceof RejectedFile ? [convertRejected(file)] : [])),
-            tap(({length}) => {
-                if (length) {
-                    this.control.setValue(null);
-                }
-            }),
-            startWith([]),
-        );
-    }*/
- 
-    @tuiPure
-    private get requests$(): Observable<RejectedFile | File | null> {
-        return this.control.valueChanges.pipe(
-            switchMap(file =>
-                file ? this.serverRequest(file).pipe(startWith(file)) : of(null),
-            ),
-            share(),
-        );
-    }
- 
-    private serverRequest(file: File): Observable<RejectedFile | File | null> {
-        const delay = Math.round(Math.random() * 5000 + 500);
-        const result =
-            delay % 2
-                ? null
-                : new RejectedFile(file, 'Server responded for odd number of time');
- 
-        return timer(delay).pipe(mapTo(result));
-    }
+  applicationAlreadySended = false;
 
-    applicationAlreadySended = true;
+  public job$: Observable<RemoteData<Job, HttpErrorResponse>>;
 
+  constructor(private store: Store<fromReducer.JobsState>) {
+    this.job$ = this.store.select(fromSelectors.selectSingleJob);
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(fromActions.loadSingleJob());
+  }
 }
