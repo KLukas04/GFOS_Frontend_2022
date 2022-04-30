@@ -6,6 +6,7 @@ import { Application } from '../models/application.model';
 import { Fachgebiet } from '../models/fachgebiet.model';
 import { Filter } from '../models/filter.model';
 import { Job } from '../models/job.model';
+import { Message } from '../models/message.model';
 
 @Injectable({
   providedIn: 'root',
@@ -61,6 +62,22 @@ export class JobService {
 
     return this.http
       .post<any>(`${this.baseURL}/jobs/search`, reqData)
+      .pipe(take(1));
+  }
+
+  public getMessages(id: number): Observable<Message[]> {
+    return this.http
+      .get<Message[]>(`${this.baseURL}/bewerbungsnachricht/${id}`)
+      .pipe(take(1));
+  }
+
+  public sendMessage(id: number, text: string): Observable<Message> {
+    return this.http
+      .post<any>(`${this.baseURL}/bewerbungsnachricht`, {
+        text: text,
+        datum: new Date(),
+        bewerbungid: id,
+      })
       .pipe(take(1));
   }
 }

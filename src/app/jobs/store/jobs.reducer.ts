@@ -12,6 +12,7 @@ import {
 import { Fachgebiet } from '../models/fachgebiet.model';
 import { Filter } from '../models/filter.model';
 import { Job } from '../models/job.model';
+import { Message } from '../models/message.model';
 
 import * as fromActions from './jobs.actions';
 
@@ -24,6 +25,8 @@ export interface JobsState {
   letter: string | null;
   filter: Filter;
   filterResults: RemoteData<Job[], HttpErrorResponse>;
+  messages: RemoteData<Message[], HttpErrorResponse>;
+  newMessage: string | null;
 }
 
 export const initialState: JobsState = {
@@ -40,6 +43,8 @@ export const initialState: JobsState = {
     urlaubstage: null,
   },
   filterResults: notAsked(),
+  messages: notAsked(),
+  newMessage: null,
 };
 
 const jobsReducer = createReducer(
@@ -145,6 +150,26 @@ const jobsReducer = createReducer(
   on(fromActions.startSearchError, (state, { error }) =>
     produce(state, (draft) => {
       draft.filterResults = failure<Job[], HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.loadApplicationDetailsMessages, (state) =>
+    produce(state, (draft) => {
+      draft.messages = inProgress<Message[], HttpErrorResponse>();
+    })
+  ),
+  on(fromActions.loadApplicationDetailsMessagesSuccess, (state, { messages }) =>
+    produce(state, (draft) => {
+      draft.messages = success<Message[], HttpErrorResponse>(messages);
+    })
+  ),
+  on(fromActions.loadApplicationDetailsMessagesError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.messages = failure<Message[], HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.applicationDetailsNewMessageInserted, (state, { message }) =>
+    produce(state, (draft) => {
+      draft.newMessage = message;
     })
   )
 );

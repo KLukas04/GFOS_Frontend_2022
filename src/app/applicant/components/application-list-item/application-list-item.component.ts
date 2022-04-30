@@ -10,6 +10,7 @@ import * as fromReducer from '../../store/applicant.reducer';
 })
 export class ApplicationListItemComponent implements OnInit {
   @Input() id: number = 100000000;
+  @Input() bewerbungId: number = 10000000;
   @Input() title = '';
   @Input() typ = '';
   @Input() startDate: Date | undefined;

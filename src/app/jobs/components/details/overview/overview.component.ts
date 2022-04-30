@@ -6,6 +6,7 @@ import { Store } from '@ngrx/store';
 import { RemoteData } from 'ngx-remotedata';
 import { Observable } from 'rxjs';
 import { Job } from 'src/app/jobs/models/job.model';
+import { Message } from 'src/app/jobs/models/message.model';
 
 import * as fromActions from '../../../store/jobs.actions';
 import * as fromReducer from '../../../store/jobs.reducer';
@@ -17,18 +18,21 @@ import * as fromSelectors from '../../../store/jobs.selectors';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewComponent implements OnInit {
+  public messageControl: FormControl = new FormControl(null);
   readonly control = new FormControl();
   private newFileBase64: any = '';
 
   public showChat: boolean | undefined;
 
   public job$: Observable<RemoteData<Job, HttpErrorResponse>>;
+  public messages$: Observable<RemoteData<Message[], HttpErrorResponse>>;
 
   constructor(
     private store: Store<fromReducer.JobsState>,
     private route: ActivatedRoute
   ) {
     this.job$ = this.store.select(fromSelectors.selectSingleJob);
+    this.messages$ = this.store.select(fromSelectors.selectDetailsMessages);
 
     this.route.queryParams.subscribe((params) => {
       this.showChat = params['showChat'] === 'true';
@@ -37,6 +41,20 @@ export class OverviewComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadSingleJob());
+    this.store.dispatch(fromActions.loadApplicationDetailsMessages());
+  }
+
+  public messageInsert(): void {
+    this.store.dispatch(
+      fromActions.applicationDetailsNewMessageInserted({
+        message: this.messageControl.value,
+      })
+    );
+  }
+
+  public sendMessage(): void {
+    this.store.dispatch(fromActions.applicationDetailsNewMessageSent());
+    this.messageControl.reset();
   }
 
   public loadNewPdf(event: any): void {

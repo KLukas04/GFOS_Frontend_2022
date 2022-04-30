@@ -35,3 +35,13 @@ export const selectFilterResults = createSelector(
   selectJobsState,
   (state: fromReducer.JobsState) => state.filterResults
 );
+
+export const selectDetailsMessages = createSelector(
+  selectJobsState,
+  (state: fromReducer.JobsState) => state.messages
+);
+
+export const selectNewMessage = createSelector(
+  selectJobsState,
+  (state: fromReducer.JobsState) => state.newMessage
+);

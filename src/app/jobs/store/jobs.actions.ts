@@ -2,6 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
 import { Fachgebiet } from '../models/fachgebiet.model';
 import { Job } from '../models/job.model';
+import { Message } from '../models/message.model';
 
 export const loadTrendJobs = createAction('[Jobs] Load Trend Jobs');
 
@@ -96,4 +97,27 @@ export const startSearchSuccess = createAction(
 export const startSearchError = createAction(
   '[Jobs] [Search] Search Error',
   props<{ error: HttpErrorResponse }>()
+);
+
+export const loadApplicationDetailsMessages = createAction(
+  '[Employer] [Details] Load Messages'
+);
+
+export const loadApplicationDetailsMessagesSuccess = createAction(
+  '[Employer] [Details] Load Messages Success',
+  props<{ messages: Message[] }>()
+);
+
+export const loadApplicationDetailsMessagesError = createAction(
+  '[Employer] [Details] Load Messages Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const applicationDetailsNewMessageInserted = createAction(
+  '[Employer] [Details] New Message Inserted',
+  props<{ message: string }>()
+);
+
+export const applicationDetailsNewMessageSent = createAction(
+  '[Employer] [Details] New Message Sent'
 );
