@@ -8,7 +8,7 @@ a {
   flex-direction: column;
 
   background-color: $color-4;
-  width: 500px;
+  max-width: 500px;
   border-radius: 16pt;
 
   .info {
@@ -17,6 +17,7 @@ a {
     .heading {
       display: flex;
       flex-direction: row;
+      flex-wrap: wrap;
 
       padding-left: 32pt;
       padding-right: 32pt;
@@ -31,11 +32,13 @@ a {
       .actions {
         display: flex;
         flex-direction: row;
+        flex-wrap: wrap;
         align-items: center;
         gap: 20px;
         tui-badge {
           color: black;
         }
+        padding-bottom: 5px;
       }
     }
     p {
