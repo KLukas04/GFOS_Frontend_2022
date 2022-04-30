@@ -1,24 +1,15 @@
-<app-header
-  text="Es gibt"
-  subheading="[Jobname]"
-  markup="[wert] Bewerbungen!"
-  img="assets/interview.svg"
-></app-header>
-<div class="container">
-  <app-open-applications
-    job="Designer"
-    name="Lukas Krinke"
-  ></app-open-applications>
-  <app-open-applications
-    job="Designer"
-    name="Lukas Krinke"
-  ></app-open-applications>
-  <app-open-applications
-    job="Designer"
-    name="Lukas Krinke"
-  ></app-open-applications>
-  <app-open-applications
-    job="Designer"
-    name="Lukas Krinke"
-  ></app-open-applications>
+<div *ngIf="applications$ | async | successValue as applications">
+  <app-header
+    text="Es gibt"
+    [subheading]="applications[0].jobangebot.title"
+    [markup]="applications.length + ' Bewerbung(en)!'"
+    img="assets/interview.svg"
+  ></app-header>
+  <div class="container">
+    <app-open-applications
+      *ngFor="let application of applications"
+      [job]="application.jobangebot.title"
+      [name]="application.bewerber.vorname + ' ' + application.bewerber.name"
+    ></app-open-applications>
+  </div>
 </div>

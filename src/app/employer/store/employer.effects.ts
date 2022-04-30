@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, concatLatestFrom, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { catchError, map, mergeMap, of, switchMap } from 'rxjs';
+import { catchError, map, mergeMap, of, switchMap, tap } from 'rxjs';
 import { AccountService } from '../service/account.service';
 import { ApplicationService } from '../service/application.service';
 import { JobService } from '../service/job.service';
@@ -11,6 +11,7 @@ import { TodoService } from '../service/todo.service';
 import * as fromActions from './employer.actions';
 import * as fromReducer from './employer.reducer';
 import * as fromSelectors from './employer.selectors';
+import * as fromRouter from '../../store/router.selectors';
 @Injectable()
 export class EmployerEffects {
   constructor(
@@ -135,6 +136,26 @@ export class EmployerEffects {
           map((jobs) => fromActions.loadCreatedJobsSuccess({ jobs: jobs })),
           catchError((err) =>
             of(fromActions.loadCreatedJobsError({ error: err }))
+          )
+        )
+      )
+    )
+  );
+
+  loadApplicationsForJob$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplicationsForJob),
+      concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
+      switchMap(([_, params]) =>
+        this.applicationService.getApplicationsForJob(params['jobId']).pipe(
+          tap(() => console.log(params['jobId'])),
+          map((applications) =>
+            fromActions.loadApplicationsForJobSuccess({
+              applications: applications,
+            })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationsForJobError({ error: err }))
           )
         )
       )

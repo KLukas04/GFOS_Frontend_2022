@@ -30,6 +30,7 @@ export interface EmployerState {
     section: string | null;
   };
   createdJobs: RemoteData<Job[], HttpErrorResponse>;
+  applicationsForJob: RemoteData<Application[], HttpErrorResponse>;
   createNewJob: {
     basics: {
       title: string | null;
@@ -71,6 +72,7 @@ export const initialState: EmployerState = {
     section: null,
   },
   createdJobs: notAsked(),
+  applicationsForJob: notAsked(),
   createNewJob: {
     basics: {
       title: null,
@@ -276,6 +278,25 @@ const employerReducer = createReducer(
   on(fromActions.loadCreatedJobsError, (state, { error }) =>
     produce(state, (draft) => {
       draft.createdJobs = failure<Job[], HttpErrorResponse>(error);
+    })
+  ),
+  on(fromActions.loadApplicationsForJob, (state) =>
+    produce(state, (draft) => {
+      draft.applicationsForJob = inProgress<Application[], HttpErrorResponse>();
+    })
+  ),
+  on(fromActions.loadApplicationsForJobSuccess, (state, { applications }) =>
+    produce(state, (draft) => {
+      draft.applicationsForJob = success<Application[], HttpErrorResponse>(
+        applications
+      );
+    })
+  ),
+  on(fromActions.loadApplicationsForJobError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.applicationsForJob = failure<Application[], HttpErrorResponse>(
+        error
+      );
     })
   ),
   on(fromActions.loadApplications, (state) =>

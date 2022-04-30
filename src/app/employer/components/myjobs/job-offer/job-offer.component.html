@@ -19,7 +19,13 @@
             src="tuiIconTrash"
             (click)="deleteJob()"
           ></tui-marker-icon>
-          <a tuiLink iconAlign="left" routerLink="openApplications">Öffnen</a>
+          <a
+            tuiLink
+            iconAlign="left"
+            routerLink="openApplications"
+            [queryParams]="{ jobId: id }"
+            >Öffnen</a
+          >
         </div>
       </div>
     </div>

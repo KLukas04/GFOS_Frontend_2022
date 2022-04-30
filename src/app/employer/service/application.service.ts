@@ -17,4 +17,10 @@ export class ApplicationService {
       .get<Application[]>(`${this.baseURL}/bewerbung/zubearbeiten`)
       .pipe(take(1));
   }
+
+  public getApplicationsForJob(id: number): Observable<Application[]> {
+    return this.http
+      .get<Application[]>(`${this.baseURL}/bewerbung/${id}`)
+      .pipe(take(1));
+  }
 }

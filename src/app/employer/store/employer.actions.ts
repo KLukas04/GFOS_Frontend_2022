@@ -202,6 +202,20 @@ export const loadCreatedJobsError = createAction(
   props<{ error: HttpErrorResponse }>()
 );
 
+export const loadApplicationsForJob = createAction(
+  '[Employer] [Jobs] Load Applications For Job'
+);
+
+export const loadApplicationsForJobSuccess = createAction(
+  '[Employer] [Jobs] Load Applications For Job Success',
+  props<{ applications: Application[] }>()
+);
+
+export const loadApplicationsForJobError = createAction(
+  '[Employer] [Jobs] Load Applications For Job Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
 export const deleteJob = createAction(
   '[Employer] [Jobs] Delete Job',
   props<{ id: number }>()
