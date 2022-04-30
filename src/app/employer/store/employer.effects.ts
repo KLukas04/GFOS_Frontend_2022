@@ -371,10 +371,10 @@ export class EmployerEffects {
       switchMap(([action, url]) =>
         this.applicationService.setStatus(action.id, 3).pipe(
           map(() => {
-            if (url.includes('myApplications')) {
-              return fromActions.loadApplications();
+            if (url.includes('openApplications')) {
+              return fromActions.loadApplicationsForJob();
             }
-            return fromActions.loadApplicationsForJob();
+            return fromActions.loadApplications();
           })
         )
       )
@@ -388,10 +388,10 @@ export class EmployerEffects {
       switchMap(([action, url]) =>
         this.applicationService.setStatus(action.id, 2).pipe(
           map(() => {
-            if (url.includes('myApplications')) {
-              return fromActions.loadApplications();
+            if (url.includes('openApplications')) {
+              return fromActions.loadApplicationsForJob();
             }
-            return fromActions.loadApplicationsForJob();
+            return fromActions.loadApplications();
           })
         )
       )
