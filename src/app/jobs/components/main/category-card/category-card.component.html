@@ -1,5 +1,12 @@
 <div class="card">
-  <a size="l" tuiIsland [hoverable]="true" textAlign="center" routerLink="results">
+  <a
+    size="l"
+    tuiIsland
+    [hoverable]="true"
+    textAlign="center"
+    routerLink="results"
+    [queryParams]="{ fachgebiet: category }"
+  >
     <div class="tui-island__content">
       <figure class="tui-island__figure">
         <img [src]="searchIcon(id)" />

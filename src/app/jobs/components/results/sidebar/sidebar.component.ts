@@ -4,7 +4,8 @@ import { Store } from '@ngrx/store';
 
 import * as fromActions from '../../../store/jobs.actions';
 import * as fromReducer from '../../../store/jobs.reducer';
-import * as fromSelectors from '../../../store/jobs.selectors';
+import * as fromRouter from '../../../../store/router.selectors';
+import { TUI_INPUT_MONTH_PROVIDERS } from '@taiga-ui/kit';
 @Component({
   selector: 'app-sidebar',
   templateUrl: './sidebar.component.html',
@@ -61,7 +62,18 @@ export class SidebarComponent implements OnInit {
   public gehaltControl: FormControl = new FormControl(null);
   public urlaubControl: FormControl = new FormControl(null);
 
-  constructor(private store: Store<fromReducer.JobsState>) {}
+  constructor(private store: Store<fromReducer.JobsState>) {
+    this.store.select(fromRouter.selectQueryParams).subscribe((params) => {
+      if (params['fachgebiet']) {
+        this.fachgebietControl.setValue(params['fachgebiet']);
+        this.saveFachgebiet();
+      }
+
+      if (Object.keys(params).length !== 0) {
+        this.search();
+      }
+    });
+  }
 
   ngOnInit(): void {}
 
