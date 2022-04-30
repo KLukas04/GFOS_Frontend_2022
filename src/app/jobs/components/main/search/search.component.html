@@ -1,4 +1,3 @@
-
 <div tuiGroup class="group">
   <tui-select
     tuiTextfieldSize="l"
@@ -23,13 +22,22 @@
       [itemContent]="content"
     ></tui-data-list-wrapper
   ></tui-select>
-  <button tuiButton iconRight="tuiIconSearch" appearance="whiteblock" routerLink="results">
+  <button
+    tuiButton
+    iconRight="tuiIconSearch"
+    appearance="whiteblock"
+    routerLink="results"
+    [queryParams]="{
+      fachgebiet: expertiseFormControl.value,
+      typ: typeFormControl.value
+    }"
+  >
     Suchen
   </button>
 </div>
 <ng-template #content let-data>
   <div class="template">
-    <tui-avatar [avatarUrl]="data.icon" size="xs" class="avatar" [text]="data.text"></tui-avatar>
-    <div class="name">{{ data.text }}</div>
+    <tui-avatar size="xs" class="avatar" [text]="data"></tui-avatar>
+    <div class="name">{{ data }}</div>
   </div>
 </ng-template>

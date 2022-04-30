@@ -21,26 +21,16 @@ export class SidebarComponent implements OnInit {
     'Minijob',
     'Werkstudent',
   ];
+  mockYearlyIncome: string[] = ['20000', '30000', '40000', '50000', '60000'];
 
-  mockDistances: string[] = [
-    '5 km',
-    '10 km',
-    '15 km',
-    '20 km',
-    '30 km',
-    '40 km',
-    '50 km',
+  holidays: string[] = [
+    '30 Tage',
+    '32 Tage',
+    '34 Tage',
+    '36 Tage',
+    '38 Tage',
+    '40 Tage',
   ];
-
-  mockYearlyIncome: string[] = [
-    '20000 €',
-    '30000 €',
-    '40000 €',
-    '50000 €',
-    '60000 €',
-  ];
-
-  holidays: string[] = ['30 Tage', '32 Tage', '34 Tage'];
 
   mockExpertiseAreas: string[] = [
     'Softwareentwicklung',
@@ -69,6 +59,11 @@ export class SidebarComponent implements OnInit {
         this.saveFachgebiet();
       }
 
+      if (params['typ']) {
+        this.typeControl.setValue(params['typ']);
+        this.saveType();
+      }
+
       if (Object.keys(params).length !== 0) {
         this.search();
       }
@@ -94,7 +89,6 @@ export class SidebarComponent implements OnInit {
   }
 
   public saveRemote(): void {
-    console.log('Toggle');
     this.store.dispatch(
       fromActions.searchFilterRemote({
         remote: this.remoteControl.value,
