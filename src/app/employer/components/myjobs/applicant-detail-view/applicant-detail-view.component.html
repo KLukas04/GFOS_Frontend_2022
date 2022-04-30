@@ -103,7 +103,7 @@
           [ngClass]="i % 2 == 0 ? 'left' : 'right'"
         >
           <div class="content">
-            <div class="action">
+            <div class="action" *ngIf="station.referenz !== null">
               <tui-marker-icon
                 mode="link"
                 size="xs"
