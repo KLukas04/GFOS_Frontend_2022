@@ -87,6 +87,7 @@ export const initialState: EmployerState = {
     interests: notAsked(),
     stations: notAsked(),
     messages: notAsked(),
+    newMessage: null,
   },
   createNewJob: {
     basics: {
@@ -513,6 +514,11 @@ const employerReducer = createReducer(
       draft.applicationDetails.messages = failure<Message[], HttpErrorResponse>(
         error
       );
+    })
+  ),
+  on(fromActions.applicationDetailsNewMessageInserted, (state, { message }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.newMessage = message;
     })
   )
 );

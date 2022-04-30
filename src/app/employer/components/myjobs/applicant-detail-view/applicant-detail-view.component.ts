@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { DomSanitizer } from '@angular/platform-browser';
 import { Store } from '@ngrx/store';
@@ -21,10 +22,10 @@ import * as fromSelectors from '../../../store/employer.selectors';
   styleUrls: ['./applicant-detail-view.component.scss'],
 })
 export class ApplicantDetailViewComponent implements OnInit {
+  public messageControl: FormControl = new FormControl(null);
+
   public cvPdf: string | undefined;
   public letterPdf: string | undefined;
-
-  newInterest = '';
 
   public image$: Observable<RemoteData<string, HttpErrorResponse>>;
 
@@ -82,7 +83,23 @@ export class ApplicantDetailViewComponent implements OnInit {
     return days > 365 ? 'YYYY' : 'longDate';
   }
 
-  show(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {
+  public messageInsert(): void {
+    this.store.dispatch(
+      fromActions.applicationDetailsNewMessageInserted({
+        message: this.messageControl.value,
+      })
+    );
+  }
+
+  public sendMessage(): void {
+    this.store.dispatch(fromActions.applicationDetailsNewMessageSent());
+    this.messageControl.reset();
+  }
+
+  public show(
+    actions: PolymorpheusContent<TuiPdfViewerOptions>,
+    titel: string
+  ) {
     let fileToShow: string | undefined;
     titel === 'Lebenslauf'
       ? (fileToShow = this.cvPdf)
@@ -95,7 +112,7 @@ export class ApplicantDetailViewComponent implements OnInit {
       .subscribe();
   }
 
-  showPdfReferenz(
+  public showPdfReferenz(
     actions: PolymorpheusContent<TuiPdfViewerOptions>,
     titel: string,
     pdf: string

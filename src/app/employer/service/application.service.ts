@@ -49,4 +49,14 @@ export class ApplicationService {
       .get<Message[]>(`${this.baseURL}/bewerbungsnachricht/${id}`)
       .pipe(take(1));
   }
+
+  public sendMessage(id: number, text: string): Observable<Message> {
+    return this.http
+      .post<any>(`${this.baseURL}/bewerbungsnachricht`, {
+        text: text,
+        datum: new Date(),
+        bewerbungid: id,
+      })
+      .pipe(take(1));
+  }
 }

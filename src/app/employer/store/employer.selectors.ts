@@ -86,3 +86,8 @@ export const selectDetailsMessages = createSelector(
   selectApplicationDetails,
   (details: ApplicationDetails) => details.messages
 );
+
+export const selectNewMessage = createSelector(
+  selectApplicationDetails,
+  (details: ApplicationDetails) => details.newMessage
+);

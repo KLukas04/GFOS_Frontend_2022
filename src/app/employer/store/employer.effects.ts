@@ -337,4 +337,19 @@ export class EmployerEffects {
       )
     )
   );
+
+  sendMessage$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.applicationDetailsNewMessageSent),
+      concatLatestFrom(() => [
+        this.store.select(fromSelectors.selectNewMessage),
+        this.store.select(fromRouter.selectQueryParams),
+      ]),
+      switchMap(([_, text, params]) =>
+        this.applicationService
+          .sendMessage(params['bewerbungId'], text!)
+          .pipe(map(() => fromActions.loadApplicationDetailsMessages()))
+      )
+    )
+  );
 }

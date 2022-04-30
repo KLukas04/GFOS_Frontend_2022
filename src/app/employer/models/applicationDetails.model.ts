@@ -13,4 +13,5 @@ export interface ApplicationDetails {
   interests: RemoteData<Interesse[], HttpErrorResponse>;
   stations: RemoteData<LebenslaufStation[], HttpErrorResponse>;
   messages: RemoteData<Message[], HttpErrorResponse>;
+  newMessage: string | null;
 }

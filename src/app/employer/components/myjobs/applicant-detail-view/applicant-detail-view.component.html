@@ -84,8 +84,10 @@
       </div>
     </tui-scrollbar>
     <div class="input">
-      <tui-input> Nachricht </tui-input>
-      <button tuiButton>S</button>
+      <tui-input [formControl]="messageControl" (input)="messageInsert()">
+        Nachricht
+      </tui-input>
+      <button tuiButton (click)="sendMessage()">+</button>
     </div>
   </div>
   <div class="lebenslauf layout">

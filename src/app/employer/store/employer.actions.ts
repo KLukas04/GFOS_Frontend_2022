@@ -346,3 +346,12 @@ export const loadApplicationDetailsMessagesError = createAction(
   '[Employer] [Details] Load Messages Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const applicationDetailsNewMessageInserted = createAction(
+  '[Employer] [Details] New Message Inserted',
+  props<{ message: string }>()
+);
+
+export const applicationDetailsNewMessageSent = createAction(
+  '[Employer] [Details] New Message Sent'
+);
