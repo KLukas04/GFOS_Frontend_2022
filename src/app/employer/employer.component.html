@@ -46,6 +46,7 @@
         *ngIf="applications$ | async | successValue as applications"
       >
         <app-open-applications
+          *ngIf="applications.length !== 0"
           [job]="applications[0].jobangebot.title"
           [name]="
             applications[0].bewerber.vorname +
