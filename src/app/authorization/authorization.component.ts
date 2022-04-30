@@ -1,5 +1,5 @@
 import { Component, Inject, Injector, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { FormControl, Validator, Validators} from '@angular/forms';
 import { faEnvelope, faLock, faUser } from '@fortawesome/free-solid-svg-icons';
 import { Store } from '@ngrx/store';
 
@@ -9,6 +9,7 @@ import { TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus';
 import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.component';
 import { ForgotPwDialogComponent } from './components/forgot-pw-dialog/forgot-pw-dialog.component';
+import { TuiValidationError } from '@taiga-ui/cdk';
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -40,6 +41,8 @@ export class AuthorizationComponent implements OnInit {
 
   public loginEmailForm: FormControl;
   public loginPasswordForm: FormControl;
+  pwError = new TuiValidationError('Das Passwort ist leider falsch!');
+  emailError = new TuiValidationError('Die Email ist leider nicht gültig!');
 
   public registrationFirstnameForm: FormControl;
   public registrationLastnameForm: FormControl;
@@ -51,10 +54,11 @@ export class AuthorizationComponent implements OnInit {
     @Inject(TuiDialogService) private readonly dialogService: TuiDialogService,
     @Inject(Injector) private readonly injector: Injector
   ) {
-    this.loginEmailForm = new FormControl(null);
+    this.loginEmailForm = new FormControl(null, Validators.email);
+   
     this.loginPasswordForm = new FormControl(null);
 
-    this.registrationFirstnameForm = new FormControl(null);
+    this.registrationFirstnameForm = new FormControl(null, [Validators.required]);
     this.registrationLastnameForm = new FormControl(null);
     this.registrationEmailForm = new FormControl(null);
     this.registrationPasswordForm = new FormControl(null);
@@ -86,6 +90,22 @@ export class AuthorizationComponent implements OnInit {
 
   login(): void {
     this.store.dispatch(fromActions.tryLogin());
+  }
+
+  getEmailError(): TuiValidationError | null{
+    if((this.loginEmailForm.value !== "" && this.loginEmailForm.value !== null) && this.loginEmailForm.errors !== null){
+      return this.emailError;
+    }
+    return null;
+  }
+  getPwError(): TuiValidationError | null{
+    
+    if((this.loginPasswordForm.value !== "" && this.loginPasswordForm.value !== null) && true ){
+      //TODO: Letztes True durch richtige abfrage
+      return this.emailError;
+    }
+    return null;
+      
   }
 
   saveRegistrationFirstname(): void {

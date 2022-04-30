@@ -11,6 +11,7 @@
             [formControl]="loginEmailForm"
             (input)="saveLoginEmail()"
           />
+          <tui-error [error]="getEmailError()"></tui-error>
         </div>
         <div class="input-field">
           <fa-icon [icon]="faLock"></fa-icon>
@@ -20,6 +21,7 @@
             [formControl]="loginPasswordForm"
             (input)="saveLoginPassword()"
           />
+          <tui-error [error]="getPwError()"></tui-error>
         </div>
         <a tuiLink class="forgotPW" (click)="showForgotPwDialog()">
           Passwort vergessen
