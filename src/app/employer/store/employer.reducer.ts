@@ -9,6 +9,7 @@ import {
   success,
 } from 'ngx-remotedata';
 import { Job } from 'src/app/jobs/models/job.model';
+import { Applicant } from '../models/applicant.model';
 import { Application } from '../models/application.model';
 import { ApplicationDetails } from '../models/applicationDetails.model';
 import { Employer } from '../models/employer.model';
@@ -79,6 +80,7 @@ export const initialState: EmployerState = {
     image: notAsked(),
     cvPdf: notAsked(),
     letterPdf: notAsked(),
+    applicant: notAsked(),
   },
   createNewJob: {
     basics: {
@@ -381,6 +383,32 @@ const employerReducer = createReducer(
       draft.applicationDetails.letterPdf = failure<string, HttpErrorResponse>(
         error
       );
+    })
+  ),
+  on(fromActions.loadApplicationDetailsApplicant, (state) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.applicant = inProgress<
+        Applicant,
+        HttpErrorResponse
+      >();
+    })
+  ),
+  on(
+    fromActions.loadApplicationDetailsApplicantSuccess,
+    (state, { applicant }) =>
+      produce(state, (draft) => {
+        draft.applicationDetails.applicant = success<
+          Applicant,
+          HttpErrorResponse
+        >(applicant);
+      })
+  ),
+  on(fromActions.loadApplicationDetailsApplicantError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.applicant = failure<
+        Applicant,
+        HttpErrorResponse
+      >(error);
     })
   )
 );

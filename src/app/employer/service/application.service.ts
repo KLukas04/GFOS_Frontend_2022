@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Applicant } from '../models/applicant.model';
 import { Application } from '../models/application.model';
 
 @Injectable({
@@ -33,6 +34,12 @@ export class ApplicationService {
   public getLetterPdfById(id: number): Observable<string> {
     return this.http
       .get<string>(`${this.baseURL}/datei/bewerbung/${id}`)
+      .pipe(take(1));
+  }
+
+  public getApplicant(id: number): Observable<Applicant> {
+    return this.http
+      .get<Applicant>(`${this.baseURL}/bewerber/${id}`)
       .pipe(take(1));
   }
 }

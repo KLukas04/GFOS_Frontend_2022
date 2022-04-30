@@ -1,5 +1,6 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { createAction, props } from '@ngrx/store';
+import { Applicant } from '../models/applicant.model';
 import { Application } from '../models/application.model';
 import { Employer } from '../models/employer.model';
 import { Job } from '../models/job.model';
@@ -284,5 +285,19 @@ export const loadApplicationDetailsLetterPdfSuccess = createAction(
 
 export const loadApplicationDetailsLetterPdfError = createAction(
   '[Employer] [Details] Load Letter Error',
+  props<{ error: HttpErrorResponse }>()
+);
+
+export const loadApplicationDetailsApplicant = createAction(
+  '[Employer] [Details] Load Applicant'
+);
+
+export const loadApplicationDetailsApplicantSuccess = createAction(
+  '[Employer] [Details] Load Applicant Success',
+  props<{ applicant: Applicant }>()
+);
+
+export const loadApplicationDetailsApplicantError = createAction(
+  '[Employer] [Details] Load Applicant Error',
   props<{ error: HttpErrorResponse }>()
 );

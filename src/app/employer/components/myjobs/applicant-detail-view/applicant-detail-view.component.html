@@ -1,6 +1,7 @@
 <app-header
+  *ngIf="applicant$ | async | successValue as applicant"
   text="Hi, ich bin"
-  markup="Lukas!"
+  [markup]="applicant.vorname + '!'"
   subheading="Ich freue mich auf eine Rückmeldung!"
   img="assets/hello.svg"
 >
@@ -33,12 +34,23 @@
       Anschreiben
     </button>
   </div>
-  <div class="box layout">
+  <div
+    class="box layout"
+    *ngIf="applicant$ | async | successValue as applicant"
+  >
     <p class="title">Name</p>
-    <p class="tui-text_h5">Lukas Krinke</p>
+    <p class="tui-text_h6">{{ applicant.vorname }} {{ applicant.name }}</p>
 
     <p class="title">Addresse</p>
-    <p class="tui-text_body-l-2">Straße Str. 121, 45257 Essen</p>
+    <p class="tui-text_body-l-2">
+      {{ applicant.adresse.strasse }} {{ applicant.adresse.hausnummer }}
+    </p>
+    <p class="tui-text_body-l-2">
+      {{ applicant.adresse.plz }} {{ applicant.adresse.stadt }},
+      {{ applicant.adresse.land }}
+    </p>
+    <p class="title">Email</p>
+    <p class="tui-text_body-l-2">{{ applicant.email }}</p>
 
     <p class="title">Interessen</p>
     <div class="interessen">

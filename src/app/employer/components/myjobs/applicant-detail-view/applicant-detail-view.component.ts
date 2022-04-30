@@ -7,6 +7,7 @@ import { TuiPdfViewerService, TuiPdfViewerOptions } from '@taiga-ui/kit';
 import { PolymorpheusContent } from '@tinkoff/ng-polymorpheus';
 import { getOrElse, RemoteData } from 'ngx-remotedata';
 import { Observable } from 'rxjs';
+import { Applicant } from 'src/app/employer/models/applicant.model';
 
 import * as fromActions from '../../../store/employer.actions';
 import * as fromReducer from '../../../store/employer.reducer';
@@ -43,6 +44,8 @@ export class ApplicantDetailViewComponent implements OnInit {
 
   public image$: Observable<RemoteData<string, HttpErrorResponse>>;
 
+  public applicant$: Observable<RemoteData<Applicant, HttpErrorResponse>>;
+
   constructor(
     @Inject(DomSanitizer) private readonly sanitizer: DomSanitizer,
     @Inject(TuiPdfViewerService)
@@ -56,12 +59,16 @@ export class ApplicantDetailViewComponent implements OnInit {
     this.store.select(fromSelectors.selectDetailsLetter).subscribe((pdf) => {
       this.letterPdf = getOrElse(pdf, '');
     });
+
+    this.applicant$ = this.store.select(fromSelectors.selectDetailsApplicant);
   }
 
   ngOnInit(): void {
     this.store.dispatch(fromActions.loadApplicationDetailsImage());
     this.store.dispatch(fromActions.loadApplicationDetailsCvPdf());
     this.store.dispatch(fromActions.loadApplicationDetailsLetterPdf());
+
+    this.store.dispatch(fromActions.loadApplicationDetailsApplicant());
   }
 
   show(actions: PolymorpheusContent<TuiPdfViewerOptions>, titel: string) {

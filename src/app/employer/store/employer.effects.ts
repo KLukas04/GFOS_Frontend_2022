@@ -261,4 +261,23 @@ export class EmployerEffects {
       )
     )
   );
+
+  loadApplicationDetailsApplicant$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplicationDetailsApplicant),
+      concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
+      switchMap(([_, params]) =>
+        this.applicationService.getApplicant(params['bewerberId']).pipe(
+          map((applicant) =>
+            fromActions.loadApplicationDetailsApplicantSuccess({
+              applicant: applicant,
+            })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationDetailsApplicantError({ error: err }))
+          )
+        )
+      )
+    )
+  );
 }
