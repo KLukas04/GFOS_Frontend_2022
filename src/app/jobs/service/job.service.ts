@@ -4,6 +4,7 @@ import { Observable, take } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Application } from '../models/application.model';
 import { Fachgebiet } from '../models/fachgebiet.model';
+import { Filter } from '../models/filter.model';
 import { Job } from '../models/job.model';
 
 @Injectable({
@@ -35,6 +36,31 @@ export class JobService {
         jobangebotid: id,
         neuesbewerbungsschreiben: letter,
       })
+      .pipe(take(1));
+  }
+
+  public searchJobs(data: Filter): Observable<Job[]> {
+    let reqData = {};
+
+    data.fachgebiet !== null
+      ? (reqData = { ...reqData, fachgebiet: data.fachgebiet })
+      : null;
+    data.typ !== null ? (reqData = { ...reqData, typ: data.typ }) : null;
+    data.istremote !== null
+      ? (reqData = { ...reqData, istremote: data.istremote })
+      : null;
+    data.istbefristet !== null
+      ? (reqData = { ...reqData, istbefristet: data.istbefristet })
+      : null;
+    data.jahresgehalt !== null
+      ? (reqData = { ...reqData, jahresgehalt: data.jahresgehalt })
+      : null;
+    data.urlaubstage !== null
+      ? (reqData = { ...reqData, urlaubstage: data.urlaubstage })
+      : null;
+
+    return this.http
+      .post<any>(`${this.baseURL}/jobs/search`, reqData)
       .pipe(take(1));
   }
 }

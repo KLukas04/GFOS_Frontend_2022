@@ -65,7 +65,7 @@ export class SidebarComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  saveFachgebiet(): void {
+  public saveFachgebiet(): void {
     this.store.dispatch(
       fromActions.searchFilterFachgebiet({
         fachgebiet: this.fachgebietControl.value,
@@ -73,7 +73,7 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  saveType(): void {
+  public saveType(): void {
     this.store.dispatch(
       fromActions.searchFilterType({
         typ: this.typeControl.value,
@@ -81,7 +81,7 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  saveRemote(): void {
+  public saveRemote(): void {
     console.log('Toggle');
     this.store.dispatch(
       fromActions.searchFilterRemote({
@@ -90,7 +90,7 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  saveBefristet(): void {
+  public saveBefristet(): void {
     this.store.dispatch(
       fromActions.searchFilterBefristet({
         befristet: this.befristetControl.value,
@@ -98,7 +98,7 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  saveGehalt(): void {
+  public saveGehalt(): void {
     this.store.dispatch(
       fromActions.searchFilterGehalt({
         gehalt: this.gehaltControl.value,
@@ -106,11 +106,15 @@ export class SidebarComponent implements OnInit {
     );
   }
 
-  saveUrlaub(): void {
+  public saveUrlaub(): void {
     this.store.dispatch(
       fromActions.searchFilterUrlaubstage({
         tage: this.urlaubControl.value,
       })
     );
+  }
+
+  public search(): void {
+    this.store.dispatch(fromActions.startSearch());
   }
 }

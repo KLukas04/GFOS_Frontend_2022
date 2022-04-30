@@ -23,6 +23,7 @@ export interface JobsState {
   singleJob: RemoteData<Job, HttpErrorResponse>;
   letter: string | null;
   filter: Filter;
+  filterResults: RemoteData<Job[], HttpErrorResponse>;
 }
 
 export const initialState: JobsState = {
@@ -38,6 +39,7 @@ export const initialState: JobsState = {
     jahresgehalt: null,
     urlaubstage: null,
   },
+  filterResults: notAsked(),
 };
 
 const jobsReducer = createReducer(
@@ -126,6 +128,23 @@ const jobsReducer = createReducer(
   on(fromActions.searchFilterUrlaubstage, (state, { tage }) =>
     produce(state, (draft) => {
       draft.filter.urlaubstage = tage;
+    })
+  ),
+  on(fromActions.startSearch, (state) =>
+    produce(state, (draft) => {
+      draft.filterResults = inProgress<Job[], HttpErrorResponse>(
+        getOrElse(draft.filterResults, [])
+      );
+    })
+  ),
+  on(fromActions.startSearchSuccess, (state, { jobs }) =>
+    produce(state, (draft) => {
+      draft.filterResults = success<Job[], HttpErrorResponse>(jobs);
+    })
+  ),
+  on(fromActions.startSearchError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.filterResults = failure<Job[], HttpErrorResponse>(error);
     })
   )
 );

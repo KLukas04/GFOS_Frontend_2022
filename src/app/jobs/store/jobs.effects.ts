@@ -77,4 +77,17 @@ export class JobsEffects {
       )
     )
   );
+
+  loadSearchResults$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.startSearch),
+      concatLatestFrom(() => this.store.select(fromSelectors.selectFilterData)),
+      switchMap(([_, data]) =>
+        this.jobService.searchJobs(data).pipe(
+          map((jobs) => fromActions.startSearchSuccess({ jobs: jobs })),
+          catchError((err) => of(fromActions.startSearchError({ error: err })))
+        )
+      )
+    )
+  );
 }

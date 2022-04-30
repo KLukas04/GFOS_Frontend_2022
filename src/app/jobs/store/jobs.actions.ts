@@ -85,3 +85,15 @@ export const searchFilterUrlaubstage = createAction(
   '[Jobs] [Search] New Urlaubstage Inserted',
   props<{ tage: number }>()
 );
+
+export const startSearch = createAction('[Jobs] [Search] Start Search');
+
+export const startSearchSuccess = createAction(
+  '[Jobs] [Search] Search Success',
+  props<{ jobs: Job[] }>()
+);
+
+export const startSearchError = createAction(
+  '[Jobs] [Search] Search Error',
+  props<{ error: HttpErrorResponse }>()
+);
