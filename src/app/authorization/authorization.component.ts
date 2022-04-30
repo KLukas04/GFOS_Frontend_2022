@@ -13,6 +13,8 @@ import { VerfiyDialogComponent } from './components/verfiy-dialog/verfiy-dialog.
 import { ForgotPwDialogComponent } from './components/forgot-pw-dialog/forgot-pw-dialog.component';
 import { TuiValidationError } from '@taiga-ui/cdk';
 import { Observable } from 'rxjs';
+import { HostListener } from "@angular/core";
+
 @Component({
   selector: 'app-authorization',
   templateUrl: './authorization.component.html',
@@ -26,7 +28,21 @@ export class AuthorizationComponent implements OnInit {
   public pinValue: string = '';
   public open2FA: boolean = false;
 
+  screenHeight: number = 0;
+  screenWidth: number = 0;
+  showError = false;
 
+  @HostListener('window:resize', ['$event'])
+  getScreenSize() {
+    this.screenHeight = window.innerHeight;
+    this.screenWidth = window.innerWidth;
+    if (this.screenWidth < 481) {
+      console.log("false");
+      this.showError = false;
+    } else {
+      this.showError = true;
+    }
+  }
 
   private readonly verifyDialog = this.dialogService.open(
     new PolymorpheusComponent(VerfiyDialogComponent, this.injector),
@@ -74,6 +90,8 @@ export class AuthorizationComponent implements OnInit {
     this.store.select(fromSelectors.selectPwError).subscribe(error => {
       this.wrongPw = error;
     })
+
+    this.getScreenSize();
   }
 
   ngOnInit(): void { }
@@ -109,42 +127,54 @@ export class AuthorizationComponent implements OnInit {
   }
 
   getEmailErrorLogin(): TuiValidationError | null {
-    if ((this.loginEmailForm.value !== "" && this.loginEmailForm.value !== null) && this.loginEmailForm.errors !== null) {
-      return this.emailError;
+    if (this.showError) {
+      if ((this.loginEmailForm.value !== "" && this.loginEmailForm.value !== null) && this.loginEmailForm.errors !== null) {
+        return this.emailError;
+      }
     }
     return null;
   }
 
   getPwError(): TuiValidationError | null {
-    if ((this.loginPasswordForm.value !== "" && this.loginPasswordForm.value !== null) && this.wrongPw) {
-      return this.pwError;
+    if (this.showError) {
+      if ((this.loginPasswordForm.value !== "" && this.loginPasswordForm.value !== null) && this.wrongPw) {
+        return this.pwError;
+      }
     }
     return null;
   }
 
   getFirstNameError(): TuiValidationError | null {
-    if (this.registrationFirstnameForm.value === "") {
-      return this.missingInfoError;
+    if (this.showError) {
+      if (this.registrationFirstnameForm.value === "") {
+        return this.missingInfoError;
+      }
     }
     return null;
   }
   getLastNameError(): TuiValidationError | null {
-    if (this.registrationLastnameForm.value === "") {
-      return this.missingInfoError;
+    if (this.showError) {
+      if (this.registrationLastnameForm.value === "") {
+        return this.missingInfoError;
+      }
     }
     return null;
   }
 
   getEmailErrorRegister(): TuiValidationError | null {
-    if (this.registrationEmailForm.errors !== null && this.registrationEmailForm.value !== null) {
-      return this.emailError;
+    if (this.showError) {
+      if (this.registrationEmailForm.errors !== null && this.registrationEmailForm.value !== null) {
+        return this.emailError;
+      }
     }
     return null;
   }
 
   getPwErrorRegister(): TuiValidationError | null {
-    if (this.registrationPasswordForm.value === "") {
-      return this.missingInfoError;
+    if (this.showError) {
+      if (this.registrationPasswordForm.value === "") {
+        return this.missingInfoError;
+      }
     }
     return null;
   }
@@ -188,9 +218,9 @@ export class AuthorizationComponent implements OnInit {
       this.registrationLastnameForm.setValue("");
     } else if (this.registrationPasswordForm.value === "" || this.registrationPasswordForm.value === null) {
       this.registrationPasswordForm.setValue("");
-    } else if (this.registrationEmailForm.invalid){
-      
-    }else {
+    } else if (this.registrationEmailForm.invalid) {
+
+    } else {
       this.store.dispatch(fromActions.tryRegistration());
       this.verifyDialog.subscribe();
     }
