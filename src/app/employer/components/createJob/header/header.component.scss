@@ -2,11 +2,20 @@
 
 .main{
     position: relative;
+    min-height: 100px;
     height: 100%;
     width: 100%;
 }
 .image{
-
+    @media screen and (max-width: 480px) {
+        height: 150px;
+     }
+     @media screen and (min-width: 481px) {
+         height: 150px;
+     }
+     @media screen and (min-width: 1200px) {
+         height: 250px;
+     }
     background-color: $color-4;
     height: 250px;
     width: 90%;
@@ -28,12 +37,25 @@
     img{
         height: 80%;
         padding: 50px;
+        @media screen and (max-width: 540px) {
+            display: none;
+        }
     }
 }
 
+
 .text{
-    padding: 80px 0px 0px 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 100%;
+
+    @media screen and (max-width: 799px) {
+        padding-left: 15px;
+    }
+    @media screen and (min-width: 800px) {
+        padding-left: 80px;
+    }
     p{
         width: 90%;
         color: white;
@@ -46,11 +68,37 @@
 
     #heading{
         font-size: 80px;
-        line-height: 80px;
         margin: 0px;
+        @media screen and (max-width: 399px) {
+            font-size: 40px;
+            line-height: 40px;
+        }
+        @media screen and (min-width: 400px) {
+            font-size: 40px;
+            line-height: 40px;
+        }
+        @media screen and (min-width: 800px) {
+            font-size: 40px;
+            line-height: 40px;
+        }
+        @media screen and (min-width: 1200px) {
+            font-size: 80px;
+            line-height: 80px;
+        }
     }
 
     #subheading{
-        font-size: xx-large;
+        @media screen and (max-width: 670px) {
+            visibility: collapse;
+            height: 0px;
+        }
+        @media screen and (min-width: 400px) {
+            font-size: 20px;
+            line-height: 20px;
+        }
+        @media screen and (min-width:1500px) {
+            font-size: 40px;
+            line-height: 40px;
+        }
     }
 }
