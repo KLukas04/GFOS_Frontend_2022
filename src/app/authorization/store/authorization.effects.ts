@@ -66,7 +66,13 @@ export class AuthorizationEffects {
               isPersonaler: res.ispersonaler,
             });
           }),
-          catchError((err) => of(fromActions.tryLoginError({ error: err })))
+          catchError((err: HttpErrorResponse) => {
+            console.log(err);
+            if(err.statusText === "Falsches Passwort"){
+              this.store.dispatch(fromActions.setPwWrongError());
+            }
+            return of(fromActions.tryLoginError({ error: err }));
+          })
         )
       )
     )

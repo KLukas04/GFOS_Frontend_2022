@@ -96,3 +96,7 @@ export const tryTwoFaError = createAction(
   '[Authorization] [2FA] 2FA PIN Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const setPwWrongError = createAction(
+  '[Authorization] [Login] Wrong PW Error',
+);
