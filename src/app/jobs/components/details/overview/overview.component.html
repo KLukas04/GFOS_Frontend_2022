@@ -13,7 +13,7 @@
       <app-overview-section
         [beschreibung]="job.langbeschreibung"
       ></app-overview-section>
-      <div *ngIf="!(showChat$ | async)" class="contact">
+      <div class="contact" *ngIf="showChat">
         <span class="heading">Kontakt - Falls du Fragen hast</span>
         <div class="line">
           <hr class="hr-grey" />
@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <div *ngIf="showChat$ | async" class="sendApplication">
+      <div class="sendApplication" *ngIf="!showChat">
         <span class="heading">Bewirb dich jetzt!</span>
         <div class="line">
           <hr class="hr-grey" />

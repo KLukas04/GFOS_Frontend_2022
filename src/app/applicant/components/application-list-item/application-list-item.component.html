@@ -1,4 +1,10 @@
-<a size="l" tuiIsland [hoverable]="true" routerLink="/jobs/details">
+<a
+  size="l"
+  tuiIsland
+  [hoverable]="true"
+  routerLink="/jobs/details"
+  [queryParams]="{ jobId: id, showChat: true }"
+>
   <div class="parent">
     <div class="info">
       <div class="heading">
