@@ -46,10 +46,10 @@ export class JobService {
       ? (reqData = { ...reqData, fachgebiet: data.fachgebiet })
       : null;
     data.typ !== null ? (reqData = { ...reqData, typ: data.typ }) : null;
-    data.istremote !== null && data.istremote !== false
+    data.istremote !== null
       ? (reqData = { ...reqData, istremote: data.istremote })
       : null;
-    data.istbefristet !== null && data.istbefristet !== false
+    data.istbefristet !== null
       ? (reqData = { ...reqData, istbefristet: data.istbefristet })
       : null;
     data.jahresgehalt !== null
