@@ -56,3 +56,8 @@ export const selectDetailsImage = createSelector(
   selectApplicationDetails,
   (details: ApplicationDetails) => details.image
 );
+
+export const selectDetailsCv = createSelector(
+  selectApplicationDetails,
+  (details: ApplicationDetails) => details.cvPdf
+);

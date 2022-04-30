@@ -211,7 +211,7 @@ export class EmployerEffects {
     )
   );
 
-  loadApplicationDetails$ = createEffect(() =>
+  loadApplicationDetailsImage$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.loadApplicationDetailsImage),
       concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
@@ -222,6 +222,23 @@ export class EmployerEffects {
           ),
           catchError((err) =>
             of(fromActions.loadApplicationDetailsImageError({ error: err }))
+          )
+        )
+      )
+    )
+  );
+
+  loadApplicationDetailsCvPdf$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.loadApplicationDetailsCvPdf),
+      concatLatestFrom(() => this.store.select(fromRouter.selectQueryParams)),
+      switchMap(([_, params]) =>
+        this.applicationService.getCvPdfById(params['bewerberId']).pipe(
+          map((pdf) =>
+            fromActions.loadApplicationDetailsCvPdfSuccess({ base64: pdf })
+          ),
+          catchError((err) =>
+            of(fromActions.loadApplicationDetailsCvPdfError({ error: err }))
           )
         )
       )

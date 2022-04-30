@@ -77,6 +77,7 @@ export const initialState: EmployerState = {
   applicationsForJob: notAsked(),
   applicationDetails: {
     image: notAsked(),
+    cvPdf: notAsked(),
   },
   createNewJob: {
     basics: {
@@ -336,6 +337,25 @@ const employerReducer = createReducer(
   on(fromActions.loadApplicationDetailsImageError, (state, { error }) =>
     produce(state, (draft) => {
       draft.applicationDetails.image = failure<string, HttpErrorResponse>(
+        error
+      );
+    })
+  ),
+  on(fromActions.loadApplicationDetailsCvPdf, (state) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.cvPdf = inProgress<string, HttpErrorResponse>();
+    })
+  ),
+  on(fromActions.loadApplicationDetailsCvPdfSuccess, (state, { base64 }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.cvPdf = success<string, HttpErrorResponse>(
+        base64
+      );
+    })
+  ),
+  on(fromActions.loadApplicationDetailsCvPdfError, (state, { error }) =>
+    produce(state, (draft) => {
+      draft.applicationDetails.cvPdf = failure<string, HttpErrorResponse>(
         error
       );
     })

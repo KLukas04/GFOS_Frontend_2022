@@ -23,4 +23,10 @@ export class ApplicationService {
       .get<Application[]>(`${this.baseURL}/bewerbung/${id}`)
       .pipe(take(1));
   }
+
+  public getCvPdfById(id: number): Observable<string> {
+    return this.http
+      .get<string>(`${this.baseURL}/datei/lebenslauf/${id}`)
+      .pipe(take(1));
+  }
 }

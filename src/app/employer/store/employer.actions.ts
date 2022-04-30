@@ -258,3 +258,17 @@ export const loadApplicationDetailsImageError = createAction(
   '[Employer] [Details] Load Image Error',
   props<{ error: HttpErrorResponse }>()
 );
+
+export const loadApplicationDetailsCvPdf = createAction(
+  '[Employer] [Details] Load CV'
+);
+
+export const loadApplicationDetailsCvPdfSuccess = createAction(
+  '[Employer] [Details] Load CV Success',
+  props<{ base64: string }>()
+);
+
+export const loadApplicationDetailsCvPdfError = createAction(
+  '[Employer] [Details] Load CV Error',
+  props<{ error: HttpErrorResponse }>()
+);
